@@ -1,0 +1,1 @@
+InteropGen.exe --path=../../../../Generated/
