@@ -15,12 +15,57 @@ Although this wrapper is designed for dots, but its still a high level wrapper w
 ### Initialization
 For Client
 ```csharp
-var initEntity = state.EntityManager.CreateEntity();
-state.EntityManager.AddComponentData( initEntity, new SteamAPIRequestInit( 480 ) );
+var initEntity = EntityManager.CreateEntity();
+EntityManager.AddComponentData( initEntity, new SteamAPIRequestInit( 480 ) );
 ```
 
 For GameServer
 ```csharp
-var initEntity = state.EntityManager.CreateEntity();
-state.EntityManager.AddComponentData( initEntity, new SteamGameServerRequestInit( 480, "SpaceWar", "Yippe" ) );
+var initEntity = EntityManager.CreateEntity();
+EntityManager.AddComponentData( initEntity, new SteamGameServerRequestInit( 480, "SpaceWar", "Yippe" ) );
 ```
+
+Shutdown is handled automatically, every world can only initialize once, so the interfaces are released when the world is destroyed
+
+### Handle unsuccessfully Init
+Since initialization is never to be sure success, so handling the result is important, but it is not strictly required
+Keep in mind that the internal system doesnt log "Failed Init" so if you want more debugging infos, you have to do this result handling
+
+For Client
+```csharp
+if ( SystemAPI.TryGetSingletonEntity<SteamAPIInitResult>( out var steamEntity ) ) 
+{
+    var result = EntityManager.GetComponentData<SteamAPIInitResult>( steamEntity );
+    if ( result.Result == SteamInitResult.Ok )
+    {
+        // Do your success initialization here
+        // For example. Log("SteamAPI Init Success");
+    }
+    else
+    {
+        UnityEngine.Debug.LogError( result.ErrorMsg );
+    }
+    // This step isnt necessary but if you dont remove this component, this block of code will keep executing
+    EntityManager.RemoveComponent<SteamAPIInitResult>( steamEntity );
+}
+```
+
+For Server
+```csharp
+if ( SystemAPI.TryGetSingletonEntity<SteamGameServerInitResult>( out var steamEntity ) ) 
+{
+    var result = EntityManager.GetComponentData<SteamGameServerInitResult>( steamEntity );
+    if ( result.Result == SteamInitResult.Ok )
+    {
+        // Do your success initialization here
+        // For example. Log("SteamGameServer Init Success");
+    }
+    else
+    {
+        UnityEngine.Debug.LogError( result.ErrorMsg );
+    }
+    // This step isnt necessary but if you dont remove this component, this block of code will keep executing
+    EntityManager.RemoveComponent<SteamGameServerInitResult>( steamEntity );
+}
+```
+
