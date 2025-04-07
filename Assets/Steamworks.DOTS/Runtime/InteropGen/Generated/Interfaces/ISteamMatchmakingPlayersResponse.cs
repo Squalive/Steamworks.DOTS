@@ -21,7 +21,7 @@ namespace Steamworks
 		}
 		#region SteamAPI_ISteamMatchmakingPlayersResponse_AddPlayerToList
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamMatchmakingPlayersResponse_AddPlayerToList", CallingConvention = Platform.CC ) ]
-		private static extern void _SteamAPI_ISteamMatchmakingPlayersResponse_AddPlayerToList( IntPtr self, IntPtr pchName, int nScore, float flTimePlayed );
+		internal static extern void _SteamAPI_ISteamMatchmakingPlayersResponse_AddPlayerToList( IntPtr self, IntPtr pchName, int nScore, float flTimePlayed );
 		#endregion
 		internal void AddPlayerToList( string pchName, int nScore, float flTimePlayed )
 		{
@@ -31,7 +31,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamMatchmakingPlayersResponse_PlayersFailedToRespond
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamMatchmakingPlayersResponse_PlayersFailedToRespond", CallingConvention = Platform.CC ) ]
-		private static extern void _SteamAPI_ISteamMatchmakingPlayersResponse_PlayersFailedToRespond( IntPtr self );
+		internal static extern void _SteamAPI_ISteamMatchmakingPlayersResponse_PlayersFailedToRespond( IntPtr self );
 		#endregion
 		internal void PlayersFailedToRespond()
 		{
@@ -40,7 +40,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamMatchmakingPlayersResponse_PlayersRefreshComplete
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamMatchmakingPlayersResponse_PlayersRefreshComplete", CallingConvention = Platform.CC ) ]
-		private static extern void _SteamAPI_ISteamMatchmakingPlayersResponse_PlayersRefreshComplete( IntPtr self );
+		internal static extern void _SteamAPI_ISteamMatchmakingPlayersResponse_PlayersRefreshComplete( IntPtr self );
 		#endregion
 		internal void PlayersRefreshComplete()
 		{

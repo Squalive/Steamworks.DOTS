@@ -29,7 +29,7 @@ namespace Steamworks
 		}
 		#region SteamAPI_ISteamScreenshots_WriteScreenshot
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamScreenshots_WriteScreenshot", CallingConvention = Platform.CC ) ]
-		private static extern ScreenshotHandle _SteamAPI_ISteamScreenshots_WriteScreenshot( IntPtr self, IntPtr pubRGB, uint cubRGB, int nWidth, int nHeight );
+		internal static extern ScreenshotHandle _SteamAPI_ISteamScreenshots_WriteScreenshot( IntPtr self, IntPtr pubRGB, uint cubRGB, int nWidth, int nHeight );
 		#endregion
 		internal ScreenshotHandle WriteScreenshot( IntPtr pubRGB, uint cubRGB, int nWidth, int nHeight )
 		{
@@ -39,7 +39,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamScreenshots_AddScreenshotToLibrary
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamScreenshots_AddScreenshotToLibrary", CallingConvention = Platform.CC ) ]
-		private static extern ScreenshotHandle _SteamAPI_ISteamScreenshots_AddScreenshotToLibrary( IntPtr self, IntPtr pchFilename, IntPtr pchThumbnailFilename, int nWidth, int nHeight );
+		internal static extern ScreenshotHandle _SteamAPI_ISteamScreenshots_AddScreenshotToLibrary( IntPtr self, IntPtr pchFilename, IntPtr pchThumbnailFilename, int nWidth, int nHeight );
 		#endregion
 		internal ScreenshotHandle AddScreenshotToLibrary( string pchFilename, string pchThumbnailFilename, int nWidth, int nHeight )
 		{
@@ -51,7 +51,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamScreenshots_TriggerScreenshot
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamScreenshots_TriggerScreenshot", CallingConvention = Platform.CC ) ]
-		private static extern void _SteamAPI_ISteamScreenshots_TriggerScreenshot( IntPtr self );
+		internal static extern void _SteamAPI_ISteamScreenshots_TriggerScreenshot( IntPtr self );
 		#endregion
 		internal void TriggerScreenshot()
 		{
@@ -60,7 +60,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamScreenshots_HookScreenshots
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamScreenshots_HookScreenshots", CallingConvention = Platform.CC ) ]
-		private static extern void _SteamAPI_ISteamScreenshots_HookScreenshots( IntPtr self, [ MarshalAs( UnmanagedType.U1 ) ] bool bHook );
+		internal static extern void _SteamAPI_ISteamScreenshots_HookScreenshots( IntPtr self, [ MarshalAs( UnmanagedType.U1 ) ] bool bHook );
 		#endregion
 		internal void HookScreenshots( [ MarshalAs( UnmanagedType.U1 ) ] bool bHook )
 		{
@@ -70,7 +70,7 @@ namespace Steamworks
 		#region SteamAPI_ISteamScreenshots_SetLocation
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamScreenshots_SetLocation", CallingConvention = Platform.CC ) ]
 		[ return: MarshalAs( UnmanagedType.I1 ) ]
-		private static extern bool _SteamAPI_ISteamScreenshots_SetLocation( IntPtr self, ScreenshotHandle hScreenshot, IntPtr pchLocation );
+		internal static extern bool _SteamAPI_ISteamScreenshots_SetLocation( IntPtr self, ScreenshotHandle hScreenshot, IntPtr pchLocation );
 		#endregion
 		internal bool SetLocation( ScreenshotHandle hScreenshot, string pchLocation )
 		{
@@ -82,7 +82,7 @@ namespace Steamworks
 		#region SteamAPI_ISteamScreenshots_TagUser
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamScreenshots_TagUser", CallingConvention = Platform.CC ) ]
 		[ return: MarshalAs( UnmanagedType.I1 ) ]
-		private static extern bool _SteamAPI_ISteamScreenshots_TagUser( IntPtr self, ScreenshotHandle hScreenshot, SteamId steamID );
+		internal static extern bool _SteamAPI_ISteamScreenshots_TagUser( IntPtr self, ScreenshotHandle hScreenshot, SteamId steamID );
 		#endregion
 		internal bool TagUser( ScreenshotHandle hScreenshot, SteamId steamID )
 		{
@@ -93,7 +93,7 @@ namespace Steamworks
 		#region SteamAPI_ISteamScreenshots_TagPublishedFile
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamScreenshots_TagPublishedFile", CallingConvention = Platform.CC ) ]
 		[ return: MarshalAs( UnmanagedType.I1 ) ]
-		private static extern bool _SteamAPI_ISteamScreenshots_TagPublishedFile( IntPtr self, ScreenshotHandle hScreenshot, PublishedFileId_t unPublishedFileID );
+		internal static extern bool _SteamAPI_ISteamScreenshots_TagPublishedFile( IntPtr self, ScreenshotHandle hScreenshot, PublishedFileId_t unPublishedFileID );
 		#endregion
 		internal bool TagPublishedFile( ScreenshotHandle hScreenshot, PublishedFileId_t unPublishedFileID )
 		{
@@ -104,7 +104,7 @@ namespace Steamworks
 		#region SteamAPI_ISteamScreenshots_IsScreenshotsHooked
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamScreenshots_IsScreenshotsHooked", CallingConvention = Platform.CC ) ]
 		[ return: MarshalAs( UnmanagedType.I1 ) ]
-		private static extern bool _SteamAPI_ISteamScreenshots_IsScreenshotsHooked( IntPtr self );
+		internal static extern bool _SteamAPI_ISteamScreenshots_IsScreenshotsHooked( IntPtr self );
 		#endregion
 		internal bool IsScreenshotsHooked()
 		{
@@ -114,7 +114,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamScreenshots_AddVRScreenshotToLibrary
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamScreenshots_AddVRScreenshotToLibrary", CallingConvention = Platform.CC ) ]
-		private static extern ScreenshotHandle _SteamAPI_ISteamScreenshots_AddVRScreenshotToLibrary( IntPtr self, EVRScreenshotType eType, IntPtr pchFilename, IntPtr pchVRFilename );
+		internal static extern ScreenshotHandle _SteamAPI_ISteamScreenshots_AddVRScreenshotToLibrary( IntPtr self, EVRScreenshotType eType, IntPtr pchFilename, IntPtr pchVRFilename );
 		#endregion
 		internal ScreenshotHandle AddVRScreenshotToLibrary( EVRScreenshotType eType, string pchFilename, string pchVRFilename )
 		{

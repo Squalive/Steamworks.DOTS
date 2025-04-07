@@ -72,7 +72,7 @@ public class StructGenerator : BaseGenerator
                 {
                     WriteLine( "#region SteamCallback" );
                     {
-                        WriteLine( $"public static int _datasize = UnsafeUtility.SizeOf<{name}>();" );
+                        WriteLine( $"public static readonly int _datasize = UnsafeUtility.SizeOf<{name}>();" );
                         WriteLine( "public int DataSize => _datasize;" );
                         WriteLine( $"public CallbackType CallbackType => CallbackType.{name};" );
                     }

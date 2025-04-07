@@ -35,7 +35,7 @@ namespace Steamworks
 		}
 		#region SteamAPI_ISteamInventory_GetResultStatus
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamInventory_GetResultStatus", CallingConvention = Platform.CC ) ]
-		private static extern EResult _SteamAPI_ISteamInventory_GetResultStatus( IntPtr self, SteamInventoryResult_t resultHandle );
+		internal static extern EResult _SteamAPI_ISteamInventory_GetResultStatus( IntPtr self, SteamInventoryResult_t resultHandle );
 		#endregion
 		internal EResult GetResultStatus( SteamInventoryResult_t resultHandle )
 		{
@@ -46,7 +46,7 @@ namespace Steamworks
 		#region SteamAPI_ISteamInventory_GetResultItems
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamInventory_GetResultItems", CallingConvention = Platform.CC ) ]
 		[ return: MarshalAs( UnmanagedType.I1 ) ]
-		private static extern bool _SteamAPI_ISteamInventory_GetResultItems( IntPtr self, SteamInventoryResult_t resultHandle, SteamItemDetails_t* pOutItemsArray, ref uint punOutItemsArraySize );
+		internal static extern bool _SteamAPI_ISteamInventory_GetResultItems( IntPtr self, SteamInventoryResult_t resultHandle, SteamItemDetails_t* pOutItemsArray, ref uint punOutItemsArraySize );
 		#endregion
 		internal bool GetResultItems( SteamInventoryResult_t resultHandle, SteamItemDetails_t* pOutItemsArray, ref uint punOutItemsArraySize )
 		{
@@ -57,7 +57,7 @@ namespace Steamworks
 		#region SteamAPI_ISteamInventory_GetResultItemProperty
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamInventory_GetResultItemProperty", CallingConvention = Platform.CC ) ]
 		[ return: MarshalAs( UnmanagedType.I1 ) ]
-		private static extern bool _SteamAPI_ISteamInventory_GetResultItemProperty( IntPtr self, SteamInventoryResult_t resultHandle, uint unItemIndex, IntPtr pchPropertyName, IntPtr pchValueBuffer, ref uint punValueBufferSizeOut );
+		internal static extern bool _SteamAPI_ISteamInventory_GetResultItemProperty( IntPtr self, SteamInventoryResult_t resultHandle, uint unItemIndex, IntPtr pchPropertyName, IntPtr pchValueBuffer, ref uint punValueBufferSizeOut );
 		#endregion
 		internal bool GetResultItemProperty( SteamInventoryResult_t resultHandle, uint unItemIndex, string pchPropertyName, out string pchValueBuffer, ref uint punValueBufferSizeOut )
 		{
@@ -70,7 +70,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamInventory_GetResultTimestamp
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamInventory_GetResultTimestamp", CallingConvention = Platform.CC ) ]
-		private static extern uint _SteamAPI_ISteamInventory_GetResultTimestamp( IntPtr self, SteamInventoryResult_t resultHandle );
+		internal static extern uint _SteamAPI_ISteamInventory_GetResultTimestamp( IntPtr self, SteamInventoryResult_t resultHandle );
 		#endregion
 		internal uint GetResultTimestamp( SteamInventoryResult_t resultHandle )
 		{
@@ -81,7 +81,7 @@ namespace Steamworks
 		#region SteamAPI_ISteamInventory_CheckResultSteamID
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamInventory_CheckResultSteamID", CallingConvention = Platform.CC ) ]
 		[ return: MarshalAs( UnmanagedType.I1 ) ]
-		private static extern bool _SteamAPI_ISteamInventory_CheckResultSteamID( IntPtr self, SteamInventoryResult_t resultHandle, SteamId steamIDExpected );
+		internal static extern bool _SteamAPI_ISteamInventory_CheckResultSteamID( IntPtr self, SteamInventoryResult_t resultHandle, SteamId steamIDExpected );
 		#endregion
 		internal bool CheckResultSteamID( SteamInventoryResult_t resultHandle, SteamId steamIDExpected )
 		{
@@ -91,7 +91,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamInventory_DestroyResult
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamInventory_DestroyResult", CallingConvention = Platform.CC ) ]
-		private static extern void _SteamAPI_ISteamInventory_DestroyResult( IntPtr self, SteamInventoryResult_t resultHandle );
+		internal static extern void _SteamAPI_ISteamInventory_DestroyResult( IntPtr self, SteamInventoryResult_t resultHandle );
 		#endregion
 		internal void DestroyResult( SteamInventoryResult_t resultHandle )
 		{
@@ -101,7 +101,7 @@ namespace Steamworks
 		#region SteamAPI_ISteamInventory_GetAllItems
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamInventory_GetAllItems", CallingConvention = Platform.CC ) ]
 		[ return: MarshalAs( UnmanagedType.I1 ) ]
-		private static extern bool _SteamAPI_ISteamInventory_GetAllItems( IntPtr self, ref SteamInventoryResult_t pResultHandle );
+		internal static extern bool _SteamAPI_ISteamInventory_GetAllItems( IntPtr self, ref SteamInventoryResult_t pResultHandle );
 		#endregion
 		internal bool GetAllItems( ref SteamInventoryResult_t pResultHandle )
 		{
@@ -112,7 +112,7 @@ namespace Steamworks
 		#region SteamAPI_ISteamInventory_GetItemsByID
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamInventory_GetItemsByID", CallingConvention = Platform.CC ) ]
 		[ return: MarshalAs( UnmanagedType.I1 ) ]
-		private static extern bool _SteamAPI_ISteamInventory_GetItemsByID( IntPtr self, ref SteamInventoryResult_t pResultHandle, ref SteamItemInstanceID_t pInstanceIDs, uint unCountInstanceIDs );
+		internal static extern bool _SteamAPI_ISteamInventory_GetItemsByID( IntPtr self, ref SteamInventoryResult_t pResultHandle, ref SteamItemInstanceID_t pInstanceIDs, uint unCountInstanceIDs );
 		#endregion
 		internal bool GetItemsByID( ref SteamInventoryResult_t pResultHandle, ref SteamItemInstanceID_t pInstanceIDs, uint unCountInstanceIDs )
 		{
@@ -123,7 +123,7 @@ namespace Steamworks
 		#region SteamAPI_ISteamInventory_SerializeResult
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamInventory_SerializeResult", CallingConvention = Platform.CC ) ]
 		[ return: MarshalAs( UnmanagedType.I1 ) ]
-		private static extern bool _SteamAPI_ISteamInventory_SerializeResult( IntPtr self, SteamInventoryResult_t resultHandle, IntPtr pOutBuffer, ref uint punOutBufferSize );
+		internal static extern bool _SteamAPI_ISteamInventory_SerializeResult( IntPtr self, SteamInventoryResult_t resultHandle, IntPtr pOutBuffer, ref uint punOutBufferSize );
 		#endregion
 		internal bool SerializeResult( SteamInventoryResult_t resultHandle, IntPtr pOutBuffer, ref uint punOutBufferSize )
 		{
@@ -134,7 +134,7 @@ namespace Steamworks
 		#region SteamAPI_ISteamInventory_DeserializeResult
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamInventory_DeserializeResult", CallingConvention = Platform.CC ) ]
 		[ return: MarshalAs( UnmanagedType.I1 ) ]
-		private static extern bool _SteamAPI_ISteamInventory_DeserializeResult( IntPtr self, ref SteamInventoryResult_t pOutResultHandle, IntPtr pBuffer, uint unBufferSize, [ MarshalAs( UnmanagedType.U1 ) ] bool bRESERVED_MUST_BE_FALSE );
+		internal static extern bool _SteamAPI_ISteamInventory_DeserializeResult( IntPtr self, ref SteamInventoryResult_t pOutResultHandle, IntPtr pBuffer, uint unBufferSize, [ MarshalAs( UnmanagedType.U1 ) ] bool bRESERVED_MUST_BE_FALSE );
 		#endregion
 		internal bool DeserializeResult( ref SteamInventoryResult_t pOutResultHandle, IntPtr pBuffer, uint unBufferSize, [ MarshalAs( UnmanagedType.U1 ) ] bool bRESERVED_MUST_BE_FALSE )
 		{
@@ -145,7 +145,7 @@ namespace Steamworks
 		#region SteamAPI_ISteamInventory_GenerateItems
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamInventory_GenerateItems", CallingConvention = Platform.CC ) ]
 		[ return: MarshalAs( UnmanagedType.I1 ) ]
-		private static extern bool _SteamAPI_ISteamInventory_GenerateItems( IntPtr self, ref SteamInventoryResult_t pResultHandle, SteamItemDef_t* pArrayItemDefs, uint* punArrayQuantity, uint unArrayLength );
+		internal static extern bool _SteamAPI_ISteamInventory_GenerateItems( IntPtr self, ref SteamInventoryResult_t pResultHandle, SteamItemDef_t* pArrayItemDefs, uint* punArrayQuantity, uint unArrayLength );
 		#endregion
 		internal bool GenerateItems( ref SteamInventoryResult_t pResultHandle, SteamItemDef_t* pArrayItemDefs, uint* punArrayQuantity, uint unArrayLength )
 		{
@@ -156,7 +156,7 @@ namespace Steamworks
 		#region SteamAPI_ISteamInventory_GrantPromoItems
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamInventory_GrantPromoItems", CallingConvention = Platform.CC ) ]
 		[ return: MarshalAs( UnmanagedType.I1 ) ]
-		private static extern bool _SteamAPI_ISteamInventory_GrantPromoItems( IntPtr self, ref SteamInventoryResult_t pResultHandle );
+		internal static extern bool _SteamAPI_ISteamInventory_GrantPromoItems( IntPtr self, ref SteamInventoryResult_t pResultHandle );
 		#endregion
 		internal bool GrantPromoItems( ref SteamInventoryResult_t pResultHandle )
 		{
@@ -167,7 +167,7 @@ namespace Steamworks
 		#region SteamAPI_ISteamInventory_AddPromoItem
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamInventory_AddPromoItem", CallingConvention = Platform.CC ) ]
 		[ return: MarshalAs( UnmanagedType.I1 ) ]
-		private static extern bool _SteamAPI_ISteamInventory_AddPromoItem( IntPtr self, ref SteamInventoryResult_t pResultHandle, SteamItemDef_t itemDef );
+		internal static extern bool _SteamAPI_ISteamInventory_AddPromoItem( IntPtr self, ref SteamInventoryResult_t pResultHandle, SteamItemDef_t itemDef );
 		#endregion
 		internal bool AddPromoItem( ref SteamInventoryResult_t pResultHandle, SteamItemDef_t itemDef )
 		{
@@ -178,7 +178,7 @@ namespace Steamworks
 		#region SteamAPI_ISteamInventory_AddPromoItems
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamInventory_AddPromoItems", CallingConvention = Platform.CC ) ]
 		[ return: MarshalAs( UnmanagedType.I1 ) ]
-		private static extern bool _SteamAPI_ISteamInventory_AddPromoItems( IntPtr self, ref SteamInventoryResult_t pResultHandle, SteamItemDef_t* pArrayItemDefs, uint unArrayLength );
+		internal static extern bool _SteamAPI_ISteamInventory_AddPromoItems( IntPtr self, ref SteamInventoryResult_t pResultHandle, SteamItemDef_t* pArrayItemDefs, uint unArrayLength );
 		#endregion
 		internal bool AddPromoItems( ref SteamInventoryResult_t pResultHandle, SteamItemDef_t* pArrayItemDefs, uint unArrayLength )
 		{
@@ -189,7 +189,7 @@ namespace Steamworks
 		#region SteamAPI_ISteamInventory_ConsumeItem
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamInventory_ConsumeItem", CallingConvention = Platform.CC ) ]
 		[ return: MarshalAs( UnmanagedType.I1 ) ]
-		private static extern bool _SteamAPI_ISteamInventory_ConsumeItem( IntPtr self, ref SteamInventoryResult_t pResultHandle, SteamItemInstanceID_t itemConsume, uint unQuantity );
+		internal static extern bool _SteamAPI_ISteamInventory_ConsumeItem( IntPtr self, ref SteamInventoryResult_t pResultHandle, SteamItemInstanceID_t itemConsume, uint unQuantity );
 		#endregion
 		internal bool ConsumeItem( ref SteamInventoryResult_t pResultHandle, SteamItemInstanceID_t itemConsume, uint unQuantity )
 		{
@@ -200,7 +200,7 @@ namespace Steamworks
 		#region SteamAPI_ISteamInventory_ExchangeItems
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamInventory_ExchangeItems", CallingConvention = Platform.CC ) ]
 		[ return: MarshalAs( UnmanagedType.I1 ) ]
-		private static extern bool _SteamAPI_ISteamInventory_ExchangeItems( IntPtr self, ref SteamInventoryResult_t pResultHandle, SteamItemDef_t* pArrayGenerate, uint* punArrayGenerateQuantity, uint unArrayGenerateLength, SteamItemInstanceID_t* pArrayDestroy, uint* punArrayDestroyQuantity, uint unArrayDestroyLength );
+		internal static extern bool _SteamAPI_ISteamInventory_ExchangeItems( IntPtr self, ref SteamInventoryResult_t pResultHandle, SteamItemDef_t* pArrayGenerate, uint* punArrayGenerateQuantity, uint unArrayGenerateLength, SteamItemInstanceID_t* pArrayDestroy, uint* punArrayDestroyQuantity, uint unArrayDestroyLength );
 		#endregion
 		internal bool ExchangeItems( ref SteamInventoryResult_t pResultHandle, SteamItemDef_t* pArrayGenerate, uint* punArrayGenerateQuantity, uint unArrayGenerateLength, SteamItemInstanceID_t* pArrayDestroy, uint* punArrayDestroyQuantity, uint unArrayDestroyLength )
 		{
@@ -211,7 +211,7 @@ namespace Steamworks
 		#region SteamAPI_ISteamInventory_TransferItemQuantity
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamInventory_TransferItemQuantity", CallingConvention = Platform.CC ) ]
 		[ return: MarshalAs( UnmanagedType.I1 ) ]
-		private static extern bool _SteamAPI_ISteamInventory_TransferItemQuantity( IntPtr self, ref SteamInventoryResult_t pResultHandle, SteamItemInstanceID_t itemIdSource, uint unQuantity, SteamItemInstanceID_t itemIdDest );
+		internal static extern bool _SteamAPI_ISteamInventory_TransferItemQuantity( IntPtr self, ref SteamInventoryResult_t pResultHandle, SteamItemInstanceID_t itemIdSource, uint unQuantity, SteamItemInstanceID_t itemIdDest );
 		#endregion
 		internal bool TransferItemQuantity( ref SteamInventoryResult_t pResultHandle, SteamItemInstanceID_t itemIdSource, uint unQuantity, SteamItemInstanceID_t itemIdDest )
 		{
@@ -221,7 +221,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamInventory_SendItemDropHeartbeat
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamInventory_SendItemDropHeartbeat", CallingConvention = Platform.CC ) ]
-		private static extern void _SteamAPI_ISteamInventory_SendItemDropHeartbeat( IntPtr self );
+		internal static extern void _SteamAPI_ISteamInventory_SendItemDropHeartbeat( IntPtr self );
 		#endregion
 		internal void SendItemDropHeartbeat()
 		{
@@ -231,7 +231,7 @@ namespace Steamworks
 		#region SteamAPI_ISteamInventory_TriggerItemDrop
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamInventory_TriggerItemDrop", CallingConvention = Platform.CC ) ]
 		[ return: MarshalAs( UnmanagedType.I1 ) ]
-		private static extern bool _SteamAPI_ISteamInventory_TriggerItemDrop( IntPtr self, ref SteamInventoryResult_t pResultHandle, SteamItemDef_t dropListDefinition );
+		internal static extern bool _SteamAPI_ISteamInventory_TriggerItemDrop( IntPtr self, ref SteamInventoryResult_t pResultHandle, SteamItemDef_t dropListDefinition );
 		#endregion
 		internal bool TriggerItemDrop( ref SteamInventoryResult_t pResultHandle, SteamItemDef_t dropListDefinition )
 		{
@@ -242,7 +242,7 @@ namespace Steamworks
 		#region SteamAPI_ISteamInventory_TradeItems
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamInventory_TradeItems", CallingConvention = Platform.CC ) ]
 		[ return: MarshalAs( UnmanagedType.I1 ) ]
-		private static extern bool _SteamAPI_ISteamInventory_TradeItems( IntPtr self, ref SteamInventoryResult_t pResultHandle, SteamId steamIDTradePartner, SteamItemInstanceID_t* pArrayGive, uint* pArrayGiveQuantity, uint nArrayGiveLength, SteamItemInstanceID_t* pArrayGet, uint* pArrayGetQuantity, uint nArrayGetLength );
+		internal static extern bool _SteamAPI_ISteamInventory_TradeItems( IntPtr self, ref SteamInventoryResult_t pResultHandle, SteamId steamIDTradePartner, SteamItemInstanceID_t* pArrayGive, uint* pArrayGiveQuantity, uint nArrayGiveLength, SteamItemInstanceID_t* pArrayGet, uint* pArrayGetQuantity, uint nArrayGetLength );
 		#endregion
 		internal bool TradeItems( ref SteamInventoryResult_t pResultHandle, SteamId steamIDTradePartner, SteamItemInstanceID_t* pArrayGive, uint* pArrayGiveQuantity, uint nArrayGiveLength, SteamItemInstanceID_t* pArrayGet, uint* pArrayGetQuantity, uint nArrayGetLength )
 		{
@@ -253,7 +253,7 @@ namespace Steamworks
 		#region SteamAPI_ISteamInventory_LoadItemDefinitions
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamInventory_LoadItemDefinitions", CallingConvention = Platform.CC ) ]
 		[ return: MarshalAs( UnmanagedType.I1 ) ]
-		private static extern bool _SteamAPI_ISteamInventory_LoadItemDefinitions( IntPtr self );
+		internal static extern bool _SteamAPI_ISteamInventory_LoadItemDefinitions( IntPtr self );
 		#endregion
 		internal bool LoadItemDefinitions()
 		{
@@ -264,7 +264,7 @@ namespace Steamworks
 		#region SteamAPI_ISteamInventory_GetItemDefinitionIDs
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamInventory_GetItemDefinitionIDs", CallingConvention = Platform.CC ) ]
 		[ return: MarshalAs( UnmanagedType.I1 ) ]
-		private static extern bool _SteamAPI_ISteamInventory_GetItemDefinitionIDs( IntPtr self, SteamItemDef_t* pItemDefIDs, ref uint punItemDefIDsArraySize );
+		internal static extern bool _SteamAPI_ISteamInventory_GetItemDefinitionIDs( IntPtr self, SteamItemDef_t* pItemDefIDs, ref uint punItemDefIDsArraySize );
 		#endregion
 		internal bool GetItemDefinitionIDs( SteamItemDef_t* pItemDefIDs, ref uint punItemDefIDsArraySize )
 		{
@@ -275,7 +275,7 @@ namespace Steamworks
 		#region SteamAPI_ISteamInventory_GetItemDefinitionProperty
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamInventory_GetItemDefinitionProperty", CallingConvention = Platform.CC ) ]
 		[ return: MarshalAs( UnmanagedType.I1 ) ]
-		private static extern bool _SteamAPI_ISteamInventory_GetItemDefinitionProperty( IntPtr self, SteamItemDef_t iDefinition, IntPtr pchPropertyName, IntPtr pchValueBuffer, ref uint punValueBufferSizeOut );
+		internal static extern bool _SteamAPI_ISteamInventory_GetItemDefinitionProperty( IntPtr self, SteamItemDef_t iDefinition, IntPtr pchPropertyName, IntPtr pchValueBuffer, ref uint punValueBufferSizeOut );
 		#endregion
 		internal bool GetItemDefinitionProperty( SteamItemDef_t iDefinition, string pchPropertyName, out string pchValueBuffer, ref uint punValueBufferSizeOut )
 		{
@@ -288,7 +288,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamInventory_RequestEligiblePromoItemDefinitionsIDs
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamInventory_RequestEligiblePromoItemDefinitionsIDs", CallingConvention = Platform.CC ) ]
-		private static extern SteamAPICall_t _SteamAPI_ISteamInventory_RequestEligiblePromoItemDefinitionsIDs( IntPtr self, SteamId steamID );
+		internal static extern SteamAPICall_t _SteamAPI_ISteamInventory_RequestEligiblePromoItemDefinitionsIDs( IntPtr self, SteamId steamID );
 		#endregion
 		internal SteamAPICall_t RequestEligiblePromoItemDefinitionsIDs( SteamId steamID )
 		{
@@ -299,7 +299,7 @@ namespace Steamworks
 		#region SteamAPI_ISteamInventory_GetEligiblePromoItemDefinitionIDs
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamInventory_GetEligiblePromoItemDefinitionIDs", CallingConvention = Platform.CC ) ]
 		[ return: MarshalAs( UnmanagedType.I1 ) ]
-		private static extern bool _SteamAPI_ISteamInventory_GetEligiblePromoItemDefinitionIDs( IntPtr self, SteamId steamID, SteamItemDef_t* pItemDefIDs, ref uint punItemDefIDsArraySize );
+		internal static extern bool _SteamAPI_ISteamInventory_GetEligiblePromoItemDefinitionIDs( IntPtr self, SteamId steamID, SteamItemDef_t* pItemDefIDs, ref uint punItemDefIDsArraySize );
 		#endregion
 		internal bool GetEligiblePromoItemDefinitionIDs( SteamId steamID, SteamItemDef_t* pItemDefIDs, ref uint punItemDefIDsArraySize )
 		{
@@ -309,7 +309,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamInventory_StartPurchase
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamInventory_StartPurchase", CallingConvention = Platform.CC ) ]
-		private static extern SteamAPICall_t _SteamAPI_ISteamInventory_StartPurchase( IntPtr self, SteamItemDef_t* pArrayItemDefs, uint* punArrayQuantity, uint unArrayLength );
+		internal static extern SteamAPICall_t _SteamAPI_ISteamInventory_StartPurchase( IntPtr self, SteamItemDef_t* pArrayItemDefs, uint* punArrayQuantity, uint unArrayLength );
 		#endregion
 		internal SteamAPICall_t StartPurchase( SteamItemDef_t* pArrayItemDefs, uint* punArrayQuantity, uint unArrayLength )
 		{
@@ -319,7 +319,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamInventory_RequestPrices
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamInventory_RequestPrices", CallingConvention = Platform.CC ) ]
-		private static extern SteamAPICall_t _SteamAPI_ISteamInventory_RequestPrices( IntPtr self );
+		internal static extern SteamAPICall_t _SteamAPI_ISteamInventory_RequestPrices( IntPtr self );
 		#endregion
 		internal SteamAPICall_t RequestPrices()
 		{
@@ -329,7 +329,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamInventory_GetNumItemsWithPrices
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamInventory_GetNumItemsWithPrices", CallingConvention = Platform.CC ) ]
-		private static extern uint _SteamAPI_ISteamInventory_GetNumItemsWithPrices( IntPtr self );
+		internal static extern uint _SteamAPI_ISteamInventory_GetNumItemsWithPrices( IntPtr self );
 		#endregion
 		internal uint GetNumItemsWithPrices()
 		{
@@ -340,7 +340,7 @@ namespace Steamworks
 		#region SteamAPI_ISteamInventory_GetItemsWithPrices
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamInventory_GetItemsWithPrices", CallingConvention = Platform.CC ) ]
 		[ return: MarshalAs( UnmanagedType.I1 ) ]
-		private static extern bool _SteamAPI_ISteamInventory_GetItemsWithPrices( IntPtr self, SteamItemDef_t* pArrayItemDefs, ulong* pCurrentPrices, ulong* pBasePrices, uint unArrayLength );
+		internal static extern bool _SteamAPI_ISteamInventory_GetItemsWithPrices( IntPtr self, SteamItemDef_t* pArrayItemDefs, ulong* pCurrentPrices, ulong* pBasePrices, uint unArrayLength );
 		#endregion
 		internal bool GetItemsWithPrices( SteamItemDef_t* pArrayItemDefs, ulong* pCurrentPrices, ulong* pBasePrices, uint unArrayLength )
 		{
@@ -351,7 +351,7 @@ namespace Steamworks
 		#region SteamAPI_ISteamInventory_GetItemPrice
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamInventory_GetItemPrice", CallingConvention = Platform.CC ) ]
 		[ return: MarshalAs( UnmanagedType.I1 ) ]
-		private static extern bool _SteamAPI_ISteamInventory_GetItemPrice( IntPtr self, SteamItemDef_t iDefinition, ref ulong pCurrentPrice, ref ulong pBasePrice );
+		internal static extern bool _SteamAPI_ISteamInventory_GetItemPrice( IntPtr self, SteamItemDef_t iDefinition, ref ulong pCurrentPrice, ref ulong pBasePrice );
 		#endregion
 		internal bool GetItemPrice( SteamItemDef_t iDefinition, ref ulong pCurrentPrice, ref ulong pBasePrice )
 		{
@@ -361,7 +361,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamInventory_StartUpdateProperties
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamInventory_StartUpdateProperties", CallingConvention = Platform.CC ) ]
-		private static extern SteamInventoryUpdateHandle_t _SteamAPI_ISteamInventory_StartUpdateProperties( IntPtr self );
+		internal static extern SteamInventoryUpdateHandle_t _SteamAPI_ISteamInventory_StartUpdateProperties( IntPtr self );
 		#endregion
 		internal SteamInventoryUpdateHandle_t StartUpdateProperties()
 		{
@@ -372,7 +372,7 @@ namespace Steamworks
 		#region SteamAPI_ISteamInventory_RemoveProperty
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamInventory_RemoveProperty", CallingConvention = Platform.CC ) ]
 		[ return: MarshalAs( UnmanagedType.I1 ) ]
-		private static extern bool _SteamAPI_ISteamInventory_RemoveProperty( IntPtr self, SteamInventoryUpdateHandle_t handle, SteamItemInstanceID_t nItemID, IntPtr pchPropertyName );
+		internal static extern bool _SteamAPI_ISteamInventory_RemoveProperty( IntPtr self, SteamInventoryUpdateHandle_t handle, SteamItemInstanceID_t nItemID, IntPtr pchPropertyName );
 		#endregion
 		internal bool RemoveProperty( SteamInventoryUpdateHandle_t handle, SteamItemInstanceID_t nItemID, string pchPropertyName )
 		{
@@ -384,7 +384,7 @@ namespace Steamworks
 		#region SteamAPI_ISteamInventory_SetPropertyString
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamInventory_SetPropertyString", CallingConvention = Platform.CC ) ]
 		[ return: MarshalAs( UnmanagedType.I1 ) ]
-		private static extern bool _SteamAPI_ISteamInventory_SetPropertyString( IntPtr self, SteamInventoryUpdateHandle_t handle, SteamItemInstanceID_t nItemID, IntPtr pchPropertyName, IntPtr pchPropertyValue );
+		internal static extern bool _SteamAPI_ISteamInventory_SetPropertyString( IntPtr self, SteamInventoryUpdateHandle_t handle, SteamItemInstanceID_t nItemID, IntPtr pchPropertyName, IntPtr pchPropertyValue );
 		#endregion
 		internal bool SetProperty( SteamInventoryUpdateHandle_t handle, SteamItemInstanceID_t nItemID, string pchPropertyName, string pchPropertyValue )
 		{
@@ -397,7 +397,7 @@ namespace Steamworks
 		#region SteamAPI_ISteamInventory_SetPropertyBool
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamInventory_SetPropertyBool", CallingConvention = Platform.CC ) ]
 		[ return: MarshalAs( UnmanagedType.I1 ) ]
-		private static extern bool _SteamAPI_ISteamInventory_SetPropertyBool( IntPtr self, SteamInventoryUpdateHandle_t handle, SteamItemInstanceID_t nItemID, IntPtr pchPropertyName, [ MarshalAs( UnmanagedType.U1 ) ] bool bValue );
+		internal static extern bool _SteamAPI_ISteamInventory_SetPropertyBool( IntPtr self, SteamInventoryUpdateHandle_t handle, SteamItemInstanceID_t nItemID, IntPtr pchPropertyName, [ MarshalAs( UnmanagedType.U1 ) ] bool bValue );
 		#endregion
 		internal bool SetProperty( SteamInventoryUpdateHandle_t handle, SteamItemInstanceID_t nItemID, string pchPropertyName, [ MarshalAs( UnmanagedType.U1 ) ] bool bValue )
 		{
@@ -409,7 +409,7 @@ namespace Steamworks
 		#region SteamAPI_ISteamInventory_SetPropertyInt64
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamInventory_SetPropertyInt64", CallingConvention = Platform.CC ) ]
 		[ return: MarshalAs( UnmanagedType.I1 ) ]
-		private static extern bool _SteamAPI_ISteamInventory_SetPropertyInt64( IntPtr self, SteamInventoryUpdateHandle_t handle, SteamItemInstanceID_t nItemID, IntPtr pchPropertyName, long nValue );
+		internal static extern bool _SteamAPI_ISteamInventory_SetPropertyInt64( IntPtr self, SteamInventoryUpdateHandle_t handle, SteamItemInstanceID_t nItemID, IntPtr pchPropertyName, long nValue );
 		#endregion
 		internal bool SetProperty( SteamInventoryUpdateHandle_t handle, SteamItemInstanceID_t nItemID, string pchPropertyName, long nValue )
 		{
@@ -421,7 +421,7 @@ namespace Steamworks
 		#region SteamAPI_ISteamInventory_SetPropertyFloat
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamInventory_SetPropertyFloat", CallingConvention = Platform.CC ) ]
 		[ return: MarshalAs( UnmanagedType.I1 ) ]
-		private static extern bool _SteamAPI_ISteamInventory_SetPropertyFloat( IntPtr self, SteamInventoryUpdateHandle_t handle, SteamItemInstanceID_t nItemID, IntPtr pchPropertyName, float flValue );
+		internal static extern bool _SteamAPI_ISteamInventory_SetPropertyFloat( IntPtr self, SteamInventoryUpdateHandle_t handle, SteamItemInstanceID_t nItemID, IntPtr pchPropertyName, float flValue );
 		#endregion
 		internal bool SetProperty( SteamInventoryUpdateHandle_t handle, SteamItemInstanceID_t nItemID, string pchPropertyName, float flValue )
 		{
@@ -433,7 +433,7 @@ namespace Steamworks
 		#region SteamAPI_ISteamInventory_SubmitUpdateProperties
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamInventory_SubmitUpdateProperties", CallingConvention = Platform.CC ) ]
 		[ return: MarshalAs( UnmanagedType.I1 ) ]
-		private static extern bool _SteamAPI_ISteamInventory_SubmitUpdateProperties( IntPtr self, SteamInventoryUpdateHandle_t handle, ref SteamInventoryResult_t pResultHandle );
+		internal static extern bool _SteamAPI_ISteamInventory_SubmitUpdateProperties( IntPtr self, SteamInventoryUpdateHandle_t handle, ref SteamInventoryResult_t pResultHandle );
 		#endregion
 		internal bool SubmitUpdateProperties( SteamInventoryUpdateHandle_t handle, ref SteamInventoryResult_t pResultHandle )
 		{
@@ -444,7 +444,7 @@ namespace Steamworks
 		#region SteamAPI_ISteamInventory_InspectItem
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamInventory_InspectItem", CallingConvention = Platform.CC ) ]
 		[ return: MarshalAs( UnmanagedType.I1 ) ]
-		private static extern bool _SteamAPI_ISteamInventory_InspectItem( IntPtr self, ref SteamInventoryResult_t pResultHandle, IntPtr pchItemToken );
+		internal static extern bool _SteamAPI_ISteamInventory_InspectItem( IntPtr self, ref SteamInventoryResult_t pResultHandle, IntPtr pchItemToken );
 		#endregion
 		internal bool InspectItem( ref SteamInventoryResult_t pResultHandle, string pchItemToken )
 		{

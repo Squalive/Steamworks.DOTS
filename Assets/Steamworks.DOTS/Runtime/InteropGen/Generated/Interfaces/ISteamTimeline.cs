@@ -29,7 +29,7 @@ namespace Steamworks
 		}
 		#region SteamAPI_ISteamTimeline_SetTimelineTooltip
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamTimeline_SetTimelineTooltip", CallingConvention = Platform.CC ) ]
-		private static extern void _SteamAPI_ISteamTimeline_SetTimelineTooltip( IntPtr self, IntPtr pchDescription, float flTimeDelta );
+		internal static extern void _SteamAPI_ISteamTimeline_SetTimelineTooltip( IntPtr self, IntPtr pchDescription, float flTimeDelta );
 		#endregion
 		internal void SetTimelineTooltip( string pchDescription, float flTimeDelta )
 		{
@@ -39,7 +39,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamTimeline_ClearTimelineTooltip
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamTimeline_ClearTimelineTooltip", CallingConvention = Platform.CC ) ]
-		private static extern void _SteamAPI_ISteamTimeline_ClearTimelineTooltip( IntPtr self, float flTimeDelta );
+		internal static extern void _SteamAPI_ISteamTimeline_ClearTimelineTooltip( IntPtr self, float flTimeDelta );
 		#endregion
 		internal void ClearTimelineTooltip( float flTimeDelta )
 		{
@@ -48,7 +48,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamTimeline_SetTimelineGameMode
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamTimeline_SetTimelineGameMode", CallingConvention = Platform.CC ) ]
-		private static extern void _SteamAPI_ISteamTimeline_SetTimelineGameMode( IntPtr self, ETimelineGameMode eMode );
+		internal static extern void _SteamAPI_ISteamTimeline_SetTimelineGameMode( IntPtr self, ETimelineGameMode eMode );
 		#endregion
 		internal void SetTimelineGameMode( ETimelineGameMode eMode )
 		{
@@ -57,7 +57,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamTimeline_AddInstantaneousTimelineEvent
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamTimeline_AddInstantaneousTimelineEvent", CallingConvention = Platform.CC ) ]
-		private static extern TimelineEventHandle_t _SteamAPI_ISteamTimeline_AddInstantaneousTimelineEvent( IntPtr self, IntPtr pchTitle, IntPtr pchDescription, IntPtr pchIcon, uint unIconPriority, float flStartOffsetSeconds, ETimelineEventClipPriority ePossibleClip );
+		internal static extern TimelineEventHandle_t _SteamAPI_ISteamTimeline_AddInstantaneousTimelineEvent( IntPtr self, IntPtr pchTitle, IntPtr pchDescription, IntPtr pchIcon, uint unIconPriority, float flStartOffsetSeconds, ETimelineEventClipPriority ePossibleClip );
 		#endregion
 		internal TimelineEventHandle_t AddInstantaneousTimelineEvent( string pchTitle, string pchDescription, string pchIcon, uint unIconPriority, float flStartOffsetSeconds, ETimelineEventClipPriority ePossibleClip )
 		{
@@ -70,7 +70,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamTimeline_AddRangeTimelineEvent
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamTimeline_AddRangeTimelineEvent", CallingConvention = Platform.CC ) ]
-		private static extern TimelineEventHandle_t _SteamAPI_ISteamTimeline_AddRangeTimelineEvent( IntPtr self, IntPtr pchTitle, IntPtr pchDescription, IntPtr pchIcon, uint unIconPriority, float flStartOffsetSeconds, float flDuration, ETimelineEventClipPriority ePossibleClip );
+		internal static extern TimelineEventHandle_t _SteamAPI_ISteamTimeline_AddRangeTimelineEvent( IntPtr self, IntPtr pchTitle, IntPtr pchDescription, IntPtr pchIcon, uint unIconPriority, float flStartOffsetSeconds, float flDuration, ETimelineEventClipPriority ePossibleClip );
 		#endregion
 		internal TimelineEventHandle_t AddRangeTimelineEvent( string pchTitle, string pchDescription, string pchIcon, uint unIconPriority, float flStartOffsetSeconds, float flDuration, ETimelineEventClipPriority ePossibleClip )
 		{
@@ -83,7 +83,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamTimeline_StartRangeTimelineEvent
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamTimeline_StartRangeTimelineEvent", CallingConvention = Platform.CC ) ]
-		private static extern TimelineEventHandle_t _SteamAPI_ISteamTimeline_StartRangeTimelineEvent( IntPtr self, IntPtr pchTitle, IntPtr pchDescription, IntPtr pchIcon, uint unPriority, float flStartOffsetSeconds, ETimelineEventClipPriority ePossibleClip );
+		internal static extern TimelineEventHandle_t _SteamAPI_ISteamTimeline_StartRangeTimelineEvent( IntPtr self, IntPtr pchTitle, IntPtr pchDescription, IntPtr pchIcon, uint unPriority, float flStartOffsetSeconds, ETimelineEventClipPriority ePossibleClip );
 		#endregion
 		internal TimelineEventHandle_t StartRangeTimelineEvent( string pchTitle, string pchDescription, string pchIcon, uint unPriority, float flStartOffsetSeconds, ETimelineEventClipPriority ePossibleClip )
 		{
@@ -96,7 +96,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamTimeline_UpdateRangeTimelineEvent
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamTimeline_UpdateRangeTimelineEvent", CallingConvention = Platform.CC ) ]
-		private static extern void _SteamAPI_ISteamTimeline_UpdateRangeTimelineEvent( IntPtr self, TimelineEventHandle_t ulEvent, IntPtr pchTitle, IntPtr pchDescription, IntPtr pchIcon, uint unPriority, ETimelineEventClipPriority ePossibleClip );
+		internal static extern void _SteamAPI_ISteamTimeline_UpdateRangeTimelineEvent( IntPtr self, TimelineEventHandle_t ulEvent, IntPtr pchTitle, IntPtr pchDescription, IntPtr pchIcon, uint unPriority, ETimelineEventClipPriority ePossibleClip );
 		#endregion
 		internal void UpdateRangeTimelineEvent( TimelineEventHandle_t ulEvent, string pchTitle, string pchDescription, string pchIcon, uint unPriority, ETimelineEventClipPriority ePossibleClip )
 		{
@@ -108,7 +108,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamTimeline_EndRangeTimelineEvent
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamTimeline_EndRangeTimelineEvent", CallingConvention = Platform.CC ) ]
-		private static extern void _SteamAPI_ISteamTimeline_EndRangeTimelineEvent( IntPtr self, TimelineEventHandle_t ulEvent, float flEndOffsetSeconds );
+		internal static extern void _SteamAPI_ISteamTimeline_EndRangeTimelineEvent( IntPtr self, TimelineEventHandle_t ulEvent, float flEndOffsetSeconds );
 		#endregion
 		internal void EndRangeTimelineEvent( TimelineEventHandle_t ulEvent, float flEndOffsetSeconds )
 		{
@@ -117,7 +117,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamTimeline_RemoveTimelineEvent
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamTimeline_RemoveTimelineEvent", CallingConvention = Platform.CC ) ]
-		private static extern void _SteamAPI_ISteamTimeline_RemoveTimelineEvent( IntPtr self, TimelineEventHandle_t ulEvent );
+		internal static extern void _SteamAPI_ISteamTimeline_RemoveTimelineEvent( IntPtr self, TimelineEventHandle_t ulEvent );
 		#endregion
 		internal void RemoveTimelineEvent( TimelineEventHandle_t ulEvent )
 		{
@@ -126,7 +126,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamTimeline_DoesEventRecordingExist
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamTimeline_DoesEventRecordingExist", CallingConvention = Platform.CC ) ]
-		private static extern SteamAPICall_t _SteamAPI_ISteamTimeline_DoesEventRecordingExist( IntPtr self, TimelineEventHandle_t ulEvent );
+		internal static extern SteamAPICall_t _SteamAPI_ISteamTimeline_DoesEventRecordingExist( IntPtr self, TimelineEventHandle_t ulEvent );
 		#endregion
 		internal SteamAPICall_t DoesEventRecordingExist( TimelineEventHandle_t ulEvent )
 		{
@@ -136,7 +136,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamTimeline_StartGamePhase
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamTimeline_StartGamePhase", CallingConvention = Platform.CC ) ]
-		private static extern void _SteamAPI_ISteamTimeline_StartGamePhase( IntPtr self );
+		internal static extern void _SteamAPI_ISteamTimeline_StartGamePhase( IntPtr self );
 		#endregion
 		internal void StartGamePhase()
 		{
@@ -145,7 +145,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamTimeline_EndGamePhase
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamTimeline_EndGamePhase", CallingConvention = Platform.CC ) ]
-		private static extern void _SteamAPI_ISteamTimeline_EndGamePhase( IntPtr self );
+		internal static extern void _SteamAPI_ISteamTimeline_EndGamePhase( IntPtr self );
 		#endregion
 		internal void EndGamePhase()
 		{
@@ -154,7 +154,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamTimeline_SetGamePhaseID
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamTimeline_SetGamePhaseID", CallingConvention = Platform.CC ) ]
-		private static extern void _SteamAPI_ISteamTimeline_SetGamePhaseID( IntPtr self, IntPtr pchPhaseID );
+		internal static extern void _SteamAPI_ISteamTimeline_SetGamePhaseID( IntPtr self, IntPtr pchPhaseID );
 		#endregion
 		internal void SetGamePhaseID( string pchPhaseID )
 		{
@@ -164,7 +164,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamTimeline_DoesGamePhaseRecordingExist
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamTimeline_DoesGamePhaseRecordingExist", CallingConvention = Platform.CC ) ]
-		private static extern SteamAPICall_t _SteamAPI_ISteamTimeline_DoesGamePhaseRecordingExist( IntPtr self, IntPtr pchPhaseID );
+		internal static extern SteamAPICall_t _SteamAPI_ISteamTimeline_DoesGamePhaseRecordingExist( IntPtr self, IntPtr pchPhaseID );
 		#endregion
 		internal SteamAPICall_t DoesGamePhaseRecordingExist( string pchPhaseID )
 		{
@@ -175,7 +175,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamTimeline_AddGamePhaseTag
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamTimeline_AddGamePhaseTag", CallingConvention = Platform.CC ) ]
-		private static extern void _SteamAPI_ISteamTimeline_AddGamePhaseTag( IntPtr self, IntPtr pchTagName, IntPtr pchTagIcon, IntPtr pchTagGroup, uint unPriority );
+		internal static extern void _SteamAPI_ISteamTimeline_AddGamePhaseTag( IntPtr self, IntPtr pchTagName, IntPtr pchTagIcon, IntPtr pchTagGroup, uint unPriority );
 		#endregion
 		internal void AddGamePhaseTag( string pchTagName, string pchTagIcon, string pchTagGroup, uint unPriority )
 		{
@@ -187,7 +187,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamTimeline_SetGamePhaseAttribute
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamTimeline_SetGamePhaseAttribute", CallingConvention = Platform.CC ) ]
-		private static extern void _SteamAPI_ISteamTimeline_SetGamePhaseAttribute( IntPtr self, IntPtr pchAttributeGroup, IntPtr pchAttributeValue, uint unPriority );
+		internal static extern void _SteamAPI_ISteamTimeline_SetGamePhaseAttribute( IntPtr self, IntPtr pchAttributeGroup, IntPtr pchAttributeValue, uint unPriority );
 		#endregion
 		internal void SetGamePhaseAttribute( string pchAttributeGroup, string pchAttributeValue, uint unPriority )
 		{
@@ -198,7 +198,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamTimeline_OpenOverlayToGamePhase
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamTimeline_OpenOverlayToGamePhase", CallingConvention = Platform.CC ) ]
-		private static extern void _SteamAPI_ISteamTimeline_OpenOverlayToGamePhase( IntPtr self, IntPtr pchPhaseID );
+		internal static extern void _SteamAPI_ISteamTimeline_OpenOverlayToGamePhase( IntPtr self, IntPtr pchPhaseID );
 		#endregion
 		internal void OpenOverlayToGamePhase( string pchPhaseID )
 		{
@@ -208,7 +208,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamTimeline_OpenOverlayToTimelineEvent
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamTimeline_OpenOverlayToTimelineEvent", CallingConvention = Platform.CC ) ]
-		private static extern void _SteamAPI_ISteamTimeline_OpenOverlayToTimelineEvent( IntPtr self, TimelineEventHandle_t ulEvent );
+		internal static extern void _SteamAPI_ISteamTimeline_OpenOverlayToTimelineEvent( IntPtr self, TimelineEventHandle_t ulEvent );
 		#endregion
 		internal void OpenOverlayToTimelineEvent( TimelineEventHandle_t ulEvent )
 		{

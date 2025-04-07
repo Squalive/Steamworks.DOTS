@@ -29,7 +29,7 @@ namespace Steamworks
 		}
 		#region SteamAPI_ISteamRemotePlay_GetSessionCount
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamRemotePlay_GetSessionCount", CallingConvention = Platform.CC ) ]
-		private static extern uint _SteamAPI_ISteamRemotePlay_GetSessionCount( IntPtr self );
+		internal static extern uint _SteamAPI_ISteamRemotePlay_GetSessionCount( IntPtr self );
 		#endregion
 		internal uint GetSessionCount()
 		{
@@ -39,7 +39,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamRemotePlay_GetSessionID
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamRemotePlay_GetSessionID", CallingConvention = Platform.CC ) ]
-		private static extern RemotePlaySessionID_t _SteamAPI_ISteamRemotePlay_GetSessionID( IntPtr self, int iSessionIndex );
+		internal static extern RemotePlaySessionID_t _SteamAPI_ISteamRemotePlay_GetSessionID( IntPtr self, int iSessionIndex );
 		#endregion
 		internal RemotePlaySessionID_t GetSessionID( int iSessionIndex )
 		{
@@ -49,7 +49,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamRemotePlay_GetSessionSteamID
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamRemotePlay_GetSessionSteamID", CallingConvention = Platform.CC ) ]
-		private static extern SteamId _SteamAPI_ISteamRemotePlay_GetSessionSteamID( IntPtr self, RemotePlaySessionID_t unSessionID );
+		internal static extern SteamId _SteamAPI_ISteamRemotePlay_GetSessionSteamID( IntPtr self, RemotePlaySessionID_t unSessionID );
 		#endregion
 		internal SteamId GetSessionSteamID( RemotePlaySessionID_t unSessionID )
 		{
@@ -59,7 +59,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamRemotePlay_GetSessionClientName
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamRemotePlay_GetSessionClientName", CallingConvention = Platform.CC ) ]
-		private static extern Utf8StringPtr _SteamAPI_ISteamRemotePlay_GetSessionClientName( IntPtr self, RemotePlaySessionID_t unSessionID );
+		internal static extern Utf8StringPtr _SteamAPI_ISteamRemotePlay_GetSessionClientName( IntPtr self, RemotePlaySessionID_t unSessionID );
 		#endregion
 		internal string GetSessionClientName( RemotePlaySessionID_t unSessionID )
 		{
@@ -69,7 +69,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamRemotePlay_GetSessionClientFormFactor
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamRemotePlay_GetSessionClientFormFactor", CallingConvention = Platform.CC ) ]
-		private static extern ESteamDeviceFormFactor _SteamAPI_ISteamRemotePlay_GetSessionClientFormFactor( IntPtr self, RemotePlaySessionID_t unSessionID );
+		internal static extern ESteamDeviceFormFactor _SteamAPI_ISteamRemotePlay_GetSessionClientFormFactor( IntPtr self, RemotePlaySessionID_t unSessionID );
 		#endregion
 		internal ESteamDeviceFormFactor GetSessionClientFormFactor( RemotePlaySessionID_t unSessionID )
 		{
@@ -80,7 +80,7 @@ namespace Steamworks
 		#region SteamAPI_ISteamRemotePlay_BGetSessionClientResolution
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamRemotePlay_BGetSessionClientResolution", CallingConvention = Platform.CC ) ]
 		[ return: MarshalAs( UnmanagedType.I1 ) ]
-		private static extern bool _SteamAPI_ISteamRemotePlay_BGetSessionClientResolution( IntPtr self, RemotePlaySessionID_t unSessionID, ref int pnResolutionX, ref int pnResolutionY );
+		internal static extern bool _SteamAPI_ISteamRemotePlay_BGetSessionClientResolution( IntPtr self, RemotePlaySessionID_t unSessionID, ref int pnResolutionX, ref int pnResolutionY );
 		#endregion
 		internal bool BGetSessionClientResolution( RemotePlaySessionID_t unSessionID, ref int pnResolutionX, ref int pnResolutionY )
 		{
@@ -91,7 +91,7 @@ namespace Steamworks
 		#region SteamAPI_ISteamRemotePlay_ShowRemotePlayTogetherUI
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamRemotePlay_ShowRemotePlayTogetherUI", CallingConvention = Platform.CC ) ]
 		[ return: MarshalAs( UnmanagedType.I1 ) ]
-		private static extern bool _SteamAPI_ISteamRemotePlay_ShowRemotePlayTogetherUI( IntPtr self );
+		internal static extern bool _SteamAPI_ISteamRemotePlay_ShowRemotePlayTogetherUI( IntPtr self );
 		#endregion
 		internal bool ShowRemotePlayTogetherUI()
 		{
@@ -102,7 +102,7 @@ namespace Steamworks
 		#region SteamAPI_ISteamRemotePlay_BSendRemotePlayTogetherInvite
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamRemotePlay_BSendRemotePlayTogetherInvite", CallingConvention = Platform.CC ) ]
 		[ return: MarshalAs( UnmanagedType.I1 ) ]
-		private static extern bool _SteamAPI_ISteamRemotePlay_BSendRemotePlayTogetherInvite( IntPtr self, SteamId steamIDFriend );
+		internal static extern bool _SteamAPI_ISteamRemotePlay_BSendRemotePlayTogetherInvite( IntPtr self, SteamId steamIDFriend );
 		#endregion
 		internal bool BSendRemotePlayTogetherInvite( SteamId steamIDFriend )
 		{
@@ -113,7 +113,7 @@ namespace Steamworks
 		#region SteamAPI_ISteamRemotePlay_BEnableRemotePlayTogetherDirectInput
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamRemotePlay_BEnableRemotePlayTogetherDirectInput", CallingConvention = Platform.CC ) ]
 		[ return: MarshalAs( UnmanagedType.I1 ) ]
-		private static extern bool _SteamAPI_ISteamRemotePlay_BEnableRemotePlayTogetherDirectInput( IntPtr self );
+		internal static extern bool _SteamAPI_ISteamRemotePlay_BEnableRemotePlayTogetherDirectInput( IntPtr self );
 		#endregion
 		internal bool BEnableRemotePlayTogetherDirectInput()
 		{
@@ -123,7 +123,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamRemotePlay_DisableRemotePlayTogetherDirectInput
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamRemotePlay_DisableRemotePlayTogetherDirectInput", CallingConvention = Platform.CC ) ]
-		private static extern void _SteamAPI_ISteamRemotePlay_DisableRemotePlayTogetherDirectInput( IntPtr self );
+		internal static extern void _SteamAPI_ISteamRemotePlay_DisableRemotePlayTogetherDirectInput( IntPtr self );
 		#endregion
 		internal void DisableRemotePlayTogetherDirectInput()
 		{
@@ -132,7 +132,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamRemotePlay_GetInput
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamRemotePlay_GetInput", CallingConvention = Platform.CC ) ]
-		private static extern uint _SteamAPI_ISteamRemotePlay_GetInput( IntPtr self, ref RemotePlayInput_t pInput, uint unMaxEvents );
+		internal static extern uint _SteamAPI_ISteamRemotePlay_GetInput( IntPtr self, ref RemotePlayInput_t pInput, uint unMaxEvents );
 		#endregion
 		internal uint GetInput( ref RemotePlayInput_t pInput, uint unMaxEvents )
 		{
@@ -142,7 +142,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamRemotePlay_SetMouseVisibility
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamRemotePlay_SetMouseVisibility", CallingConvention = Platform.CC ) ]
-		private static extern void _SteamAPI_ISteamRemotePlay_SetMouseVisibility( IntPtr self, RemotePlaySessionID_t unSessionID, [ MarshalAs( UnmanagedType.U1 ) ] bool bVisible );
+		internal static extern void _SteamAPI_ISteamRemotePlay_SetMouseVisibility( IntPtr self, RemotePlaySessionID_t unSessionID, [ MarshalAs( UnmanagedType.U1 ) ] bool bVisible );
 		#endregion
 		internal void SetMouseVisibility( RemotePlaySessionID_t unSessionID, [ MarshalAs( UnmanagedType.U1 ) ] bool bVisible )
 		{
@@ -151,7 +151,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamRemotePlay_SetMousePosition
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamRemotePlay_SetMousePosition", CallingConvention = Platform.CC ) ]
-		private static extern void _SteamAPI_ISteamRemotePlay_SetMousePosition( IntPtr self, RemotePlaySessionID_t unSessionID, float flNormalizedX, float flNormalizedY );
+		internal static extern void _SteamAPI_ISteamRemotePlay_SetMousePosition( IntPtr self, RemotePlaySessionID_t unSessionID, float flNormalizedX, float flNormalizedY );
 		#endregion
 		internal void SetMousePosition( RemotePlaySessionID_t unSessionID, float flNormalizedX, float flNormalizedY )
 		{
@@ -160,7 +160,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamRemotePlay_CreateMouseCursor
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamRemotePlay_CreateMouseCursor", CallingConvention = Platform.CC ) ]
-		private static extern RemotePlayCursorID_t _SteamAPI_ISteamRemotePlay_CreateMouseCursor( IntPtr self, int nWidth, int nHeight, int nHotX, int nHotY, IntPtr pBGRA, int nPitch );
+		internal static extern RemotePlayCursorID_t _SteamAPI_ISteamRemotePlay_CreateMouseCursor( IntPtr self, int nWidth, int nHeight, int nHotX, int nHotY, IntPtr pBGRA, int nPitch );
 		#endregion
 		internal RemotePlayCursorID_t CreateMouseCursor( int nWidth, int nHeight, int nHotX, int nHotY, IntPtr pBGRA, int nPitch )
 		{
@@ -170,7 +170,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamRemotePlay_SetMouseCursor
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamRemotePlay_SetMouseCursor", CallingConvention = Platform.CC ) ]
-		private static extern void _SteamAPI_ISteamRemotePlay_SetMouseCursor( IntPtr self, RemotePlaySessionID_t unSessionID, RemotePlayCursorID_t unCursorID );
+		internal static extern void _SteamAPI_ISteamRemotePlay_SetMouseCursor( IntPtr self, RemotePlaySessionID_t unSessionID, RemotePlayCursorID_t unCursorID );
 		#endregion
 		internal void SetMouseCursor( RemotePlaySessionID_t unSessionID, RemotePlayCursorID_t unCursorID )
 		{

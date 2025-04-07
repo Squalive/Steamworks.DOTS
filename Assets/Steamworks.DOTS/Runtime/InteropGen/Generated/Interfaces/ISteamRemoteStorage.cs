@@ -30,7 +30,7 @@ namespace Steamworks
 		#region SteamAPI_ISteamRemoteStorage_FileWrite
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamRemoteStorage_FileWrite", CallingConvention = Platform.CC ) ]
 		[ return: MarshalAs( UnmanagedType.I1 ) ]
-		private static extern bool _SteamAPI_ISteamRemoteStorage_FileWrite( IntPtr self, IntPtr pchFile, IntPtr pvData, int cubData );
+		internal static extern bool _SteamAPI_ISteamRemoteStorage_FileWrite( IntPtr self, IntPtr pchFile, IntPtr pvData, int cubData );
 		#endregion
 		internal bool FileWrite( string pchFile, IntPtr pvData, int cubData )
 		{
@@ -41,7 +41,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamRemoteStorage_FileRead
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamRemoteStorage_FileRead", CallingConvention = Platform.CC ) ]
-		private static extern int _SteamAPI_ISteamRemoteStorage_FileRead( IntPtr self, IntPtr pchFile, IntPtr pvData, int cubDataToRead );
+		internal static extern int _SteamAPI_ISteamRemoteStorage_FileRead( IntPtr self, IntPtr pchFile, IntPtr pvData, int cubDataToRead );
 		#endregion
 		internal int FileRead( string pchFile, IntPtr pvData, int cubDataToRead )
 		{
@@ -52,7 +52,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamRemoteStorage_FileWriteAsync
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamRemoteStorage_FileWriteAsync", CallingConvention = Platform.CC ) ]
-		private static extern SteamAPICall_t _SteamAPI_ISteamRemoteStorage_FileWriteAsync( IntPtr self, IntPtr pchFile, IntPtr pvData, uint cubData );
+		internal static extern SteamAPICall_t _SteamAPI_ISteamRemoteStorage_FileWriteAsync( IntPtr self, IntPtr pchFile, IntPtr pvData, uint cubData );
 		#endregion
 		internal SteamAPICall_t FileWriteAsync( string pchFile, IntPtr pvData, uint cubData )
 		{
@@ -63,7 +63,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamRemoteStorage_FileReadAsync
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamRemoteStorage_FileReadAsync", CallingConvention = Platform.CC ) ]
-		private static extern SteamAPICall_t _SteamAPI_ISteamRemoteStorage_FileReadAsync( IntPtr self, IntPtr pchFile, uint nOffset, uint cubToRead );
+		internal static extern SteamAPICall_t _SteamAPI_ISteamRemoteStorage_FileReadAsync( IntPtr self, IntPtr pchFile, uint nOffset, uint cubToRead );
 		#endregion
 		internal SteamAPICall_t FileReadAsync( string pchFile, uint nOffset, uint cubToRead )
 		{
@@ -75,7 +75,7 @@ namespace Steamworks
 		#region SteamAPI_ISteamRemoteStorage_FileReadAsyncComplete
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamRemoteStorage_FileReadAsyncComplete", CallingConvention = Platform.CC ) ]
 		[ return: MarshalAs( UnmanagedType.I1 ) ]
-		private static extern bool _SteamAPI_ISteamRemoteStorage_FileReadAsyncComplete( IntPtr self, SteamAPICall_t hReadCall, IntPtr pvBuffer, uint cubToRead );
+		internal static extern bool _SteamAPI_ISteamRemoteStorage_FileReadAsyncComplete( IntPtr self, SteamAPICall_t hReadCall, IntPtr pvBuffer, uint cubToRead );
 		#endregion
 		internal bool FileReadAsyncComplete( SteamAPICall_t hReadCall, IntPtr pvBuffer, uint cubToRead )
 		{
@@ -86,7 +86,7 @@ namespace Steamworks
 		#region SteamAPI_ISteamRemoteStorage_FileForget
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamRemoteStorage_FileForget", CallingConvention = Platform.CC ) ]
 		[ return: MarshalAs( UnmanagedType.I1 ) ]
-		private static extern bool _SteamAPI_ISteamRemoteStorage_FileForget( IntPtr self, IntPtr pchFile );
+		internal static extern bool _SteamAPI_ISteamRemoteStorage_FileForget( IntPtr self, IntPtr pchFile );
 		#endregion
 		internal bool FileForget( string pchFile )
 		{
@@ -98,7 +98,7 @@ namespace Steamworks
 		#region SteamAPI_ISteamRemoteStorage_FileDelete
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamRemoteStorage_FileDelete", CallingConvention = Platform.CC ) ]
 		[ return: MarshalAs( UnmanagedType.I1 ) ]
-		private static extern bool _SteamAPI_ISteamRemoteStorage_FileDelete( IntPtr self, IntPtr pchFile );
+		internal static extern bool _SteamAPI_ISteamRemoteStorage_FileDelete( IntPtr self, IntPtr pchFile );
 		#endregion
 		internal bool FileDelete( string pchFile )
 		{
@@ -109,7 +109,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamRemoteStorage_FileShare
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamRemoteStorage_FileShare", CallingConvention = Platform.CC ) ]
-		private static extern SteamAPICall_t _SteamAPI_ISteamRemoteStorage_FileShare( IntPtr self, IntPtr pchFile );
+		internal static extern SteamAPICall_t _SteamAPI_ISteamRemoteStorage_FileShare( IntPtr self, IntPtr pchFile );
 		#endregion
 		internal SteamAPICall_t FileShare( string pchFile )
 		{
@@ -121,7 +121,7 @@ namespace Steamworks
 		#region SteamAPI_ISteamRemoteStorage_SetSyncPlatforms
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamRemoteStorage_SetSyncPlatforms", CallingConvention = Platform.CC ) ]
 		[ return: MarshalAs( UnmanagedType.I1 ) ]
-		private static extern bool _SteamAPI_ISteamRemoteStorage_SetSyncPlatforms( IntPtr self, IntPtr pchFile, ERemoteStoragePlatform eRemoteStoragePlatform );
+		internal static extern bool _SteamAPI_ISteamRemoteStorage_SetSyncPlatforms( IntPtr self, IntPtr pchFile, ERemoteStoragePlatform eRemoteStoragePlatform );
 		#endregion
 		internal bool SetSyncPlatforms( string pchFile, ERemoteStoragePlatform eRemoteStoragePlatform )
 		{
@@ -132,7 +132,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamRemoteStorage_FileWriteStreamOpen
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamRemoteStorage_FileWriteStreamOpen", CallingConvention = Platform.CC ) ]
-		private static extern UGCFileWriteStreamHandle_t _SteamAPI_ISteamRemoteStorage_FileWriteStreamOpen( IntPtr self, IntPtr pchFile );
+		internal static extern UGCFileWriteStreamHandle_t _SteamAPI_ISteamRemoteStorage_FileWriteStreamOpen( IntPtr self, IntPtr pchFile );
 		#endregion
 		internal UGCFileWriteStreamHandle_t FileWriteStreamOpen( string pchFile )
 		{
@@ -144,7 +144,7 @@ namespace Steamworks
 		#region SteamAPI_ISteamRemoteStorage_FileWriteStreamWriteChunk
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamRemoteStorage_FileWriteStreamWriteChunk", CallingConvention = Platform.CC ) ]
 		[ return: MarshalAs( UnmanagedType.I1 ) ]
-		private static extern bool _SteamAPI_ISteamRemoteStorage_FileWriteStreamWriteChunk( IntPtr self, UGCFileWriteStreamHandle_t writeHandle, IntPtr pvData, int cubData );
+		internal static extern bool _SteamAPI_ISteamRemoteStorage_FileWriteStreamWriteChunk( IntPtr self, UGCFileWriteStreamHandle_t writeHandle, IntPtr pvData, int cubData );
 		#endregion
 		internal bool FileWriteStreamWriteChunk( UGCFileWriteStreamHandle_t writeHandle, IntPtr pvData, int cubData )
 		{
@@ -155,7 +155,7 @@ namespace Steamworks
 		#region SteamAPI_ISteamRemoteStorage_FileWriteStreamClose
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamRemoteStorage_FileWriteStreamClose", CallingConvention = Platform.CC ) ]
 		[ return: MarshalAs( UnmanagedType.I1 ) ]
-		private static extern bool _SteamAPI_ISteamRemoteStorage_FileWriteStreamClose( IntPtr self, UGCFileWriteStreamHandle_t writeHandle );
+		internal static extern bool _SteamAPI_ISteamRemoteStorage_FileWriteStreamClose( IntPtr self, UGCFileWriteStreamHandle_t writeHandle );
 		#endregion
 		internal bool FileWriteStreamClose( UGCFileWriteStreamHandle_t writeHandle )
 		{
@@ -166,7 +166,7 @@ namespace Steamworks
 		#region SteamAPI_ISteamRemoteStorage_FileWriteStreamCancel
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamRemoteStorage_FileWriteStreamCancel", CallingConvention = Platform.CC ) ]
 		[ return: MarshalAs( UnmanagedType.I1 ) ]
-		private static extern bool _SteamAPI_ISteamRemoteStorage_FileWriteStreamCancel( IntPtr self, UGCFileWriteStreamHandle_t writeHandle );
+		internal static extern bool _SteamAPI_ISteamRemoteStorage_FileWriteStreamCancel( IntPtr self, UGCFileWriteStreamHandle_t writeHandle );
 		#endregion
 		internal bool FileWriteStreamCancel( UGCFileWriteStreamHandle_t writeHandle )
 		{
@@ -177,7 +177,7 @@ namespace Steamworks
 		#region SteamAPI_ISteamRemoteStorage_FileExists
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamRemoteStorage_FileExists", CallingConvention = Platform.CC ) ]
 		[ return: MarshalAs( UnmanagedType.I1 ) ]
-		private static extern bool _SteamAPI_ISteamRemoteStorage_FileExists( IntPtr self, IntPtr pchFile );
+		internal static extern bool _SteamAPI_ISteamRemoteStorage_FileExists( IntPtr self, IntPtr pchFile );
 		#endregion
 		internal bool FileExists( string pchFile )
 		{
@@ -189,7 +189,7 @@ namespace Steamworks
 		#region SteamAPI_ISteamRemoteStorage_FilePersisted
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamRemoteStorage_FilePersisted", CallingConvention = Platform.CC ) ]
 		[ return: MarshalAs( UnmanagedType.I1 ) ]
-		private static extern bool _SteamAPI_ISteamRemoteStorage_FilePersisted( IntPtr self, IntPtr pchFile );
+		internal static extern bool _SteamAPI_ISteamRemoteStorage_FilePersisted( IntPtr self, IntPtr pchFile );
 		#endregion
 		internal bool FilePersisted( string pchFile )
 		{
@@ -200,7 +200,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamRemoteStorage_GetFileSize
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamRemoteStorage_GetFileSize", CallingConvention = Platform.CC ) ]
-		private static extern int _SteamAPI_ISteamRemoteStorage_GetFileSize( IntPtr self, IntPtr pchFile );
+		internal static extern int _SteamAPI_ISteamRemoteStorage_GetFileSize( IntPtr self, IntPtr pchFile );
 		#endregion
 		internal int GetFileSize( string pchFile )
 		{
@@ -211,7 +211,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamRemoteStorage_GetFileTimestamp
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamRemoteStorage_GetFileTimestamp", CallingConvention = Platform.CC ) ]
-		private static extern long _SteamAPI_ISteamRemoteStorage_GetFileTimestamp( IntPtr self, IntPtr pchFile );
+		internal static extern long _SteamAPI_ISteamRemoteStorage_GetFileTimestamp( IntPtr self, IntPtr pchFile );
 		#endregion
 		internal long GetFileTimestamp( string pchFile )
 		{
@@ -222,7 +222,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamRemoteStorage_GetSyncPlatforms
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamRemoteStorage_GetSyncPlatforms", CallingConvention = Platform.CC ) ]
-		private static extern ERemoteStoragePlatform _SteamAPI_ISteamRemoteStorage_GetSyncPlatforms( IntPtr self, IntPtr pchFile );
+		internal static extern ERemoteStoragePlatform _SteamAPI_ISteamRemoteStorage_GetSyncPlatforms( IntPtr self, IntPtr pchFile );
 		#endregion
 		internal ERemoteStoragePlatform GetSyncPlatforms( string pchFile )
 		{
@@ -233,7 +233,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamRemoteStorage_GetFileCount
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamRemoteStorage_GetFileCount", CallingConvention = Platform.CC ) ]
-		private static extern int _SteamAPI_ISteamRemoteStorage_GetFileCount( IntPtr self );
+		internal static extern int _SteamAPI_ISteamRemoteStorage_GetFileCount( IntPtr self );
 		#endregion
 		internal int GetFileCount()
 		{
@@ -243,7 +243,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamRemoteStorage_GetFileNameAndSize
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamRemoteStorage_GetFileNameAndSize", CallingConvention = Platform.CC ) ]
-		private static extern Utf8StringPtr _SteamAPI_ISteamRemoteStorage_GetFileNameAndSize( IntPtr self, int iFile, ref int pnFileSizeInBytes );
+		internal static extern Utf8StringPtr _SteamAPI_ISteamRemoteStorage_GetFileNameAndSize( IntPtr self, int iFile, ref int pnFileSizeInBytes );
 		#endregion
 		internal string GetFileNameAndSize( int iFile, ref int pnFileSizeInBytes )
 		{
@@ -254,7 +254,7 @@ namespace Steamworks
 		#region SteamAPI_ISteamRemoteStorage_GetQuota
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamRemoteStorage_GetQuota", CallingConvention = Platform.CC ) ]
 		[ return: MarshalAs( UnmanagedType.I1 ) ]
-		private static extern bool _SteamAPI_ISteamRemoteStorage_GetQuota( IntPtr self, ref ulong pnTotalBytes, ref ulong puAvailableBytes );
+		internal static extern bool _SteamAPI_ISteamRemoteStorage_GetQuota( IntPtr self, ref ulong pnTotalBytes, ref ulong puAvailableBytes );
 		#endregion
 		internal bool GetQuota( ref ulong pnTotalBytes, ref ulong puAvailableBytes )
 		{
@@ -265,7 +265,7 @@ namespace Steamworks
 		#region SteamAPI_ISteamRemoteStorage_IsCloudEnabledForAccount
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamRemoteStorage_IsCloudEnabledForAccount", CallingConvention = Platform.CC ) ]
 		[ return: MarshalAs( UnmanagedType.I1 ) ]
-		private static extern bool _SteamAPI_ISteamRemoteStorage_IsCloudEnabledForAccount( IntPtr self );
+		internal static extern bool _SteamAPI_ISteamRemoteStorage_IsCloudEnabledForAccount( IntPtr self );
 		#endregion
 		internal bool IsCloudEnabledForAccount()
 		{
@@ -276,7 +276,7 @@ namespace Steamworks
 		#region SteamAPI_ISteamRemoteStorage_IsCloudEnabledForApp
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamRemoteStorage_IsCloudEnabledForApp", CallingConvention = Platform.CC ) ]
 		[ return: MarshalAs( UnmanagedType.I1 ) ]
-		private static extern bool _SteamAPI_ISteamRemoteStorage_IsCloudEnabledForApp( IntPtr self );
+		internal static extern bool _SteamAPI_ISteamRemoteStorage_IsCloudEnabledForApp( IntPtr self );
 		#endregion
 		internal bool IsCloudEnabledForApp()
 		{
@@ -286,7 +286,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamRemoteStorage_SetCloudEnabledForApp
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamRemoteStorage_SetCloudEnabledForApp", CallingConvention = Platform.CC ) ]
-		private static extern void _SteamAPI_ISteamRemoteStorage_SetCloudEnabledForApp( IntPtr self, [ MarshalAs( UnmanagedType.U1 ) ] bool bEnabled );
+		internal static extern void _SteamAPI_ISteamRemoteStorage_SetCloudEnabledForApp( IntPtr self, [ MarshalAs( UnmanagedType.U1 ) ] bool bEnabled );
 		#endregion
 		internal void SetCloudEnabledForApp( [ MarshalAs( UnmanagedType.U1 ) ] bool bEnabled )
 		{
@@ -295,7 +295,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamRemoteStorage_UGCDownload
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamRemoteStorage_UGCDownload", CallingConvention = Platform.CC ) ]
-		private static extern SteamAPICall_t _SteamAPI_ISteamRemoteStorage_UGCDownload( IntPtr self, UGCHandle_t hContent, uint unPriority );
+		internal static extern SteamAPICall_t _SteamAPI_ISteamRemoteStorage_UGCDownload( IntPtr self, UGCHandle_t hContent, uint unPriority );
 		#endregion
 		internal SteamAPICall_t UGCDownload( UGCHandle_t hContent, uint unPriority )
 		{
@@ -306,7 +306,7 @@ namespace Steamworks
 		#region SteamAPI_ISteamRemoteStorage_GetUGCDownloadProgress
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamRemoteStorage_GetUGCDownloadProgress", CallingConvention = Platform.CC ) ]
 		[ return: MarshalAs( UnmanagedType.I1 ) ]
-		private static extern bool _SteamAPI_ISteamRemoteStorage_GetUGCDownloadProgress( IntPtr self, UGCHandle_t hContent, ref int pnBytesDownloaded, ref int pnBytesExpected );
+		internal static extern bool _SteamAPI_ISteamRemoteStorage_GetUGCDownloadProgress( IntPtr self, UGCHandle_t hContent, ref int pnBytesDownloaded, ref int pnBytesExpected );
 		#endregion
 		internal bool GetUGCDownloadProgress( UGCHandle_t hContent, ref int pnBytesDownloaded, ref int pnBytesExpected )
 		{
@@ -317,7 +317,7 @@ namespace Steamworks
 		#region SteamAPI_ISteamRemoteStorage_GetUGCDetails
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamRemoteStorage_GetUGCDetails", CallingConvention = Platform.CC ) ]
 		[ return: MarshalAs( UnmanagedType.I1 ) ]
-		private static extern bool _SteamAPI_ISteamRemoteStorage_GetUGCDetails( IntPtr self, UGCHandle_t hContent, ref AppId_t pnAppID, ref char* ppchName, ref int pnFileSizeInBytes, ref SteamId pSteamIDOwner );
+		internal static extern bool _SteamAPI_ISteamRemoteStorage_GetUGCDetails( IntPtr self, UGCHandle_t hContent, ref AppId_t pnAppID, ref char* ppchName, ref int pnFileSizeInBytes, ref SteamId pSteamIDOwner );
 		#endregion
 		internal bool GetUGCDetails( UGCHandle_t hContent, ref AppId_t pnAppID, ref char* ppchName, ref int pnFileSizeInBytes, ref SteamId pSteamIDOwner )
 		{
@@ -327,7 +327,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamRemoteStorage_UGCRead
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamRemoteStorage_UGCRead", CallingConvention = Platform.CC ) ]
-		private static extern int _SteamAPI_ISteamRemoteStorage_UGCRead( IntPtr self, UGCHandle_t hContent, IntPtr pvData, int cubDataToRead, uint cOffset, EUGCReadAction eAction );
+		internal static extern int _SteamAPI_ISteamRemoteStorage_UGCRead( IntPtr self, UGCHandle_t hContent, IntPtr pvData, int cubDataToRead, uint cOffset, EUGCReadAction eAction );
 		#endregion
 		internal int UGCRead( UGCHandle_t hContent, IntPtr pvData, int cubDataToRead, uint cOffset, EUGCReadAction eAction )
 		{
@@ -337,7 +337,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamRemoteStorage_GetCachedUGCCount
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamRemoteStorage_GetCachedUGCCount", CallingConvention = Platform.CC ) ]
-		private static extern int _SteamAPI_ISteamRemoteStorage_GetCachedUGCCount( IntPtr self );
+		internal static extern int _SteamAPI_ISteamRemoteStorage_GetCachedUGCCount( IntPtr self );
 		#endregion
 		internal int GetCachedUGCCount()
 		{
@@ -347,7 +347,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamRemoteStorage_GetCachedUGCHandle
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamRemoteStorage_GetCachedUGCHandle", CallingConvention = Platform.CC ) ]
-		private static extern UGCHandle_t _SteamAPI_ISteamRemoteStorage_GetCachedUGCHandle( IntPtr self, int iCachedContent );
+		internal static extern UGCHandle_t _SteamAPI_ISteamRemoteStorage_GetCachedUGCHandle( IntPtr self, int iCachedContent );
 		#endregion
 		internal UGCHandle_t GetCachedUGCHandle( int iCachedContent )
 		{
@@ -357,7 +357,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamRemoteStorage_UGCDownloadToLocation
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamRemoteStorage_UGCDownloadToLocation", CallingConvention = Platform.CC ) ]
-		private static extern SteamAPICall_t _SteamAPI_ISteamRemoteStorage_UGCDownloadToLocation( IntPtr self, UGCHandle_t hContent, IntPtr pchLocation, uint unPriority );
+		internal static extern SteamAPICall_t _SteamAPI_ISteamRemoteStorage_UGCDownloadToLocation( IntPtr self, UGCHandle_t hContent, IntPtr pchLocation, uint unPriority );
 		#endregion
 		internal SteamAPICall_t UGCDownloadToLocation( UGCHandle_t hContent, string pchLocation, uint unPriority )
 		{
@@ -368,7 +368,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamRemoteStorage_GetLocalFileChangeCount
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamRemoteStorage_GetLocalFileChangeCount", CallingConvention = Platform.CC ) ]
-		private static extern int _SteamAPI_ISteamRemoteStorage_GetLocalFileChangeCount( IntPtr self );
+		internal static extern int _SteamAPI_ISteamRemoteStorage_GetLocalFileChangeCount( IntPtr self );
 		#endregion
 		internal int GetLocalFileChangeCount()
 		{
@@ -378,7 +378,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamRemoteStorage_GetLocalFileChange
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamRemoteStorage_GetLocalFileChange", CallingConvention = Platform.CC ) ]
-		private static extern Utf8StringPtr _SteamAPI_ISteamRemoteStorage_GetLocalFileChange( IntPtr self, int iFile, ref ERemoteStorageLocalFileChange pEChangeType, ref ERemoteStorageFilePathType pEFilePathType );
+		internal static extern Utf8StringPtr _SteamAPI_ISteamRemoteStorage_GetLocalFileChange( IntPtr self, int iFile, ref ERemoteStorageLocalFileChange pEChangeType, ref ERemoteStorageFilePathType pEFilePathType );
 		#endregion
 		internal string GetLocalFileChange( int iFile, ref ERemoteStorageLocalFileChange pEChangeType, ref ERemoteStorageFilePathType pEFilePathType )
 		{
@@ -389,7 +389,7 @@ namespace Steamworks
 		#region SteamAPI_ISteamRemoteStorage_BeginFileWriteBatch
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamRemoteStorage_BeginFileWriteBatch", CallingConvention = Platform.CC ) ]
 		[ return: MarshalAs( UnmanagedType.I1 ) ]
-		private static extern bool _SteamAPI_ISteamRemoteStorage_BeginFileWriteBatch( IntPtr self );
+		internal static extern bool _SteamAPI_ISteamRemoteStorage_BeginFileWriteBatch( IntPtr self );
 		#endregion
 		internal bool BeginFileWriteBatch()
 		{
@@ -400,7 +400,7 @@ namespace Steamworks
 		#region SteamAPI_ISteamRemoteStorage_EndFileWriteBatch
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamRemoteStorage_EndFileWriteBatch", CallingConvention = Platform.CC ) ]
 		[ return: MarshalAs( UnmanagedType.I1 ) ]
-		private static extern bool _SteamAPI_ISteamRemoteStorage_EndFileWriteBatch( IntPtr self );
+		internal static extern bool _SteamAPI_ISteamRemoteStorage_EndFileWriteBatch( IntPtr self );
 		#endregion
 		internal bool EndFileWriteBatch()
 		{

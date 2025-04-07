@@ -9,6 +9,7 @@ namespace Steamworks.Data
 {
 	internal static class Defines
 	{
+		public const int NumCallbacks = 216;
 		public static readonly AppId_t k_uAppIdInvalid = 0x0;
 		public static readonly DepotId_t k_uDepotIdInvalid = 0x0;
 		public static readonly SteamAPICall_t k_uAPICallInvalid = 0x0;

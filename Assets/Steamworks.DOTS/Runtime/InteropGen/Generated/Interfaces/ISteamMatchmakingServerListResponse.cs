@@ -21,7 +21,7 @@ namespace Steamworks
 		}
 		#region SteamAPI_ISteamMatchmakingServerListResponse_ServerResponded
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamMatchmakingServerListResponse_ServerResponded", CallingConvention = Platform.CC ) ]
-		private static extern void _SteamAPI_ISteamMatchmakingServerListResponse_ServerResponded( IntPtr self, HServerListRequest hRequest, int iServer );
+		internal static extern void _SteamAPI_ISteamMatchmakingServerListResponse_ServerResponded( IntPtr self, HServerListRequest hRequest, int iServer );
 		#endregion
 		internal void ServerResponded( HServerListRequest hRequest, int iServer )
 		{
@@ -30,7 +30,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamMatchmakingServerListResponse_ServerFailedToRespond
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamMatchmakingServerListResponse_ServerFailedToRespond", CallingConvention = Platform.CC ) ]
-		private static extern void _SteamAPI_ISteamMatchmakingServerListResponse_ServerFailedToRespond( IntPtr self, HServerListRequest hRequest, int iServer );
+		internal static extern void _SteamAPI_ISteamMatchmakingServerListResponse_ServerFailedToRespond( IntPtr self, HServerListRequest hRequest, int iServer );
 		#endregion
 		internal void ServerFailedToRespond( HServerListRequest hRequest, int iServer )
 		{
@@ -39,7 +39,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamMatchmakingServerListResponse_RefreshComplete
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamMatchmakingServerListResponse_RefreshComplete", CallingConvention = Platform.CC ) ]
-		private static extern void _SteamAPI_ISteamMatchmakingServerListResponse_RefreshComplete( IntPtr self, HServerListRequest hRequest, EMatchMakingServerResponse response );
+		internal static extern void _SteamAPI_ISteamMatchmakingServerListResponse_RefreshComplete( IntPtr self, HServerListRequest hRequest, EMatchMakingServerResponse response );
 		#endregion
 		internal void RefreshComplete( HServerListRequest hRequest, EMatchMakingServerResponse response )
 		{

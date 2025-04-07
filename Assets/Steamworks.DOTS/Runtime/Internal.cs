@@ -1,39 +1,54 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 using Steamworks.Data;
+using Unity.Collections.LowLevel.Unsafe;
+using Unity.Entities;
 
 namespace Steamworks
 {
-    internal static class SteamInternal
+    public struct SteamInternal : IComponentData
     {
+        public readonly HSteamPipe Pipe;
+        public readonly HSteamUser User;
+        internal readonly IntPtr DispatchImpl;
+
+        public SteamInternal( HSteamPipe pipe, HSteamUser user, IntPtr dispatchImpl )
+        {
+            Pipe = pipe;
+            User = user;
+            DispatchImpl = dispatchImpl;
+        }
+
+        internal unsafe ref DispatchImpl GetDispatchImpl() => ref UnsafeUtility.AsRef<DispatchImpl>( ( void* ) DispatchImpl );
+        
         [ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_GetHSteamPipe", CallingConvention = Platform.CC ) ]
-        public static extern HSteamPipe SteamAPI_GetHSteamPipe();
+        internal static extern HSteamPipe SteamAPI_GetHSteamPipe();
         
         [ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_GetHSteamUser", CallingConvention = Platform.CC ) ]
-        public static extern HSteamUser SteamAPI_GetHSteamUser();
+        internal static extern HSteamUser SteamAPI_GetHSteamUser();
         
         [ DllImport( Platform.LibraryName, EntryPoint = "SteamGameServer_GetHSteamPipe", CallingConvention = Platform.CC ) ]
-        public static extern HSteamPipe SteamGameServer_GetHSteamPipe();
+        internal static extern HSteamPipe SteamGameServer_GetHSteamPipe();
         
         [ DllImport( Platform.LibraryName, EntryPoint = "SteamGameServer_GetHSteamUser", CallingConvention = Platform.CC ) ]
-        public static extern HSteamUser SteamGameServer_GetHSteamUser();
+        internal static extern HSteamUser SteamGameServer_GetHSteamUser();
         
         [ DllImport( Platform.LibraryName, EntryPoint = "SteamInternal_CreateInterface", CallingConvention = Platform.CC ) ]
-        public static extern IntPtr SteamInternal_CreateInterface( Utf8StringToNative ver );
+        internal static extern IntPtr SteamInternal_CreateInterface( Utf8StringToNative ver );
 
         [ DllImport( Platform.LibraryName, EntryPoint = "SteamInternal_FindOrCreateUserInterface", CallingConvention = Platform.CC ) ]
-        public static extern IntPtr SteamInternal_FindOrCreateUserInterface( HSteamUser hSteamUser, Utf8StringToNative pszVersion );
+        internal static extern IntPtr SteamInternal_FindOrCreateUserInterface( HSteamUser hSteamUser, Utf8StringToNative pszVersion );
 
         [ DllImport( Platform.LibraryName, EntryPoint = "SteamInternal_FindOrCreateGameServerInterface", CallingConvention = Platform.CC ) ]
-        public static extern IntPtr SteamInternal_FindOrCreateGameServerInterface( HSteamUser hSteamUser, Utf8StringToNative pszVersion );
+        internal static extern IntPtr SteamInternal_FindOrCreateGameServerInterface( HSteamUser hSteamUser, Utf8StringToNative pszVersion );
 
-        public static IntPtr FindOrCreateUserInterface( HSteamUser hSteamUser, string pszVersion )
+        internal static IntPtr FindOrCreateUserInterface( HSteamUser hSteamUser, string pszVersion )
         {
             using var mem__pszVersion = new Utf8StringToNative( pszVersion );
             return SteamInternal_FindOrCreateUserInterface( hSteamUser, mem__pszVersion );
         }
 
-        public static IntPtr FindOrCreateGameServerInterface( HSteamUser hSteamUser, string pszVersion )
+        internal static IntPtr FindOrCreateGameServerInterface( HSteamUser hSteamUser, string pszVersion )
         {
             using var mem__pszVersion = new Utf8StringToNative( pszVersion );
             return SteamInternal_FindOrCreateGameServerInterface( hSteamUser, mem__pszVersion );

@@ -29,7 +29,7 @@ namespace Steamworks
 		}
 		#region SteamAPI_ISteamGameSearch_AddGameSearchParams
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamGameSearch_AddGameSearchParams", CallingConvention = Platform.CC ) ]
-		private static extern EGameSearchErrorCode_t _SteamAPI_ISteamGameSearch_AddGameSearchParams( IntPtr self, IntPtr pchKeyToFind, IntPtr pchValuesToFind );
+		internal static extern EGameSearchErrorCode_t _SteamAPI_ISteamGameSearch_AddGameSearchParams( IntPtr self, IntPtr pchKeyToFind, IntPtr pchValuesToFind );
 		#endregion
 		internal EGameSearchErrorCode_t AddGameSearchParams( string pchKeyToFind, string pchValuesToFind )
 		{
@@ -41,7 +41,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamGameSearch_SearchForGameWithLobby
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamGameSearch_SearchForGameWithLobby", CallingConvention = Platform.CC ) ]
-		private static extern EGameSearchErrorCode_t _SteamAPI_ISteamGameSearch_SearchForGameWithLobby( IntPtr self, SteamId steamIDLobby, int nPlayerMin, int nPlayerMax );
+		internal static extern EGameSearchErrorCode_t _SteamAPI_ISteamGameSearch_SearchForGameWithLobby( IntPtr self, SteamId steamIDLobby, int nPlayerMin, int nPlayerMax );
 		#endregion
 		internal EGameSearchErrorCode_t SearchForGameWithLobby( SteamId steamIDLobby, int nPlayerMin, int nPlayerMax )
 		{
@@ -51,7 +51,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamGameSearch_SearchForGameSolo
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamGameSearch_SearchForGameSolo", CallingConvention = Platform.CC ) ]
-		private static extern EGameSearchErrorCode_t _SteamAPI_ISteamGameSearch_SearchForGameSolo( IntPtr self, int nPlayerMin, int nPlayerMax );
+		internal static extern EGameSearchErrorCode_t _SteamAPI_ISteamGameSearch_SearchForGameSolo( IntPtr self, int nPlayerMin, int nPlayerMax );
 		#endregion
 		internal EGameSearchErrorCode_t SearchForGameSolo( int nPlayerMin, int nPlayerMax )
 		{
@@ -61,7 +61,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamGameSearch_AcceptGame
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamGameSearch_AcceptGame", CallingConvention = Platform.CC ) ]
-		private static extern EGameSearchErrorCode_t _SteamAPI_ISteamGameSearch_AcceptGame( IntPtr self );
+		internal static extern EGameSearchErrorCode_t _SteamAPI_ISteamGameSearch_AcceptGame( IntPtr self );
 		#endregion
 		internal EGameSearchErrorCode_t AcceptGame()
 		{
@@ -71,7 +71,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamGameSearch_DeclineGame
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamGameSearch_DeclineGame", CallingConvention = Platform.CC ) ]
-		private static extern EGameSearchErrorCode_t _SteamAPI_ISteamGameSearch_DeclineGame( IntPtr self );
+		internal static extern EGameSearchErrorCode_t _SteamAPI_ISteamGameSearch_DeclineGame( IntPtr self );
 		#endregion
 		internal EGameSearchErrorCode_t DeclineGame()
 		{
@@ -81,7 +81,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamGameSearch_RetrieveConnectionDetails
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamGameSearch_RetrieveConnectionDetails", CallingConvention = Platform.CC ) ]
-		private static extern EGameSearchErrorCode_t _SteamAPI_ISteamGameSearch_RetrieveConnectionDetails( IntPtr self, SteamId steamIDHost, IntPtr pchConnectionDetails, int cubConnectionDetails );
+		internal static extern EGameSearchErrorCode_t _SteamAPI_ISteamGameSearch_RetrieveConnectionDetails( IntPtr self, SteamId steamIDHost, IntPtr pchConnectionDetails, int cubConnectionDetails );
 		#endregion
 		internal EGameSearchErrorCode_t RetrieveConnectionDetails( SteamId steamIDHost, out string pchConnectionDetails, int cubConnectionDetails )
 		{
@@ -93,7 +93,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamGameSearch_EndGameSearch
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamGameSearch_EndGameSearch", CallingConvention = Platform.CC ) ]
-		private static extern EGameSearchErrorCode_t _SteamAPI_ISteamGameSearch_EndGameSearch( IntPtr self );
+		internal static extern EGameSearchErrorCode_t _SteamAPI_ISteamGameSearch_EndGameSearch( IntPtr self );
 		#endregion
 		internal EGameSearchErrorCode_t EndGameSearch()
 		{
@@ -103,7 +103,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamGameSearch_SetGameHostParams
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamGameSearch_SetGameHostParams", CallingConvention = Platform.CC ) ]
-		private static extern EGameSearchErrorCode_t _SteamAPI_ISteamGameSearch_SetGameHostParams( IntPtr self, IntPtr pchKey, IntPtr pchValue );
+		internal static extern EGameSearchErrorCode_t _SteamAPI_ISteamGameSearch_SetGameHostParams( IntPtr self, IntPtr pchKey, IntPtr pchValue );
 		#endregion
 		internal EGameSearchErrorCode_t SetGameHostParams( string pchKey, string pchValue )
 		{
@@ -115,7 +115,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamGameSearch_SetConnectionDetails
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamGameSearch_SetConnectionDetails", CallingConvention = Platform.CC ) ]
-		private static extern EGameSearchErrorCode_t _SteamAPI_ISteamGameSearch_SetConnectionDetails( IntPtr self, IntPtr pchConnectionDetails, int cubConnectionDetails );
+		internal static extern EGameSearchErrorCode_t _SteamAPI_ISteamGameSearch_SetConnectionDetails( IntPtr self, IntPtr pchConnectionDetails, int cubConnectionDetails );
 		#endregion
 		internal EGameSearchErrorCode_t SetConnectionDetails( string pchConnectionDetails, int cubConnectionDetails )
 		{
@@ -126,7 +126,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamGameSearch_RequestPlayersForGame
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamGameSearch_RequestPlayersForGame", CallingConvention = Platform.CC ) ]
-		private static extern EGameSearchErrorCode_t _SteamAPI_ISteamGameSearch_RequestPlayersForGame( IntPtr self, int nPlayerMin, int nPlayerMax, int nMaxTeamSize );
+		internal static extern EGameSearchErrorCode_t _SteamAPI_ISteamGameSearch_RequestPlayersForGame( IntPtr self, int nPlayerMin, int nPlayerMax, int nMaxTeamSize );
 		#endregion
 		internal EGameSearchErrorCode_t RequestPlayersForGame( int nPlayerMin, int nPlayerMax, int nMaxTeamSize )
 		{
@@ -136,7 +136,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamGameSearch_HostConfirmGameStart
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamGameSearch_HostConfirmGameStart", CallingConvention = Platform.CC ) ]
-		private static extern EGameSearchErrorCode_t _SteamAPI_ISteamGameSearch_HostConfirmGameStart( IntPtr self, ulong ullUniqueGameID );
+		internal static extern EGameSearchErrorCode_t _SteamAPI_ISteamGameSearch_HostConfirmGameStart( IntPtr self, ulong ullUniqueGameID );
 		#endregion
 		internal EGameSearchErrorCode_t HostConfirmGameStart( ulong ullUniqueGameID )
 		{
@@ -146,7 +146,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamGameSearch_CancelRequestPlayersForGame
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamGameSearch_CancelRequestPlayersForGame", CallingConvention = Platform.CC ) ]
-		private static extern EGameSearchErrorCode_t _SteamAPI_ISteamGameSearch_CancelRequestPlayersForGame( IntPtr self );
+		internal static extern EGameSearchErrorCode_t _SteamAPI_ISteamGameSearch_CancelRequestPlayersForGame( IntPtr self );
 		#endregion
 		internal EGameSearchErrorCode_t CancelRequestPlayersForGame()
 		{
@@ -156,7 +156,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamGameSearch_SubmitPlayerResult
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamGameSearch_SubmitPlayerResult", CallingConvention = Platform.CC ) ]
-		private static extern EGameSearchErrorCode_t _SteamAPI_ISteamGameSearch_SubmitPlayerResult( IntPtr self, ulong ullUniqueGameID, SteamId steamIDPlayer, EPlayerResult_t EPlayerResult );
+		internal static extern EGameSearchErrorCode_t _SteamAPI_ISteamGameSearch_SubmitPlayerResult( IntPtr self, ulong ullUniqueGameID, SteamId steamIDPlayer, EPlayerResult_t EPlayerResult );
 		#endregion
 		internal EGameSearchErrorCode_t SubmitPlayerResult( ulong ullUniqueGameID, SteamId steamIDPlayer, EPlayerResult_t EPlayerResult )
 		{
@@ -166,7 +166,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamGameSearch_EndGame
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamGameSearch_EndGame", CallingConvention = Platform.CC ) ]
-		private static extern EGameSearchErrorCode_t _SteamAPI_ISteamGameSearch_EndGame( IntPtr self, ulong ullUniqueGameID );
+		internal static extern EGameSearchErrorCode_t _SteamAPI_ISteamGameSearch_EndGame( IntPtr self, ulong ullUniqueGameID );
 		#endregion
 		internal EGameSearchErrorCode_t EndGame( ulong ullUniqueGameID )
 		{

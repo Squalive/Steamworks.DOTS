@@ -30,7 +30,7 @@ namespace Steamworks
 		#region SteamAPI_ISteamInput_Init
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamInput_Init", CallingConvention = Platform.CC ) ]
 		[ return: MarshalAs( UnmanagedType.I1 ) ]
-		private static extern bool _SteamAPI_ISteamInput_Init( IntPtr self, [ MarshalAs( UnmanagedType.U1 ) ] bool bExplicitlyCallRunFrame );
+		internal static extern bool _SteamAPI_ISteamInput_Init( IntPtr self, [ MarshalAs( UnmanagedType.U1 ) ] bool bExplicitlyCallRunFrame );
 		#endregion
 		internal bool Init( [ MarshalAs( UnmanagedType.U1 ) ] bool bExplicitlyCallRunFrame )
 		{
@@ -41,7 +41,7 @@ namespace Steamworks
 		#region SteamAPI_ISteamInput_Shutdown
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamInput_Shutdown", CallingConvention = Platform.CC ) ]
 		[ return: MarshalAs( UnmanagedType.I1 ) ]
-		private static extern bool _SteamAPI_ISteamInput_Shutdown( IntPtr self );
+		internal static extern bool _SteamAPI_ISteamInput_Shutdown( IntPtr self );
 		#endregion
 		internal bool Shutdown()
 		{
@@ -52,7 +52,7 @@ namespace Steamworks
 		#region SteamAPI_ISteamInput_SetInputActionManifestFilePath
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamInput_SetInputActionManifestFilePath", CallingConvention = Platform.CC ) ]
 		[ return: MarshalAs( UnmanagedType.I1 ) ]
-		private static extern bool _SteamAPI_ISteamInput_SetInputActionManifestFilePath( IntPtr self, IntPtr pchInputActionManifestAbsolutePath );
+		internal static extern bool _SteamAPI_ISteamInput_SetInputActionManifestFilePath( IntPtr self, IntPtr pchInputActionManifestAbsolutePath );
 		#endregion
 		internal bool SetInputActionManifestFilePath( string pchInputActionManifestAbsolutePath )
 		{
@@ -63,7 +63,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamInput_RunFrame
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamInput_RunFrame", CallingConvention = Platform.CC ) ]
-		private static extern void _SteamAPI_ISteamInput_RunFrame( IntPtr self, [ MarshalAs( UnmanagedType.U1 ) ] bool bReservedValue );
+		internal static extern void _SteamAPI_ISteamInput_RunFrame( IntPtr self, [ MarshalAs( UnmanagedType.U1 ) ] bool bReservedValue );
 		#endregion
 		internal void RunFrame( [ MarshalAs( UnmanagedType.U1 ) ] bool bReservedValue )
 		{
@@ -73,7 +73,7 @@ namespace Steamworks
 		#region SteamAPI_ISteamInput_BWaitForData
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamInput_BWaitForData", CallingConvention = Platform.CC ) ]
 		[ return: MarshalAs( UnmanagedType.I1 ) ]
-		private static extern bool _SteamAPI_ISteamInput_BWaitForData( IntPtr self, [ MarshalAs( UnmanagedType.U1 ) ] bool bWaitForever, uint unTimeout );
+		internal static extern bool _SteamAPI_ISteamInput_BWaitForData( IntPtr self, [ MarshalAs( UnmanagedType.U1 ) ] bool bWaitForever, uint unTimeout );
 		#endregion
 		internal bool BWaitForData( [ MarshalAs( UnmanagedType.U1 ) ] bool bWaitForever, uint unTimeout )
 		{
@@ -84,7 +84,7 @@ namespace Steamworks
 		#region SteamAPI_ISteamInput_BNewDataAvailable
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamInput_BNewDataAvailable", CallingConvention = Platform.CC ) ]
 		[ return: MarshalAs( UnmanagedType.I1 ) ]
-		private static extern bool _SteamAPI_ISteamInput_BNewDataAvailable( IntPtr self );
+		internal static extern bool _SteamAPI_ISteamInput_BNewDataAvailable( IntPtr self );
 		#endregion
 		internal bool BNewDataAvailable()
 		{
@@ -94,7 +94,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamInput_GetConnectedControllers
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamInput_GetConnectedControllers", CallingConvention = Platform.CC ) ]
-		private static extern int _SteamAPI_ISteamInput_GetConnectedControllers( IntPtr self, InputHandle_t* handlesOut );
+		internal static extern int _SteamAPI_ISteamInput_GetConnectedControllers( IntPtr self, InputHandle_t* handlesOut );
 		#endregion
 		internal int GetConnectedControllers( InputHandle_t* handlesOut )
 		{
@@ -104,7 +104,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamInput_EnableDeviceCallbacks
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamInput_EnableDeviceCallbacks", CallingConvention = Platform.CC ) ]
-		private static extern void _SteamAPI_ISteamInput_EnableDeviceCallbacks( IntPtr self );
+		internal static extern void _SteamAPI_ISteamInput_EnableDeviceCallbacks( IntPtr self );
 		#endregion
 		internal void EnableDeviceCallbacks()
 		{
@@ -113,7 +113,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamInput_GetActionSetHandle
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamInput_GetActionSetHandle", CallingConvention = Platform.CC ) ]
-		private static extern InputActionSetHandle_t _SteamAPI_ISteamInput_GetActionSetHandle( IntPtr self, IntPtr pszActionSetName );
+		internal static extern InputActionSetHandle_t _SteamAPI_ISteamInput_GetActionSetHandle( IntPtr self, IntPtr pszActionSetName );
 		#endregion
 		internal InputActionSetHandle_t GetActionSetHandle( string pszActionSetName )
 		{
@@ -124,7 +124,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamInput_ActivateActionSet
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamInput_ActivateActionSet", CallingConvention = Platform.CC ) ]
-		private static extern void _SteamAPI_ISteamInput_ActivateActionSet( IntPtr self, InputHandle_t inputHandle, InputActionSetHandle_t actionSetHandle );
+		internal static extern void _SteamAPI_ISteamInput_ActivateActionSet( IntPtr self, InputHandle_t inputHandle, InputActionSetHandle_t actionSetHandle );
 		#endregion
 		internal void ActivateActionSet( InputHandle_t inputHandle, InputActionSetHandle_t actionSetHandle )
 		{
@@ -133,7 +133,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamInput_GetCurrentActionSet
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamInput_GetCurrentActionSet", CallingConvention = Platform.CC ) ]
-		private static extern InputActionSetHandle_t _SteamAPI_ISteamInput_GetCurrentActionSet( IntPtr self, InputHandle_t inputHandle );
+		internal static extern InputActionSetHandle_t _SteamAPI_ISteamInput_GetCurrentActionSet( IntPtr self, InputHandle_t inputHandle );
 		#endregion
 		internal InputActionSetHandle_t GetCurrentActionSet( InputHandle_t inputHandle )
 		{
@@ -143,7 +143,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamInput_ActivateActionSetLayer
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamInput_ActivateActionSetLayer", CallingConvention = Platform.CC ) ]
-		private static extern void _SteamAPI_ISteamInput_ActivateActionSetLayer( IntPtr self, InputHandle_t inputHandle, InputActionSetHandle_t actionSetLayerHandle );
+		internal static extern void _SteamAPI_ISteamInput_ActivateActionSetLayer( IntPtr self, InputHandle_t inputHandle, InputActionSetHandle_t actionSetLayerHandle );
 		#endregion
 		internal void ActivateActionSetLayer( InputHandle_t inputHandle, InputActionSetHandle_t actionSetLayerHandle )
 		{
@@ -152,7 +152,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamInput_DeactivateActionSetLayer
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamInput_DeactivateActionSetLayer", CallingConvention = Platform.CC ) ]
-		private static extern void _SteamAPI_ISteamInput_DeactivateActionSetLayer( IntPtr self, InputHandle_t inputHandle, InputActionSetHandle_t actionSetLayerHandle );
+		internal static extern void _SteamAPI_ISteamInput_DeactivateActionSetLayer( IntPtr self, InputHandle_t inputHandle, InputActionSetHandle_t actionSetLayerHandle );
 		#endregion
 		internal void DeactivateActionSetLayer( InputHandle_t inputHandle, InputActionSetHandle_t actionSetLayerHandle )
 		{
@@ -161,7 +161,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamInput_DeactivateAllActionSetLayers
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamInput_DeactivateAllActionSetLayers", CallingConvention = Platform.CC ) ]
-		private static extern void _SteamAPI_ISteamInput_DeactivateAllActionSetLayers( IntPtr self, InputHandle_t inputHandle );
+		internal static extern void _SteamAPI_ISteamInput_DeactivateAllActionSetLayers( IntPtr self, InputHandle_t inputHandle );
 		#endregion
 		internal void DeactivateAllActionSetLayers( InputHandle_t inputHandle )
 		{
@@ -170,7 +170,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamInput_GetActiveActionSetLayers
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamInput_GetActiveActionSetLayers", CallingConvention = Platform.CC ) ]
-		private static extern int _SteamAPI_ISteamInput_GetActiveActionSetLayers( IntPtr self, InputHandle_t inputHandle, InputActionSetHandle_t* handlesOut );
+		internal static extern int _SteamAPI_ISteamInput_GetActiveActionSetLayers( IntPtr self, InputHandle_t inputHandle, InputActionSetHandle_t* handlesOut );
 		#endregion
 		internal int GetActiveActionSetLayers( InputHandle_t inputHandle, InputActionSetHandle_t* handlesOut )
 		{
@@ -180,7 +180,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamInput_GetDigitalActionHandle
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamInput_GetDigitalActionHandle", CallingConvention = Platform.CC ) ]
-		private static extern InputDigitalActionHandle_t _SteamAPI_ISteamInput_GetDigitalActionHandle( IntPtr self, IntPtr pszActionName );
+		internal static extern InputDigitalActionHandle_t _SteamAPI_ISteamInput_GetDigitalActionHandle( IntPtr self, IntPtr pszActionName );
 		#endregion
 		internal InputDigitalActionHandle_t GetDigitalActionHandle( string pszActionName )
 		{
@@ -191,7 +191,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamInput_GetDigitalActionData
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamInput_GetDigitalActionData", CallingConvention = Platform.CC ) ]
-		private static extern InputDigitalActionData_t _SteamAPI_ISteamInput_GetDigitalActionData( IntPtr self, InputHandle_t inputHandle, InputDigitalActionHandle_t digitalActionHandle );
+		internal static extern InputDigitalActionData_t _SteamAPI_ISteamInput_GetDigitalActionData( IntPtr self, InputHandle_t inputHandle, InputDigitalActionHandle_t digitalActionHandle );
 		#endregion
 		internal InputDigitalActionData_t GetDigitalActionData( InputHandle_t inputHandle, InputDigitalActionHandle_t digitalActionHandle )
 		{
@@ -201,7 +201,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamInput_GetDigitalActionOrigins
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamInput_GetDigitalActionOrigins", CallingConvention = Platform.CC ) ]
-		private static extern int _SteamAPI_ISteamInput_GetDigitalActionOrigins( IntPtr self, InputHandle_t inputHandle, InputActionSetHandle_t actionSetHandle, InputDigitalActionHandle_t digitalActionHandle, ref EInputActionOrigin originsOut );
+		internal static extern int _SteamAPI_ISteamInput_GetDigitalActionOrigins( IntPtr self, InputHandle_t inputHandle, InputActionSetHandle_t actionSetHandle, InputDigitalActionHandle_t digitalActionHandle, ref EInputActionOrigin originsOut );
 		#endregion
 		internal int GetDigitalActionOrigins( InputHandle_t inputHandle, InputActionSetHandle_t actionSetHandle, InputDigitalActionHandle_t digitalActionHandle, ref EInputActionOrigin originsOut )
 		{
@@ -211,7 +211,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamInput_GetStringForDigitalActionName
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamInput_GetStringForDigitalActionName", CallingConvention = Platform.CC ) ]
-		private static extern Utf8StringPtr _SteamAPI_ISteamInput_GetStringForDigitalActionName( IntPtr self, InputDigitalActionHandle_t eActionHandle );
+		internal static extern Utf8StringPtr _SteamAPI_ISteamInput_GetStringForDigitalActionName( IntPtr self, InputDigitalActionHandle_t eActionHandle );
 		#endregion
 		internal string GetStringForDigitalActionName( InputDigitalActionHandle_t eActionHandle )
 		{
@@ -221,7 +221,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamInput_GetAnalogActionHandle
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamInput_GetAnalogActionHandle", CallingConvention = Platform.CC ) ]
-		private static extern InputAnalogActionHandle_t _SteamAPI_ISteamInput_GetAnalogActionHandle( IntPtr self, IntPtr pszActionName );
+		internal static extern InputAnalogActionHandle_t _SteamAPI_ISteamInput_GetAnalogActionHandle( IntPtr self, IntPtr pszActionName );
 		#endregion
 		internal InputAnalogActionHandle_t GetAnalogActionHandle( string pszActionName )
 		{
@@ -232,7 +232,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamInput_GetAnalogActionData
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamInput_GetAnalogActionData", CallingConvention = Platform.CC ) ]
-		private static extern InputAnalogActionData_t _SteamAPI_ISteamInput_GetAnalogActionData( IntPtr self, InputHandle_t inputHandle, InputAnalogActionHandle_t analogActionHandle );
+		internal static extern InputAnalogActionData_t _SteamAPI_ISteamInput_GetAnalogActionData( IntPtr self, InputHandle_t inputHandle, InputAnalogActionHandle_t analogActionHandle );
 		#endregion
 		internal InputAnalogActionData_t GetAnalogActionData( InputHandle_t inputHandle, InputAnalogActionHandle_t analogActionHandle )
 		{
@@ -242,7 +242,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamInput_GetAnalogActionOrigins
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamInput_GetAnalogActionOrigins", CallingConvention = Platform.CC ) ]
-		private static extern int _SteamAPI_ISteamInput_GetAnalogActionOrigins( IntPtr self, InputHandle_t inputHandle, InputActionSetHandle_t actionSetHandle, InputAnalogActionHandle_t analogActionHandle, ref EInputActionOrigin originsOut );
+		internal static extern int _SteamAPI_ISteamInput_GetAnalogActionOrigins( IntPtr self, InputHandle_t inputHandle, InputActionSetHandle_t actionSetHandle, InputAnalogActionHandle_t analogActionHandle, ref EInputActionOrigin originsOut );
 		#endregion
 		internal int GetAnalogActionOrigins( InputHandle_t inputHandle, InputActionSetHandle_t actionSetHandle, InputAnalogActionHandle_t analogActionHandle, ref EInputActionOrigin originsOut )
 		{
@@ -252,7 +252,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamInput_GetGlyphPNGForActionOrigin
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamInput_GetGlyphPNGForActionOrigin", CallingConvention = Platform.CC ) ]
-		private static extern Utf8StringPtr _SteamAPI_ISteamInput_GetGlyphPNGForActionOrigin( IntPtr self, EInputActionOrigin eOrigin, ESteamInputGlyphSize eSize, uint unFlags );
+		internal static extern Utf8StringPtr _SteamAPI_ISteamInput_GetGlyphPNGForActionOrigin( IntPtr self, EInputActionOrigin eOrigin, ESteamInputGlyphSize eSize, uint unFlags );
 		#endregion
 		internal string GetGlyphPNGForActionOrigin( EInputActionOrigin eOrigin, ESteamInputGlyphSize eSize, uint unFlags )
 		{
@@ -262,7 +262,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamInput_GetGlyphSVGForActionOrigin
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamInput_GetGlyphSVGForActionOrigin", CallingConvention = Platform.CC ) ]
-		private static extern Utf8StringPtr _SteamAPI_ISteamInput_GetGlyphSVGForActionOrigin( IntPtr self, EInputActionOrigin eOrigin, uint unFlags );
+		internal static extern Utf8StringPtr _SteamAPI_ISteamInput_GetGlyphSVGForActionOrigin( IntPtr self, EInputActionOrigin eOrigin, uint unFlags );
 		#endregion
 		internal string GetGlyphSVGForActionOrigin( EInputActionOrigin eOrigin, uint unFlags )
 		{
@@ -272,7 +272,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamInput_GetGlyphForActionOrigin_Legacy
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamInput_GetGlyphForActionOrigin_Legacy", CallingConvention = Platform.CC ) ]
-		private static extern Utf8StringPtr _SteamAPI_ISteamInput_GetGlyphForActionOrigin_Legacy( IntPtr self, EInputActionOrigin eOrigin );
+		internal static extern Utf8StringPtr _SteamAPI_ISteamInput_GetGlyphForActionOrigin_Legacy( IntPtr self, EInputActionOrigin eOrigin );
 		#endregion
 		internal string GetGlyphForActionOrigin_Legacy( EInputActionOrigin eOrigin )
 		{
@@ -282,7 +282,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamInput_GetStringForActionOrigin
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamInput_GetStringForActionOrigin", CallingConvention = Platform.CC ) ]
-		private static extern Utf8StringPtr _SteamAPI_ISteamInput_GetStringForActionOrigin( IntPtr self, EInputActionOrigin eOrigin );
+		internal static extern Utf8StringPtr _SteamAPI_ISteamInput_GetStringForActionOrigin( IntPtr self, EInputActionOrigin eOrigin );
 		#endregion
 		internal string GetStringForActionOrigin( EInputActionOrigin eOrigin )
 		{
@@ -292,7 +292,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamInput_GetStringForAnalogActionName
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamInput_GetStringForAnalogActionName", CallingConvention = Platform.CC ) ]
-		private static extern Utf8StringPtr _SteamAPI_ISteamInput_GetStringForAnalogActionName( IntPtr self, InputAnalogActionHandle_t eActionHandle );
+		internal static extern Utf8StringPtr _SteamAPI_ISteamInput_GetStringForAnalogActionName( IntPtr self, InputAnalogActionHandle_t eActionHandle );
 		#endregion
 		internal string GetStringForAnalogActionName( InputAnalogActionHandle_t eActionHandle )
 		{
@@ -302,7 +302,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamInput_StopAnalogActionMomentum
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamInput_StopAnalogActionMomentum", CallingConvention = Platform.CC ) ]
-		private static extern void _SteamAPI_ISteamInput_StopAnalogActionMomentum( IntPtr self, InputHandle_t inputHandle, InputAnalogActionHandle_t eAction );
+		internal static extern void _SteamAPI_ISteamInput_StopAnalogActionMomentum( IntPtr self, InputHandle_t inputHandle, InputAnalogActionHandle_t eAction );
 		#endregion
 		internal void StopAnalogActionMomentum( InputHandle_t inputHandle, InputAnalogActionHandle_t eAction )
 		{
@@ -311,7 +311,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamInput_GetMotionData
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamInput_GetMotionData", CallingConvention = Platform.CC ) ]
-		private static extern InputMotionData_t _SteamAPI_ISteamInput_GetMotionData( IntPtr self, InputHandle_t inputHandle );
+		internal static extern InputMotionData_t _SteamAPI_ISteamInput_GetMotionData( IntPtr self, InputHandle_t inputHandle );
 		#endregion
 		internal InputMotionData_t GetMotionData( InputHandle_t inputHandle )
 		{
@@ -321,7 +321,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamInput_TriggerVibration
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamInput_TriggerVibration", CallingConvention = Platform.CC ) ]
-		private static extern void _SteamAPI_ISteamInput_TriggerVibration( IntPtr self, InputHandle_t inputHandle, ushort usLeftSpeed, ushort usRightSpeed );
+		internal static extern void _SteamAPI_ISteamInput_TriggerVibration( IntPtr self, InputHandle_t inputHandle, ushort usLeftSpeed, ushort usRightSpeed );
 		#endregion
 		internal void TriggerVibration( InputHandle_t inputHandle, ushort usLeftSpeed, ushort usRightSpeed )
 		{
@@ -330,7 +330,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamInput_TriggerVibrationExtended
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamInput_TriggerVibrationExtended", CallingConvention = Platform.CC ) ]
-		private static extern void _SteamAPI_ISteamInput_TriggerVibrationExtended( IntPtr self, InputHandle_t inputHandle, ushort usLeftSpeed, ushort usRightSpeed, ushort usLeftTriggerSpeed, ushort usRightTriggerSpeed );
+		internal static extern void _SteamAPI_ISteamInput_TriggerVibrationExtended( IntPtr self, InputHandle_t inputHandle, ushort usLeftSpeed, ushort usRightSpeed, ushort usLeftTriggerSpeed, ushort usRightTriggerSpeed );
 		#endregion
 		internal void TriggerVibrationExtended( InputHandle_t inputHandle, ushort usLeftSpeed, ushort usRightSpeed, ushort usLeftTriggerSpeed, ushort usRightTriggerSpeed )
 		{
@@ -339,7 +339,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamInput_TriggerSimpleHapticEvent
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamInput_TriggerSimpleHapticEvent", CallingConvention = Platform.CC ) ]
-		private static extern void _SteamAPI_ISteamInput_TriggerSimpleHapticEvent( IntPtr self, InputHandle_t inputHandle, EControllerHapticLocation eHapticLocation, byte nIntensity, char nGainDB, byte nOtherIntensity, char nOtherGainDB );
+		internal static extern void _SteamAPI_ISteamInput_TriggerSimpleHapticEvent( IntPtr self, InputHandle_t inputHandle, EControllerHapticLocation eHapticLocation, byte nIntensity, char nGainDB, byte nOtherIntensity, char nOtherGainDB );
 		#endregion
 		internal void TriggerSimpleHapticEvent( InputHandle_t inputHandle, EControllerHapticLocation eHapticLocation, byte nIntensity, char nGainDB, byte nOtherIntensity, char nOtherGainDB )
 		{
@@ -348,7 +348,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamInput_SetLEDColor
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamInput_SetLEDColor", CallingConvention = Platform.CC ) ]
-		private static extern void _SteamAPI_ISteamInput_SetLEDColor( IntPtr self, InputHandle_t inputHandle, byte nColorR, byte nColorG, byte nColorB, uint nFlags );
+		internal static extern void _SteamAPI_ISteamInput_SetLEDColor( IntPtr self, InputHandle_t inputHandle, byte nColorR, byte nColorG, byte nColorB, uint nFlags );
 		#endregion
 		internal void SetLEDColor( InputHandle_t inputHandle, byte nColorR, byte nColorG, byte nColorB, uint nFlags )
 		{
@@ -357,7 +357,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamInput_Legacy_TriggerHapticPulse
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamInput_Legacy_TriggerHapticPulse", CallingConvention = Platform.CC ) ]
-		private static extern void _SteamAPI_ISteamInput_Legacy_TriggerHapticPulse( IntPtr self, InputHandle_t inputHandle, ESteamControllerPad eTargetPad, ushort usDurationMicroSec );
+		internal static extern void _SteamAPI_ISteamInput_Legacy_TriggerHapticPulse( IntPtr self, InputHandle_t inputHandle, ESteamControllerPad eTargetPad, ushort usDurationMicroSec );
 		#endregion
 		internal void Legacy_TriggerHapticPulse( InputHandle_t inputHandle, ESteamControllerPad eTargetPad, ushort usDurationMicroSec )
 		{
@@ -366,7 +366,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamInput_Legacy_TriggerRepeatedHapticPulse
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamInput_Legacy_TriggerRepeatedHapticPulse", CallingConvention = Platform.CC ) ]
-		private static extern void _SteamAPI_ISteamInput_Legacy_TriggerRepeatedHapticPulse( IntPtr self, InputHandle_t inputHandle, ESteamControllerPad eTargetPad, ushort usDurationMicroSec, ushort usOffMicroSec, ushort unRepeat, uint nFlags );
+		internal static extern void _SteamAPI_ISteamInput_Legacy_TriggerRepeatedHapticPulse( IntPtr self, InputHandle_t inputHandle, ESteamControllerPad eTargetPad, ushort usDurationMicroSec, ushort usOffMicroSec, ushort unRepeat, uint nFlags );
 		#endregion
 		internal void Legacy_TriggerRepeatedHapticPulse( InputHandle_t inputHandle, ESteamControllerPad eTargetPad, ushort usDurationMicroSec, ushort usOffMicroSec, ushort unRepeat, uint nFlags )
 		{
@@ -376,7 +376,7 @@ namespace Steamworks
 		#region SteamAPI_ISteamInput_ShowBindingPanel
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamInput_ShowBindingPanel", CallingConvention = Platform.CC ) ]
 		[ return: MarshalAs( UnmanagedType.I1 ) ]
-		private static extern bool _SteamAPI_ISteamInput_ShowBindingPanel( IntPtr self, InputHandle_t inputHandle );
+		internal static extern bool _SteamAPI_ISteamInput_ShowBindingPanel( IntPtr self, InputHandle_t inputHandle );
 		#endregion
 		internal bool ShowBindingPanel( InputHandle_t inputHandle )
 		{
@@ -386,7 +386,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamInput_GetInputTypeForHandle
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamInput_GetInputTypeForHandle", CallingConvention = Platform.CC ) ]
-		private static extern ESteamInputType _SteamAPI_ISteamInput_GetInputTypeForHandle( IntPtr self, InputHandle_t inputHandle );
+		internal static extern ESteamInputType _SteamAPI_ISteamInput_GetInputTypeForHandle( IntPtr self, InputHandle_t inputHandle );
 		#endregion
 		internal ESteamInputType GetInputTypeForHandle( InputHandle_t inputHandle )
 		{
@@ -396,7 +396,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamInput_GetControllerForGamepadIndex
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamInput_GetControllerForGamepadIndex", CallingConvention = Platform.CC ) ]
-		private static extern InputHandle_t _SteamAPI_ISteamInput_GetControllerForGamepadIndex( IntPtr self, int nIndex );
+		internal static extern InputHandle_t _SteamAPI_ISteamInput_GetControllerForGamepadIndex( IntPtr self, int nIndex );
 		#endregion
 		internal InputHandle_t GetControllerForGamepadIndex( int nIndex )
 		{
@@ -406,7 +406,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamInput_GetGamepadIndexForController
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamInput_GetGamepadIndexForController", CallingConvention = Platform.CC ) ]
-		private static extern int _SteamAPI_ISteamInput_GetGamepadIndexForController( IntPtr self, InputHandle_t ulinputHandle );
+		internal static extern int _SteamAPI_ISteamInput_GetGamepadIndexForController( IntPtr self, InputHandle_t ulinputHandle );
 		#endregion
 		internal int GetGamepadIndexForController( InputHandle_t ulinputHandle )
 		{
@@ -416,7 +416,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamInput_GetStringForXboxOrigin
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamInput_GetStringForXboxOrigin", CallingConvention = Platform.CC ) ]
-		private static extern Utf8StringPtr _SteamAPI_ISteamInput_GetStringForXboxOrigin( IntPtr self, EXboxOrigin eOrigin );
+		internal static extern Utf8StringPtr _SteamAPI_ISteamInput_GetStringForXboxOrigin( IntPtr self, EXboxOrigin eOrigin );
 		#endregion
 		internal string GetStringForXboxOrigin( EXboxOrigin eOrigin )
 		{
@@ -426,7 +426,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamInput_GetGlyphForXboxOrigin
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamInput_GetGlyphForXboxOrigin", CallingConvention = Platform.CC ) ]
-		private static extern Utf8StringPtr _SteamAPI_ISteamInput_GetGlyphForXboxOrigin( IntPtr self, EXboxOrigin eOrigin );
+		internal static extern Utf8StringPtr _SteamAPI_ISteamInput_GetGlyphForXboxOrigin( IntPtr self, EXboxOrigin eOrigin );
 		#endregion
 		internal string GetGlyphForXboxOrigin( EXboxOrigin eOrigin )
 		{
@@ -436,7 +436,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamInput_GetActionOriginFromXboxOrigin
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamInput_GetActionOriginFromXboxOrigin", CallingConvention = Platform.CC ) ]
-		private static extern EInputActionOrigin _SteamAPI_ISteamInput_GetActionOriginFromXboxOrigin( IntPtr self, InputHandle_t inputHandle, EXboxOrigin eOrigin );
+		internal static extern EInputActionOrigin _SteamAPI_ISteamInput_GetActionOriginFromXboxOrigin( IntPtr self, InputHandle_t inputHandle, EXboxOrigin eOrigin );
 		#endregion
 		internal EInputActionOrigin GetActionOriginFromXboxOrigin( InputHandle_t inputHandle, EXboxOrigin eOrigin )
 		{
@@ -446,7 +446,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamInput_TranslateActionOrigin
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamInput_TranslateActionOrigin", CallingConvention = Platform.CC ) ]
-		private static extern EInputActionOrigin _SteamAPI_ISteamInput_TranslateActionOrigin( IntPtr self, ESteamInputType eDestinationInputType, EInputActionOrigin eSourceOrigin );
+		internal static extern EInputActionOrigin _SteamAPI_ISteamInput_TranslateActionOrigin( IntPtr self, ESteamInputType eDestinationInputType, EInputActionOrigin eSourceOrigin );
 		#endregion
 		internal EInputActionOrigin TranslateActionOrigin( ESteamInputType eDestinationInputType, EInputActionOrigin eSourceOrigin )
 		{
@@ -457,7 +457,7 @@ namespace Steamworks
 		#region SteamAPI_ISteamInput_GetDeviceBindingRevision
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamInput_GetDeviceBindingRevision", CallingConvention = Platform.CC ) ]
 		[ return: MarshalAs( UnmanagedType.I1 ) ]
-		private static extern bool _SteamAPI_ISteamInput_GetDeviceBindingRevision( IntPtr self, InputHandle_t inputHandle, ref int pMajor, ref int pMinor );
+		internal static extern bool _SteamAPI_ISteamInput_GetDeviceBindingRevision( IntPtr self, InputHandle_t inputHandle, ref int pMajor, ref int pMinor );
 		#endregion
 		internal bool GetDeviceBindingRevision( InputHandle_t inputHandle, ref int pMajor, ref int pMinor )
 		{
@@ -467,7 +467,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamInput_GetRemotePlaySessionID
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamInput_GetRemotePlaySessionID", CallingConvention = Platform.CC ) ]
-		private static extern uint _SteamAPI_ISteamInput_GetRemotePlaySessionID( IntPtr self, InputHandle_t inputHandle );
+		internal static extern uint _SteamAPI_ISteamInput_GetRemotePlaySessionID( IntPtr self, InputHandle_t inputHandle );
 		#endregion
 		internal uint GetRemotePlaySessionID( InputHandle_t inputHandle )
 		{
@@ -477,7 +477,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamInput_GetSessionInputConfigurationSettings
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamInput_GetSessionInputConfigurationSettings", CallingConvention = Platform.CC ) ]
-		private static extern ushort _SteamAPI_ISteamInput_GetSessionInputConfigurationSettings( IntPtr self );
+		internal static extern ushort _SteamAPI_ISteamInput_GetSessionInputConfigurationSettings( IntPtr self );
 		#endregion
 		internal ushort GetSessionInputConfigurationSettings()
 		{

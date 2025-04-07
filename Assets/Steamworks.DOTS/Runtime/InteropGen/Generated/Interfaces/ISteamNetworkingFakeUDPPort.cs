@@ -21,7 +21,7 @@ namespace Steamworks
 		}
 		#region SteamAPI_ISteamNetworkingFakeUDPPort_DestroyFakeUDPPort
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamNetworkingFakeUDPPort_DestroyFakeUDPPort", CallingConvention = Platform.CC ) ]
-		private static extern void _SteamAPI_ISteamNetworkingFakeUDPPort_DestroyFakeUDPPort( IntPtr self );
+		internal static extern void _SteamAPI_ISteamNetworkingFakeUDPPort_DestroyFakeUDPPort( IntPtr self );
 		#endregion
 		internal void DestroyFakeUDPPort()
 		{
@@ -30,7 +30,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamNetworkingFakeUDPPort_SendMessageToFakeIP
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamNetworkingFakeUDPPort_SendMessageToFakeIP", CallingConvention = Platform.CC ) ]
-		private static extern EResult _SteamAPI_ISteamNetworkingFakeUDPPort_SendMessageToFakeIP( IntPtr self, ref SteamNetworkingIPAddr remoteAddress, IntPtr pData, uint cbData, int nSendFlags );
+		internal static extern EResult _SteamAPI_ISteamNetworkingFakeUDPPort_SendMessageToFakeIP( IntPtr self, ref SteamNetworkingIPAddr remoteAddress, IntPtr pData, uint cbData, int nSendFlags );
 		#endregion
 		internal EResult SendMessageToFakeIP( ref SteamNetworkingIPAddr remoteAddress, IntPtr pData, uint cbData, int nSendFlags )
 		{
@@ -40,7 +40,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamNetworkingFakeUDPPort_ReceiveMessages
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamNetworkingFakeUDPPort_ReceiveMessages", CallingConvention = Platform.CC ) ]
-		private static extern int _SteamAPI_ISteamNetworkingFakeUDPPort_ReceiveMessages( IntPtr self, IntPtr ppOutMessages, int nMaxMessages );
+		internal static extern int _SteamAPI_ISteamNetworkingFakeUDPPort_ReceiveMessages( IntPtr self, IntPtr ppOutMessages, int nMaxMessages );
 		#endregion
 		internal int ReceiveMessages( IntPtr ppOutMessages, int nMaxMessages )
 		{
@@ -50,7 +50,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamNetworkingFakeUDPPort_ScheduleCleanup
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamNetworkingFakeUDPPort_ScheduleCleanup", CallingConvention = Platform.CC ) ]
-		private static extern void _SteamAPI_ISteamNetworkingFakeUDPPort_ScheduleCleanup( IntPtr self, ref SteamNetworkingIPAddr remoteAddress );
+		internal static extern void _SteamAPI_ISteamNetworkingFakeUDPPort_ScheduleCleanup( IntPtr self, ref SteamNetworkingIPAddr remoteAddress );
 		#endregion
 		internal void ScheduleCleanup( ref SteamNetworkingIPAddr remoteAddress )
 		{

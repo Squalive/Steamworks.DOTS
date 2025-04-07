@@ -117,7 +117,7 @@ public class InterfaceGenerator : BaseGenerator
         WriteLine( $"[ DllImport( Platform.LibraryName, EntryPoint = \"{method.FlatName}\", CallingConvention = Platform.CC ) ]" );
         if ( returnType.ReturnAttribute != null )
             WriteLine( returnType.ReturnAttribute );
-        WriteLine( $"private static extern {returnType.TypeNameFrom} _{method.FlatName}( IntPtr self, {delegateargstr} );".Replace( "( IntPtr self,  )", "( IntPtr self )" ) );
+        WriteLine( $"internal static extern {returnType.TypeNameFrom} _{method.FlatName}( IntPtr self, {delegateargstr} );".Replace( "( IntPtr self,  )", "( IntPtr self )" ) );
         WriteLine( $"#endregion" );
         
         if ( !string.IsNullOrEmpty( method.Desc ) )

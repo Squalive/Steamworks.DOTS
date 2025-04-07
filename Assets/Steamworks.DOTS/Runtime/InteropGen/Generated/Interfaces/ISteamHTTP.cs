@@ -35,7 +35,7 @@ namespace Steamworks
 		}
 		#region SteamAPI_ISteamHTTP_CreateHTTPRequest
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamHTTP_CreateHTTPRequest", CallingConvention = Platform.CC ) ]
-		private static extern HTTPRequestHandle _SteamAPI_ISteamHTTP_CreateHTTPRequest( IntPtr self, EHTTPMethod eHTTPRequestMethod, IntPtr pchAbsoluteURL );
+		internal static extern HTTPRequestHandle _SteamAPI_ISteamHTTP_CreateHTTPRequest( IntPtr self, EHTTPMethod eHTTPRequestMethod, IntPtr pchAbsoluteURL );
 		#endregion
 		internal HTTPRequestHandle CreateHTTPRequest( EHTTPMethod eHTTPRequestMethod, string pchAbsoluteURL )
 		{
@@ -47,7 +47,7 @@ namespace Steamworks
 		#region SteamAPI_ISteamHTTP_SetHTTPRequestContextValue
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamHTTP_SetHTTPRequestContextValue", CallingConvention = Platform.CC ) ]
 		[ return: MarshalAs( UnmanagedType.I1 ) ]
-		private static extern bool _SteamAPI_ISteamHTTP_SetHTTPRequestContextValue( IntPtr self, HTTPRequestHandle hRequest, ulong ulContextValue );
+		internal static extern bool _SteamAPI_ISteamHTTP_SetHTTPRequestContextValue( IntPtr self, HTTPRequestHandle hRequest, ulong ulContextValue );
 		#endregion
 		internal bool SetHTTPRequestContextValue( HTTPRequestHandle hRequest, ulong ulContextValue )
 		{
@@ -58,7 +58,7 @@ namespace Steamworks
 		#region SteamAPI_ISteamHTTP_SetHTTPRequestNetworkActivityTimeout
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamHTTP_SetHTTPRequestNetworkActivityTimeout", CallingConvention = Platform.CC ) ]
 		[ return: MarshalAs( UnmanagedType.I1 ) ]
-		private static extern bool _SteamAPI_ISteamHTTP_SetHTTPRequestNetworkActivityTimeout( IntPtr self, HTTPRequestHandle hRequest, uint unTimeoutSeconds );
+		internal static extern bool _SteamAPI_ISteamHTTP_SetHTTPRequestNetworkActivityTimeout( IntPtr self, HTTPRequestHandle hRequest, uint unTimeoutSeconds );
 		#endregion
 		internal bool SetHTTPRequestNetworkActivityTimeout( HTTPRequestHandle hRequest, uint unTimeoutSeconds )
 		{
@@ -69,7 +69,7 @@ namespace Steamworks
 		#region SteamAPI_ISteamHTTP_SetHTTPRequestHeaderValue
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamHTTP_SetHTTPRequestHeaderValue", CallingConvention = Platform.CC ) ]
 		[ return: MarshalAs( UnmanagedType.I1 ) ]
-		private static extern bool _SteamAPI_ISteamHTTP_SetHTTPRequestHeaderValue( IntPtr self, HTTPRequestHandle hRequest, IntPtr pchHeaderName, IntPtr pchHeaderValue );
+		internal static extern bool _SteamAPI_ISteamHTTP_SetHTTPRequestHeaderValue( IntPtr self, HTTPRequestHandle hRequest, IntPtr pchHeaderName, IntPtr pchHeaderValue );
 		#endregion
 		internal bool SetHTTPRequestHeaderValue( HTTPRequestHandle hRequest, string pchHeaderName, string pchHeaderValue )
 		{
@@ -82,7 +82,7 @@ namespace Steamworks
 		#region SteamAPI_ISteamHTTP_SetHTTPRequestGetOrPostParameter
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamHTTP_SetHTTPRequestGetOrPostParameter", CallingConvention = Platform.CC ) ]
 		[ return: MarshalAs( UnmanagedType.I1 ) ]
-		private static extern bool _SteamAPI_ISteamHTTP_SetHTTPRequestGetOrPostParameter( IntPtr self, HTTPRequestHandle hRequest, IntPtr pchParamName, IntPtr pchParamValue );
+		internal static extern bool _SteamAPI_ISteamHTTP_SetHTTPRequestGetOrPostParameter( IntPtr self, HTTPRequestHandle hRequest, IntPtr pchParamName, IntPtr pchParamValue );
 		#endregion
 		internal bool SetHTTPRequestGetOrPostParameter( HTTPRequestHandle hRequest, string pchParamName, string pchParamValue )
 		{
@@ -95,7 +95,7 @@ namespace Steamworks
 		#region SteamAPI_ISteamHTTP_SendHTTPRequest
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamHTTP_SendHTTPRequest", CallingConvention = Platform.CC ) ]
 		[ return: MarshalAs( UnmanagedType.I1 ) ]
-		private static extern bool _SteamAPI_ISteamHTTP_SendHTTPRequest( IntPtr self, HTTPRequestHandle hRequest, ref SteamAPICall_t pCallHandle );
+		internal static extern bool _SteamAPI_ISteamHTTP_SendHTTPRequest( IntPtr self, HTTPRequestHandle hRequest, ref SteamAPICall_t pCallHandle );
 		#endregion
 		internal bool SendHTTPRequest( HTTPRequestHandle hRequest, ref SteamAPICall_t pCallHandle )
 		{
@@ -106,7 +106,7 @@ namespace Steamworks
 		#region SteamAPI_ISteamHTTP_SendHTTPRequestAndStreamResponse
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamHTTP_SendHTTPRequestAndStreamResponse", CallingConvention = Platform.CC ) ]
 		[ return: MarshalAs( UnmanagedType.I1 ) ]
-		private static extern bool _SteamAPI_ISteamHTTP_SendHTTPRequestAndStreamResponse( IntPtr self, HTTPRequestHandle hRequest, ref SteamAPICall_t pCallHandle );
+		internal static extern bool _SteamAPI_ISteamHTTP_SendHTTPRequestAndStreamResponse( IntPtr self, HTTPRequestHandle hRequest, ref SteamAPICall_t pCallHandle );
 		#endregion
 		internal bool SendHTTPRequestAndStreamResponse( HTTPRequestHandle hRequest, ref SteamAPICall_t pCallHandle )
 		{
@@ -117,7 +117,7 @@ namespace Steamworks
 		#region SteamAPI_ISteamHTTP_DeferHTTPRequest
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamHTTP_DeferHTTPRequest", CallingConvention = Platform.CC ) ]
 		[ return: MarshalAs( UnmanagedType.I1 ) ]
-		private static extern bool _SteamAPI_ISteamHTTP_DeferHTTPRequest( IntPtr self, HTTPRequestHandle hRequest );
+		internal static extern bool _SteamAPI_ISteamHTTP_DeferHTTPRequest( IntPtr self, HTTPRequestHandle hRequest );
 		#endregion
 		internal bool DeferHTTPRequest( HTTPRequestHandle hRequest )
 		{
@@ -128,7 +128,7 @@ namespace Steamworks
 		#region SteamAPI_ISteamHTTP_PrioritizeHTTPRequest
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamHTTP_PrioritizeHTTPRequest", CallingConvention = Platform.CC ) ]
 		[ return: MarshalAs( UnmanagedType.I1 ) ]
-		private static extern bool _SteamAPI_ISteamHTTP_PrioritizeHTTPRequest( IntPtr self, HTTPRequestHandle hRequest );
+		internal static extern bool _SteamAPI_ISteamHTTP_PrioritizeHTTPRequest( IntPtr self, HTTPRequestHandle hRequest );
 		#endregion
 		internal bool PrioritizeHTTPRequest( HTTPRequestHandle hRequest )
 		{
@@ -139,7 +139,7 @@ namespace Steamworks
 		#region SteamAPI_ISteamHTTP_GetHTTPResponseHeaderSize
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamHTTP_GetHTTPResponseHeaderSize", CallingConvention = Platform.CC ) ]
 		[ return: MarshalAs( UnmanagedType.I1 ) ]
-		private static extern bool _SteamAPI_ISteamHTTP_GetHTTPResponseHeaderSize( IntPtr self, HTTPRequestHandle hRequest, IntPtr pchHeaderName, ref uint unResponseHeaderSize );
+		internal static extern bool _SteamAPI_ISteamHTTP_GetHTTPResponseHeaderSize( IntPtr self, HTTPRequestHandle hRequest, IntPtr pchHeaderName, ref uint unResponseHeaderSize );
 		#endregion
 		internal bool GetHTTPResponseHeaderSize( HTTPRequestHandle hRequest, string pchHeaderName, ref uint unResponseHeaderSize )
 		{
@@ -151,7 +151,7 @@ namespace Steamworks
 		#region SteamAPI_ISteamHTTP_GetHTTPResponseHeaderValue
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamHTTP_GetHTTPResponseHeaderValue", CallingConvention = Platform.CC ) ]
 		[ return: MarshalAs( UnmanagedType.I1 ) ]
-		private static extern bool _SteamAPI_ISteamHTTP_GetHTTPResponseHeaderValue( IntPtr self, HTTPRequestHandle hRequest, IntPtr pchHeaderName, ref byte pHeaderValueBuffer, uint unBufferSize );
+		internal static extern bool _SteamAPI_ISteamHTTP_GetHTTPResponseHeaderValue( IntPtr self, HTTPRequestHandle hRequest, IntPtr pchHeaderName, ref byte pHeaderValueBuffer, uint unBufferSize );
 		#endregion
 		internal bool GetHTTPResponseHeaderValue( HTTPRequestHandle hRequest, string pchHeaderName, ref byte pHeaderValueBuffer, uint unBufferSize )
 		{
@@ -163,7 +163,7 @@ namespace Steamworks
 		#region SteamAPI_ISteamHTTP_GetHTTPResponseBodySize
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamHTTP_GetHTTPResponseBodySize", CallingConvention = Platform.CC ) ]
 		[ return: MarshalAs( UnmanagedType.I1 ) ]
-		private static extern bool _SteamAPI_ISteamHTTP_GetHTTPResponseBodySize( IntPtr self, HTTPRequestHandle hRequest, ref uint unBodySize );
+		internal static extern bool _SteamAPI_ISteamHTTP_GetHTTPResponseBodySize( IntPtr self, HTTPRequestHandle hRequest, ref uint unBodySize );
 		#endregion
 		internal bool GetHTTPResponseBodySize( HTTPRequestHandle hRequest, ref uint unBodySize )
 		{
@@ -174,7 +174,7 @@ namespace Steamworks
 		#region SteamAPI_ISteamHTTP_GetHTTPResponseBodyData
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamHTTP_GetHTTPResponseBodyData", CallingConvention = Platform.CC ) ]
 		[ return: MarshalAs( UnmanagedType.I1 ) ]
-		private static extern bool _SteamAPI_ISteamHTTP_GetHTTPResponseBodyData( IntPtr self, HTTPRequestHandle hRequest, ref byte pBodyDataBuffer, uint unBufferSize );
+		internal static extern bool _SteamAPI_ISteamHTTP_GetHTTPResponseBodyData( IntPtr self, HTTPRequestHandle hRequest, ref byte pBodyDataBuffer, uint unBufferSize );
 		#endregion
 		internal bool GetHTTPResponseBodyData( HTTPRequestHandle hRequest, ref byte pBodyDataBuffer, uint unBufferSize )
 		{
@@ -185,7 +185,7 @@ namespace Steamworks
 		#region SteamAPI_ISteamHTTP_GetHTTPStreamingResponseBodyData
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamHTTP_GetHTTPStreamingResponseBodyData", CallingConvention = Platform.CC ) ]
 		[ return: MarshalAs( UnmanagedType.I1 ) ]
-		private static extern bool _SteamAPI_ISteamHTTP_GetHTTPStreamingResponseBodyData( IntPtr self, HTTPRequestHandle hRequest, uint cOffset, ref byte pBodyDataBuffer, uint unBufferSize );
+		internal static extern bool _SteamAPI_ISteamHTTP_GetHTTPStreamingResponseBodyData( IntPtr self, HTTPRequestHandle hRequest, uint cOffset, ref byte pBodyDataBuffer, uint unBufferSize );
 		#endregion
 		internal bool GetHTTPStreamingResponseBodyData( HTTPRequestHandle hRequest, uint cOffset, ref byte pBodyDataBuffer, uint unBufferSize )
 		{
@@ -196,7 +196,7 @@ namespace Steamworks
 		#region SteamAPI_ISteamHTTP_ReleaseHTTPRequest
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamHTTP_ReleaseHTTPRequest", CallingConvention = Platform.CC ) ]
 		[ return: MarshalAs( UnmanagedType.I1 ) ]
-		private static extern bool _SteamAPI_ISteamHTTP_ReleaseHTTPRequest( IntPtr self, HTTPRequestHandle hRequest );
+		internal static extern bool _SteamAPI_ISteamHTTP_ReleaseHTTPRequest( IntPtr self, HTTPRequestHandle hRequest );
 		#endregion
 		internal bool ReleaseHTTPRequest( HTTPRequestHandle hRequest )
 		{
@@ -207,7 +207,7 @@ namespace Steamworks
 		#region SteamAPI_ISteamHTTP_GetHTTPDownloadProgressPct
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamHTTP_GetHTTPDownloadProgressPct", CallingConvention = Platform.CC ) ]
 		[ return: MarshalAs( UnmanagedType.I1 ) ]
-		private static extern bool _SteamAPI_ISteamHTTP_GetHTTPDownloadProgressPct( IntPtr self, HTTPRequestHandle hRequest, ref float pflPercentOut );
+		internal static extern bool _SteamAPI_ISteamHTTP_GetHTTPDownloadProgressPct( IntPtr self, HTTPRequestHandle hRequest, ref float pflPercentOut );
 		#endregion
 		internal bool GetHTTPDownloadProgressPct( HTTPRequestHandle hRequest, ref float pflPercentOut )
 		{
@@ -218,7 +218,7 @@ namespace Steamworks
 		#region SteamAPI_ISteamHTTP_SetHTTPRequestRawPostBody
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamHTTP_SetHTTPRequestRawPostBody", CallingConvention = Platform.CC ) ]
 		[ return: MarshalAs( UnmanagedType.I1 ) ]
-		private static extern bool _SteamAPI_ISteamHTTP_SetHTTPRequestRawPostBody( IntPtr self, HTTPRequestHandle hRequest, IntPtr pchContentType, byte* pubBody, uint unBodyLen );
+		internal static extern bool _SteamAPI_ISteamHTTP_SetHTTPRequestRawPostBody( IntPtr self, HTTPRequestHandle hRequest, IntPtr pchContentType, byte* pubBody, uint unBodyLen );
 		#endregion
 		internal bool SetHTTPRequestRawPostBody( HTTPRequestHandle hRequest, string pchContentType, byte* pubBody, uint unBodyLen )
 		{
@@ -229,7 +229,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamHTTP_CreateCookieContainer
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamHTTP_CreateCookieContainer", CallingConvention = Platform.CC ) ]
-		private static extern HTTPCookieContainerHandle _SteamAPI_ISteamHTTP_CreateCookieContainer( IntPtr self, [ MarshalAs( UnmanagedType.U1 ) ] bool bAllowResponsesToModify );
+		internal static extern HTTPCookieContainerHandle _SteamAPI_ISteamHTTP_CreateCookieContainer( IntPtr self, [ MarshalAs( UnmanagedType.U1 ) ] bool bAllowResponsesToModify );
 		#endregion
 		internal HTTPCookieContainerHandle CreateCookieContainer( [ MarshalAs( UnmanagedType.U1 ) ] bool bAllowResponsesToModify )
 		{
@@ -240,7 +240,7 @@ namespace Steamworks
 		#region SteamAPI_ISteamHTTP_ReleaseCookieContainer
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamHTTP_ReleaseCookieContainer", CallingConvention = Platform.CC ) ]
 		[ return: MarshalAs( UnmanagedType.I1 ) ]
-		private static extern bool _SteamAPI_ISteamHTTP_ReleaseCookieContainer( IntPtr self, HTTPCookieContainerHandle hCookieContainer );
+		internal static extern bool _SteamAPI_ISteamHTTP_ReleaseCookieContainer( IntPtr self, HTTPCookieContainerHandle hCookieContainer );
 		#endregion
 		internal bool ReleaseCookieContainer( HTTPCookieContainerHandle hCookieContainer )
 		{
@@ -251,7 +251,7 @@ namespace Steamworks
 		#region SteamAPI_ISteamHTTP_SetCookie
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamHTTP_SetCookie", CallingConvention = Platform.CC ) ]
 		[ return: MarshalAs( UnmanagedType.I1 ) ]
-		private static extern bool _SteamAPI_ISteamHTTP_SetCookie( IntPtr self, HTTPCookieContainerHandle hCookieContainer, IntPtr pchHost, IntPtr pchUrl, IntPtr pchCookie );
+		internal static extern bool _SteamAPI_ISteamHTTP_SetCookie( IntPtr self, HTTPCookieContainerHandle hCookieContainer, IntPtr pchHost, IntPtr pchUrl, IntPtr pchCookie );
 		#endregion
 		internal bool SetCookie( HTTPCookieContainerHandle hCookieContainer, string pchHost, string pchUrl, string pchCookie )
 		{
@@ -265,7 +265,7 @@ namespace Steamworks
 		#region SteamAPI_ISteamHTTP_SetHTTPRequestCookieContainer
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamHTTP_SetHTTPRequestCookieContainer", CallingConvention = Platform.CC ) ]
 		[ return: MarshalAs( UnmanagedType.I1 ) ]
-		private static extern bool _SteamAPI_ISteamHTTP_SetHTTPRequestCookieContainer( IntPtr self, HTTPRequestHandle hRequest, HTTPCookieContainerHandle hCookieContainer );
+		internal static extern bool _SteamAPI_ISteamHTTP_SetHTTPRequestCookieContainer( IntPtr self, HTTPRequestHandle hRequest, HTTPCookieContainerHandle hCookieContainer );
 		#endregion
 		internal bool SetHTTPRequestCookieContainer( HTTPRequestHandle hRequest, HTTPCookieContainerHandle hCookieContainer )
 		{
@@ -276,7 +276,7 @@ namespace Steamworks
 		#region SteamAPI_ISteamHTTP_SetHTTPRequestUserAgentInfo
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamHTTP_SetHTTPRequestUserAgentInfo", CallingConvention = Platform.CC ) ]
 		[ return: MarshalAs( UnmanagedType.I1 ) ]
-		private static extern bool _SteamAPI_ISteamHTTP_SetHTTPRequestUserAgentInfo( IntPtr self, HTTPRequestHandle hRequest, IntPtr pchUserAgentInfo );
+		internal static extern bool _SteamAPI_ISteamHTTP_SetHTTPRequestUserAgentInfo( IntPtr self, HTTPRequestHandle hRequest, IntPtr pchUserAgentInfo );
 		#endregion
 		internal bool SetHTTPRequestUserAgentInfo( HTTPRequestHandle hRequest, string pchUserAgentInfo )
 		{
@@ -288,7 +288,7 @@ namespace Steamworks
 		#region SteamAPI_ISteamHTTP_SetHTTPRequestRequiresVerifiedCertificate
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamHTTP_SetHTTPRequestRequiresVerifiedCertificate", CallingConvention = Platform.CC ) ]
 		[ return: MarshalAs( UnmanagedType.I1 ) ]
-		private static extern bool _SteamAPI_ISteamHTTP_SetHTTPRequestRequiresVerifiedCertificate( IntPtr self, HTTPRequestHandle hRequest, [ MarshalAs( UnmanagedType.U1 ) ] bool bRequireVerifiedCertificate );
+		internal static extern bool _SteamAPI_ISteamHTTP_SetHTTPRequestRequiresVerifiedCertificate( IntPtr self, HTTPRequestHandle hRequest, [ MarshalAs( UnmanagedType.U1 ) ] bool bRequireVerifiedCertificate );
 		#endregion
 		internal bool SetHTTPRequestRequiresVerifiedCertificate( HTTPRequestHandle hRequest, [ MarshalAs( UnmanagedType.U1 ) ] bool bRequireVerifiedCertificate )
 		{
@@ -299,7 +299,7 @@ namespace Steamworks
 		#region SteamAPI_ISteamHTTP_SetHTTPRequestAbsoluteTimeoutMS
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamHTTP_SetHTTPRequestAbsoluteTimeoutMS", CallingConvention = Platform.CC ) ]
 		[ return: MarshalAs( UnmanagedType.I1 ) ]
-		private static extern bool _SteamAPI_ISteamHTTP_SetHTTPRequestAbsoluteTimeoutMS( IntPtr self, HTTPRequestHandle hRequest, uint unMilliseconds );
+		internal static extern bool _SteamAPI_ISteamHTTP_SetHTTPRequestAbsoluteTimeoutMS( IntPtr self, HTTPRequestHandle hRequest, uint unMilliseconds );
 		#endregion
 		internal bool SetHTTPRequestAbsoluteTimeoutMS( HTTPRequestHandle hRequest, uint unMilliseconds )
 		{
@@ -310,7 +310,7 @@ namespace Steamworks
 		#region SteamAPI_ISteamHTTP_GetHTTPRequestWasTimedOut
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamHTTP_GetHTTPRequestWasTimedOut", CallingConvention = Platform.CC ) ]
 		[ return: MarshalAs( UnmanagedType.I1 ) ]
-		private static extern bool _SteamAPI_ISteamHTTP_GetHTTPRequestWasTimedOut( IntPtr self, HTTPRequestHandle hRequest, [ MarshalAs( UnmanagedType.U1 ) ] ref bool pbWasTimedOut );
+		internal static extern bool _SteamAPI_ISteamHTTP_GetHTTPRequestWasTimedOut( IntPtr self, HTTPRequestHandle hRequest, [ MarshalAs( UnmanagedType.U1 ) ] ref bool pbWasTimedOut );
 		#endregion
 		internal bool GetHTTPRequestWasTimedOut( HTTPRequestHandle hRequest, [ MarshalAs( UnmanagedType.U1 ) ] ref bool pbWasTimedOut )
 		{

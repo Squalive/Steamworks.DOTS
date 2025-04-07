@@ -29,7 +29,7 @@ namespace Steamworks
 		}
 		#region SteamAPI_ISteamUser_GetHSteamUser
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamUser_GetHSteamUser", CallingConvention = Platform.CC ) ]
-		private static extern HSteamUser _SteamAPI_ISteamUser_GetHSteamUser( IntPtr self );
+		internal static extern HSteamUser _SteamAPI_ISteamUser_GetHSteamUser( IntPtr self );
 		#endregion
 		internal HSteamUser GetHSteamUser()
 		{
@@ -40,7 +40,7 @@ namespace Steamworks
 		#region SteamAPI_ISteamUser_BLoggedOn
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamUser_BLoggedOn", CallingConvention = Platform.CC ) ]
 		[ return: MarshalAs( UnmanagedType.I1 ) ]
-		private static extern bool _SteamAPI_ISteamUser_BLoggedOn( IntPtr self );
+		internal static extern bool _SteamAPI_ISteamUser_BLoggedOn( IntPtr self );
 		#endregion
 		internal bool BLoggedOn()
 		{
@@ -50,7 +50,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamUser_GetSteamID
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamUser_GetSteamID", CallingConvention = Platform.CC ) ]
-		private static extern SteamId _SteamAPI_ISteamUser_GetSteamID( IntPtr self );
+		internal static extern SteamId _SteamAPI_ISteamUser_GetSteamID( IntPtr self );
 		#endregion
 		internal SteamId GetSteamID()
 		{
@@ -60,7 +60,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamUser_InitiateGameConnection_DEPRECATED
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamUser_InitiateGameConnection_DEPRECATED", CallingConvention = Platform.CC ) ]
-		private static extern int _SteamAPI_ISteamUser_InitiateGameConnection_DEPRECATED( IntPtr self, IntPtr pAuthBlob, int cbMaxAuthBlob, SteamId steamIDGameServer, uint unIPServer, ushort usPortServer, [ MarshalAs( UnmanagedType.U1 ) ] bool bSecure );
+		internal static extern int _SteamAPI_ISteamUser_InitiateGameConnection_DEPRECATED( IntPtr self, IntPtr pAuthBlob, int cbMaxAuthBlob, SteamId steamIDGameServer, uint unIPServer, ushort usPortServer, [ MarshalAs( UnmanagedType.U1 ) ] bool bSecure );
 		#endregion
 		internal int InitiateGameConnection_DEPRECATED( IntPtr pAuthBlob, int cbMaxAuthBlob, SteamId steamIDGameServer, uint unIPServer, ushort usPortServer, [ MarshalAs( UnmanagedType.U1 ) ] bool bSecure )
 		{
@@ -70,7 +70,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamUser_TerminateGameConnection_DEPRECATED
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamUser_TerminateGameConnection_DEPRECATED", CallingConvention = Platform.CC ) ]
-		private static extern void _SteamAPI_ISteamUser_TerminateGameConnection_DEPRECATED( IntPtr self, uint unIPServer, ushort usPortServer );
+		internal static extern void _SteamAPI_ISteamUser_TerminateGameConnection_DEPRECATED( IntPtr self, uint unIPServer, ushort usPortServer );
 		#endregion
 		internal void TerminateGameConnection_DEPRECATED( uint unIPServer, ushort usPortServer )
 		{
@@ -79,7 +79,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamUser_TrackAppUsageEvent
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamUser_TrackAppUsageEvent", CallingConvention = Platform.CC ) ]
-		private static extern void _SteamAPI_ISteamUser_TrackAppUsageEvent( IntPtr self, GameId gameID, int eAppUsageEvent, IntPtr pchExtraInfo );
+		internal static extern void _SteamAPI_ISteamUser_TrackAppUsageEvent( IntPtr self, GameId gameID, int eAppUsageEvent, IntPtr pchExtraInfo );
 		#endregion
 		internal void TrackAppUsageEvent( GameId gameID, int eAppUsageEvent, string pchExtraInfo )
 		{
@@ -90,7 +90,7 @@ namespace Steamworks
 		#region SteamAPI_ISteamUser_GetUserDataFolder
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamUser_GetUserDataFolder", CallingConvention = Platform.CC ) ]
 		[ return: MarshalAs( UnmanagedType.I1 ) ]
-		private static extern bool _SteamAPI_ISteamUser_GetUserDataFolder( IntPtr self, IntPtr pchBuffer, int cubBuffer );
+		internal static extern bool _SteamAPI_ISteamUser_GetUserDataFolder( IntPtr self, IntPtr pchBuffer, int cubBuffer );
 		#endregion
 		internal bool GetUserDataFolder( out string pchBuffer, int cubBuffer )
 		{
@@ -102,7 +102,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamUser_StartVoiceRecording
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamUser_StartVoiceRecording", CallingConvention = Platform.CC ) ]
-		private static extern void _SteamAPI_ISteamUser_StartVoiceRecording( IntPtr self );
+		internal static extern void _SteamAPI_ISteamUser_StartVoiceRecording( IntPtr self );
 		#endregion
 		internal void StartVoiceRecording()
 		{
@@ -111,7 +111,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamUser_StopVoiceRecording
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamUser_StopVoiceRecording", CallingConvention = Platform.CC ) ]
-		private static extern void _SteamAPI_ISteamUser_StopVoiceRecording( IntPtr self );
+		internal static extern void _SteamAPI_ISteamUser_StopVoiceRecording( IntPtr self );
 		#endregion
 		internal void StopVoiceRecording()
 		{
@@ -120,7 +120,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamUser_GetAvailableVoice
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamUser_GetAvailableVoice", CallingConvention = Platform.CC ) ]
-		private static extern EVoiceResult _SteamAPI_ISteamUser_GetAvailableVoice( IntPtr self, ref uint pcbCompressed, ref uint pcbUncompressed_Deprecated, uint nUncompressedVoiceDesiredSampleRate_Deprecated );
+		internal static extern EVoiceResult _SteamAPI_ISteamUser_GetAvailableVoice( IntPtr self, ref uint pcbCompressed, ref uint pcbUncompressed_Deprecated, uint nUncompressedVoiceDesiredSampleRate_Deprecated );
 		#endregion
 		internal EVoiceResult GetAvailableVoice( ref uint pcbCompressed, ref uint pcbUncompressed_Deprecated, uint nUncompressedVoiceDesiredSampleRate_Deprecated )
 		{
@@ -130,7 +130,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamUser_GetVoice
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamUser_GetVoice", CallingConvention = Platform.CC ) ]
-		private static extern EVoiceResult _SteamAPI_ISteamUser_GetVoice( IntPtr self, [ MarshalAs( UnmanagedType.U1 ) ] bool bWantCompressed, IntPtr pDestBuffer, uint cbDestBufferSize, ref uint nBytesWritten, [ MarshalAs( UnmanagedType.U1 ) ] bool bWantUncompressed_Deprecated, IntPtr pUncompressedDestBuffer_Deprecated, uint cbUncompressedDestBufferSize_Deprecated, ref uint nUncompressBytesWritten_Deprecated, uint nUncompressedVoiceDesiredSampleRate_Deprecated );
+		internal static extern EVoiceResult _SteamAPI_ISteamUser_GetVoice( IntPtr self, [ MarshalAs( UnmanagedType.U1 ) ] bool bWantCompressed, IntPtr pDestBuffer, uint cbDestBufferSize, ref uint nBytesWritten, [ MarshalAs( UnmanagedType.U1 ) ] bool bWantUncompressed_Deprecated, IntPtr pUncompressedDestBuffer_Deprecated, uint cbUncompressedDestBufferSize_Deprecated, ref uint nUncompressBytesWritten_Deprecated, uint nUncompressedVoiceDesiredSampleRate_Deprecated );
 		#endregion
 		internal EVoiceResult GetVoice( [ MarshalAs( UnmanagedType.U1 ) ] bool bWantCompressed, IntPtr pDestBuffer, uint cbDestBufferSize, ref uint nBytesWritten, [ MarshalAs( UnmanagedType.U1 ) ] bool bWantUncompressed_Deprecated, IntPtr pUncompressedDestBuffer_Deprecated, uint cbUncompressedDestBufferSize_Deprecated, ref uint nUncompressBytesWritten_Deprecated, uint nUncompressedVoiceDesiredSampleRate_Deprecated )
 		{
@@ -140,7 +140,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamUser_DecompressVoice
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamUser_DecompressVoice", CallingConvention = Platform.CC ) ]
-		private static extern EVoiceResult _SteamAPI_ISteamUser_DecompressVoice( IntPtr self, IntPtr pCompressed, uint cbCompressed, IntPtr pDestBuffer, uint cbDestBufferSize, ref uint nBytesWritten, uint nDesiredSampleRate );
+		internal static extern EVoiceResult _SteamAPI_ISteamUser_DecompressVoice( IntPtr self, IntPtr pCompressed, uint cbCompressed, IntPtr pDestBuffer, uint cbDestBufferSize, ref uint nBytesWritten, uint nDesiredSampleRate );
 		#endregion
 		internal EVoiceResult DecompressVoice( IntPtr pCompressed, uint cbCompressed, IntPtr pDestBuffer, uint cbDestBufferSize, ref uint nBytesWritten, uint nDesiredSampleRate )
 		{
@@ -150,7 +150,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamUser_GetVoiceOptimalSampleRate
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamUser_GetVoiceOptimalSampleRate", CallingConvention = Platform.CC ) ]
-		private static extern uint _SteamAPI_ISteamUser_GetVoiceOptimalSampleRate( IntPtr self );
+		internal static extern uint _SteamAPI_ISteamUser_GetVoiceOptimalSampleRate( IntPtr self );
 		#endregion
 		internal uint GetVoiceOptimalSampleRate()
 		{
@@ -160,7 +160,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamUser_GetAuthSessionTicket
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamUser_GetAuthSessionTicket", CallingConvention = Platform.CC ) ]
-		private static extern HAuthTicket _SteamAPI_ISteamUser_GetAuthSessionTicket( IntPtr self, IntPtr pTicket, int cbMaxTicket, ref uint pcbTicket, ref SteamNetworkingIdentity pSteamNetworkingIdentity );
+		internal static extern HAuthTicket _SteamAPI_ISteamUser_GetAuthSessionTicket( IntPtr self, IntPtr pTicket, int cbMaxTicket, ref uint pcbTicket, ref SteamNetworkingIdentity pSteamNetworkingIdentity );
 		#endregion
 		internal HAuthTicket GetAuthSessionTicket( IntPtr pTicket, int cbMaxTicket, ref uint pcbTicket, ref SteamNetworkingIdentity pSteamNetworkingIdentity )
 		{
@@ -170,7 +170,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamUser_GetAuthTicketForWebApi
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamUser_GetAuthTicketForWebApi", CallingConvention = Platform.CC ) ]
-		private static extern HAuthTicket _SteamAPI_ISteamUser_GetAuthTicketForWebApi( IntPtr self, IntPtr pchIdentity );
+		internal static extern HAuthTicket _SteamAPI_ISteamUser_GetAuthTicketForWebApi( IntPtr self, IntPtr pchIdentity );
 		#endregion
 		internal HAuthTicket GetAuthTicketForWebApi( string pchIdentity )
 		{
@@ -181,7 +181,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamUser_BeginAuthSession
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamUser_BeginAuthSession", CallingConvention = Platform.CC ) ]
-		private static extern EBeginAuthSessionResult _SteamAPI_ISteamUser_BeginAuthSession( IntPtr self, IntPtr pAuthTicket, int cbAuthTicket, SteamId steamID );
+		internal static extern EBeginAuthSessionResult _SteamAPI_ISteamUser_BeginAuthSession( IntPtr self, IntPtr pAuthTicket, int cbAuthTicket, SteamId steamID );
 		#endregion
 		internal EBeginAuthSessionResult BeginAuthSession( IntPtr pAuthTicket, int cbAuthTicket, SteamId steamID )
 		{
@@ -191,7 +191,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamUser_EndAuthSession
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamUser_EndAuthSession", CallingConvention = Platform.CC ) ]
-		private static extern void _SteamAPI_ISteamUser_EndAuthSession( IntPtr self, SteamId steamID );
+		internal static extern void _SteamAPI_ISteamUser_EndAuthSession( IntPtr self, SteamId steamID );
 		#endregion
 		internal void EndAuthSession( SteamId steamID )
 		{
@@ -200,7 +200,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamUser_CancelAuthTicket
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamUser_CancelAuthTicket", CallingConvention = Platform.CC ) ]
-		private static extern void _SteamAPI_ISteamUser_CancelAuthTicket( IntPtr self, HAuthTicket hAuthTicket );
+		internal static extern void _SteamAPI_ISteamUser_CancelAuthTicket( IntPtr self, HAuthTicket hAuthTicket );
 		#endregion
 		internal void CancelAuthTicket( HAuthTicket hAuthTicket )
 		{
@@ -209,7 +209,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamUser_UserHasLicenseForApp
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamUser_UserHasLicenseForApp", CallingConvention = Platform.CC ) ]
-		private static extern EUserHasLicenseForAppResult _SteamAPI_ISteamUser_UserHasLicenseForApp( IntPtr self, SteamId steamID, AppId_t appID );
+		internal static extern EUserHasLicenseForAppResult _SteamAPI_ISteamUser_UserHasLicenseForApp( IntPtr self, SteamId steamID, AppId_t appID );
 		#endregion
 		internal EUserHasLicenseForAppResult UserHasLicenseForApp( SteamId steamID, AppId_t appID )
 		{
@@ -220,7 +220,7 @@ namespace Steamworks
 		#region SteamAPI_ISteamUser_BIsBehindNAT
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamUser_BIsBehindNAT", CallingConvention = Platform.CC ) ]
 		[ return: MarshalAs( UnmanagedType.I1 ) ]
-		private static extern bool _SteamAPI_ISteamUser_BIsBehindNAT( IntPtr self );
+		internal static extern bool _SteamAPI_ISteamUser_BIsBehindNAT( IntPtr self );
 		#endregion
 		internal bool BIsBehindNAT()
 		{
@@ -230,7 +230,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamUser_AdvertiseGame
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamUser_AdvertiseGame", CallingConvention = Platform.CC ) ]
-		private static extern void _SteamAPI_ISteamUser_AdvertiseGame( IntPtr self, SteamId steamIDGameServer, uint unIPServer, ushort usPortServer );
+		internal static extern void _SteamAPI_ISteamUser_AdvertiseGame( IntPtr self, SteamId steamIDGameServer, uint unIPServer, ushort usPortServer );
 		#endregion
 		internal void AdvertiseGame( SteamId steamIDGameServer, uint unIPServer, ushort usPortServer )
 		{
@@ -239,7 +239,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamUser_RequestEncryptedAppTicket
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamUser_RequestEncryptedAppTicket", CallingConvention = Platform.CC ) ]
-		private static extern SteamAPICall_t _SteamAPI_ISteamUser_RequestEncryptedAppTicket( IntPtr self, IntPtr pDataToInclude, int cbDataToInclude );
+		internal static extern SteamAPICall_t _SteamAPI_ISteamUser_RequestEncryptedAppTicket( IntPtr self, IntPtr pDataToInclude, int cbDataToInclude );
 		#endregion
 		internal SteamAPICall_t RequestEncryptedAppTicket( IntPtr pDataToInclude, int cbDataToInclude )
 		{
@@ -250,7 +250,7 @@ namespace Steamworks
 		#region SteamAPI_ISteamUser_GetEncryptedAppTicket
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamUser_GetEncryptedAppTicket", CallingConvention = Platform.CC ) ]
 		[ return: MarshalAs( UnmanagedType.I1 ) ]
-		private static extern bool _SteamAPI_ISteamUser_GetEncryptedAppTicket( IntPtr self, IntPtr pTicket, int cbMaxTicket, ref uint pcbTicket );
+		internal static extern bool _SteamAPI_ISteamUser_GetEncryptedAppTicket( IntPtr self, IntPtr pTicket, int cbMaxTicket, ref uint pcbTicket );
 		#endregion
 		internal bool GetEncryptedAppTicket( IntPtr pTicket, int cbMaxTicket, ref uint pcbTicket )
 		{
@@ -260,7 +260,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamUser_GetGameBadgeLevel
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamUser_GetGameBadgeLevel", CallingConvention = Platform.CC ) ]
-		private static extern int _SteamAPI_ISteamUser_GetGameBadgeLevel( IntPtr self, int nSeries, [ MarshalAs( UnmanagedType.U1 ) ] bool bFoil );
+		internal static extern int _SteamAPI_ISteamUser_GetGameBadgeLevel( IntPtr self, int nSeries, [ MarshalAs( UnmanagedType.U1 ) ] bool bFoil );
 		#endregion
 		internal int GetGameBadgeLevel( int nSeries, [ MarshalAs( UnmanagedType.U1 ) ] bool bFoil )
 		{
@@ -270,7 +270,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamUser_GetPlayerSteamLevel
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamUser_GetPlayerSteamLevel", CallingConvention = Platform.CC ) ]
-		private static extern int _SteamAPI_ISteamUser_GetPlayerSteamLevel( IntPtr self );
+		internal static extern int _SteamAPI_ISteamUser_GetPlayerSteamLevel( IntPtr self );
 		#endregion
 		internal int GetPlayerSteamLevel()
 		{
@@ -280,7 +280,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamUser_RequestStoreAuthURL
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamUser_RequestStoreAuthURL", CallingConvention = Platform.CC ) ]
-		private static extern SteamAPICall_t _SteamAPI_ISteamUser_RequestStoreAuthURL( IntPtr self, IntPtr pchRedirectURL );
+		internal static extern SteamAPICall_t _SteamAPI_ISteamUser_RequestStoreAuthURL( IntPtr self, IntPtr pchRedirectURL );
 		#endregion
 		internal SteamAPICall_t RequestStoreAuthURL( string pchRedirectURL )
 		{
@@ -292,7 +292,7 @@ namespace Steamworks
 		#region SteamAPI_ISteamUser_BIsPhoneVerified
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamUser_BIsPhoneVerified", CallingConvention = Platform.CC ) ]
 		[ return: MarshalAs( UnmanagedType.I1 ) ]
-		private static extern bool _SteamAPI_ISteamUser_BIsPhoneVerified( IntPtr self );
+		internal static extern bool _SteamAPI_ISteamUser_BIsPhoneVerified( IntPtr self );
 		#endregion
 		internal bool BIsPhoneVerified()
 		{
@@ -303,7 +303,7 @@ namespace Steamworks
 		#region SteamAPI_ISteamUser_BIsTwoFactorEnabled
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamUser_BIsTwoFactorEnabled", CallingConvention = Platform.CC ) ]
 		[ return: MarshalAs( UnmanagedType.I1 ) ]
-		private static extern bool _SteamAPI_ISteamUser_BIsTwoFactorEnabled( IntPtr self );
+		internal static extern bool _SteamAPI_ISteamUser_BIsTwoFactorEnabled( IntPtr self );
 		#endregion
 		internal bool BIsTwoFactorEnabled()
 		{
@@ -314,7 +314,7 @@ namespace Steamworks
 		#region SteamAPI_ISteamUser_BIsPhoneIdentifying
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamUser_BIsPhoneIdentifying", CallingConvention = Platform.CC ) ]
 		[ return: MarshalAs( UnmanagedType.I1 ) ]
-		private static extern bool _SteamAPI_ISteamUser_BIsPhoneIdentifying( IntPtr self );
+		internal static extern bool _SteamAPI_ISteamUser_BIsPhoneIdentifying( IntPtr self );
 		#endregion
 		internal bool BIsPhoneIdentifying()
 		{
@@ -325,7 +325,7 @@ namespace Steamworks
 		#region SteamAPI_ISteamUser_BIsPhoneRequiringVerification
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamUser_BIsPhoneRequiringVerification", CallingConvention = Platform.CC ) ]
 		[ return: MarshalAs( UnmanagedType.I1 ) ]
-		private static extern bool _SteamAPI_ISteamUser_BIsPhoneRequiringVerification( IntPtr self );
+		internal static extern bool _SteamAPI_ISteamUser_BIsPhoneRequiringVerification( IntPtr self );
 		#endregion
 		internal bool BIsPhoneRequiringVerification()
 		{
@@ -335,7 +335,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamUser_GetMarketEligibility
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamUser_GetMarketEligibility", CallingConvention = Platform.CC ) ]
-		private static extern SteamAPICall_t _SteamAPI_ISteamUser_GetMarketEligibility( IntPtr self );
+		internal static extern SteamAPICall_t _SteamAPI_ISteamUser_GetMarketEligibility( IntPtr self );
 		#endregion
 		internal SteamAPICall_t GetMarketEligibility()
 		{
@@ -345,7 +345,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamUser_GetDurationControl
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamUser_GetDurationControl", CallingConvention = Platform.CC ) ]
-		private static extern SteamAPICall_t _SteamAPI_ISteamUser_GetDurationControl( IntPtr self );
+		internal static extern SteamAPICall_t _SteamAPI_ISteamUser_GetDurationControl( IntPtr self );
 		#endregion
 		internal SteamAPICall_t GetDurationControl()
 		{
@@ -356,7 +356,7 @@ namespace Steamworks
 		#region SteamAPI_ISteamUser_BSetDurationControlOnlineState
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamUser_BSetDurationControlOnlineState", CallingConvention = Platform.CC ) ]
 		[ return: MarshalAs( UnmanagedType.I1 ) ]
-		private static extern bool _SteamAPI_ISteamUser_BSetDurationControlOnlineState( IntPtr self, EDurationControlOnlineState eNewState );
+		internal static extern bool _SteamAPI_ISteamUser_BSetDurationControlOnlineState( IntPtr self, EDurationControlOnlineState eNewState );
 		#endregion
 		internal bool BSetDurationControlOnlineState( EDurationControlOnlineState eNewState )
 		{

@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Runtime.InteropServices;
+using Unity.Collections;
+using Unity.Collections.LowLevel.Unsafe;
 
 namespace Steamworks
 {
@@ -28,6 +30,25 @@ namespace Steamworks
             }
         }
 
+        public unsafe Utf8StringToNative( byte* src, int length )
+        {
+            var mem = Marshal.AllocHGlobal( length + 1 );
+            UnsafeUtility.MemCpy( ( void* ) mem, src, length );
+            ( ( byte* ) mem )[ length ] = 0;
+            Pointer = mem;
+        }
+
+        public static unsafe Utf8StringToNative CreateFromUnsafeString<T>( in T str ) where T : unmanaged, IUTF8Bytes, INativeList<byte>
+        {
+            if ( str.Length == 0 )
+            {
+                return new Utf8StringToNative { Pointer = IntPtr.Zero };
+            }
+
+            var strPtr = str.GetUnsafePtr();
+            return new Utf8StringToNative( strPtr, str.Length );
+        }
+
         public void Dispose()
         {
             if ( Pointer != IntPtr.Zero )
@@ -35,6 +56,11 @@ namespace Steamworks
                 Marshal.FreeHGlobal( Pointer );
                 Pointer = IntPtr.Zero;
             }
+        }
+
+        public static implicit operator IntPtr( Utf8StringToNative native )
+        {
+            return native.Pointer;
         }
     }
     

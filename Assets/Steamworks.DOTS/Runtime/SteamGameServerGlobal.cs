@@ -8,7 +8,7 @@ namespace Steamworks
 {
     public static unsafe class SteamGameServerGlobal
     {
-        internal static class Native
+        private static class Native
         {
             [ DllImport( Platform.LibraryName, EntryPoint = "SteamInternal_GameServer_Init_V2", CallingConvention = Platform.CC ) ]
             public static extern ESteamAPIInitResult SteamInternal_GameServer_Init_V2( 
@@ -54,12 +54,12 @@ namespace Steamworks
         ///
         /// <para>On success k_ESteamAPIInitResult_OK is returned.  Otherwise, if pOutErrMsg is non-NULL,
         /// it will receive a non-localized message that explains the reason for the failure</para>
-        public static ESteamAPIInitResult Init( AppId_t appId, SteamServerInit_t init, out string outSteamErrMsg )
+        internal static ESteamAPIInitResult Init( AppId_t appId, SteamGameServerInit init, out string outSteamErrMsg )
         {
             uint ipaddress = 0; // Any Port
 
-            if ( init.IpAddress != null )
-                ipaddress = init.IpAddress.IpToInt32();
+            if ( init.IpUint != 0 )
+                ipaddress = init.IpUint;
 
             Environment.SetEnvironmentVariable( "SteamAppId", appId.ToString() );
             Environment.SetEnvironmentVariable( "SteamGameId", appId.ToString() );
@@ -76,7 +76,7 @@ namespace Steamworks
                 ISteamNetworkingSockets.Version,
                 ISteamUGC.Version
             ) );
-            using var hPchVersionString = new Utf8StringToNative( init.VersionString );
+            using var hPchVersionString = Utf8StringToNative.CreateFromUnsafeString( init.VersionString );
             var secure = init.Secure ? EServerMode.AuthenticationAndSecure : EServerMode.Authentication;
             var errorMsgPtr = UnsafeUtility.Malloc( Defines.k_cchMaxSteamErrMsg, 16, Allocator.Temp );
             var result = Native.SteamInternal_GameServer_Init_V2( ipaddress, init.GamePort, init.QueryPort, secure, hPchVersionString, hPszInternalCheckInterfaceVersions, ( IntPtr ) errorMsgPtr );
@@ -87,7 +87,13 @@ namespace Steamworks
             {
                 if ( CSteamGameServerAPIContext.Init() )
                 {
-                    
+                    SteamGameServerDispatch.Init();
+                    var steamServer = CSteamGameServerAPIContext.SteamGameServer;
+                    using var modDir = Utf8StringToNative.CreateFromUnsafeString( init.ModDir );
+                    ISteamGameServer._SteamAPI_ISteamGameServer_SetModDir( steamServer, modDir );
+                    using var gameDesc = Utf8StringToNative.CreateFromUnsafeString( init.GameDescription );
+                    ISteamGameServer._SteamAPI_ISteamGameServer_SetGameDescription( steamServer, gameDesc );
+                    ISteamGameServer._SteamAPI_ISteamGameServer_SetDedicatedServer( steamServer, init.DedicatedServer );
                 }
                 else
                 {
@@ -99,10 +105,16 @@ namespace Steamworks
             return result;
         }
 
-        public static void Shutdown()
+        internal static void Shutdown()
         {
-            Native.SteamGameServer_Shutdown();
+            SteamGameServerDispatch.Shutdown();
             CSteamGameServerAPIContext.Shutdown();
+            Native.SteamGameServer_Shutdown();
+        }
+
+        public static void Frame()
+        {
+            SteamGameServerDispatch.Frame();
         }
     }
 }

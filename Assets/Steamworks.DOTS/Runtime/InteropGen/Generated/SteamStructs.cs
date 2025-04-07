@@ -556,7 +556,7 @@ namespace Steamworks.Data
 	{
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<SteamServersConnected_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<SteamServersConnected_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.SteamServersConnected_t;
 		#endregion
@@ -570,7 +570,7 @@ namespace Steamworks.Data
 		public bool StillRetrying; // m_bStillRetrying bool
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<SteamServerConnectFailure_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<SteamServerConnectFailure_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.SteamServerConnectFailure_t;
 		#endregion
@@ -582,7 +582,7 @@ namespace Steamworks.Data
 		public EResult Result; // m_eResult EResult
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<SteamServersDisconnected_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<SteamServersDisconnected_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.SteamServersDisconnected_t;
 		#endregion
@@ -598,7 +598,7 @@ namespace Steamworks.Data
 		public uint Reason; // m_uReason uint32
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<ClientGameServerDeny_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<ClientGameServerDeny_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.ClientGameServerDeny_t;
 		#endregion
@@ -610,7 +610,7 @@ namespace Steamworks.Data
 		public byte FailureType; // m_eFailureType uint8
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<IPCFailure_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<IPCFailure_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.IPCFailure_t;
 		#endregion
@@ -626,7 +626,7 @@ namespace Steamworks.Data
 	{
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<LicensesUpdated_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<LicensesUpdated_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.LicensesUpdated_t;
 		#endregion
@@ -640,7 +640,7 @@ namespace Steamworks.Data
 		public ulong OwnerSteamID; // m_OwnerSteamID CSteamID
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<ValidateAuthTicketResponse_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<ValidateAuthTicketResponse_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.ValidateAuthTicketResponse_t;
 		#endregion
@@ -654,7 +654,7 @@ namespace Steamworks.Data
 		public byte Authorized; // m_bAuthorized uint8
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<MicroTxnAuthorizationResponse_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<MicroTxnAuthorizationResponse_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.MicroTxnAuthorizationResponse_t;
 		#endregion
@@ -666,7 +666,7 @@ namespace Steamworks.Data
 		public EResult Result; // m_eResult EResult
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<EncryptedAppTicketResponse_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<EncryptedAppTicketResponse_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.EncryptedAppTicketResponse_t;
 		#endregion
@@ -679,7 +679,7 @@ namespace Steamworks.Data
 		public EResult Result; // m_eResult EResult
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<GetAuthSessionTicketResponse_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<GetAuthSessionTicketResponse_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.GetAuthSessionTicketResponse_t;
 		#endregion
@@ -691,7 +691,7 @@ namespace Steamworks.Data
 		public fixed byte URL[ 256 ]; // m_szURL char [256]
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<GameWebCallback_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<GameWebCallback_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.GameWebCallback_t;
 		#endregion
@@ -703,7 +703,7 @@ namespace Steamworks.Data
 		public fixed byte URL[ 512 ]; // m_szURL char [512]
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<StoreAuthURLResponse_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<StoreAuthURLResponse_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.StoreAuthURLResponse_t;
 		#endregion
@@ -720,7 +720,7 @@ namespace Steamworks.Data
 		public int CdayNewDeviceCooldown; // m_cdayNewDeviceCooldown int
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<MarketEligibilityResponse_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<MarketEligibilityResponse_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.MarketEligibilityResponse_t;
 		#endregion
@@ -740,7 +740,7 @@ namespace Steamworks.Data
 		public int CsecsRemaining; // m_csecsRemaining int32
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<DurationControl_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<DurationControl_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.DurationControl_t;
 		#endregion
@@ -755,7 +755,7 @@ namespace Steamworks.Data
 		public fixed byte GubTicket[ 2560 ]; // m_rgubTicket uint8 [2560]
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<GetTicketForWebApiResponse_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<GetTicketForWebApiResponse_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.GetTicketForWebApiResponse_t;
 		#endregion
@@ -768,7 +768,7 @@ namespace Steamworks.Data
 		public int ChangeFlags; // m_nChangeFlags int
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<PersonaStateChange_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<PersonaStateChange_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.PersonaStateChange_t;
 		#endregion
@@ -784,7 +784,7 @@ namespace Steamworks.Data
 		public uint DwOverlayPID; // m_dwOverlayPID uint32
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<GameOverlayActivated_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<GameOverlayActivated_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.GameOverlayActivated_t;
 		#endregion
@@ -797,7 +797,7 @@ namespace Steamworks.Data
 		public fixed byte Password[ 64 ]; // m_rgchPassword char [64]
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<GameServerChangeRequested_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<GameServerChangeRequested_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.GameServerChangeRequested_t;
 		#endregion
@@ -810,7 +810,7 @@ namespace Steamworks.Data
 		public ulong SteamIDFriend; // m_steamIDFriend CSteamID
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<GameLobbyJoinRequested_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<GameLobbyJoinRequested_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.GameLobbyJoinRequested_t;
 		#endregion
@@ -825,7 +825,7 @@ namespace Steamworks.Data
 		public int Tall; // m_iTall int
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<AvatarImageLoaded_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<AvatarImageLoaded_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.AvatarImageLoaded_t;
 		#endregion
@@ -839,7 +839,7 @@ namespace Steamworks.Data
 		public byte Success; // m_bSuccess uint8
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<ClanOfficerListResponse_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<ClanOfficerListResponse_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.ClanOfficerListResponse_t;
 		#endregion
@@ -852,7 +852,7 @@ namespace Steamworks.Data
 		public uint AppID; // m_nAppID AppId_t
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<FriendRichPresenceUpdate_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<FriendRichPresenceUpdate_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.FriendRichPresenceUpdate_t;
 		#endregion
@@ -865,7 +865,7 @@ namespace Steamworks.Data
 		public fixed byte Connect[ 256 ]; // m_rgchConnect char [256]
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<GameRichPresenceJoinRequested_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<GameRichPresenceJoinRequested_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.GameRichPresenceJoinRequested_t;
 		#endregion
@@ -879,7 +879,7 @@ namespace Steamworks.Data
 		public int MessageID; // m_iMessageID int
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<GameConnectedClanChatMsg_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<GameConnectedClanChatMsg_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.GameConnectedClanChatMsg_t;
 		#endregion
@@ -892,7 +892,7 @@ namespace Steamworks.Data
 		public ulong SteamIDUser; // m_steamIDUser CSteamID
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<GameConnectedChatJoin_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<GameConnectedChatJoin_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.GameConnectedChatJoin_t;
 		#endregion
@@ -909,7 +909,7 @@ namespace Steamworks.Data
 		public bool Dropped; // m_bDropped bool
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<GameConnectedChatLeave_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<GameConnectedChatLeave_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.GameConnectedChatLeave_t;
 		#endregion
@@ -922,7 +922,7 @@ namespace Steamworks.Data
 		public bool Success; // m_bSuccess bool
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<DownloadClanActivityCountsResult_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<DownloadClanActivityCountsResult_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.DownloadClanActivityCountsResult_t;
 		#endregion
@@ -935,7 +935,7 @@ namespace Steamworks.Data
 		public EChatRoomEnterResponse ChatRoomEnterResponse; // m_eChatRoomEnterResponse EChatRoomEnterResponse
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<JoinClanChatRoomCompletionResult_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<JoinClanChatRoomCompletionResult_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.JoinClanChatRoomCompletionResult_t;
 		#endregion
@@ -948,7 +948,7 @@ namespace Steamworks.Data
 		public int MessageID; // m_iMessageID int
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<GameConnectedFriendChatMsg_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<GameConnectedFriendChatMsg_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.GameConnectedFriendChatMsg_t;
 		#endregion
@@ -962,7 +962,7 @@ namespace Steamworks.Data
 		public int Count; // m_nCount int
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<FriendsGetFollowerCount_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<FriendsGetFollowerCount_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.FriendsGetFollowerCount_t;
 		#endregion
@@ -977,7 +977,7 @@ namespace Steamworks.Data
 		public bool IsFollowing; // m_bIsFollowing bool
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<FriendsIsFollowing_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<FriendsIsFollowing_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.FriendsIsFollowing_t;
 		#endregion
@@ -992,7 +992,7 @@ namespace Steamworks.Data
 		public int TotalResultCount; // m_nTotalResultCount int32
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<FriendsEnumerateFollowingList_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<FriendsEnumerateFollowingList_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.FriendsEnumerateFollowingList_t;
 		#endregion
@@ -1003,7 +1003,7 @@ namespace Steamworks.Data
 	{
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<UnreadChatMessagesChanged_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<UnreadChatMessagesChanged_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.UnreadChatMessagesChanged_t;
 		#endregion
@@ -1015,7 +1015,7 @@ namespace Steamworks.Data
 		public fixed byte RgchURI[ 1024 ]; // rgchURI char [1024]
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<OverlayBrowserProtocolNavigation_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<OverlayBrowserProtocolNavigation_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.OverlayBrowserProtocolNavigation_t;
 		#endregion
@@ -1027,7 +1027,7 @@ namespace Steamworks.Data
 		public ulong SteamID; // m_steamID CSteamID
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<EquippedProfileItemsChanged_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<EquippedProfileItemsChanged_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.EquippedProfileItemsChanged_t;
 		#endregion
@@ -1052,7 +1052,7 @@ namespace Steamworks.Data
 		public bool FromCache; // m_bFromCache bool
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<EquippedProfileItems_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<EquippedProfileItems_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.EquippedProfileItems_t;
 		#endregion
@@ -1063,7 +1063,7 @@ namespace Steamworks.Data
 	{
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<IPCountry_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<IPCountry_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.IPCountry_t;
 		#endregion
@@ -1075,7 +1075,7 @@ namespace Steamworks.Data
 		public byte MinutesBatteryLeft; // m_nMinutesBatteryLeft uint8
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<LowBatteryPower_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<LowBatteryPower_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.LowBatteryPower_t;
 		#endregion
@@ -1089,7 +1089,7 @@ namespace Steamworks.Data
 		public uint ParamCount; // m_cubParam uint32
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<SteamAPICallCompleted_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<SteamAPICallCompleted_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.SteamAPICallCompleted_t;
 		#endregion
@@ -1100,7 +1100,7 @@ namespace Steamworks.Data
 	{
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<SteamShutdown_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<SteamShutdown_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.SteamShutdown_t;
 		#endregion
@@ -1112,7 +1112,7 @@ namespace Steamworks.Data
 		public ECheckFileSignature CheckFileSignature; // m_eCheckFileSignature ECheckFileSignature
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<CheckFileSignature_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<CheckFileSignature_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.CheckFileSignature_t;
 		#endregion
@@ -1127,7 +1127,7 @@ namespace Steamworks.Data
 		public uint AppID; // m_unAppID AppId_t
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<GamepadTextInputDismissed_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<GamepadTextInputDismissed_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.GamepadTextInputDismissed_t;
 		#endregion
@@ -1138,7 +1138,7 @@ namespace Steamworks.Data
 	{
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<AppResumingFromSuspend_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<AppResumingFromSuspend_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.AppResumingFromSuspend_t;
 		#endregion
@@ -1149,7 +1149,7 @@ namespace Steamworks.Data
 	{
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<FloatingGamepadTextInputDismissed_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<FloatingGamepadTextInputDismissed_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.FloatingGamepadTextInputDismissed_t;
 		#endregion
@@ -1161,7 +1161,7 @@ namespace Steamworks.Data
 		public int Language; // m_eLanguage int
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<FilterTextDictionaryChanged_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<FilterTextDictionaryChanged_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.FilterTextDictionaryChanged_t;
 		#endregion
@@ -1180,7 +1180,7 @@ namespace Steamworks.Data
 		public uint AccountId; // m_unAccountId AccountID_t
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<FavoritesListChanged_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<FavoritesListChanged_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.FavoritesListChanged_t;
 		#endregion
@@ -1194,7 +1194,7 @@ namespace Steamworks.Data
 		public ulong GameID; // m_ulGameID uint64
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<LobbyInvite_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<LobbyInvite_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.LobbyInvite_t;
 		#endregion
@@ -1210,7 +1210,7 @@ namespace Steamworks.Data
 		public uint EChatRoomEnterResponse; // m_EChatRoomEnterResponse uint32
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<LobbyEnter_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<LobbyEnter_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.LobbyEnter_t;
 		#endregion
@@ -1224,7 +1224,7 @@ namespace Steamworks.Data
 		public byte Success; // m_bSuccess uint8
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<LobbyDataUpdate_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<LobbyDataUpdate_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.LobbyDataUpdate_t;
 		#endregion
@@ -1239,7 +1239,7 @@ namespace Steamworks.Data
 		public uint GfChatMemberStateChange; // m_rgfChatMemberStateChange uint32
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<LobbyChatUpdate_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<LobbyChatUpdate_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.LobbyChatUpdate_t;
 		#endregion
@@ -1254,7 +1254,7 @@ namespace Steamworks.Data
 		public uint ChatID; // m_iChatID uint32
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<LobbyChatMsg_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<LobbyChatMsg_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.LobbyChatMsg_t;
 		#endregion
@@ -1269,7 +1269,7 @@ namespace Steamworks.Data
 		public ushort Port; // m_usPort uint16
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<LobbyGameCreated_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<LobbyGameCreated_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.LobbyGameCreated_t;
 		#endregion
@@ -1281,7 +1281,7 @@ namespace Steamworks.Data
 		public uint LobbiesMatching; // m_nLobbiesMatching uint32
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<LobbyMatchList_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<LobbyMatchList_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.LobbyMatchList_t;
 		#endregion
@@ -1295,7 +1295,7 @@ namespace Steamworks.Data
 		public byte KickedDueToDisconnect; // m_bKickedDueToDisconnect uint8
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<LobbyKicked_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<LobbyKicked_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.LobbyKicked_t;
 		#endregion
@@ -1308,7 +1308,7 @@ namespace Steamworks.Data
 		public ulong SteamIDLobby; // m_ulSteamIDLobby uint64
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<LobbyCreated_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<LobbyCreated_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.LobbyCreated_t;
 		#endregion
@@ -1320,7 +1320,7 @@ namespace Steamworks.Data
 		public EResult Result; // m_eResult EResult
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<FavoritesListAccountsUpdated_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<FavoritesListAccountsUpdated_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.FavoritesListAccountsUpdated_t;
 		#endregion
@@ -1337,7 +1337,7 @@ namespace Steamworks.Data
 		public int CPlayersSearching; // m_cPlayersSearching int32
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<SearchForGameProgressCallback_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<SearchForGameProgressCallback_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.SearchForGameProgressCallback_t;
 		#endregion
@@ -1355,7 +1355,7 @@ namespace Steamworks.Data
 		public bool FinalCallback; // m_bFinalCallback bool
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<SearchForGameResultCallback_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<SearchForGameResultCallback_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.SearchForGameResultCallback_t;
 		#endregion
@@ -1368,7 +1368,7 @@ namespace Steamworks.Data
 		public ulong LSearchID; // m_ullSearchID uint64
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<RequestPlayersForGameProgressCallback_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<RequestPlayersForGameProgressCallback_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.RequestPlayersForGameProgressCallback_t;
 		#endregion
@@ -1389,7 +1389,7 @@ namespace Steamworks.Data
 		public ulong LUniqueGameID; // m_ullUniqueGameID uint64
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<RequestPlayersForGameResultCallback_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<RequestPlayersForGameResultCallback_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.RequestPlayersForGameResultCallback_t;
 		#endregion
@@ -1409,7 +1409,7 @@ namespace Steamworks.Data
 		public ulong LUniqueGameID; // m_ullUniqueGameID uint64
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<RequestPlayersForGameFinalResultCallback_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<RequestPlayersForGameFinalResultCallback_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.RequestPlayersForGameFinalResultCallback_t;
 		#endregion
@@ -1423,7 +1423,7 @@ namespace Steamworks.Data
 		public ulong SteamIDPlayer; // steamIDPlayer CSteamID
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<SubmitPlayerResultResultCallback_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<SubmitPlayerResultResultCallback_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.SubmitPlayerResultResultCallback_t;
 		#endregion
@@ -1436,7 +1436,7 @@ namespace Steamworks.Data
 		public ulong UllUniqueGameID; // ullUniqueGameID uint64
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<EndGameResultCallback_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<EndGameResultCallback_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.EndGameResultCallback_t;
 		#endregion
@@ -1451,7 +1451,7 @@ namespace Steamworks.Data
 		public fixed byte ConnectString[ 256 ]; // m_rgchConnectString char [256]
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<JoinPartyCallback_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<JoinPartyCallback_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.JoinPartyCallback_t;
 		#endregion
@@ -1464,7 +1464,7 @@ namespace Steamworks.Data
 		public ulong BeaconID; // m_ulBeaconID PartyBeaconID_t
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<CreateBeaconCallback_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<CreateBeaconCallback_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.CreateBeaconCallback_t;
 		#endregion
@@ -1477,7 +1477,7 @@ namespace Steamworks.Data
 		public ulong SteamIDJoiner; // m_steamIDJoiner CSteamID
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<ReservationNotificationCallback_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<ReservationNotificationCallback_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.ReservationNotificationCallback_t;
 		#endregion
@@ -1489,7 +1489,7 @@ namespace Steamworks.Data
 		public EResult Result; // m_eResult EResult
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<ChangeNumOpenSlotsCallback_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<ChangeNumOpenSlotsCallback_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.ChangeNumOpenSlotsCallback_t;
 		#endregion
@@ -1500,7 +1500,7 @@ namespace Steamworks.Data
 	{
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<AvailableBeaconLocationsUpdated_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<AvailableBeaconLocationsUpdated_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.AvailableBeaconLocationsUpdated_t;
 		#endregion
@@ -1511,7 +1511,7 @@ namespace Steamworks.Data
 	{
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<ActiveBeaconsUpdated_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<ActiveBeaconsUpdated_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.ActiveBeaconsUpdated_t;
 		#endregion
@@ -1525,7 +1525,7 @@ namespace Steamworks.Data
 		public fixed byte Filename[ 260 ]; // m_rgchFilename char [260]
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<RemoteStorageFileShareResult_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<RemoteStorageFileShareResult_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.RemoteStorageFileShareResult_t;
 		#endregion
@@ -1540,7 +1540,7 @@ namespace Steamworks.Data
 		public bool UserNeedsToAcceptWorkshopLegalAgreement; // m_bUserNeedsToAcceptWorkshopLegalAgreement bool
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<RemoteStoragePublishFileResult_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<RemoteStoragePublishFileResult_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.RemoteStoragePublishFileResult_t;
 		#endregion
@@ -1553,7 +1553,7 @@ namespace Steamworks.Data
 		public ulong PublishedFileId; // m_nPublishedFileId PublishedFileId_t
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<RemoteStorageDeletePublishedFileResult_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<RemoteStorageDeletePublishedFileResult_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.RemoteStorageDeletePublishedFileResult_t;
 		#endregion
@@ -1568,7 +1568,7 @@ namespace Steamworks.Data
 		public fixed ulong GPublishedFileId[ 50 ]; // m_rgPublishedFileId PublishedFileId_t [50]
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<RemoteStorageEnumerateUserPublishedFilesResult_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<RemoteStorageEnumerateUserPublishedFilesResult_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.RemoteStorageEnumerateUserPublishedFilesResult_t;
 		#endregion
@@ -1581,7 +1581,7 @@ namespace Steamworks.Data
 		public ulong PublishedFileId; // m_nPublishedFileId PublishedFileId_t
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<RemoteStorageSubscribePublishedFileResult_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<RemoteStorageSubscribePublishedFileResult_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.RemoteStorageSubscribePublishedFileResult_t;
 		#endregion
@@ -1597,7 +1597,7 @@ namespace Steamworks.Data
 		public fixed uint GRTimeSubscribed[ 50 ]; // m_rgRTimeSubscribed uint32 [50]
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<RemoteStorageEnumerateUserSubscribedFilesResult_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<RemoteStorageEnumerateUserSubscribedFilesResult_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.RemoteStorageEnumerateUserSubscribedFilesResult_t;
 		#endregion
@@ -1610,7 +1610,7 @@ namespace Steamworks.Data
 		public ulong PublishedFileId; // m_nPublishedFileId PublishedFileId_t
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<RemoteStorageUnsubscribePublishedFileResult_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<RemoteStorageUnsubscribePublishedFileResult_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.RemoteStorageUnsubscribePublishedFileResult_t;
 		#endregion
@@ -1625,7 +1625,7 @@ namespace Steamworks.Data
 		public bool UserNeedsToAcceptWorkshopLegalAgreement; // m_bUserNeedsToAcceptWorkshopLegalAgreement bool
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<RemoteStorageUpdatePublishedFileResult_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<RemoteStorageUpdatePublishedFileResult_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.RemoteStorageUpdatePublishedFileResult_t;
 		#endregion
@@ -1642,7 +1642,7 @@ namespace Steamworks.Data
 		public ulong SteamIDOwner; // m_ulSteamIDOwner uint64
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<RemoteStorageDownloadUGCResult_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<RemoteStorageDownloadUGCResult_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.RemoteStorageDownloadUGCResult_t;
 		#endregion
@@ -1677,7 +1677,7 @@ namespace Steamworks.Data
 		public bool AcceptedForUse; // m_bAcceptedForUse bool
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<RemoteStorageGetPublishedFileDetailsResult_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<RemoteStorageGetPublishedFileDetailsResult_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.RemoteStorageGetPublishedFileDetailsResult_t;
 		#endregion
@@ -1695,7 +1695,7 @@ namespace Steamworks.Data
 		public uint StartIndex; // m_unStartIndex uint32
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<RemoteStorageEnumerateWorkshopFilesResult_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<RemoteStorageEnumerateWorkshopFilesResult_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.RemoteStorageEnumerateWorkshopFilesResult_t;
 		#endregion
@@ -1712,7 +1712,7 @@ namespace Steamworks.Data
 		public float FScore; // m_fScore float
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<RemoteStorageGetPublishedItemVoteDetailsResult_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<RemoteStorageGetPublishedItemVoteDetailsResult_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.RemoteStorageGetPublishedItemVoteDetailsResult_t;
 		#endregion
@@ -1725,7 +1725,7 @@ namespace Steamworks.Data
 		public uint AppID; // m_nAppID AppId_t
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<RemoteStoragePublishedFileSubscribed_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<RemoteStoragePublishedFileSubscribed_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.RemoteStoragePublishedFileSubscribed_t;
 		#endregion
@@ -1738,7 +1738,7 @@ namespace Steamworks.Data
 		public uint AppID; // m_nAppID AppId_t
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<RemoteStoragePublishedFileUnsubscribed_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<RemoteStoragePublishedFileUnsubscribed_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.RemoteStoragePublishedFileUnsubscribed_t;
 		#endregion
@@ -1751,7 +1751,7 @@ namespace Steamworks.Data
 		public uint AppID; // m_nAppID AppId_t
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<RemoteStoragePublishedFileDeleted_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<RemoteStoragePublishedFileDeleted_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.RemoteStoragePublishedFileDeleted_t;
 		#endregion
@@ -1764,7 +1764,7 @@ namespace Steamworks.Data
 		public ulong PublishedFileId; // m_nPublishedFileId PublishedFileId_t
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<RemoteStorageUpdateUserPublishedItemVoteResult_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<RemoteStorageUpdateUserPublishedItemVoteResult_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.RemoteStorageUpdateUserPublishedItemVoteResult_t;
 		#endregion
@@ -1778,7 +1778,7 @@ namespace Steamworks.Data
 		public EWorkshopVote Vote; // m_eVote EWorkshopVote
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<RemoteStorageUserVoteDetails_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<RemoteStorageUserVoteDetails_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.RemoteStorageUserVoteDetails_t;
 		#endregion
@@ -1793,7 +1793,7 @@ namespace Steamworks.Data
 		public fixed ulong GPublishedFileId[ 50 ]; // m_rgPublishedFileId PublishedFileId_t [50]
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<RemoteStorageEnumerateUserSharedWorkshopFilesResult_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<RemoteStorageEnumerateUserSharedWorkshopFilesResult_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.RemoteStorageEnumerateUserSharedWorkshopFilesResult_t;
 		#endregion
@@ -1807,7 +1807,7 @@ namespace Steamworks.Data
 		public EWorkshopFileAction Action; // m_eAction EWorkshopFileAction
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<RemoteStorageSetUserPublishedFileActionResult_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<RemoteStorageSetUserPublishedFileActionResult_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.RemoteStorageSetUserPublishedFileActionResult_t;
 		#endregion
@@ -1824,7 +1824,7 @@ namespace Steamworks.Data
 		public fixed uint GRTimeUpdated[ 50 ]; // m_rgRTimeUpdated uint32 [50]
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<RemoteStorageEnumeratePublishedFilesByUserActionResult_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<RemoteStorageEnumeratePublishedFilesByUserActionResult_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.RemoteStorageEnumeratePublishedFilesByUserActionResult_t;
 		#endregion
@@ -1838,7 +1838,7 @@ namespace Steamworks.Data
 		public bool Preview; // m_bPreview bool
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<RemoteStoragePublishFileProgress_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<RemoteStoragePublishFileProgress_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.RemoteStoragePublishFileProgress_t;
 		#endregion
@@ -1852,7 +1852,7 @@ namespace Steamworks.Data
 		public ulong Unused; // m_ulUnused uint64
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<RemoteStoragePublishedFileUpdated_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<RemoteStoragePublishedFileUpdated_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.RemoteStoragePublishedFileUpdated_t;
 		#endregion
@@ -1864,7 +1864,7 @@ namespace Steamworks.Data
 		public EResult Result; // m_eResult EResult
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<RemoteStorageFileWriteAsyncComplete_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<RemoteStorageFileWriteAsyncComplete_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.RemoteStorageFileWriteAsyncComplete_t;
 		#endregion
@@ -1879,7 +1879,7 @@ namespace Steamworks.Data
 		public uint Read; // m_cubRead uint32
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<RemoteStorageFileReadAsyncComplete_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<RemoteStorageFileReadAsyncComplete_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.RemoteStorageFileReadAsyncComplete_t;
 		#endregion
@@ -1890,7 +1890,7 @@ namespace Steamworks.Data
 	{
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<RemoteStorageLocalFileChange_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<RemoteStorageLocalFileChange_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.RemoteStorageLocalFileChange_t;
 		#endregion
@@ -1904,7 +1904,7 @@ namespace Steamworks.Data
 		public ulong SteamIDUser; // m_steamIDUser CSteamID
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<UserStatsReceived_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<UserStatsReceived_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.UserStatsReceived_t;
 		#endregion
@@ -1917,7 +1917,7 @@ namespace Steamworks.Data
 		public EResult Result; // m_eResult EResult
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<UserStatsStored_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<UserStatsStored_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.UserStatsStored_t;
 		#endregion
@@ -1934,7 +1934,7 @@ namespace Steamworks.Data
 		public uint MaxProgress; // m_nMaxProgress uint32
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<UserAchievementStored_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<UserAchievementStored_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.UserAchievementStored_t;
 		#endregion
@@ -1947,7 +1947,7 @@ namespace Steamworks.Data
 		public byte LeaderboardFound; // m_bLeaderboardFound uint8
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<LeaderboardFindResult_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<LeaderboardFindResult_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.LeaderboardFindResult_t;
 		#endregion
@@ -1961,7 +1961,7 @@ namespace Steamworks.Data
 		public int CEntryCount; // m_cEntryCount int
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<LeaderboardScoresDownloaded_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<LeaderboardScoresDownloaded_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.LeaderboardScoresDownloaded_t;
 		#endregion
@@ -1978,7 +1978,7 @@ namespace Steamworks.Data
 		public int GlobalRankPrevious; // m_nGlobalRankPrevious int
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<LeaderboardScoreUploaded_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<LeaderboardScoreUploaded_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.LeaderboardScoreUploaded_t;
 		#endregion
@@ -1991,7 +1991,7 @@ namespace Steamworks.Data
 		public int CPlayers; // m_cPlayers int32
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<NumberOfCurrentPlayers_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<NumberOfCurrentPlayers_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.NumberOfCurrentPlayers_t;
 		#endregion
@@ -2003,7 +2003,7 @@ namespace Steamworks.Data
 		public ulong SteamIDUser; // m_steamIDUser CSteamID
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<UserStatsUnloaded_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<UserStatsUnloaded_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.UserStatsUnloaded_t;
 		#endregion
@@ -2019,7 +2019,7 @@ namespace Steamworks.Data
 		public int IconHandle; // m_nIconHandle int
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<UserAchievementIconFetched_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<UserAchievementIconFetched_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.UserAchievementIconFetched_t;
 		#endregion
@@ -2032,7 +2032,7 @@ namespace Steamworks.Data
 		public EResult Result; // m_eResult EResult
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<GlobalAchievementPercentagesReady_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<GlobalAchievementPercentagesReady_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.GlobalAchievementPercentagesReady_t;
 		#endregion
@@ -2045,7 +2045,7 @@ namespace Steamworks.Data
 		public ulong SteamLeaderboard; // m_hSteamLeaderboard SteamLeaderboard_t
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<LeaderboardUGCSet_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<LeaderboardUGCSet_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.LeaderboardUGCSet_t;
 		#endregion
@@ -2058,7 +2058,7 @@ namespace Steamworks.Data
 		public EResult Result; // m_eResult EResult
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<GlobalStatsReceived_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<GlobalStatsReceived_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.GlobalStatsReceived_t;
 		#endregion
@@ -2070,7 +2070,7 @@ namespace Steamworks.Data
 		public uint AppID; // m_nAppID AppId_t
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<DlcInstalled_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<DlcInstalled_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.DlcInstalled_t;
 		#endregion
@@ -2081,7 +2081,7 @@ namespace Steamworks.Data
 	{
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<NewUrlLaunchParameters_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<NewUrlLaunchParameters_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.NewUrlLaunchParameters_t;
 		#endregion
@@ -2096,7 +2096,7 @@ namespace Steamworks.Data
 		public fixed byte Key[ 240 ]; // m_rgchKey char [240]
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<AppProofOfPurchaseKeyResponse_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<AppProofOfPurchaseKeyResponse_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.AppProofOfPurchaseKeyResponse_t;
 		#endregion
@@ -2111,7 +2111,7 @@ namespace Steamworks.Data
 		public uint Flags; // m_unFlags uint32
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<FileDetailsResult_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<FileDetailsResult_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.FileDetailsResult_t;
 		#endregion
@@ -2127,7 +2127,7 @@ namespace Steamworks.Data
 		public uint SecondsPlayed; // m_unSecondsPlayed uint32
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<TimedTrialStatus_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<TimedTrialStatus_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.TimedTrialStatus_t;
 		#endregion
@@ -2139,7 +2139,7 @@ namespace Steamworks.Data
 		public ulong SteamIDRemote; // m_steamIDRemote CSteamID
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<P2PSessionRequest_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<P2PSessionRequest_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.P2PSessionRequest_t;
 		#endregion
@@ -2152,7 +2152,7 @@ namespace Steamworks.Data
 		public byte P2PSessionError; // m_eP2PSessionError uint8
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<P2PSessionConnectFail_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<P2PSessionConnectFail_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.P2PSessionConnectFail_t;
 		#endregion
@@ -2165,7 +2165,7 @@ namespace Steamworks.Data
 		public EResult Result; // m_eResult EResult
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<ScreenshotReady_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<ScreenshotReady_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.ScreenshotReady_t;
 		#endregion
@@ -2176,7 +2176,7 @@ namespace Steamworks.Data
 	{
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<ScreenshotRequested_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<ScreenshotRequested_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.ScreenshotRequested_t;
 		#endregion
@@ -2187,7 +2187,7 @@ namespace Steamworks.Data
 	{
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<PlaybackStatusHasChanged_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<PlaybackStatusHasChanged_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.PlaybackStatusHasChanged_t;
 		#endregion
@@ -2199,7 +2199,7 @@ namespace Steamworks.Data
 		public float NewVolume; // m_flNewVolume float
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<VolumeHasChanged_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<VolumeHasChanged_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.VolumeHasChanged_t;
 		#endregion
@@ -2210,7 +2210,7 @@ namespace Steamworks.Data
 	{
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<MusicPlayerRemoteWillActivate_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<MusicPlayerRemoteWillActivate_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.MusicPlayerRemoteWillActivate_t;
 		#endregion
@@ -2221,7 +2221,7 @@ namespace Steamworks.Data
 	{
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<MusicPlayerRemoteWillDeactivate_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<MusicPlayerRemoteWillDeactivate_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.MusicPlayerRemoteWillDeactivate_t;
 		#endregion
@@ -2232,7 +2232,7 @@ namespace Steamworks.Data
 	{
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<MusicPlayerRemoteToFront_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<MusicPlayerRemoteToFront_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.MusicPlayerRemoteToFront_t;
 		#endregion
@@ -2243,7 +2243,7 @@ namespace Steamworks.Data
 	{
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<MusicPlayerWillQuit_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<MusicPlayerWillQuit_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.MusicPlayerWillQuit_t;
 		#endregion
@@ -2254,7 +2254,7 @@ namespace Steamworks.Data
 	{
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<MusicPlayerWantsPlay_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<MusicPlayerWantsPlay_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.MusicPlayerWantsPlay_t;
 		#endregion
@@ -2265,7 +2265,7 @@ namespace Steamworks.Data
 	{
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<MusicPlayerWantsPause_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<MusicPlayerWantsPause_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.MusicPlayerWantsPause_t;
 		#endregion
@@ -2276,7 +2276,7 @@ namespace Steamworks.Data
 	{
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<MusicPlayerWantsPlayPrevious_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<MusicPlayerWantsPlayPrevious_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.MusicPlayerWantsPlayPrevious_t;
 		#endregion
@@ -2287,7 +2287,7 @@ namespace Steamworks.Data
 	{
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<MusicPlayerWantsPlayNext_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<MusicPlayerWantsPlayNext_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.MusicPlayerWantsPlayNext_t;
 		#endregion
@@ -2300,7 +2300,7 @@ namespace Steamworks.Data
 		public bool Shuffled; // m_bShuffled bool
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<MusicPlayerWantsShuffled_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<MusicPlayerWantsShuffled_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.MusicPlayerWantsShuffled_t;
 		#endregion
@@ -2313,7 +2313,7 @@ namespace Steamworks.Data
 		public bool Looped; // m_bLooped bool
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<MusicPlayerWantsLooped_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<MusicPlayerWantsLooped_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.MusicPlayerWantsLooped_t;
 		#endregion
@@ -2325,7 +2325,7 @@ namespace Steamworks.Data
 		public float NewVolume; // m_flNewVolume float
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<MusicPlayerWantsVolume_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<MusicPlayerWantsVolume_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.MusicPlayerWantsVolume_t;
 		#endregion
@@ -2337,7 +2337,7 @@ namespace Steamworks.Data
 		public int NID; // nID int
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<MusicPlayerSelectsQueueEntry_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<MusicPlayerSelectsQueueEntry_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.MusicPlayerSelectsQueueEntry_t;
 		#endregion
@@ -2349,7 +2349,7 @@ namespace Steamworks.Data
 		public int NID; // nID int
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<MusicPlayerSelectsPlaylistEntry_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<MusicPlayerSelectsPlaylistEntry_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.MusicPlayerSelectsPlaylistEntry_t;
 		#endregion
@@ -2361,7 +2361,7 @@ namespace Steamworks.Data
 		public int PlayingRepeatStatus; // m_nPlayingRepeatStatus int
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<MusicPlayerWantsPlayingRepeatStatus_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<MusicPlayerWantsPlayingRepeatStatus_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.MusicPlayerWantsPlayingRepeatStatus_t;
 		#endregion
@@ -2378,7 +2378,7 @@ namespace Steamworks.Data
 		public uint BodySize; // m_unBodySize uint32
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<HTTPRequestCompleted_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<HTTPRequestCompleted_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.HTTPRequestCompleted_t;
 		#endregion
@@ -2391,7 +2391,7 @@ namespace Steamworks.Data
 		public ulong ContextValue; // m_ulContextValue uint64
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<HTTPRequestHeadersReceived_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<HTTPRequestHeadersReceived_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.HTTPRequestHeadersReceived_t;
 		#endregion
@@ -2406,7 +2406,7 @@ namespace Steamworks.Data
 		public uint CBytesReceived; // m_cBytesReceived uint32
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<HTTPRequestDataReceived_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<HTTPRequestDataReceived_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.HTTPRequestDataReceived_t;
 		#endregion
@@ -2418,7 +2418,7 @@ namespace Steamworks.Data
 		public ulong ConnectedDeviceHandle; // m_ulConnectedDeviceHandle InputHandle_t
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<SteamInputDeviceConnected_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<SteamInputDeviceConnected_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.SteamInputDeviceConnected_t;
 		#endregion
@@ -2430,7 +2430,7 @@ namespace Steamworks.Data
 		public ulong DisconnectedDeviceHandle; // m_ulDisconnectedDeviceHandle InputHandle_t
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<SteamInputDeviceDisconnected_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<SteamInputDeviceDisconnected_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.SteamInputDeviceDisconnected_t;
 		#endregion
@@ -2450,7 +2450,7 @@ namespace Steamworks.Data
 		public bool UsesGamepadAPI; // m_bUsesGamepadAPI bool
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<SteamInputConfigurationLoaded_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<SteamInputConfigurationLoaded_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.SteamInputConfigurationLoaded_t;
 		#endregion
@@ -2466,7 +2466,7 @@ namespace Steamworks.Data
 		public int NewGamepadSlot; // m_nNewGamepadSlot int
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<SteamInputGamepadSlotChange_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<SteamInputGamepadSlotChange_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.SteamInputGamepadSlotChange_t;
 		#endregion
@@ -2484,7 +2484,7 @@ namespace Steamworks.Data
 		public fixed byte NextCursor[ 256 ]; // m_rgchNextCursor char [256]
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<SteamUGCQueryCompleted_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<SteamUGCQueryCompleted_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.SteamUGCQueryCompleted_t;
 		#endregion
@@ -2498,7 +2498,7 @@ namespace Steamworks.Data
 		public bool CachedData; // m_bCachedData bool
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<SteamUGCRequestUGCDetailsResult_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<SteamUGCRequestUGCDetailsResult_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.SteamUGCRequestUGCDetailsResult_t;
 		#endregion
@@ -2513,7 +2513,7 @@ namespace Steamworks.Data
 		public bool UserNeedsToAcceptWorkshopLegalAgreement; // m_bUserNeedsToAcceptWorkshopLegalAgreement bool
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<CreateItemResult_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<CreateItemResult_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.CreateItemResult_t;
 		#endregion
@@ -2528,7 +2528,7 @@ namespace Steamworks.Data
 		public ulong PublishedFileId; // m_nPublishedFileId PublishedFileId_t
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<SubmitItemUpdateResult_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<SubmitItemUpdateResult_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.SubmitItemUpdateResult_t;
 		#endregion
@@ -2543,7 +2543,7 @@ namespace Steamworks.Data
 		public ulong ManifestID; // m_unManifestID uint64
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<ItemInstalled_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<ItemInstalled_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.ItemInstalled_t;
 		#endregion
@@ -2557,7 +2557,7 @@ namespace Steamworks.Data
 		public EResult Result; // m_eResult EResult
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<DownloadItemResult_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<DownloadItemResult_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.DownloadItemResult_t;
 		#endregion
@@ -2572,7 +2572,7 @@ namespace Steamworks.Data
 		public bool WasAddRequest; // m_bWasAddRequest bool
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<UserFavoriteItemsListChanged_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<UserFavoriteItemsListChanged_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.UserFavoriteItemsListChanged_t;
 		#endregion
@@ -2587,7 +2587,7 @@ namespace Steamworks.Data
 		public bool VoteUp; // m_bVoteUp bool
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<SetUserItemVoteResult_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<SetUserItemVoteResult_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.SetUserItemVoteResult_t;
 		#endregion
@@ -2606,7 +2606,7 @@ namespace Steamworks.Data
 		public bool VoteSkipped; // m_bVoteSkipped bool
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<GetUserItemVoteResult_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<GetUserItemVoteResult_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.GetUserItemVoteResult_t;
 		#endregion
@@ -2618,7 +2618,7 @@ namespace Steamworks.Data
 		public EResult Result; // m_eResult EResult
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<StartPlaytimeTrackingResult_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<StartPlaytimeTrackingResult_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.StartPlaytimeTrackingResult_t;
 		#endregion
@@ -2630,7 +2630,7 @@ namespace Steamworks.Data
 		public EResult Result; // m_eResult EResult
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<StopPlaytimeTrackingResult_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<StopPlaytimeTrackingResult_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.StopPlaytimeTrackingResult_t;
 		#endregion
@@ -2644,7 +2644,7 @@ namespace Steamworks.Data
 		public ulong ChildPublishedFileId; // m_nChildPublishedFileId PublishedFileId_t
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<AddUGCDependencyResult_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<AddUGCDependencyResult_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.AddUGCDependencyResult_t;
 		#endregion
@@ -2658,7 +2658,7 @@ namespace Steamworks.Data
 		public ulong ChildPublishedFileId; // m_nChildPublishedFileId PublishedFileId_t
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<RemoveUGCDependencyResult_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<RemoveUGCDependencyResult_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.RemoveUGCDependencyResult_t;
 		#endregion
@@ -2672,7 +2672,7 @@ namespace Steamworks.Data
 		public uint AppID; // m_nAppID AppId_t
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<AddAppDependencyResult_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<AddAppDependencyResult_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.AddAppDependencyResult_t;
 		#endregion
@@ -2686,7 +2686,7 @@ namespace Steamworks.Data
 		public uint AppID; // m_nAppID AppId_t
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<RemoveAppDependencyResult_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<RemoveAppDependencyResult_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.RemoveAppDependencyResult_t;
 		#endregion
@@ -2702,7 +2702,7 @@ namespace Steamworks.Data
 		public uint TotalNumAppDependencies; // m_nTotalNumAppDependencies uint32
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<GetAppDependenciesResult_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<GetAppDependenciesResult_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.GetAppDependenciesResult_t;
 		#endregion
@@ -2715,7 +2715,7 @@ namespace Steamworks.Data
 		public ulong PublishedFileId; // m_nPublishedFileId PublishedFileId_t
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<DeleteItemResult_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<DeleteItemResult_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.DeleteItemResult_t;
 		#endregion
@@ -2727,7 +2727,7 @@ namespace Steamworks.Data
 		public uint AppID; // m_nAppID AppId_t
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<UserSubscribedItemsListChanged_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<UserSubscribedItemsListChanged_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.UserSubscribedItemsListChanged_t;
 		#endregion
@@ -2746,7 +2746,7 @@ namespace Steamworks.Data
 		public bool NeedsAction; // m_bNeedsAction bool
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<WorkshopEULAStatus_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<WorkshopEULAStatus_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.WorkshopEULAStatus_t;
 		#endregion
@@ -2758,7 +2758,7 @@ namespace Steamworks.Data
 		public uint UnBrowserHandle; // unBrowserHandle HHTMLBrowser
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<HTML_BrowserReady_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<HTML_BrowserReady_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.HTML_BrowserReady_t;
 		#endregion
@@ -2781,7 +2781,7 @@ namespace Steamworks.Data
 		public uint UnPageSerial; // unPageSerial uint32
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<HTML_NeedsPaint_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<HTML_NeedsPaint_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.HTML_NeedsPaint_t;
 		#endregion
@@ -2798,7 +2798,7 @@ namespace Steamworks.Data
 		public bool BIsRedirect; // bIsRedirect bool
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<HTML_StartRequest_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<HTML_StartRequest_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.HTML_StartRequest_t;
 		#endregion
@@ -2810,7 +2810,7 @@ namespace Steamworks.Data
 		public uint UnBrowserHandle; // unBrowserHandle HHTMLBrowser
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<HTML_CloseBrowser_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<HTML_CloseBrowser_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.HTML_CloseBrowser_t;
 		#endregion
@@ -2829,7 +2829,7 @@ namespace Steamworks.Data
 		public bool BNewNavigation; // bNewNavigation bool
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<HTML_URLChanged_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<HTML_URLChanged_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.HTML_URLChanged_t;
 		#endregion
@@ -2843,7 +2843,7 @@ namespace Steamworks.Data
 		public IntPtr PchPageTitle; // pchPageTitle const char *
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<HTML_FinishedRequest_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<HTML_FinishedRequest_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.HTML_FinishedRequest_t;
 		#endregion
@@ -2856,7 +2856,7 @@ namespace Steamworks.Data
 		public IntPtr PchURL; // pchURL const char *
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<HTML_OpenLinkInNewTab_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<HTML_OpenLinkInNewTab_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.HTML_OpenLinkInNewTab_t;
 		#endregion
@@ -2869,7 +2869,7 @@ namespace Steamworks.Data
 		public IntPtr PchTitle; // pchTitle const char *
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<HTML_ChangedTitle_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<HTML_ChangedTitle_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.HTML_ChangedTitle_t;
 		#endregion
@@ -2883,7 +2883,7 @@ namespace Steamworks.Data
 		public uint UnCurrentMatch; // unCurrentMatch uint32
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<HTML_SearchResults_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<HTML_SearchResults_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.HTML_SearchResults_t;
 		#endregion
@@ -2899,7 +2899,7 @@ namespace Steamworks.Data
 		public bool BCanGoForward; // bCanGoForward bool
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<HTML_CanGoBackAndForward_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<HTML_CanGoBackAndForward_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.HTML_CanGoBackAndForward_t;
 		#endregion
@@ -2917,7 +2917,7 @@ namespace Steamworks.Data
 		public uint UnPageSize; // unPageSize uint32
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<HTML_HorizontalScroll_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<HTML_HorizontalScroll_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.HTML_HorizontalScroll_t;
 		#endregion
@@ -2935,7 +2935,7 @@ namespace Steamworks.Data
 		public uint UnPageSize; // unPageSize uint32
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<HTML_VerticalScroll_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<HTML_VerticalScroll_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.HTML_VerticalScroll_t;
 		#endregion
@@ -2954,7 +2954,7 @@ namespace Steamworks.Data
 		public bool BLiveLink; // bLiveLink bool
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<HTML_LinkAtPosition_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<HTML_LinkAtPosition_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.HTML_LinkAtPosition_t;
 		#endregion
@@ -2967,7 +2967,7 @@ namespace Steamworks.Data
 		public IntPtr PchMessage; // pchMessage const char *
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<HTML_JSAlert_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<HTML_JSAlert_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.HTML_JSAlert_t;
 		#endregion
@@ -2980,7 +2980,7 @@ namespace Steamworks.Data
 		public IntPtr PchMessage; // pchMessage const char *
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<HTML_JSConfirm_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<HTML_JSConfirm_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.HTML_JSConfirm_t;
 		#endregion
@@ -2994,7 +2994,7 @@ namespace Steamworks.Data
 		public IntPtr PchInitialFile; // pchInitialFile const char *
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<HTML_FileOpenDialog_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<HTML_FileOpenDialog_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.HTML_FileOpenDialog_t;
 		#endregion
@@ -3012,7 +3012,7 @@ namespace Steamworks.Data
 		public uint UnNewWindow_BrowserHandle_IGNORE; // unNewWindow_BrowserHandle_IGNORE HHTMLBrowser
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<HTML_NewWindow_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<HTML_NewWindow_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.HTML_NewWindow_t;
 		#endregion
@@ -3025,7 +3025,7 @@ namespace Steamworks.Data
 		public uint EMouseCursor; // eMouseCursor uint32
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<HTML_SetCursor_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<HTML_SetCursor_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.HTML_SetCursor_t;
 		#endregion
@@ -3038,7 +3038,7 @@ namespace Steamworks.Data
 		public IntPtr PchMsg; // pchMsg const char *
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<HTML_StatusText_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<HTML_StatusText_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.HTML_StatusText_t;
 		#endregion
@@ -3051,7 +3051,7 @@ namespace Steamworks.Data
 		public IntPtr PchMsg; // pchMsg const char *
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<HTML_ShowToolTip_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<HTML_ShowToolTip_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.HTML_ShowToolTip_t;
 		#endregion
@@ -3064,7 +3064,7 @@ namespace Steamworks.Data
 		public IntPtr PchMsg; // pchMsg const char *
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<HTML_UpdateToolTip_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<HTML_UpdateToolTip_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.HTML_UpdateToolTip_t;
 		#endregion
@@ -3076,7 +3076,7 @@ namespace Steamworks.Data
 		public uint UnBrowserHandle; // unBrowserHandle HHTMLBrowser
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<HTML_HideToolTip_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<HTML_HideToolTip_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.HTML_HideToolTip_t;
 		#endregion
@@ -3089,7 +3089,7 @@ namespace Steamworks.Data
 		public uint UnOldBrowserHandle; // unOldBrowserHandle HHTMLBrowser
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<HTML_BrowserRestarted_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<HTML_BrowserRestarted_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.HTML_BrowserRestarted_t;
 		#endregion
@@ -3102,7 +3102,7 @@ namespace Steamworks.Data
 		public EResult Result; // m_result EResult
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<SteamInventoryResultReady_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<SteamInventoryResultReady_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.SteamInventoryResultReady_t;
 		#endregion
@@ -3114,7 +3114,7 @@ namespace Steamworks.Data
 		public int Handle; // m_handle SteamInventoryResult_t
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<SteamInventoryFullUpdate_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<SteamInventoryFullUpdate_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.SteamInventoryFullUpdate_t;
 		#endregion
@@ -3125,7 +3125,7 @@ namespace Steamworks.Data
 	{
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<SteamInventoryDefinitionUpdate_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<SteamInventoryDefinitionUpdate_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.SteamInventoryDefinitionUpdate_t;
 		#endregion
@@ -3141,7 +3141,7 @@ namespace Steamworks.Data
 		public bool CachedData; // m_bCachedData bool
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<SteamInventoryEligiblePromoItemDefIDs_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<SteamInventoryEligiblePromoItemDefIDs_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.SteamInventoryEligiblePromoItemDefIDs_t;
 		#endregion
@@ -3155,7 +3155,7 @@ namespace Steamworks.Data
 		public ulong TransID; // m_ulTransID uint64
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<SteamInventoryStartPurchaseResult_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<SteamInventoryStartPurchaseResult_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.SteamInventoryStartPurchaseResult_t;
 		#endregion
@@ -3168,7 +3168,7 @@ namespace Steamworks.Data
 		public fixed byte Currency[ 4 ]; // m_rgchCurrency char [4]
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<SteamInventoryRequestPricesResult_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<SteamInventoryRequestPricesResult_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.SteamInventoryRequestPricesResult_t;
 		#endregion
@@ -3184,7 +3184,7 @@ namespace Steamworks.Data
 		public uint ScreenshotCount; // m_unScreenshotCount uint32
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<SteamTimelineGamePhaseRecordingExists_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<SteamTimelineGamePhaseRecordingExists_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.SteamTimelineGamePhaseRecordingExists_t;
 		#endregion
@@ -3198,7 +3198,7 @@ namespace Steamworks.Data
 		public bool RecordingExists; // m_bRecordingExists bool
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<SteamTimelineEventRecordingExists_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<SteamTimelineEventRecordingExists_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.SteamTimelineEventRecordingExists_t;
 		#endregion
@@ -3212,7 +3212,7 @@ namespace Steamworks.Data
 		public fixed byte URL[ 256 ]; // m_rgchURL char [256]
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<GetVideoURLResult_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<GetVideoURLResult_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.GetVideoURLResult_t;
 		#endregion
@@ -3225,7 +3225,7 @@ namespace Steamworks.Data
 		public uint VideoAppID; // m_unVideoAppID AppId_t
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<GetOPFSettingsResult_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<GetOPFSettingsResult_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.GetOPFSettingsResult_t;
 		#endregion
@@ -3238,7 +3238,7 @@ namespace Steamworks.Data
 		public bool IsRTMP; // m_bIsRTMP bool
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<BroadcastUploadStart_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<BroadcastUploadStart_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.BroadcastUploadStart_t;
 		#endregion
@@ -3250,7 +3250,7 @@ namespace Steamworks.Data
 		public EBroadcastUploadResult Result; // m_eResult EBroadcastUploadResult
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<BroadcastUploadStop_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<BroadcastUploadStop_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.BroadcastUploadStop_t;
 		#endregion
@@ -3261,7 +3261,7 @@ namespace Steamworks.Data
 	{
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<SteamParentalSettingsChanged_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<SteamParentalSettingsChanged_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.SteamParentalSettingsChanged_t;
 		#endregion
@@ -3273,7 +3273,7 @@ namespace Steamworks.Data
 		public uint SessionID; // m_unSessionID RemotePlaySessionID_t
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<SteamRemotePlaySessionConnected_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<SteamRemotePlaySessionConnected_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.SteamRemotePlaySessionConnected_t;
 		#endregion
@@ -3285,7 +3285,7 @@ namespace Steamworks.Data
 		public uint SessionID; // m_unSessionID RemotePlaySessionID_t
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<SteamRemotePlaySessionDisconnected_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<SteamRemotePlaySessionDisconnected_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.SteamRemotePlaySessionDisconnected_t;
 		#endregion
@@ -3297,7 +3297,7 @@ namespace Steamworks.Data
 		public fixed byte ConnectURL[ 1024 ]; // m_szConnectURL char [1024]
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<SteamRemotePlayTogetherGuestInvite_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<SteamRemotePlayTogetherGuestInvite_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.SteamRemotePlayTogetherGuestInvite_t;
 		#endregion
@@ -3309,7 +3309,7 @@ namespace Steamworks.Data
 		public SteamNetworkingIdentity DentityRemote; // m_identityRemote SteamNetworkingIdentity
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<SteamNetworkingMessagesSessionRequest_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<SteamNetworkingMessagesSessionRequest_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.SteamNetworkingMessagesSessionRequest_t;
 		#endregion
@@ -3321,7 +3321,7 @@ namespace Steamworks.Data
 		public SteamNetConnectionInfo_t Nfo; // m_info SteamNetConnectionInfo_t
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<SteamNetworkingMessagesSessionFailed_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<SteamNetworkingMessagesSessionFailed_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.SteamNetworkingMessagesSessionFailed_t;
 		#endregion
@@ -3335,7 +3335,7 @@ namespace Steamworks.Data
 		public ESteamNetworkingConnectionState OldState; // m_eOldState ESteamNetworkingConnectionState
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<SteamNetConnectionStatusChangedCallback_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<SteamNetConnectionStatusChangedCallback_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.SteamNetConnectionStatusChangedCallback_t;
 		#endregion
@@ -3348,7 +3348,7 @@ namespace Steamworks.Data
 		public fixed byte DebugMsg[ 256 ]; // m_debugMsg char [256]
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<SteamNetAuthenticationStatus_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<SteamNetAuthenticationStatus_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.SteamNetAuthenticationStatus_t;
 		#endregion
@@ -3364,7 +3364,7 @@ namespace Steamworks.Data
 		public fixed byte DebugMsg[ 256 ]; // m_debugMsg char [256]
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<SteamRelayNetworkStatus_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<SteamRelayNetworkStatus_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.SteamRelayNetworkStatus_t;
 		#endregion
@@ -3377,7 +3377,7 @@ namespace Steamworks.Data
 		public ulong OwnerSteamID; // m_OwnerSteamID CSteamID
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<GSClientApprove_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<GSClientApprove_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.GSClientApprove_t;
 		#endregion
@@ -3391,7 +3391,7 @@ namespace Steamworks.Data
 		public fixed byte OptionalText[ 128 ]; // m_rgchOptionalText char [128]
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<GSClientDeny_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<GSClientDeny_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.GSClientDeny_t;
 		#endregion
@@ -3404,7 +3404,7 @@ namespace Steamworks.Data
 		public EDenyReason DenyReason; // m_eDenyReason EDenyReason
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<GSClientKick_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<GSClientKick_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.GSClientKick_t;
 		#endregion
@@ -3419,7 +3419,7 @@ namespace Steamworks.Data
 		public bool Unlocked; // m_bUnlocked bool
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<GSClientAchievementStatus_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<GSClientAchievementStatus_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.GSClientAchievementStatus_t;
 		#endregion
@@ -3431,7 +3431,7 @@ namespace Steamworks.Data
 		public byte Secure; // m_bSecure uint8
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<GSPolicyResponse_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<GSPolicyResponse_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.GSPolicyResponse_t;
 		#endregion
@@ -3446,7 +3446,7 @@ namespace Steamworks.Data
 		public uint TotalMinutesPlayed; // m_unTotalMinutesPlayed uint32
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<GSGameplayStats_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<GSGameplayStats_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.GSGameplayStats_t;
 		#endregion
@@ -3463,7 +3463,7 @@ namespace Steamworks.Data
 		public bool Officer; // m_bOfficer bool
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<GSClientGroupStatus_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<GSClientGroupStatus_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.GSClientGroupStatus_t;
 		#endregion
@@ -3482,7 +3482,7 @@ namespace Steamworks.Data
 		public uint BanExpires; // m_unBanExpires uint32
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<GSReputation_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<GSReputation_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.GSReputation_t;
 		#endregion
@@ -3494,7 +3494,7 @@ namespace Steamworks.Data
 		public EResult Result; // m_eResult EResult
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<AssociateWithClanResult_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<AssociateWithClanResult_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.AssociateWithClanResult_t;
 		#endregion
@@ -3510,7 +3510,7 @@ namespace Steamworks.Data
 		public ulong SteamIDCandidate; // m_SteamIDCandidate CSteamID
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<ComputeNewPlayerCompatibilityResult_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<ComputeNewPlayerCompatibilityResult_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.ComputeNewPlayerCompatibilityResult_t;
 		#endregion
@@ -3523,7 +3523,7 @@ namespace Steamworks.Data
 		public ulong SteamIDUser; // m_steamIDUser CSteamID
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<GSStatsReceived_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<GSStatsReceived_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.GSStatsReceived_t;
 		#endregion
@@ -3536,7 +3536,7 @@ namespace Steamworks.Data
 		public ulong SteamIDUser; // m_steamIDUser CSteamID
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<GSStatsStored_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<GSStatsStored_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.GSStatsStored_t;
 		#endregion
@@ -3548,7 +3548,7 @@ namespace Steamworks.Data
 		public ulong SteamIDUser; // m_steamIDUser CSteamID
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<GSStatsUnloaded_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<GSStatsUnloaded_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.GSStatsUnloaded_t;
 		#endregion
@@ -3563,7 +3563,7 @@ namespace Steamworks.Data
 		public fixed ushort Ports[ 8 ]; // m_unPorts uint16 [8]
 		
 		#region SteamCallback
-		public static int _datasize = UnsafeUtility.SizeOf<SteamNetworkingFakeIPResult_t>();
+		public static readonly int _datasize = UnsafeUtility.SizeOf<SteamNetworkingFakeIPResult_t>();
 		public int DataSize => _datasize;
 		public CallbackType CallbackType => CallbackType.SteamNetworkingFakeIPResult_t;
 		#endregion

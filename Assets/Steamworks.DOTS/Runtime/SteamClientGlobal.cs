@@ -34,7 +34,7 @@ namespace Steamworks
         /// <para>Internal implementation of SteamAPI_InitEx.  This is done in a way that checks
         /// all of the versions of interfaces from headers being compiled into this code.</para>
         /// </summary>
-        public static ESteamAPIInitResult Init( AppId_t appid, out string errorMsg )
+        internal static ESteamAPIInitResult Init( AppId_t appid, out string errorMsg )
         {
             if ( _initialized )
                 throw new Exception( "Calling SteamClient.Init twice" );
@@ -74,6 +74,7 @@ namespace Steamworks
             {
                 if ( CSteamAPIContext.Init() )
                 {
+                    SteamAPIDispatch.Init();
                 }
                 else
                 {
@@ -85,12 +86,13 @@ namespace Steamworks
             return initResult;
         }
 
-        public static void Shutdown()
+        internal static void Shutdown()
         {
             if ( !_initialized ) throw new Exception( "Calling shutdown when no initialization" );
             
-            Native.SteamAPI_Shutdown();
+            SteamAPIDispatch.Shutdown();
             CSteamAPIContext.Shutdown();
+            Native.SteamAPI_Shutdown();
         }
 
         /// <summary>

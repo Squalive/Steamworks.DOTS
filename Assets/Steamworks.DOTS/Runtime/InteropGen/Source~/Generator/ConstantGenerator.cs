@@ -8,6 +8,7 @@ public class ConstantGenerator : BaseGenerator
     protected override void DoGenerate( SteamAPIDefinition def )
     {
         Bracket( "internal static class Defines" );
+        WriteLine( $"public const int NumCallbacks = {def.CallbackStructs.Length};" );
         foreach ( var constant in def.Constants )
         {
             var type = Parser.ConvertType( constant.Type );

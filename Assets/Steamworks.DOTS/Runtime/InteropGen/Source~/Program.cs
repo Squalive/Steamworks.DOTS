@@ -35,6 +35,7 @@ public static class Program
         composites.Add<EnumGenerator>();
         composites.Add<CustomEnumGenerator>();
         composites.Add<InterfaceGenerator>();
+        composites.Add<RegisterCallbackTypeGenerator>();
 
         Directory.CreateDirectory( toFolder );
 

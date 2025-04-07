@@ -30,7 +30,7 @@ namespace Steamworks
 		#region SteamAPI_ISteamMusic_BIsEnabled
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamMusic_BIsEnabled", CallingConvention = Platform.CC ) ]
 		[ return: MarshalAs( UnmanagedType.I1 ) ]
-		private static extern bool _SteamAPI_ISteamMusic_BIsEnabled( IntPtr self );
+		internal static extern bool _SteamAPI_ISteamMusic_BIsEnabled( IntPtr self );
 		#endregion
 		internal bool BIsEnabled()
 		{
@@ -41,7 +41,7 @@ namespace Steamworks
 		#region SteamAPI_ISteamMusic_BIsPlaying
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamMusic_BIsPlaying", CallingConvention = Platform.CC ) ]
 		[ return: MarshalAs( UnmanagedType.I1 ) ]
-		private static extern bool _SteamAPI_ISteamMusic_BIsPlaying( IntPtr self );
+		internal static extern bool _SteamAPI_ISteamMusic_BIsPlaying( IntPtr self );
 		#endregion
 		internal bool BIsPlaying()
 		{
@@ -51,7 +51,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamMusic_GetPlaybackStatus
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamMusic_GetPlaybackStatus", CallingConvention = Platform.CC ) ]
-		private static extern AudioPlayback_Status _SteamAPI_ISteamMusic_GetPlaybackStatus( IntPtr self );
+		internal static extern AudioPlayback_Status _SteamAPI_ISteamMusic_GetPlaybackStatus( IntPtr self );
 		#endregion
 		internal AudioPlayback_Status GetPlaybackStatus()
 		{
@@ -61,7 +61,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamMusic_Play
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamMusic_Play", CallingConvention = Platform.CC ) ]
-		private static extern void _SteamAPI_ISteamMusic_Play( IntPtr self );
+		internal static extern void _SteamAPI_ISteamMusic_Play( IntPtr self );
 		#endregion
 		internal void Play()
 		{
@@ -70,7 +70,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamMusic_Pause
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamMusic_Pause", CallingConvention = Platform.CC ) ]
-		private static extern void _SteamAPI_ISteamMusic_Pause( IntPtr self );
+		internal static extern void _SteamAPI_ISteamMusic_Pause( IntPtr self );
 		#endregion
 		internal void Pause()
 		{
@@ -79,7 +79,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamMusic_PlayPrevious
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamMusic_PlayPrevious", CallingConvention = Platform.CC ) ]
-		private static extern void _SteamAPI_ISteamMusic_PlayPrevious( IntPtr self );
+		internal static extern void _SteamAPI_ISteamMusic_PlayPrevious( IntPtr self );
 		#endregion
 		internal void PlayPrevious()
 		{
@@ -88,7 +88,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamMusic_PlayNext
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamMusic_PlayNext", CallingConvention = Platform.CC ) ]
-		private static extern void _SteamAPI_ISteamMusic_PlayNext( IntPtr self );
+		internal static extern void _SteamAPI_ISteamMusic_PlayNext( IntPtr self );
 		#endregion
 		internal void PlayNext()
 		{
@@ -97,7 +97,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamMusic_SetVolume
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamMusic_SetVolume", CallingConvention = Platform.CC ) ]
-		private static extern void _SteamAPI_ISteamMusic_SetVolume( IntPtr self, float flVolume );
+		internal static extern void _SteamAPI_ISteamMusic_SetVolume( IntPtr self, float flVolume );
 		#endregion
 		internal void SetVolume( float flVolume )
 		{
@@ -106,7 +106,7 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamMusic_GetVolume
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamMusic_GetVolume", CallingConvention = Platform.CC ) ]
-		private static extern float _SteamAPI_ISteamMusic_GetVolume( IntPtr self );
+		internal static extern float _SteamAPI_ISteamMusic_GetVolume( IntPtr self );
 		#endregion
 		internal float GetVolume()
 		{
