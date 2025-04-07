@@ -253,10 +253,10 @@ namespace Steamworks
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamFriends_DownloadClanActivityCounts", CallingConvention = Platform.CC ) ]
 		internal static extern SteamAPICall_t _SteamAPI_ISteamFriends_DownloadClanActivityCounts( IntPtr self, SteamId* psteamIDClans, int cClansToRequest );
 		#endregion
-		internal SteamAPICall_t DownloadClanActivityCounts( SteamId* psteamIDClans, int cClansToRequest )
+		internal CallResult<DownloadClanActivityCountsResult_t> DownloadClanActivityCounts( SteamId* psteamIDClans, int cClansToRequest )
 		{
 			var returnValue = _SteamAPI_ISteamFriends_DownloadClanActivityCounts( Self, psteamIDClans, cClansToRequest );
-			return returnValue;
+			return new CallResult<DownloadClanActivityCountsResult_t>( returnValue );
 		}
 		
 		#region SteamAPI_ISteamFriends_GetFriendCountFromSource
@@ -401,10 +401,10 @@ namespace Steamworks
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamFriends_RequestClanOfficerList", CallingConvention = Platform.CC ) ]
 		internal static extern SteamAPICall_t _SteamAPI_ISteamFriends_RequestClanOfficerList( IntPtr self, SteamId steamIDClan );
 		#endregion
-		internal SteamAPICall_t RequestClanOfficerList( SteamId steamIDClan )
+		internal CallResult<ClanOfficerListResponse_t> RequestClanOfficerList( SteamId steamIDClan )
 		{
 			var returnValue = _SteamAPI_ISteamFriends_RequestClanOfficerList( Self, steamIDClan );
-			return returnValue;
+			return new CallResult<ClanOfficerListResponse_t>( returnValue );
 		}
 		
 		#region SteamAPI_ISteamFriends_GetClanOwner
@@ -555,10 +555,10 @@ namespace Steamworks
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamFriends_JoinClanChatRoom", CallingConvention = Platform.CC ) ]
 		internal static extern SteamAPICall_t _SteamAPI_ISteamFriends_JoinClanChatRoom( IntPtr self, SteamId steamIDClan );
 		#endregion
-		internal SteamAPICall_t JoinClanChatRoom( SteamId steamIDClan )
+		internal CallResult<JoinClanChatRoomCompletionResult_t> JoinClanChatRoom( SteamId steamIDClan )
 		{
 			var returnValue = _SteamAPI_ISteamFriends_JoinClanChatRoom( Self, steamIDClan );
-			return returnValue;
+			return new CallResult<JoinClanChatRoomCompletionResult_t>( returnValue );
 		}
 		
 		#region SteamAPI_ISteamFriends_LeaveClanChatRoom
@@ -695,30 +695,30 @@ namespace Steamworks
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamFriends_GetFollowerCount", CallingConvention = Platform.CC ) ]
 		internal static extern SteamAPICall_t _SteamAPI_ISteamFriends_GetFollowerCount( IntPtr self, SteamId steamID );
 		#endregion
-		internal SteamAPICall_t GetFollowerCount( SteamId steamID )
+		internal CallResult<FriendsGetFollowerCount_t> GetFollowerCount( SteamId steamID )
 		{
 			var returnValue = _SteamAPI_ISteamFriends_GetFollowerCount( Self, steamID );
-			return returnValue;
+			return new CallResult<FriendsGetFollowerCount_t>( returnValue );
 		}
 		
 		#region SteamAPI_ISteamFriends_IsFollowing
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamFriends_IsFollowing", CallingConvention = Platform.CC ) ]
 		internal static extern SteamAPICall_t _SteamAPI_ISteamFriends_IsFollowing( IntPtr self, SteamId steamID );
 		#endregion
-		internal SteamAPICall_t IsFollowing( SteamId steamID )
+		internal CallResult<FriendsIsFollowing_t> IsFollowing( SteamId steamID )
 		{
 			var returnValue = _SteamAPI_ISteamFriends_IsFollowing( Self, steamID );
-			return returnValue;
+			return new CallResult<FriendsIsFollowing_t>( returnValue );
 		}
 		
 		#region SteamAPI_ISteamFriends_EnumerateFollowingList
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamFriends_EnumerateFollowingList", CallingConvention = Platform.CC ) ]
 		internal static extern SteamAPICall_t _SteamAPI_ISteamFriends_EnumerateFollowingList( IntPtr self, uint unStartIndex );
 		#endregion
-		internal SteamAPICall_t EnumerateFollowingList( uint unStartIndex )
+		internal CallResult<FriendsEnumerateFollowingList_t> EnumerateFollowingList( uint unStartIndex )
 		{
 			var returnValue = _SteamAPI_ISteamFriends_EnumerateFollowingList( Self, unStartIndex );
-			return returnValue;
+			return new CallResult<FriendsEnumerateFollowingList_t>( returnValue );
 		}
 		
 		#region SteamAPI_ISteamFriends_IsClanPublic
@@ -788,10 +788,10 @@ namespace Steamworks
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamFriends_RequestEquippedProfileItems", CallingConvention = Platform.CC ) ]
 		internal static extern SteamAPICall_t _SteamAPI_ISteamFriends_RequestEquippedProfileItems( IntPtr self, SteamId steamID );
 		#endregion
-		internal SteamAPICall_t RequestEquippedProfileItems( SteamId steamID )
+		internal CallResult<EquippedProfileItems_t> RequestEquippedProfileItems( SteamId steamID )
 		{
 			var returnValue = _SteamAPI_ISteamFriends_RequestEquippedProfileItems( Self, steamID );
-			return returnValue;
+			return new CallResult<EquippedProfileItems_t>( returnValue );
 		}
 		
 		#region SteamAPI_ISteamFriends_BHasEquippedProfileItem

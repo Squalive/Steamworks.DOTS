@@ -551,7 +551,7 @@ namespace Steamworks.Data
 		
 	}
 	
-	[ StructLayout( LayoutKind.Sequential, Pack = Platform.StructPlatformPackSize ) ]
+	[ StructLayout( LayoutKind.Sequential, Size = 1, Pack = Platform.StructPlatformPackSize ) ]
 	public unsafe struct SteamServersConnected_t : ISteamCallback
 	{
 		
@@ -621,7 +621,7 @@ namespace Steamworks.Data
 		}
 	}
 	
-	[ StructLayout( LayoutKind.Sequential, Pack = Platform.StructPlatformPackSize ) ]
+	[ StructLayout( LayoutKind.Sequential, Size = 1, Pack = Platform.StructPlatformPackSize ) ]
 	public unsafe struct LicensesUpdated_t : ISteamCallback
 	{
 		
@@ -998,7 +998,7 @@ namespace Steamworks.Data
 		#endregion
 	}
 	
-	[ StructLayout( LayoutKind.Sequential, Pack = Platform.StructPlatformPackSize ) ]
+	[ StructLayout( LayoutKind.Sequential, Size = 1, Pack = Platform.StructPlatformPackSize ) ]
 	public unsafe struct UnreadChatMessagesChanged_t : ISteamCallback
 	{
 		
@@ -1058,7 +1058,7 @@ namespace Steamworks.Data
 		#endregion
 	}
 	
-	[ StructLayout( LayoutKind.Sequential, Pack = Platform.StructPlatformPackSize ) ]
+	[ StructLayout( LayoutKind.Sequential, Size = 1, Pack = Platform.StructPlatformPackSize ) ]
 	public unsafe struct IPCountry_t : ISteamCallback
 	{
 		
@@ -1095,7 +1095,7 @@ namespace Steamworks.Data
 		#endregion
 	}
 	
-	[ StructLayout( LayoutKind.Sequential, Pack = Platform.StructPlatformPackSize ) ]
+	[ StructLayout( LayoutKind.Sequential, Size = 1, Pack = Platform.StructPlatformPackSize ) ]
 	public unsafe struct SteamShutdown_t : ISteamCallback
 	{
 		
@@ -1133,7 +1133,7 @@ namespace Steamworks.Data
 		#endregion
 	}
 	
-	[ StructLayout( LayoutKind.Sequential, Pack = Platform.StructPlatformPackSize ) ]
+	[ StructLayout( LayoutKind.Sequential, Size = 1, Pack = Platform.StructPlatformPackSize ) ]
 	public unsafe struct AppResumingFromSuspend_t : ISteamCallback
 	{
 		
@@ -1144,7 +1144,7 @@ namespace Steamworks.Data
 		#endregion
 	}
 	
-	[ StructLayout( LayoutKind.Sequential, Pack = Platform.StructPlatformPackSize ) ]
+	[ StructLayout( LayoutKind.Sequential, Size = 1, Pack = Platform.StructPlatformPackSize ) ]
 	public unsafe struct FloatingGamepadTextInputDismissed_t : ISteamCallback
 	{
 		
@@ -1495,7 +1495,7 @@ namespace Steamworks.Data
 		#endregion
 	}
 	
-	[ StructLayout( LayoutKind.Sequential, Pack = Platform.StructPlatformPackSize ) ]
+	[ StructLayout( LayoutKind.Sequential, Size = 1, Pack = Platform.StructPlatformPackSize ) ]
 	public unsafe struct AvailableBeaconLocationsUpdated_t : ISteamCallback
 	{
 		
@@ -1506,7 +1506,7 @@ namespace Steamworks.Data
 		#endregion
 	}
 	
-	[ StructLayout( LayoutKind.Sequential, Pack = Platform.StructPlatformPackSize ) ]
+	[ StructLayout( LayoutKind.Sequential, Size = 1, Pack = Platform.StructPlatformPackSize ) ]
 	public unsafe struct ActiveBeaconsUpdated_t : ISteamCallback
 	{
 		
@@ -1885,7 +1885,7 @@ namespace Steamworks.Data
 		#endregion
 	}
 	
-	[ StructLayout( LayoutKind.Sequential, Pack = Platform.StructPlatformPackSize ) ]
+	[ StructLayout( LayoutKind.Sequential, Size = 1, Pack = Platform.StructPlatformPackSize ) ]
 	public unsafe struct RemoteStorageLocalFileChange_t : ISteamCallback
 	{
 		
@@ -2076,7 +2076,7 @@ namespace Steamworks.Data
 		#endregion
 	}
 	
-	[ StructLayout( LayoutKind.Sequential, Pack = Platform.StructPlatformPackSize ) ]
+	[ StructLayout( LayoutKind.Sequential, Size = 1, Pack = Platform.StructPlatformPackSize ) ]
 	public unsafe struct NewUrlLaunchParameters_t : ISteamCallback
 	{
 		
@@ -2171,7 +2171,7 @@ namespace Steamworks.Data
 		#endregion
 	}
 	
-	[ StructLayout( LayoutKind.Sequential, Pack = Platform.StructPlatformPackSize ) ]
+	[ StructLayout( LayoutKind.Sequential, Size = 1, Pack = Platform.StructPlatformPackSize ) ]
 	public unsafe struct ScreenshotRequested_t : ISteamCallback
 	{
 		
@@ -2182,7 +2182,7 @@ namespace Steamworks.Data
 		#endregion
 	}
 	
-	[ StructLayout( LayoutKind.Sequential, Pack = Platform.StructPlatformPackSize ) ]
+	[ StructLayout( LayoutKind.Sequential, Size = 1, Pack = Platform.StructPlatformPackSize ) ]
 	public unsafe struct PlaybackStatusHasChanged_t : ISteamCallback
 	{
 		
@@ -2205,7 +2205,7 @@ namespace Steamworks.Data
 		#endregion
 	}
 	
-	[ StructLayout( LayoutKind.Sequential, Pack = Platform.StructPlatformPackSize ) ]
+	[ StructLayout( LayoutKind.Sequential, Size = 1, Pack = Platform.StructPlatformPackSize ) ]
 	public unsafe struct MusicPlayerRemoteWillActivate_t : ISteamCallback
 	{
 		
@@ -2216,7 +2216,7 @@ namespace Steamworks.Data
 		#endregion
 	}
 	
-	[ StructLayout( LayoutKind.Sequential, Pack = Platform.StructPlatformPackSize ) ]
+	[ StructLayout( LayoutKind.Sequential, Size = 1, Pack = Platform.StructPlatformPackSize ) ]
 	public unsafe struct MusicPlayerRemoteWillDeactivate_t : ISteamCallback
 	{
 		
@@ -2227,7 +2227,7 @@ namespace Steamworks.Data
 		#endregion
 	}
 	
-	[ StructLayout( LayoutKind.Sequential, Pack = Platform.StructPlatformPackSize ) ]
+	[ StructLayout( LayoutKind.Sequential, Size = 1, Pack = Platform.StructPlatformPackSize ) ]
 	public unsafe struct MusicPlayerRemoteToFront_t : ISteamCallback
 	{
 		
@@ -2238,7 +2238,7 @@ namespace Steamworks.Data
 		#endregion
 	}
 	
-	[ StructLayout( LayoutKind.Sequential, Pack = Platform.StructPlatformPackSize ) ]
+	[ StructLayout( LayoutKind.Sequential, Size = 1, Pack = Platform.StructPlatformPackSize ) ]
 	public unsafe struct MusicPlayerWillQuit_t : ISteamCallback
 	{
 		
@@ -2249,7 +2249,7 @@ namespace Steamworks.Data
 		#endregion
 	}
 	
-	[ StructLayout( LayoutKind.Sequential, Pack = Platform.StructPlatformPackSize ) ]
+	[ StructLayout( LayoutKind.Sequential, Size = 1, Pack = Platform.StructPlatformPackSize ) ]
 	public unsafe struct MusicPlayerWantsPlay_t : ISteamCallback
 	{
 		
@@ -2260,7 +2260,7 @@ namespace Steamworks.Data
 		#endregion
 	}
 	
-	[ StructLayout( LayoutKind.Sequential, Pack = Platform.StructPlatformPackSize ) ]
+	[ StructLayout( LayoutKind.Sequential, Size = 1, Pack = Platform.StructPlatformPackSize ) ]
 	public unsafe struct MusicPlayerWantsPause_t : ISteamCallback
 	{
 		
@@ -2271,7 +2271,7 @@ namespace Steamworks.Data
 		#endregion
 	}
 	
-	[ StructLayout( LayoutKind.Sequential, Pack = Platform.StructPlatformPackSize ) ]
+	[ StructLayout( LayoutKind.Sequential, Size = 1, Pack = Platform.StructPlatformPackSize ) ]
 	public unsafe struct MusicPlayerWantsPlayPrevious_t : ISteamCallback
 	{
 		
@@ -2282,7 +2282,7 @@ namespace Steamworks.Data
 		#endregion
 	}
 	
-	[ StructLayout( LayoutKind.Sequential, Pack = Platform.StructPlatformPackSize ) ]
+	[ StructLayout( LayoutKind.Sequential, Size = 1, Pack = Platform.StructPlatformPackSize ) ]
 	public unsafe struct MusicPlayerWantsPlayNext_t : ISteamCallback
 	{
 		
@@ -3120,7 +3120,7 @@ namespace Steamworks.Data
 		#endregion
 	}
 	
-	[ StructLayout( LayoutKind.Sequential, Pack = Platform.StructPlatformPackSize ) ]
+	[ StructLayout( LayoutKind.Sequential, Size = 1, Pack = Platform.StructPlatformPackSize ) ]
 	public unsafe struct SteamInventoryDefinitionUpdate_t : ISteamCallback
 	{
 		
@@ -3256,7 +3256,7 @@ namespace Steamworks.Data
 		#endregion
 	}
 	
-	[ StructLayout( LayoutKind.Sequential, Pack = Platform.StructPlatformPackSize ) ]
+	[ StructLayout( LayoutKind.Sequential, Size = 1, Pack = Platform.StructPlatformPackSize ) ]
 	public unsafe struct SteamParentalSettingsChanged_t : ISteamCallback
 	{
 		

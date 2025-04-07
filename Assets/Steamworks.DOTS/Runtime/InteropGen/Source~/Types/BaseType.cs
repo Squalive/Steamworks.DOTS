@@ -10,7 +10,7 @@ public class BaseType
     {
         get
         {
-            return ReturnType;
+            return TypeName;
         }
     }
 
@@ -92,8 +92,12 @@ public class BaseType
     {
         type = Parser.ConvertType( type );
         
+        var typeNoSpaces = type.Replace( " ", "" );
         if ( varname == "ppOutMessages" ) return new IntPtrType { NativeType = "void *", VarName = varname };
         if ( type == "SteamAPIWarningMessageHook_t" ) return new IntPtrType { NativeType = type, VarName = varname };
+        if ( typeNoSpaces == "MatchMakingKeyValuePair**") return new IntPtrType { NativeType = "MatchMakingKeyValuePair_t", VarName = varname };
+        
+        if ( type == "SteamAPICall_t" ) return new SteamAPICallType { NativeType = type, VarName = varname, CallResult = callresult };
         
         if ( type == "void" ) return new VoidType { NativeType = type, VarName = varname };
         if ( type.Replace( " ", "" ).StartsWith( "constchar*" ) ) return new ConstCharType { NativeType = type, VarName = varname };

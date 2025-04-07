@@ -296,11 +296,11 @@ namespace Steamworks
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamApps_GetFileDetails", CallingConvention = Platform.CC ) ]
 		internal static extern SteamAPICall_t _SteamAPI_ISteamApps_GetFileDetails( IntPtr self, IntPtr pszFileName );
 		#endregion
-		internal SteamAPICall_t GetFileDetails( string pszFileName )
+		internal CallResult<FileDetailsResult_t> GetFileDetails( string pszFileName )
 		{
 			using var str__pszFileName = new Utf8StringToNative( pszFileName );
 			var returnValue = _SteamAPI_ISteamApps_GetFileDetails( Self, str__pszFileName.Pointer );
-			return returnValue;
+			return new CallResult<FileDetailsResult_t>( returnValue );
 		}
 		
 		#region SteamAPI_ISteamApps_GetLaunchCommandLine

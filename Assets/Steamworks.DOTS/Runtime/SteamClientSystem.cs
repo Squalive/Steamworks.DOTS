@@ -4,40 +4,38 @@ using Unity.Entities;
 
 namespace Steamworks
 {
-    public struct SteamGameServerInitResult : IComponentData
+    public struct SteamAPIInitResult : IComponentData
     {
         public SteamInitResult Result;
         public FixedString512Bytes ErrorMsg;
     }
 
-    public struct SteamGameServerRequestInit : IComponentData
+    public struct SteamAPIRequestInit : IComponentData
     {
         internal AppId_t AppId;
-        internal SteamGameServerInit Params;
 
-        public SteamGameServerRequestInit( AppId_t appId, in FixedString128Bytes modDir, in FixedString512Bytes gameDesc )
+        public SteamAPIRequestInit( AppId_t appId )
         {
             AppId = appId;
-            Params = new SteamGameServerInit( modDir, gameDesc );
         }
     }
     
-    [ WorldSystemFilter( WorldSystemFilterFlags.ServerSimulation ) ]
+    [ WorldSystemFilter( WorldSystemFilterFlags.ClientSimulation | WorldSystemFilterFlags.ThinClientSimulation ) ]
     [ UpdateInGroup( typeof( InitializationSystemGroup ) ) ]
-    public partial class SteamServerSystem : SystemBase
+    public partial class SteamClientSystem : SystemBase
     {
         private static class Internal
         {
             private static AppId_t _validAppId = 0;
             private static int _initCount = 0;
 
-            public static SteamInitResult SafeInit( AppId_t appId, SteamGameServerInit init, out string errorMsg )
+            public static SteamInitResult SafeInit( AppId_t appId, out string errorMsg )
             {
                 errorMsg = string.Empty;
                 var result = SteamInitResult.Ok;
                 if ( ShouldInitGlobal( appId ) )
                 {
-                    result = SteamGameServerGlobal.Init( appId, init, out errorMsg );
+                    result = SteamClientGlobal.Init( appId, out errorMsg );
                 }
 
                 if ( result == SteamInitResult.Ok )
@@ -46,6 +44,7 @@ namespace Steamworks
                     _initCount++;
                     SharedDispatch.Init();
                 }
+                
                 return result;
             }
 
@@ -53,7 +52,7 @@ namespace Steamworks
             {
                 if ( --_initCount <= 0 )
                 {
-                    SteamGameServerGlobal.Shutdown();
+                    SteamClientGlobal.Shutdown();
                     _initCount = 0;
                     _validAppId = 0;
                 }
@@ -64,14 +63,14 @@ namespace Steamworks
                 return _validAppId != appId && _initCount == 0;
             }
         }
-
-        private EntityQuery _requestInitQuery;
         
+        private EntityQuery _requestInitQuery;
+
         protected override void OnCreate()
         {
             var builder = new EntityQueryBuilder( Allocator.Temp )
-                .WithAll<SteamGameServerRequestInit>()
-                .WithNone<SteamGameServerInitResult>();
+                .WithAll<SteamAPIRequestInit>()
+                .WithNone<SteamAPIInitResult>();
             _requestInitQuery = GetEntityQuery( builder );
 
             builder.Reset()
@@ -93,35 +92,35 @@ namespace Steamworks
         protected override void OnUpdate()
         {
             var entities = _requestInitQuery.ToEntityArray( Allocator.Temp );
-            var initArray = _requestInitQuery.ToComponentDataArray<SteamGameServerRequestInit>( Allocator.Temp );
+            var initArray = _requestInitQuery.ToComponentDataArray<SteamAPIRequestInit>( Allocator.Temp );
             var commandBuffer = new EntityCommandBuffer( Allocator.Temp );
             for ( var i = 0; i < entities.Length;  )
             {
                 var init = initArray[ i ];
-                var eResult = Internal.SafeInit( init.AppId, init.Params, out var errorMsg );
+                var eResult = Internal.SafeInit( init.AppId, out var errorMsg );
                 var entity = entities[ i ];
-                commandBuffer.RemoveComponent<SteamGameServerRequestInit>( entity );
-                commandBuffer.AddComponent( entity, new SteamGameServerInitResult { Result = eResult, ErrorMsg = errorMsg } );
+                commandBuffer.RemoveComponent<SteamAPIRequestInit>( entity );
+                commandBuffer.AddComponent( entity, new SteamAPIInitResult { Result = eResult, ErrorMsg = errorMsg } );
                 if ( eResult == SteamInitResult.Ok )
                 {
 #if !DOTS_DISABLE_DEBUG_NAMES
-                    commandBuffer.SetName( entity, "SteamGameServer" );
+                    commandBuffer.SetName( entity, "SteamAPI" );
 #endif
-                    var steamInternal = new SteamInternal( SteamInternal.SteamGameServer_GetHSteamPipe(), SteamInternal.SteamGameServer_GetHSteamUser(), SteamGameServerDispatch.DispatchImpl );
+                    var steamInternal = new SteamInternal( SteamInternal.SteamAPI_GetHSteamPipe(), SteamInternal.SteamAPI_GetHSteamUser(), SteamClientDispatch.DispatchImpl );
                     steamInternal.GetDispatchImpl().InstallWorld( World.Unmanaged );
                     commandBuffer.AddComponent( entity, steamInternal );
                     commandBuffer.AddComponent( entity, new SteamLocal
                     {
-                        Id = ISteamGameServer._SteamAPI_ISteamGameServer_GetSteamID( CSteamGameServerAPIContext.SteamGameServer )
+                        Id = ISteamUser._SteamAPI_ISteamUser_GetSteamID( CSteamAPIContext.SteamUser )
                     } );
-                    commandBuffer.AddComponent( entity, new SteamGameServer( CSteamGameServerAPIContext.SteamGameServer ) );
+                    commandBuffer.AddComponent( entity, new SteamFriends( CSteamAPIContext.SteamFriends ) );
                 }
+#if !DOTS_DISABLE_DEBUG_NAMES
                 else
                 {
-#if !DOTS_DISABLE_DEBUG_NAMES
-                    commandBuffer.SetName( entity, "SteamGameServer_Failed" );
-#endif
+                    commandBuffer.SetName( entity, "SteamAPI_Failed" );
                 }
+#endif
                 break;
             }
 

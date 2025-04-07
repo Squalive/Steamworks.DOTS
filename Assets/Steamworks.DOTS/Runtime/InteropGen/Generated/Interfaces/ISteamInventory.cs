@@ -290,10 +290,10 @@ namespace Steamworks
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamInventory_RequestEligiblePromoItemDefinitionsIDs", CallingConvention = Platform.CC ) ]
 		internal static extern SteamAPICall_t _SteamAPI_ISteamInventory_RequestEligiblePromoItemDefinitionsIDs( IntPtr self, SteamId steamID );
 		#endregion
-		internal SteamAPICall_t RequestEligiblePromoItemDefinitionsIDs( SteamId steamID )
+		internal CallResult<SteamInventoryEligiblePromoItemDefIDs_t> RequestEligiblePromoItemDefinitionsIDs( SteamId steamID )
 		{
 			var returnValue = _SteamAPI_ISteamInventory_RequestEligiblePromoItemDefinitionsIDs( Self, steamID );
-			return returnValue;
+			return new CallResult<SteamInventoryEligiblePromoItemDefIDs_t>( returnValue );
 		}
 		
 		#region SteamAPI_ISteamInventory_GetEligiblePromoItemDefinitionIDs
@@ -311,20 +311,20 @@ namespace Steamworks
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamInventory_StartPurchase", CallingConvention = Platform.CC ) ]
 		internal static extern SteamAPICall_t _SteamAPI_ISteamInventory_StartPurchase( IntPtr self, SteamItemDef_t* pArrayItemDefs, uint* punArrayQuantity, uint unArrayLength );
 		#endregion
-		internal SteamAPICall_t StartPurchase( SteamItemDef_t* pArrayItemDefs, uint* punArrayQuantity, uint unArrayLength )
+		internal CallResult<SteamInventoryStartPurchaseResult_t> StartPurchase( SteamItemDef_t* pArrayItemDefs, uint* punArrayQuantity, uint unArrayLength )
 		{
 			var returnValue = _SteamAPI_ISteamInventory_StartPurchase( Self, pArrayItemDefs, punArrayQuantity, unArrayLength );
-			return returnValue;
+			return new CallResult<SteamInventoryStartPurchaseResult_t>( returnValue );
 		}
 		
 		#region SteamAPI_ISteamInventory_RequestPrices
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamInventory_RequestPrices", CallingConvention = Platform.CC ) ]
 		internal static extern SteamAPICall_t _SteamAPI_ISteamInventory_RequestPrices( IntPtr self );
 		#endregion
-		internal SteamAPICall_t RequestPrices()
+		internal CallResult<SteamInventoryRequestPricesResult_t> RequestPrices()
 		{
 			var returnValue = _SteamAPI_ISteamInventory_RequestPrices( Self );
-			return returnValue;
+			return new CallResult<SteamInventoryRequestPricesResult_t>( returnValue );
 		}
 		
 		#region SteamAPI_ISteamInventory_GetNumItemsWithPrices

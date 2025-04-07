@@ -128,10 +128,10 @@ namespace Steamworks
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamTimeline_DoesEventRecordingExist", CallingConvention = Platform.CC ) ]
 		internal static extern SteamAPICall_t _SteamAPI_ISteamTimeline_DoesEventRecordingExist( IntPtr self, TimelineEventHandle_t ulEvent );
 		#endregion
-		internal SteamAPICall_t DoesEventRecordingExist( TimelineEventHandle_t ulEvent )
+		internal CallResult<SteamTimelineEventRecordingExists_t> DoesEventRecordingExist( TimelineEventHandle_t ulEvent )
 		{
 			var returnValue = _SteamAPI_ISteamTimeline_DoesEventRecordingExist( Self, ulEvent );
-			return returnValue;
+			return new CallResult<SteamTimelineEventRecordingExists_t>( returnValue );
 		}
 		
 		#region SteamAPI_ISteamTimeline_StartGamePhase
@@ -166,11 +166,11 @@ namespace Steamworks
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamTimeline_DoesGamePhaseRecordingExist", CallingConvention = Platform.CC ) ]
 		internal static extern SteamAPICall_t _SteamAPI_ISteamTimeline_DoesGamePhaseRecordingExist( IntPtr self, IntPtr pchPhaseID );
 		#endregion
-		internal SteamAPICall_t DoesGamePhaseRecordingExist( string pchPhaseID )
+		internal CallResult<SteamTimelineGamePhaseRecordingExists_t> DoesGamePhaseRecordingExist( string pchPhaseID )
 		{
 			using var str__pchPhaseID = new Utf8StringToNative( pchPhaseID );
 			var returnValue = _SteamAPI_ISteamTimeline_DoesGamePhaseRecordingExist( Self, str__pchPhaseID.Pointer );
-			return returnValue;
+			return new CallResult<SteamTimelineGamePhaseRecordingExists_t>( returnValue );
 		}
 		
 		#region SteamAPI_ISteamTimeline_AddGamePhaseTag

@@ -53,12 +53,12 @@ namespace Steamworks
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamHTMLSurface_CreateBrowser", CallingConvention = Platform.CC ) ]
 		internal static extern SteamAPICall_t _SteamAPI_ISteamHTMLSurface_CreateBrowser( IntPtr self, IntPtr pchUserAgent, IntPtr pchUserCSS );
 		#endregion
-		internal SteamAPICall_t CreateBrowser( string pchUserAgent, string pchUserCSS )
+		internal CallResult<HTML_BrowserReady_t> CreateBrowser( string pchUserAgent, string pchUserCSS )
 		{
 			using var str__pchUserAgent = new Utf8StringToNative( pchUserAgent );
 			using var str__pchUserCSS = new Utf8StringToNative( pchUserCSS );
 			var returnValue = _SteamAPI_ISteamHTMLSurface_CreateBrowser( Self, str__pchUserAgent.Pointer, str__pchUserCSS.Pointer );
-			return returnValue;
+			return new CallResult<HTML_BrowserReady_t>( returnValue );
 		}
 		
 		#region SteamAPI_ISteamHTMLSurface_RemoveBrowser

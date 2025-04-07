@@ -64,10 +64,10 @@ namespace Steamworks
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamParties_JoinParty", CallingConvention = Platform.CC ) ]
 		internal static extern SteamAPICall_t _SteamAPI_ISteamParties_JoinParty( IntPtr self, PartyBeaconID_t ulBeaconID );
 		#endregion
-		internal SteamAPICall_t JoinParty( PartyBeaconID_t ulBeaconID )
+		internal CallResult<JoinPartyCallback_t> JoinParty( PartyBeaconID_t ulBeaconID )
 		{
 			var returnValue = _SteamAPI_ISteamParties_JoinParty( Self, ulBeaconID );
-			return returnValue;
+			return new CallResult<JoinPartyCallback_t>( returnValue );
 		}
 		
 		#region SteamAPI_ISteamParties_GetNumAvailableBeaconLocations
@@ -96,12 +96,12 @@ namespace Steamworks
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamParties_CreateBeacon", CallingConvention = Platform.CC ) ]
 		internal static extern SteamAPICall_t _SteamAPI_ISteamParties_CreateBeacon( IntPtr self, uint unOpenSlots, ref SteamPartyBeaconLocation_t pBeaconLocation, IntPtr pchConnectString, IntPtr pchMetadata );
 		#endregion
-		internal SteamAPICall_t CreateBeacon( uint unOpenSlots, ref SteamPartyBeaconLocation_t pBeaconLocation, string pchConnectString, string pchMetadata )
+		internal CallResult<CreateBeaconCallback_t> CreateBeacon( uint unOpenSlots, ref SteamPartyBeaconLocation_t pBeaconLocation, string pchConnectString, string pchMetadata )
 		{
 			using var str__pchConnectString = new Utf8StringToNative( pchConnectString );
 			using var str__pchMetadata = new Utf8StringToNative( pchMetadata );
 			var returnValue = _SteamAPI_ISteamParties_CreateBeacon( Self, unOpenSlots, ref pBeaconLocation, str__pchConnectString.Pointer, str__pchMetadata.Pointer );
-			return returnValue;
+			return new CallResult<CreateBeaconCallback_t>( returnValue );
 		}
 		
 		#region SteamAPI_ISteamParties_OnReservationCompleted
@@ -126,10 +126,10 @@ namespace Steamworks
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamParties_ChangeNumOpenSlots", CallingConvention = Platform.CC ) ]
 		internal static extern SteamAPICall_t _SteamAPI_ISteamParties_ChangeNumOpenSlots( IntPtr self, PartyBeaconID_t ulBeacon, uint unOpenSlots );
 		#endregion
-		internal SteamAPICall_t ChangeNumOpenSlots( PartyBeaconID_t ulBeacon, uint unOpenSlots )
+		internal CallResult<ChangeNumOpenSlotsCallback_t> ChangeNumOpenSlots( PartyBeaconID_t ulBeacon, uint unOpenSlots )
 		{
 			var returnValue = _SteamAPI_ISteamParties_ChangeNumOpenSlots( Self, ulBeacon, unOpenSlots );
-			return returnValue;
+			return new CallResult<ChangeNumOpenSlotsCallback_t>( returnValue );
 		}
 		
 		#region SteamAPI_ISteamParties_DestroyBeacon

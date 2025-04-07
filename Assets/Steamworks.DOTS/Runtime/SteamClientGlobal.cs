@@ -34,10 +34,9 @@ namespace Steamworks
         /// <para>Internal implementation of SteamAPI_InitEx.  This is done in a way that checks
         /// all of the versions of interfaces from headers being compiled into this code.</para>
         /// </summary>
-        internal static ESteamAPIInitResult Init( AppId_t appid, out string errorMsg )
+        internal static SteamInitResult Init( AppId_t appid, out string errorMsg )
         {
-            if ( _initialized )
-                throw new Exception( "Calling SteamClient.Init twice" );
+            if ( _initialized ) throw new Exception( "Calling SteamClient.Init twice" );
 
             Environment.SetEnvironmentVariable( "SteamAppId", appid.ToString() );
             Environment.SetEnvironmentVariable( "SteamGameId", appid.ToString() );
@@ -64,25 +63,27 @@ namespace Steamworks
                 ISteamVideo.Version,
                 ISteamRemotePlay.Version,
                 ISteamTimeline.Version );
-
+            
             using var hInterfaceVersions = new Utf8StringToNative( interfaceVersions );
             var errorMsgPtr = UnsafeUtility.Malloc( Defines.k_cchMaxSteamErrMsg, 16, Allocator.Temp );
-            var initResult = Native.SteamInternal_SteamAPI_Init( hInterfaceVersions, ( IntPtr ) errorMsgPtr );
+            var initResult = ( SteamInitResult ) Native.SteamInternal_SteamAPI_Init( hInterfaceVersions, ( IntPtr ) errorMsgPtr );
             errorMsg = new Utf8StringPtr { Ptr = ( IntPtr ) errorMsgPtr };
             UnsafeUtility.Free( errorMsgPtr, Allocator.Temp );
-            if ( initResult == ESteamAPIInitResult.OK )
+            if ( initResult == SteamInitResult.Ok )
             {
                 if ( CSteamAPIContext.Init() )
                 {
-                    SteamAPIDispatch.Init();
+                    SteamClientDispatch.Init();
+                    _initialized = true;
                 }
                 else
                 {
-                    initResult = ESteamAPIInitResult.FailedGeneric;
+                    initResult = SteamInitResult.ContextFailed;
                     errorMsg = "[Steamworks] Failed to initialize CSteamAPIContext";
+                    CSteamAPIContext.Shutdown();
+                    Native.SteamAPI_Shutdown();
                 }
             }
-            _initialized = true;
             return initResult;
         }
 
@@ -90,9 +91,15 @@ namespace Steamworks
         {
             if ( !_initialized ) throw new Exception( "Calling shutdown when no initialization" );
             
-            SteamAPIDispatch.Shutdown();
+            SteamClientDispatch.Shutdown();
             CSteamAPIContext.Shutdown();
             Native.SteamAPI_Shutdown();
+            _initialized = false;
+        }
+
+        public static void Frame()
+        {
+            SteamClientDispatch.Frame();
         }
 
         /// <summary>

@@ -119,9 +119,23 @@ namespace Steamworks
             if ( ( SteamInput = iSteamClient.GetISteamInput( hSteamUser, hSteamPipe, ISteamInput.Version ) ) == IntPtr.Zero ) return false;
             if ( ( SteamParties = iSteamClient.GetISteamParties( hSteamUser, hSteamPipe, ISteamParties.Version ) ) == IntPtr.Zero ) return false;
             if ( ( SteamRemotePlay = iSteamClient.GetISteamRemotePlay( hSteamUser, hSteamPipe, ISteamRemotePlay.Version ) ) == IntPtr.Zero ) return false;
-            if ( ( SteamNetworkingUtils = SteamInternal.FindOrCreateUserInterface( hSteamUser, ISteamNetworkingUtils.Version ) ) == IntPtr.Zero ) return false;
-            if ( ( SteamNetworkingSockets = SteamInternal.FindOrCreateUserInterface( hSteamUser, ISteamNetworkingSockets.Version ) ) == IntPtr.Zero ) return false;
-            if ( ( SteamNetworkingMessages = SteamInternal.FindOrCreateUserInterface( hSteamUser, ISteamNetworkingMessages.Version ) ) == IntPtr.Zero ) return false;
+            if ( ( SteamNetworkingUtils = ISteamNetworkingUtils.SteamAPI_SteamNetworkingUtils_SteamAPI_v004() ) == IntPtr.Zero ) return false;
+            if ( ( SteamNetworkingSockets = ISteamNetworkingSockets.SteamAPI_SteamNetworkingSockets_SteamAPI_v012() ) == IntPtr.Zero )
+            {
+                using ( var versionStr = new Utf8StringToNative( ISteamNetworkingSockets.Version ) )
+                {
+                    SteamNetworkingSockets = SteamInternal.SteamInternal_FindOrCreateUserInterface( hSteamUser, versionStr );
+                }
+                if ( SteamNetworkingSockets == IntPtr.Zero ) return false;
+            }
+            if ( ( SteamNetworkingMessages = ISteamNetworkingMessages.SteamAPI_SteamNetworkingMessages_SteamAPI_v002() ) == IntPtr.Zero )
+            {
+                using ( var versionStr = new Utf8StringToNative( ISteamNetworkingMessages.Version ) )
+                {
+                    SteamNetworkingMessages = SteamInternal.SteamInternal_FindOrCreateUserInterface( hSteamUser, versionStr );
+                }
+                if ( SteamNetworkingMessages == IntPtr.Zero ) return false;
+            }
 
             return true;
         }
@@ -189,9 +203,24 @@ namespace Steamworks
             if ( ( SteamHTTP = iSteamClient.GetISteamHTTP( hSteamUser, hSteamPipe, ISteamHTTP.Version ) ) == IntPtr.Zero ) return false;
             if ( ( SteamUGC = iSteamClient.GetISteamUGC( hSteamUser, hSteamPipe, ISteamUGC.Version ) ) == IntPtr.Zero ) return false;
             if ( ( SteamInventory = iSteamClient.GetISteamInventory( hSteamUser, hSteamPipe, ISteamInventory.Version ) ) == IntPtr.Zero ) return false;
-            if ( ( SteamNetworkingUtils = SteamInternal.FindOrCreateGameServerInterface( hSteamUser, ISteamNetworkingUtils.Version ) ) == IntPtr.Zero ) return false;
-            if ( ( SteamNetworkingSockets = SteamInternal.FindOrCreateGameServerInterface( hSteamUser, ISteamNetworkingSockets.Version ) ) == IntPtr.Zero ) return false;
-            if ( ( SteamNetworkingMessages = SteamInternal.FindOrCreateGameServerInterface( hSteamUser, ISteamNetworkingMessages.Version ) ) == IntPtr.Zero ) return false;
+            if ( ( SteamNetworkingUtils = ISteamNetworkingUtils.SteamAPI_SteamNetworkingUtils_SteamAPI_v004() ) == IntPtr.Zero ) return false;
+            if ( ( SteamNetworkingSockets = ISteamNetworkingSockets.SteamAPI_SteamNetworkingSockets_SteamAPI_v012() ) == IntPtr.Zero )
+            {
+                using ( var versionStr = new Utf8StringToNative( ISteamNetworkingSockets.Version ) )
+                {
+                    SteamNetworkingSockets = SteamInternal.SteamInternal_FindOrCreateGameServerInterface( hSteamUser, versionStr );
+                }
+                if ( SteamNetworkingSockets == IntPtr.Zero ) return false;
+            }
+
+            if ( ( SteamNetworkingMessages = ISteamNetworkingMessages.SteamAPI_SteamNetworkingMessages_SteamAPI_v002() ) == IntPtr.Zero )
+            {
+                using ( var versionStr = new Utf8StringToNative( ISteamNetworkingMessages.Version ) )
+                {
+                    SteamNetworkingMessages = SteamInternal.SteamInternal_FindOrCreateGameServerInterface( hSteamUser, versionStr );
+                }
+                if ( SteamNetworkingMessages == IntPtr.Zero ) return false;
+            }
             return true;
         }
         

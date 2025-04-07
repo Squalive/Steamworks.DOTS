@@ -5,7 +5,7 @@ using Unity.Collections;
 namespace Steamworks
 {
     [ BurstCompile ]
-    public static class SteamAPIDispatch
+    public static class SteamClientDispatch
     {
         private struct Index
         {
@@ -17,7 +17,7 @@ namespace Steamworks
 
         internal static void Init()
         {
-            GetDispatchImpl() = new DispatchImpl( SteamInternal.SteamGameServer_GetHSteamPipe(), Allocator.Persistent );
+            GetDispatchImpl() = new DispatchImpl( SteamInternal.SteamAPI_GetHSteamPipe(), Allocator.Persistent );
         }
 
         internal static void Shutdown()

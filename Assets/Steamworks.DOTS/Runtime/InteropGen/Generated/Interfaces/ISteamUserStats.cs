@@ -205,10 +205,10 @@ namespace Steamworks
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamUserStats_RequestUserStats", CallingConvention = Platform.CC ) ]
 		internal static extern SteamAPICall_t _SteamAPI_ISteamUserStats_RequestUserStats( IntPtr self, SteamId steamIDUser );
 		#endregion
-		internal SteamAPICall_t RequestUserStats( SteamId steamIDUser )
+		internal CallResult<UserStatsReceived_t> RequestUserStats( SteamId steamIDUser )
 		{
 			var returnValue = _SteamAPI_ISteamUserStats_RequestUserStats( Self, steamIDUser );
-			return returnValue;
+			return new CallResult<UserStatsReceived_t>( returnValue );
 		}
 		
 		#region SteamAPI_ISteamUserStats_GetUserStatInt32
@@ -274,22 +274,22 @@ namespace Steamworks
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamUserStats_FindOrCreateLeaderboard", CallingConvention = Platform.CC ) ]
 		internal static extern SteamAPICall_t _SteamAPI_ISteamUserStats_FindOrCreateLeaderboard( IntPtr self, IntPtr pchLeaderboardName, ELeaderboardSortMethod eLeaderboardSortMethod, ELeaderboardDisplayType eLeaderboardDisplayType );
 		#endregion
-		internal SteamAPICall_t FindOrCreateLeaderboard( string pchLeaderboardName, ELeaderboardSortMethod eLeaderboardSortMethod, ELeaderboardDisplayType eLeaderboardDisplayType )
+		internal CallResult<LeaderboardFindResult_t> FindOrCreateLeaderboard( string pchLeaderboardName, ELeaderboardSortMethod eLeaderboardSortMethod, ELeaderboardDisplayType eLeaderboardDisplayType )
 		{
 			using var str__pchLeaderboardName = new Utf8StringToNative( pchLeaderboardName );
 			var returnValue = _SteamAPI_ISteamUserStats_FindOrCreateLeaderboard( Self, str__pchLeaderboardName.Pointer, eLeaderboardSortMethod, eLeaderboardDisplayType );
-			return returnValue;
+			return new CallResult<LeaderboardFindResult_t>( returnValue );
 		}
 		
 		#region SteamAPI_ISteamUserStats_FindLeaderboard
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamUserStats_FindLeaderboard", CallingConvention = Platform.CC ) ]
 		internal static extern SteamAPICall_t _SteamAPI_ISteamUserStats_FindLeaderboard( IntPtr self, IntPtr pchLeaderboardName );
 		#endregion
-		internal SteamAPICall_t FindLeaderboard( string pchLeaderboardName )
+		internal CallResult<LeaderboardFindResult_t> FindLeaderboard( string pchLeaderboardName )
 		{
 			using var str__pchLeaderboardName = new Utf8StringToNative( pchLeaderboardName );
 			var returnValue = _SteamAPI_ISteamUserStats_FindLeaderboard( Self, str__pchLeaderboardName.Pointer );
-			return returnValue;
+			return new CallResult<LeaderboardFindResult_t>( returnValue );
 		}
 		
 		#region SteamAPI_ISteamUserStats_GetLeaderboardName
@@ -336,20 +336,20 @@ namespace Steamworks
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamUserStats_DownloadLeaderboardEntries", CallingConvention = Platform.CC ) ]
 		internal static extern SteamAPICall_t _SteamAPI_ISteamUserStats_DownloadLeaderboardEntries( IntPtr self, SteamLeaderboard_t hSteamLeaderboard, ELeaderboardDataRequest eLeaderboardDataRequest, int nRangeStart, int nRangeEnd );
 		#endregion
-		internal SteamAPICall_t DownloadLeaderboardEntries( SteamLeaderboard_t hSteamLeaderboard, ELeaderboardDataRequest eLeaderboardDataRequest, int nRangeStart, int nRangeEnd )
+		internal CallResult<LeaderboardScoresDownloaded_t> DownloadLeaderboardEntries( SteamLeaderboard_t hSteamLeaderboard, ELeaderboardDataRequest eLeaderboardDataRequest, int nRangeStart, int nRangeEnd )
 		{
 			var returnValue = _SteamAPI_ISteamUserStats_DownloadLeaderboardEntries( Self, hSteamLeaderboard, eLeaderboardDataRequest, nRangeStart, nRangeEnd );
-			return returnValue;
+			return new CallResult<LeaderboardScoresDownloaded_t>( returnValue );
 		}
 		
 		#region SteamAPI_ISteamUserStats_DownloadLeaderboardEntriesForUsers
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamUserStats_DownloadLeaderboardEntriesForUsers", CallingConvention = Platform.CC ) ]
 		internal static extern SteamAPICall_t _SteamAPI_ISteamUserStats_DownloadLeaderboardEntriesForUsers( IntPtr self, SteamLeaderboard_t hSteamLeaderboard, SteamId* prgUsers, int cUsers );
 		#endregion
-		internal SteamAPICall_t DownloadLeaderboardEntriesForUsers( SteamLeaderboard_t hSteamLeaderboard, SteamId* prgUsers, int cUsers )
+		internal CallResult<LeaderboardScoresDownloaded_t> DownloadLeaderboardEntriesForUsers( SteamLeaderboard_t hSteamLeaderboard, SteamId* prgUsers, int cUsers )
 		{
 			var returnValue = _SteamAPI_ISteamUserStats_DownloadLeaderboardEntriesForUsers( Self, hSteamLeaderboard, prgUsers, cUsers );
-			return returnValue;
+			return new CallResult<LeaderboardScoresDownloaded_t>( returnValue );
 		}
 		
 		#region SteamAPI_ISteamUserStats_GetDownloadedLeaderboardEntry
@@ -367,40 +367,40 @@ namespace Steamworks
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamUserStats_UploadLeaderboardScore", CallingConvention = Platform.CC ) ]
 		internal static extern SteamAPICall_t _SteamAPI_ISteamUserStats_UploadLeaderboardScore( IntPtr self, SteamLeaderboard_t hSteamLeaderboard, ELeaderboardUploadScoreMethod eLeaderboardUploadScoreMethod, int nScore, int* pScoreDetails, int cScoreDetailsCount );
 		#endregion
-		internal SteamAPICall_t UploadLeaderboardScore( SteamLeaderboard_t hSteamLeaderboard, ELeaderboardUploadScoreMethod eLeaderboardUploadScoreMethod, int nScore, int* pScoreDetails, int cScoreDetailsCount )
+		internal CallResult<LeaderboardScoreUploaded_t> UploadLeaderboardScore( SteamLeaderboard_t hSteamLeaderboard, ELeaderboardUploadScoreMethod eLeaderboardUploadScoreMethod, int nScore, int* pScoreDetails, int cScoreDetailsCount )
 		{
 			var returnValue = _SteamAPI_ISteamUserStats_UploadLeaderboardScore( Self, hSteamLeaderboard, eLeaderboardUploadScoreMethod, nScore, pScoreDetails, cScoreDetailsCount );
-			return returnValue;
+			return new CallResult<LeaderboardScoreUploaded_t>( returnValue );
 		}
 		
 		#region SteamAPI_ISteamUserStats_AttachLeaderboardUGC
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamUserStats_AttachLeaderboardUGC", CallingConvention = Platform.CC ) ]
 		internal static extern SteamAPICall_t _SteamAPI_ISteamUserStats_AttachLeaderboardUGC( IntPtr self, SteamLeaderboard_t hSteamLeaderboard, UGCHandle_t hUGC );
 		#endregion
-		internal SteamAPICall_t AttachLeaderboardUGC( SteamLeaderboard_t hSteamLeaderboard, UGCHandle_t hUGC )
+		internal CallResult<LeaderboardUGCSet_t> AttachLeaderboardUGC( SteamLeaderboard_t hSteamLeaderboard, UGCHandle_t hUGC )
 		{
 			var returnValue = _SteamAPI_ISteamUserStats_AttachLeaderboardUGC( Self, hSteamLeaderboard, hUGC );
-			return returnValue;
+			return new CallResult<LeaderboardUGCSet_t>( returnValue );
 		}
 		
 		#region SteamAPI_ISteamUserStats_GetNumberOfCurrentPlayers
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamUserStats_GetNumberOfCurrentPlayers", CallingConvention = Platform.CC ) ]
 		internal static extern SteamAPICall_t _SteamAPI_ISteamUserStats_GetNumberOfCurrentPlayers( IntPtr self );
 		#endregion
-		internal SteamAPICall_t GetNumberOfCurrentPlayers()
+		internal CallResult<NumberOfCurrentPlayers_t> GetNumberOfCurrentPlayers()
 		{
 			var returnValue = _SteamAPI_ISteamUserStats_GetNumberOfCurrentPlayers( Self );
-			return returnValue;
+			return new CallResult<NumberOfCurrentPlayers_t>( returnValue );
 		}
 		
 		#region SteamAPI_ISteamUserStats_RequestGlobalAchievementPercentages
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamUserStats_RequestGlobalAchievementPercentages", CallingConvention = Platform.CC ) ]
 		internal static extern SteamAPICall_t _SteamAPI_ISteamUserStats_RequestGlobalAchievementPercentages( IntPtr self );
 		#endregion
-		internal SteamAPICall_t RequestGlobalAchievementPercentages()
+		internal CallResult<GlobalAchievementPercentagesReady_t> RequestGlobalAchievementPercentages()
 		{
 			var returnValue = _SteamAPI_ISteamUserStats_RequestGlobalAchievementPercentages( Self );
-			return returnValue;
+			return new CallResult<GlobalAchievementPercentagesReady_t>( returnValue );
 		}
 		
 		#region SteamAPI_ISteamUserStats_GetMostAchievedAchievementInfo
@@ -443,10 +443,10 @@ namespace Steamworks
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamUserStats_RequestGlobalStats", CallingConvention = Platform.CC ) ]
 		internal static extern SteamAPICall_t _SteamAPI_ISteamUserStats_RequestGlobalStats( IntPtr self, int nHistoryDays );
 		#endregion
-		internal SteamAPICall_t RequestGlobalStats( int nHistoryDays )
+		internal CallResult<GlobalStatsReceived_t> RequestGlobalStats( int nHistoryDays )
 		{
 			var returnValue = _SteamAPI_ISteamUserStats_RequestGlobalStats( Self, nHistoryDays );
-			return returnValue;
+			return new CallResult<GlobalStatsReceived_t>( returnValue );
 		}
 		
 		#region SteamAPI_ISteamUserStats_GetGlobalStatInt64

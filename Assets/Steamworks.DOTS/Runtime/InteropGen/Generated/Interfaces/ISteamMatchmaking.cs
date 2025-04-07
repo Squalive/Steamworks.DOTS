@@ -73,10 +73,10 @@ namespace Steamworks
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamMatchmaking_RequestLobbyList", CallingConvention = Platform.CC ) ]
 		internal static extern SteamAPICall_t _SteamAPI_ISteamMatchmaking_RequestLobbyList( IntPtr self );
 		#endregion
-		internal SteamAPICall_t RequestLobbyList()
+		internal CallResult<LobbyMatchList_t> RequestLobbyList()
 		{
 			var returnValue = _SteamAPI_ISteamMatchmaking_RequestLobbyList( Self );
-			return returnValue;
+			return new CallResult<LobbyMatchList_t>( returnValue );
 		}
 		
 		#region SteamAPI_ISteamMatchmaking_AddRequestLobbyListStringFilter
@@ -160,20 +160,20 @@ namespace Steamworks
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamMatchmaking_CreateLobby", CallingConvention = Platform.CC ) ]
 		internal static extern SteamAPICall_t _SteamAPI_ISteamMatchmaking_CreateLobby( IntPtr self, ELobbyType eLobbyType, int cMaxMembers );
 		#endregion
-		internal SteamAPICall_t CreateLobby( ELobbyType eLobbyType, int cMaxMembers )
+		internal CallResult<LobbyCreated_t> CreateLobby( ELobbyType eLobbyType, int cMaxMembers )
 		{
 			var returnValue = _SteamAPI_ISteamMatchmaking_CreateLobby( Self, eLobbyType, cMaxMembers );
-			return returnValue;
+			return new CallResult<LobbyCreated_t>( returnValue );
 		}
 		
 		#region SteamAPI_ISteamMatchmaking_JoinLobby
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamMatchmaking_JoinLobby", CallingConvention = Platform.CC ) ]
 		internal static extern SteamAPICall_t _SteamAPI_ISteamMatchmaking_JoinLobby( IntPtr self, SteamId steamIDLobby );
 		#endregion
-		internal SteamAPICall_t JoinLobby( SteamId steamIDLobby )
+		internal CallResult<LobbyEnter_t> JoinLobby( SteamId steamIDLobby )
 		{
 			var returnValue = _SteamAPI_ISteamMatchmaking_JoinLobby( Self, steamIDLobby );
-			return returnValue;
+			return new CallResult<LobbyEnter_t>( returnValue );
 		}
 		
 		#region SteamAPI_ISteamMatchmaking_LeaveLobby

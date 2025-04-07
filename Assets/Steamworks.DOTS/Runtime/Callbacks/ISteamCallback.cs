@@ -58,6 +58,8 @@ namespace Steamworks
 
     public struct SteamCallback<T> : IComponentData where T : unmanaged, ISteamCallback { }
     
+    public struct Fake : IComponentData { }
+    
     [ BurstCompile ]
     [ WorldSystemFilter( WorldSystemFilterFlags.Default | WorldSystemFilterFlags.ThinClientSimulation ) ]
     [ UpdateInGroup( typeof( InitializationSystemGroup ) ) ]
@@ -166,6 +168,51 @@ namespace Steamworks
 #endif
                 }
             }
+        }
+    }
+
+    public static class SteamCallbacksEx
+    {
+        public static unsafe void CreateFakeCallback<T>( this EntityManager entityManager, T data ) where T : unmanaged, ISteamCallback
+        {
+            var entity = entityManager.CreateEntity();
+            var cleanup = new SteamCallbackCleanup
+            {
+                Data = SteamCallbackMemory.Alloc( ( IntPtr ) ( &data ), data.DataSize ),
+                DataSize = data.DataSize,
+            };
+            entityManager.AddComponent<SteamCallback<T>>( entity );
+            entityManager.AddComponentData( entity, new SteamCallbackAge{ Type = data.CallbackType, Age = 0 } );
+            entityManager.AddComponentData( entity, new SteamCallback { Data = cleanup.Data } );
+            entityManager.AddComponentData( entity, cleanup );
+        }
+        
+        public static unsafe void CreateFakeCallback<T>( this EntityCommandBuffer commandBuffer, T data ) where T : unmanaged, ISteamCallback
+        {
+            var entity = commandBuffer.CreateEntity();
+            var cleanup = new SteamCallbackCleanup
+            {
+                Data = SteamCallbackMemory.Alloc( ( IntPtr ) ( &data ), data.DataSize ),
+                DataSize = data.DataSize,
+            };
+            commandBuffer.AddComponent<SteamCallback<T>>( entity );
+            commandBuffer.AddComponent( entity, new SteamCallbackAge{ Type = data.CallbackType, Age = 0 } );
+            commandBuffer.AddComponent( entity, new SteamCallback { Data = cleanup.Data } );
+            commandBuffer.AddComponent( entity, cleanup );
+        }
+        
+        public static unsafe void CreateFakeCallback<T>( this EntityCommandBuffer.ParallelWriter commandBuffer, int sortIndex, T data ) where T : unmanaged, ISteamCallback
+        {
+            var entity = commandBuffer.CreateEntity( sortIndex );
+            var cleanup = new SteamCallbackCleanup
+            {
+                Data = SteamCallbackMemory.Alloc( ( IntPtr ) ( &data ), data.DataSize ),
+                DataSize = data.DataSize,
+            };
+            commandBuffer.AddComponent<SteamCallback<T>>( sortIndex, entity );
+            commandBuffer.AddComponent( sortIndex, entity, new SteamCallbackAge{ Type = data.CallbackType, Age = 0 } );
+            commandBuffer.AddComponent( sortIndex, entity, new SteamCallback { Data = cleanup.Data } );
+            commandBuffer.AddComponent( sortIndex, entity, cleanup );
         }
     }
 }

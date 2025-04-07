@@ -211,11 +211,11 @@ namespace Steamworks
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamUtils_CheckFileSignature", CallingConvention = Platform.CC ) ]
 		internal static extern SteamAPICall_t _SteamAPI_ISteamUtils_CheckFileSignature( IntPtr self, IntPtr szFileName );
 		#endregion
-		internal SteamAPICall_t CheckFileSignature( string szFileName )
+		internal CallResult<CheckFileSignature_t> CheckFileSignature( string szFileName )
 		{
 			using var str__szFileName = new Utf8StringToNative( szFileName );
 			var returnValue = _SteamAPI_ISteamUtils_CheckFileSignature( Self, str__szFileName.Pointer );
-			return returnValue;
+			return new CallResult<CheckFileSignature_t>( returnValue );
 		}
 		
 		#region SteamAPI_ISteamUtils_ShowGamepadTextInput

@@ -54,22 +54,22 @@ namespace Steamworks
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamRemoteStorage_FileWriteAsync", CallingConvention = Platform.CC ) ]
 		internal static extern SteamAPICall_t _SteamAPI_ISteamRemoteStorage_FileWriteAsync( IntPtr self, IntPtr pchFile, IntPtr pvData, uint cubData );
 		#endregion
-		internal SteamAPICall_t FileWriteAsync( string pchFile, IntPtr pvData, uint cubData )
+		internal CallResult<RemoteStorageFileWriteAsyncComplete_t> FileWriteAsync( string pchFile, IntPtr pvData, uint cubData )
 		{
 			using var str__pchFile = new Utf8StringToNative( pchFile );
 			var returnValue = _SteamAPI_ISteamRemoteStorage_FileWriteAsync( Self, str__pchFile.Pointer, pvData, cubData );
-			return returnValue;
+			return new CallResult<RemoteStorageFileWriteAsyncComplete_t>( returnValue );
 		}
 		
 		#region SteamAPI_ISteamRemoteStorage_FileReadAsync
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamRemoteStorage_FileReadAsync", CallingConvention = Platform.CC ) ]
 		internal static extern SteamAPICall_t _SteamAPI_ISteamRemoteStorage_FileReadAsync( IntPtr self, IntPtr pchFile, uint nOffset, uint cubToRead );
 		#endregion
-		internal SteamAPICall_t FileReadAsync( string pchFile, uint nOffset, uint cubToRead )
+		internal CallResult<RemoteStorageFileReadAsyncComplete_t> FileReadAsync( string pchFile, uint nOffset, uint cubToRead )
 		{
 			using var str__pchFile = new Utf8StringToNative( pchFile );
 			var returnValue = _SteamAPI_ISteamRemoteStorage_FileReadAsync( Self, str__pchFile.Pointer, nOffset, cubToRead );
-			return returnValue;
+			return new CallResult<RemoteStorageFileReadAsyncComplete_t>( returnValue );
 		}
 		
 		#region SteamAPI_ISteamRemoteStorage_FileReadAsyncComplete
@@ -111,11 +111,11 @@ namespace Steamworks
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamRemoteStorage_FileShare", CallingConvention = Platform.CC ) ]
 		internal static extern SteamAPICall_t _SteamAPI_ISteamRemoteStorage_FileShare( IntPtr self, IntPtr pchFile );
 		#endregion
-		internal SteamAPICall_t FileShare( string pchFile )
+		internal CallResult<RemoteStorageFileShareResult_t> FileShare( string pchFile )
 		{
 			using var str__pchFile = new Utf8StringToNative( pchFile );
 			var returnValue = _SteamAPI_ISteamRemoteStorage_FileShare( Self, str__pchFile.Pointer );
-			return returnValue;
+			return new CallResult<RemoteStorageFileShareResult_t>( returnValue );
 		}
 		
 		#region SteamAPI_ISteamRemoteStorage_SetSyncPlatforms
@@ -297,10 +297,10 @@ namespace Steamworks
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamRemoteStorage_UGCDownload", CallingConvention = Platform.CC ) ]
 		internal static extern SteamAPICall_t _SteamAPI_ISteamRemoteStorage_UGCDownload( IntPtr self, UGCHandle_t hContent, uint unPriority );
 		#endregion
-		internal SteamAPICall_t UGCDownload( UGCHandle_t hContent, uint unPriority )
+		internal CallResult<RemoteStorageDownloadUGCResult_t> UGCDownload( UGCHandle_t hContent, uint unPriority )
 		{
 			var returnValue = _SteamAPI_ISteamRemoteStorage_UGCDownload( Self, hContent, unPriority );
-			return returnValue;
+			return new CallResult<RemoteStorageDownloadUGCResult_t>( returnValue );
 		}
 		
 		#region SteamAPI_ISteamRemoteStorage_GetUGCDownloadProgress
@@ -359,11 +359,11 @@ namespace Steamworks
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamRemoteStorage_UGCDownloadToLocation", CallingConvention = Platform.CC ) ]
 		internal static extern SteamAPICall_t _SteamAPI_ISteamRemoteStorage_UGCDownloadToLocation( IntPtr self, UGCHandle_t hContent, IntPtr pchLocation, uint unPriority );
 		#endregion
-		internal SteamAPICall_t UGCDownloadToLocation( UGCHandle_t hContent, string pchLocation, uint unPriority )
+		internal CallResult<RemoteStorageDownloadUGCResult_t> UGCDownloadToLocation( UGCHandle_t hContent, string pchLocation, uint unPriority )
 		{
 			using var str__pchLocation = new Utf8StringToNative( pchLocation );
 			var returnValue = _SteamAPI_ISteamRemoteStorage_UGCDownloadToLocation( Self, hContent, str__pchLocation.Pointer, unPriority );
-			return returnValue;
+			return new CallResult<RemoteStorageDownloadUGCResult_t>( returnValue );
 		}
 		
 		#region SteamAPI_ISteamRemoteStorage_GetLocalFileChangeCount

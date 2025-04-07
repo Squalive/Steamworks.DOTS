@@ -31,10 +31,10 @@ namespace Steamworks
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamGameServerStats_RequestUserStats", CallingConvention = Platform.CC ) ]
 		internal static extern SteamAPICall_t _SteamAPI_ISteamGameServerStats_RequestUserStats( IntPtr self, SteamId steamIDUser );
 		#endregion
-		internal SteamAPICall_t RequestUserStats( SteamId steamIDUser )
+		internal CallResult<GSStatsReceived_t> RequestUserStats( SteamId steamIDUser )
 		{
 			var returnValue = _SteamAPI_ISteamGameServerStats_RequestUserStats( Self, steamIDUser );
-			return returnValue;
+			return new CallResult<GSStatsReceived_t>( returnValue );
 		}
 		
 		#region SteamAPI_ISteamGameServerStats_GetUserStatInt32
@@ -137,10 +137,10 @@ namespace Steamworks
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamGameServerStats_StoreUserStats", CallingConvention = Platform.CC ) ]
 		internal static extern SteamAPICall_t _SteamAPI_ISteamGameServerStats_StoreUserStats( IntPtr self, SteamId steamIDUser );
 		#endregion
-		internal SteamAPICall_t StoreUserStats( SteamId steamIDUser )
+		internal CallResult<GSStatsStored_t> StoreUserStats( SteamId steamIDUser )
 		{
 			var returnValue = _SteamAPI_ISteamGameServerStats_StoreUserStats( Self, steamIDUser );
-			return returnValue;
+			return new CallResult<GSStatsStored_t>( returnValue );
 		}
 		
 	}

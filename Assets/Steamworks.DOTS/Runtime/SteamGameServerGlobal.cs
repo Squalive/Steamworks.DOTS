@@ -54,7 +54,7 @@ namespace Steamworks
         ///
         /// <para>On success k_ESteamAPIInitResult_OK is returned.  Otherwise, if pOutErrMsg is non-NULL,
         /// it will receive a non-localized message that explains the reason for the failure</para>
-        internal static ESteamAPIInitResult Init( AppId_t appId, SteamGameServerInit init, out string outSteamErrMsg )
+        internal static SteamInitResult Init( AppId_t appId, SteamGameServerInit init, out string outSteamErrMsg )
         {
             uint ipaddress = 0; // Any Port
 
@@ -79,11 +79,11 @@ namespace Steamworks
             using var hPchVersionString = Utf8StringToNative.CreateFromUnsafeString( init.VersionString );
             var secure = init.Secure ? EServerMode.AuthenticationAndSecure : EServerMode.Authentication;
             var errorMsgPtr = UnsafeUtility.Malloc( Defines.k_cchMaxSteamErrMsg, 16, Allocator.Temp );
-            var result = Native.SteamInternal_GameServer_Init_V2( ipaddress, init.GamePort, init.QueryPort, secure, hPchVersionString, hPszInternalCheckInterfaceVersions, ( IntPtr ) errorMsgPtr );
+            var result = ( SteamInitResult ) Native.SteamInternal_GameServer_Init_V2( ipaddress, init.GamePort, init.QueryPort, secure, hPchVersionString, hPszInternalCheckInterfaceVersions, ( IntPtr ) errorMsgPtr );
             outSteamErrMsg = new Utf8StringPtr { Ptr = ( IntPtr ) errorMsgPtr };
             UnsafeUtility.Free( errorMsgPtr, Allocator.Temp );
 
-            if ( result == ESteamAPIInitResult.OK )
+            if ( result == SteamInitResult.Ok )
             {
                 if ( CSteamGameServerAPIContext.Init() )
                 {
@@ -97,8 +97,10 @@ namespace Steamworks
                 }
                 else
                 {
-                    result = ESteamAPIInitResult.FailedGeneric;
+                    result = SteamInitResult.ContextFailed;
                     outSteamErrMsg = "[Steamworks] Failed to initialize CSteamAPIContext";
+                    Native.SteamGameServer_Shutdown();
+                    CSteamGameServerAPIContext.Shutdown();
                 }
             }
             

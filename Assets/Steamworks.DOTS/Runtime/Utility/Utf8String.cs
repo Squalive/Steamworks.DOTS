@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Runtime.InteropServices;
 using Unity.Collections;
 using Unity.Collections.LowLevel.Unsafe;
 
@@ -20,22 +19,22 @@ namespace Steamworks
             fixed ( char* strPtr = value )
             {
                 var len = Utility.Utf8NoBom.GetByteCount( value );
-                var mem = Marshal.AllocHGlobal( len + 1 );
+                var mem = UnsafeUtility.Malloc( len + 1, 16, Allocator.Persistent );
 
                 var wlen = Utility.Utf8NoBom.GetBytes( strPtr, value.Length, ( byte* ) mem, len + 1 );
 
                 ( ( byte* ) mem )[ wlen ] = 0;
 
-                Pointer = mem;
+                Pointer = ( IntPtr ) mem;
             }
         }
 
         public unsafe Utf8StringToNative( byte* src, int length )
         {
-            var mem = Marshal.AllocHGlobal( length + 1 );
-            UnsafeUtility.MemCpy( ( void* ) mem, src, length );
+            var mem = UnsafeUtility.Malloc( length + 1, 16, Allocator.Persistent );
+            UnsafeUtility.MemCpy( mem, src, length );
             ( ( byte* ) mem )[ length ] = 0;
-            Pointer = mem;
+            Pointer = ( IntPtr ) mem;
         }
 
         public static unsafe Utf8StringToNative CreateFromUnsafeString<T>( in T str ) where T : unmanaged, IUTF8Bytes, INativeList<byte>
@@ -49,11 +48,11 @@ namespace Steamworks
             return new Utf8StringToNative( strPtr, str.Length );
         }
 
-        public void Dispose()
+        public unsafe void Dispose()
         {
             if ( Pointer != IntPtr.Zero )
             {
-                Marshal.FreeHGlobal( Pointer );
+                UnsafeUtility.Free( ( void* ) Pointer, Allocator.Persistent );
                 Pointer = IntPtr.Zero;
             }
         }

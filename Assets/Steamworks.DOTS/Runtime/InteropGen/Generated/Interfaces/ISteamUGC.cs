@@ -78,10 +78,10 @@ namespace Steamworks
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamUGC_SendQueryUGCRequest", CallingConvention = Platform.CC ) ]
 		internal static extern SteamAPICall_t _SteamAPI_ISteamUGC_SendQueryUGCRequest( IntPtr self, UGCQueryHandle_t handle );
 		#endregion
-		internal SteamAPICall_t SendQueryUGCRequest( UGCQueryHandle_t handle )
+		internal CallResult<SteamUGCQueryCompleted_t> SendQueryUGCRequest( UGCQueryHandle_t handle )
 		{
 			var returnValue = _SteamAPI_ISteamUGC_SendQueryUGCRequest( Self, handle );
-			return returnValue;
+			return new CallResult<SteamUGCQueryCompleted_t>( returnValue );
 		}
 		
 		#region SteamAPI_ISteamUGC_GetQueryUGCResult
@@ -531,10 +531,10 @@ namespace Steamworks
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamUGC_CreateItem", CallingConvention = Platform.CC ) ]
 		internal static extern SteamAPICall_t _SteamAPI_ISteamUGC_CreateItem( IntPtr self, AppId_t nConsumerAppId, EWorkshopFileType eFileType );
 		#endregion
-		internal SteamAPICall_t CreateItem( AppId_t nConsumerAppId, EWorkshopFileType eFileType )
+		internal CallResult<CreateItemResult_t> CreateItem( AppId_t nConsumerAppId, EWorkshopFileType eFileType )
 		{
 			var returnValue = _SteamAPI_ISteamUGC_CreateItem( Self, nConsumerAppId, eFileType );
-			return returnValue;
+			return new CallResult<CreateItemResult_t>( returnValue );
 		}
 		
 		#region SteamAPI_ISteamUGC_StartItemUpdate
@@ -786,11 +786,11 @@ namespace Steamworks
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamUGC_SubmitItemUpdate", CallingConvention = Platform.CC ) ]
 		internal static extern SteamAPICall_t _SteamAPI_ISteamUGC_SubmitItemUpdate( IntPtr self, UGCUpdateHandle_t handle, IntPtr pchChangeNote );
 		#endregion
-		internal SteamAPICall_t SubmitItemUpdate( UGCUpdateHandle_t handle, string pchChangeNote )
+		internal CallResult<SubmitItemUpdateResult_t> SubmitItemUpdate( UGCUpdateHandle_t handle, string pchChangeNote )
 		{
 			using var str__pchChangeNote = new Utf8StringToNative( pchChangeNote );
 			var returnValue = _SteamAPI_ISteamUGC_SubmitItemUpdate( Self, handle, str__pchChangeNote.Pointer );
-			return returnValue;
+			return new CallResult<SubmitItemUpdateResult_t>( returnValue );
 		}
 		
 		#region SteamAPI_ISteamUGC_GetItemUpdateProgress
@@ -807,60 +807,60 @@ namespace Steamworks
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamUGC_SetUserItemVote", CallingConvention = Platform.CC ) ]
 		internal static extern SteamAPICall_t _SteamAPI_ISteamUGC_SetUserItemVote( IntPtr self, PublishedFileId_t nPublishedFileID, [ MarshalAs( UnmanagedType.U1 ) ] bool bVoteUp );
 		#endregion
-		internal SteamAPICall_t SetUserItemVote( PublishedFileId_t nPublishedFileID, [ MarshalAs( UnmanagedType.U1 ) ] bool bVoteUp )
+		internal CallResult<SetUserItemVoteResult_t> SetUserItemVote( PublishedFileId_t nPublishedFileID, [ MarshalAs( UnmanagedType.U1 ) ] bool bVoteUp )
 		{
 			var returnValue = _SteamAPI_ISteamUGC_SetUserItemVote( Self, nPublishedFileID, bVoteUp );
-			return returnValue;
+			return new CallResult<SetUserItemVoteResult_t>( returnValue );
 		}
 		
 		#region SteamAPI_ISteamUGC_GetUserItemVote
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamUGC_GetUserItemVote", CallingConvention = Platform.CC ) ]
 		internal static extern SteamAPICall_t _SteamAPI_ISteamUGC_GetUserItemVote( IntPtr self, PublishedFileId_t nPublishedFileID );
 		#endregion
-		internal SteamAPICall_t GetUserItemVote( PublishedFileId_t nPublishedFileID )
+		internal CallResult<GetUserItemVoteResult_t> GetUserItemVote( PublishedFileId_t nPublishedFileID )
 		{
 			var returnValue = _SteamAPI_ISteamUGC_GetUserItemVote( Self, nPublishedFileID );
-			return returnValue;
+			return new CallResult<GetUserItemVoteResult_t>( returnValue );
 		}
 		
 		#region SteamAPI_ISteamUGC_AddItemToFavorites
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamUGC_AddItemToFavorites", CallingConvention = Platform.CC ) ]
 		internal static extern SteamAPICall_t _SteamAPI_ISteamUGC_AddItemToFavorites( IntPtr self, AppId_t nAppId, PublishedFileId_t nPublishedFileID );
 		#endregion
-		internal SteamAPICall_t AddItemToFavorites( AppId_t nAppId, PublishedFileId_t nPublishedFileID )
+		internal CallResult<UserFavoriteItemsListChanged_t> AddItemToFavorites( AppId_t nAppId, PublishedFileId_t nPublishedFileID )
 		{
 			var returnValue = _SteamAPI_ISteamUGC_AddItemToFavorites( Self, nAppId, nPublishedFileID );
-			return returnValue;
+			return new CallResult<UserFavoriteItemsListChanged_t>( returnValue );
 		}
 		
 		#region SteamAPI_ISteamUGC_RemoveItemFromFavorites
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamUGC_RemoveItemFromFavorites", CallingConvention = Platform.CC ) ]
 		internal static extern SteamAPICall_t _SteamAPI_ISteamUGC_RemoveItemFromFavorites( IntPtr self, AppId_t nAppId, PublishedFileId_t nPublishedFileID );
 		#endregion
-		internal SteamAPICall_t RemoveItemFromFavorites( AppId_t nAppId, PublishedFileId_t nPublishedFileID )
+		internal CallResult<UserFavoriteItemsListChanged_t> RemoveItemFromFavorites( AppId_t nAppId, PublishedFileId_t nPublishedFileID )
 		{
 			var returnValue = _SteamAPI_ISteamUGC_RemoveItemFromFavorites( Self, nAppId, nPublishedFileID );
-			return returnValue;
+			return new CallResult<UserFavoriteItemsListChanged_t>( returnValue );
 		}
 		
 		#region SteamAPI_ISteamUGC_SubscribeItem
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamUGC_SubscribeItem", CallingConvention = Platform.CC ) ]
 		internal static extern SteamAPICall_t _SteamAPI_ISteamUGC_SubscribeItem( IntPtr self, PublishedFileId_t nPublishedFileID );
 		#endregion
-		internal SteamAPICall_t SubscribeItem( PublishedFileId_t nPublishedFileID )
+		internal CallResult<RemoteStorageSubscribePublishedFileResult_t> SubscribeItem( PublishedFileId_t nPublishedFileID )
 		{
 			var returnValue = _SteamAPI_ISteamUGC_SubscribeItem( Self, nPublishedFileID );
-			return returnValue;
+			return new CallResult<RemoteStorageSubscribePublishedFileResult_t>( returnValue );
 		}
 		
 		#region SteamAPI_ISteamUGC_UnsubscribeItem
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamUGC_UnsubscribeItem", CallingConvention = Platform.CC ) ]
 		internal static extern SteamAPICall_t _SteamAPI_ISteamUGC_UnsubscribeItem( IntPtr self, PublishedFileId_t nPublishedFileID );
 		#endregion
-		internal SteamAPICall_t UnsubscribeItem( PublishedFileId_t nPublishedFileID )
+		internal CallResult<RemoteStorageUnsubscribePublishedFileResult_t> UnsubscribeItem( PublishedFileId_t nPublishedFileID )
 		{
 			var returnValue = _SteamAPI_ISteamUGC_UnsubscribeItem( Self, nPublishedFileID );
-			return returnValue;
+			return new CallResult<RemoteStorageUnsubscribePublishedFileResult_t>( returnValue );
 		}
 		
 		#region SteamAPI_ISteamUGC_GetNumSubscribedItems
@@ -953,90 +953,90 @@ namespace Steamworks
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamUGC_StartPlaytimeTracking", CallingConvention = Platform.CC ) ]
 		internal static extern SteamAPICall_t _SteamAPI_ISteamUGC_StartPlaytimeTracking( IntPtr self, PublishedFileId_t* pvecPublishedFileID, uint unNumPublishedFileIDs );
 		#endregion
-		internal SteamAPICall_t StartPlaytimeTracking( PublishedFileId_t* pvecPublishedFileID, uint unNumPublishedFileIDs )
+		internal CallResult<StartPlaytimeTrackingResult_t> StartPlaytimeTracking( PublishedFileId_t* pvecPublishedFileID, uint unNumPublishedFileIDs )
 		{
 			var returnValue = _SteamAPI_ISteamUGC_StartPlaytimeTracking( Self, pvecPublishedFileID, unNumPublishedFileIDs );
-			return returnValue;
+			return new CallResult<StartPlaytimeTrackingResult_t>( returnValue );
 		}
 		
 		#region SteamAPI_ISteamUGC_StopPlaytimeTracking
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamUGC_StopPlaytimeTracking", CallingConvention = Platform.CC ) ]
 		internal static extern SteamAPICall_t _SteamAPI_ISteamUGC_StopPlaytimeTracking( IntPtr self, PublishedFileId_t* pvecPublishedFileID, uint unNumPublishedFileIDs );
 		#endregion
-		internal SteamAPICall_t StopPlaytimeTracking( PublishedFileId_t* pvecPublishedFileID, uint unNumPublishedFileIDs )
+		internal CallResult<StopPlaytimeTrackingResult_t> StopPlaytimeTracking( PublishedFileId_t* pvecPublishedFileID, uint unNumPublishedFileIDs )
 		{
 			var returnValue = _SteamAPI_ISteamUGC_StopPlaytimeTracking( Self, pvecPublishedFileID, unNumPublishedFileIDs );
-			return returnValue;
+			return new CallResult<StopPlaytimeTrackingResult_t>( returnValue );
 		}
 		
 		#region SteamAPI_ISteamUGC_StopPlaytimeTrackingForAllItems
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamUGC_StopPlaytimeTrackingForAllItems", CallingConvention = Platform.CC ) ]
 		internal static extern SteamAPICall_t _SteamAPI_ISteamUGC_StopPlaytimeTrackingForAllItems( IntPtr self );
 		#endregion
-		internal SteamAPICall_t StopPlaytimeTrackingForAllItems()
+		internal CallResult<StopPlaytimeTrackingResult_t> StopPlaytimeTrackingForAllItems()
 		{
 			var returnValue = _SteamAPI_ISteamUGC_StopPlaytimeTrackingForAllItems( Self );
-			return returnValue;
+			return new CallResult<StopPlaytimeTrackingResult_t>( returnValue );
 		}
 		
 		#region SteamAPI_ISteamUGC_AddDependency
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamUGC_AddDependency", CallingConvention = Platform.CC ) ]
 		internal static extern SteamAPICall_t _SteamAPI_ISteamUGC_AddDependency( IntPtr self, PublishedFileId_t nParentPublishedFileID, PublishedFileId_t nChildPublishedFileID );
 		#endregion
-		internal SteamAPICall_t AddDependency( PublishedFileId_t nParentPublishedFileID, PublishedFileId_t nChildPublishedFileID )
+		internal CallResult<AddUGCDependencyResult_t> AddDependency( PublishedFileId_t nParentPublishedFileID, PublishedFileId_t nChildPublishedFileID )
 		{
 			var returnValue = _SteamAPI_ISteamUGC_AddDependency( Self, nParentPublishedFileID, nChildPublishedFileID );
-			return returnValue;
+			return new CallResult<AddUGCDependencyResult_t>( returnValue );
 		}
 		
 		#region SteamAPI_ISteamUGC_RemoveDependency
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamUGC_RemoveDependency", CallingConvention = Platform.CC ) ]
 		internal static extern SteamAPICall_t _SteamAPI_ISteamUGC_RemoveDependency( IntPtr self, PublishedFileId_t nParentPublishedFileID, PublishedFileId_t nChildPublishedFileID );
 		#endregion
-		internal SteamAPICall_t RemoveDependency( PublishedFileId_t nParentPublishedFileID, PublishedFileId_t nChildPublishedFileID )
+		internal CallResult<RemoveUGCDependencyResult_t> RemoveDependency( PublishedFileId_t nParentPublishedFileID, PublishedFileId_t nChildPublishedFileID )
 		{
 			var returnValue = _SteamAPI_ISteamUGC_RemoveDependency( Self, nParentPublishedFileID, nChildPublishedFileID );
-			return returnValue;
+			return new CallResult<RemoveUGCDependencyResult_t>( returnValue );
 		}
 		
 		#region SteamAPI_ISteamUGC_AddAppDependency
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamUGC_AddAppDependency", CallingConvention = Platform.CC ) ]
 		internal static extern SteamAPICall_t _SteamAPI_ISteamUGC_AddAppDependency( IntPtr self, PublishedFileId_t nPublishedFileID, AppId_t nAppID );
 		#endregion
-		internal SteamAPICall_t AddAppDependency( PublishedFileId_t nPublishedFileID, AppId_t nAppID )
+		internal CallResult<AddAppDependencyResult_t> AddAppDependency( PublishedFileId_t nPublishedFileID, AppId_t nAppID )
 		{
 			var returnValue = _SteamAPI_ISteamUGC_AddAppDependency( Self, nPublishedFileID, nAppID );
-			return returnValue;
+			return new CallResult<AddAppDependencyResult_t>( returnValue );
 		}
 		
 		#region SteamAPI_ISteamUGC_RemoveAppDependency
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamUGC_RemoveAppDependency", CallingConvention = Platform.CC ) ]
 		internal static extern SteamAPICall_t _SteamAPI_ISteamUGC_RemoveAppDependency( IntPtr self, PublishedFileId_t nPublishedFileID, AppId_t nAppID );
 		#endregion
-		internal SteamAPICall_t RemoveAppDependency( PublishedFileId_t nPublishedFileID, AppId_t nAppID )
+		internal CallResult<RemoveAppDependencyResult_t> RemoveAppDependency( PublishedFileId_t nPublishedFileID, AppId_t nAppID )
 		{
 			var returnValue = _SteamAPI_ISteamUGC_RemoveAppDependency( Self, nPublishedFileID, nAppID );
-			return returnValue;
+			return new CallResult<RemoveAppDependencyResult_t>( returnValue );
 		}
 		
 		#region SteamAPI_ISteamUGC_GetAppDependencies
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamUGC_GetAppDependencies", CallingConvention = Platform.CC ) ]
 		internal static extern SteamAPICall_t _SteamAPI_ISteamUGC_GetAppDependencies( IntPtr self, PublishedFileId_t nPublishedFileID );
 		#endregion
-		internal SteamAPICall_t GetAppDependencies( PublishedFileId_t nPublishedFileID )
+		internal CallResult<GetAppDependenciesResult_t> GetAppDependencies( PublishedFileId_t nPublishedFileID )
 		{
 			var returnValue = _SteamAPI_ISteamUGC_GetAppDependencies( Self, nPublishedFileID );
-			return returnValue;
+			return new CallResult<GetAppDependenciesResult_t>( returnValue );
 		}
 		
 		#region SteamAPI_ISteamUGC_DeleteItem
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamUGC_DeleteItem", CallingConvention = Platform.CC ) ]
 		internal static extern SteamAPICall_t _SteamAPI_ISteamUGC_DeleteItem( IntPtr self, PublishedFileId_t nPublishedFileID );
 		#endregion
-		internal SteamAPICall_t DeleteItem( PublishedFileId_t nPublishedFileID )
+		internal CallResult<DeleteItemResult_t> DeleteItem( PublishedFileId_t nPublishedFileID )
 		{
 			var returnValue = _SteamAPI_ISteamUGC_DeleteItem( Self, nPublishedFileID );
-			return returnValue;
+			return new CallResult<DeleteItemResult_t>( returnValue );
 		}
 		
 		#region SteamAPI_ISteamUGC_ShowWorkshopEULA
@@ -1054,10 +1054,10 @@ namespace Steamworks
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamUGC_GetWorkshopEULAStatus", CallingConvention = Platform.CC ) ]
 		internal static extern SteamAPICall_t _SteamAPI_ISteamUGC_GetWorkshopEULAStatus( IntPtr self );
 		#endregion
-		internal SteamAPICall_t GetWorkshopEULAStatus()
+		internal CallResult<WorkshopEULAStatus_t> GetWorkshopEULAStatus()
 		{
 			var returnValue = _SteamAPI_ISteamUGC_GetWorkshopEULAStatus( Self );
-			return returnValue;
+			return new CallResult<WorkshopEULAStatus_t>( returnValue );
 		}
 		
 		#region SteamAPI_ISteamUGC_GetUserContentDescriptorPreferences

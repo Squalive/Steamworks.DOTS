@@ -241,10 +241,10 @@ namespace Steamworks
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamUser_RequestEncryptedAppTicket", CallingConvention = Platform.CC ) ]
 		internal static extern SteamAPICall_t _SteamAPI_ISteamUser_RequestEncryptedAppTicket( IntPtr self, IntPtr pDataToInclude, int cbDataToInclude );
 		#endregion
-		internal SteamAPICall_t RequestEncryptedAppTicket( IntPtr pDataToInclude, int cbDataToInclude )
+		internal CallResult<EncryptedAppTicketResponse_t> RequestEncryptedAppTicket( IntPtr pDataToInclude, int cbDataToInclude )
 		{
 			var returnValue = _SteamAPI_ISteamUser_RequestEncryptedAppTicket( Self, pDataToInclude, cbDataToInclude );
-			return returnValue;
+			return new CallResult<EncryptedAppTicketResponse_t>( returnValue );
 		}
 		
 		#region SteamAPI_ISteamUser_GetEncryptedAppTicket
@@ -282,11 +282,11 @@ namespace Steamworks
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamUser_RequestStoreAuthURL", CallingConvention = Platform.CC ) ]
 		internal static extern SteamAPICall_t _SteamAPI_ISteamUser_RequestStoreAuthURL( IntPtr self, IntPtr pchRedirectURL );
 		#endregion
-		internal SteamAPICall_t RequestStoreAuthURL( string pchRedirectURL )
+		internal CallResult<StoreAuthURLResponse_t> RequestStoreAuthURL( string pchRedirectURL )
 		{
 			using var str__pchRedirectURL = new Utf8StringToNative( pchRedirectURL );
 			var returnValue = _SteamAPI_ISteamUser_RequestStoreAuthURL( Self, str__pchRedirectURL.Pointer );
-			return returnValue;
+			return new CallResult<StoreAuthURLResponse_t>( returnValue );
 		}
 		
 		#region SteamAPI_ISteamUser_BIsPhoneVerified
@@ -337,20 +337,20 @@ namespace Steamworks
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamUser_GetMarketEligibility", CallingConvention = Platform.CC ) ]
 		internal static extern SteamAPICall_t _SteamAPI_ISteamUser_GetMarketEligibility( IntPtr self );
 		#endregion
-		internal SteamAPICall_t GetMarketEligibility()
+		internal CallResult<MarketEligibilityResponse_t> GetMarketEligibility()
 		{
 			var returnValue = _SteamAPI_ISteamUser_GetMarketEligibility( Self );
-			return returnValue;
+			return new CallResult<MarketEligibilityResponse_t>( returnValue );
 		}
 		
 		#region SteamAPI_ISteamUser_GetDurationControl
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamUser_GetDurationControl", CallingConvention = Platform.CC ) ]
 		internal static extern SteamAPICall_t _SteamAPI_ISteamUser_GetDurationControl( IntPtr self );
 		#endregion
-		internal SteamAPICall_t GetDurationControl()
+		internal CallResult<DurationControl_t> GetDurationControl()
 		{
 			var returnValue = _SteamAPI_ISteamUser_GetDurationControl( Self );
-			return returnValue;
+			return new CallResult<DurationControl_t>( returnValue );
 		}
 		
 		#region SteamAPI_ISteamUser_BSetDurationControlOnlineState

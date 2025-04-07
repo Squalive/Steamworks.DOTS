@@ -45,7 +45,7 @@ namespace Steamworks
             if ( len == 0 )
                 return string.Empty;
 
-            return Encoding.UTF8.GetString( ( byte* ) ptr, len );
+            return Utf8NoBom.GetString( ( byte* ) ptr, len );
         }
 		
         internal static string BuildVersionString( params string[] interfaceVersions )

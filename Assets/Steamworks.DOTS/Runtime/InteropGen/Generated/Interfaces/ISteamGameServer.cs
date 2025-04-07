@@ -334,10 +334,10 @@ namespace Steamworks
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamGameServer_GetServerReputation", CallingConvention = Platform.CC ) ]
 		internal static extern SteamAPICall_t _SteamAPI_ISteamGameServer_GetServerReputation( IntPtr self );
 		#endregion
-		internal SteamAPICall_t GetServerReputation()
+		internal CallResult<GSReputation_t> GetServerReputation()
 		{
 			var returnValue = _SteamAPI_ISteamGameServer_GetServerReputation( Self );
-			return returnValue;
+			return new CallResult<GSReputation_t>( returnValue );
 		}
 		
 		#region SteamAPI_ISteamGameServer_GetPublicIP
@@ -375,20 +375,20 @@ namespace Steamworks
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamGameServer_AssociateWithClan", CallingConvention = Platform.CC ) ]
 		internal static extern SteamAPICall_t _SteamAPI_ISteamGameServer_AssociateWithClan( IntPtr self, SteamId steamIDClan );
 		#endregion
-		internal SteamAPICall_t AssociateWithClan( SteamId steamIDClan )
+		internal CallResult<AssociateWithClanResult_t> AssociateWithClan( SteamId steamIDClan )
 		{
 			var returnValue = _SteamAPI_ISteamGameServer_AssociateWithClan( Self, steamIDClan );
-			return returnValue;
+			return new CallResult<AssociateWithClanResult_t>( returnValue );
 		}
 		
 		#region SteamAPI_ISteamGameServer_ComputeNewPlayerCompatibility
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamGameServer_ComputeNewPlayerCompatibility", CallingConvention = Platform.CC ) ]
 		internal static extern SteamAPICall_t _SteamAPI_ISteamGameServer_ComputeNewPlayerCompatibility( IntPtr self, SteamId steamIDNewPlayer );
 		#endregion
-		internal SteamAPICall_t ComputeNewPlayerCompatibility( SteamId steamIDNewPlayer )
+		internal CallResult<ComputeNewPlayerCompatibilityResult_t> ComputeNewPlayerCompatibility( SteamId steamIDNewPlayer )
 		{
 			var returnValue = _SteamAPI_ISteamGameServer_ComputeNewPlayerCompatibility( Self, steamIDNewPlayer );
-			return returnValue;
+			return new CallResult<ComputeNewPlayerCompatibilityResult_t>( returnValue );
 		}
 		
 		#region SteamAPI_ISteamGameServer_SendUserConnectAndAuthenticate_DEPRECATED

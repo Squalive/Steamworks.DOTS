@@ -62,7 +62,14 @@ public class StructGenerator : BaseGenerator
             if ( isCallback )
                 iface = " : ISteamCallback";
 
-            WriteLine( $"[ StructLayout( LayoutKind.Sequential, Pack = Platform.{( callback.IsPack4OnWindows ? "StructPackSize" : "StructPlatformPackSize" )} ) ]" );
+            if ( callback.Fields == null || callback.Fields.Length == 0 )
+            {
+                WriteLine( $"[ StructLayout( LayoutKind.Sequential, Size = 1, Pack = Platform.{( callback.IsPack4OnWindows ? "StructPackSize" : "StructPlatformPackSize" )} ) ]" );
+            }
+            else
+            {
+                WriteLine( $"[ StructLayout( LayoutKind.Sequential, Pack = Platform.{( callback.IsPack4OnWindows ? "StructPackSize" : "StructPlatformPackSize" )} ) ]" );
+            }
             Bracket( $"{Parser.Expose( name )} unsafe{partial} struct {name}{iface}" );
             {
                 GenerateFields( callback.Fields );
