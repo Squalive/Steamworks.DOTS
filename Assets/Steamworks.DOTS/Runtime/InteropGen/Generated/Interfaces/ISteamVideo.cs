@@ -30,6 +30,7 @@ namespace Steamworks
 		#region SteamAPI_ISteamVideo_GetVideoURL
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamVideo_GetVideoURL", CallingConvention = Platform.CC ) ]
 		internal static extern void _SteamAPI_ISteamVideo_GetVideoURL( IntPtr self, AppId_t unVideoAppID );
+		internal void _GetVideoURL( AppId_t unVideoAppID ) => _SteamAPI_ISteamVideo_GetVideoURL( Self, unVideoAppID );
 		#endregion
 		internal void GetVideoURL( AppId_t unVideoAppID )
 		{
@@ -40,6 +41,7 @@ namespace Steamworks
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamVideo_IsBroadcasting", CallingConvention = Platform.CC ) ]
 		[ return: MarshalAs( UnmanagedType.I1 ) ]
 		internal static extern bool _SteamAPI_ISteamVideo_IsBroadcasting( IntPtr self, ref int pnNumViewers );
+		internal bool _IsBroadcasting( ref int pnNumViewers ) => _SteamAPI_ISteamVideo_IsBroadcasting( Self, ref pnNumViewers );
 		#endregion
 		internal bool IsBroadcasting( ref int pnNumViewers )
 		{
@@ -50,6 +52,7 @@ namespace Steamworks
 		#region SteamAPI_ISteamVideo_GetOPFSettings
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamVideo_GetOPFSettings", CallingConvention = Platform.CC ) ]
 		internal static extern void _SteamAPI_ISteamVideo_GetOPFSettings( IntPtr self, AppId_t unVideoAppID );
+		internal void _GetOPFSettings( AppId_t unVideoAppID ) => _SteamAPI_ISteamVideo_GetOPFSettings( Self, unVideoAppID );
 		#endregion
 		internal void GetOPFSettings( AppId_t unVideoAppID )
 		{
@@ -60,6 +63,7 @@ namespace Steamworks
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamVideo_GetOPFStringForApp", CallingConvention = Platform.CC ) ]
 		[ return: MarshalAs( UnmanagedType.I1 ) ]
 		internal static extern bool _SteamAPI_ISteamVideo_GetOPFStringForApp( IntPtr self, AppId_t unVideoAppID, IntPtr pchBuffer, ref int pnBufferSize );
+		internal bool _GetOPFStringForApp( AppId_t unVideoAppID, IntPtr pchBuffer, ref int pnBufferSize ) => _SteamAPI_ISteamVideo_GetOPFStringForApp( Self, unVideoAppID, pchBuffer, ref pnBufferSize );
 		#endregion
 		internal bool GetOPFStringForApp( AppId_t unVideoAppID, out string pchBuffer, ref int pnBufferSize )
 		{

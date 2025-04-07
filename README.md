@@ -3,7 +3,7 @@
 A steamworks wrapper specifically designed for unity dots (ecs, jobs, burst).
 
 ## Why
-This exist solely because the existing c# steamworks api doesnt compatible with dots at all
+This exist solely because the existing c# steamworks api doesn't compatible with dots at all
     1. Steamworks.NET is low level but since it uses static and not readonly so it is not burstable, and function with string is not burstable as well.
     2. Facepunch.Steamworks is a c# friendly api but its so c# that its impossible to use it with jobs burst at all.
 
@@ -29,7 +29,7 @@ Shutdown is handled automatically, every world can only initialize once, so the 
 
 ### Handle unsuccessfully Init
 Since initialization is never to be sure success, so handling the result is important, but it is not strictly required
-Keep in mind that the internal system doesnt log "Failed Init" so if you want more debugging infos, you have to do this result handling
+Keep in mind that the internal system doesn't log "Failed Init" so if you want more debugging infos, you have to do this result handling
 
 For Client
 ```csharp

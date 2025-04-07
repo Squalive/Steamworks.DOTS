@@ -12,20 +12,24 @@ namespace Steamworks.Sample
     [ RequireMatchingQueriesForUpdate ]
     public partial struct SteamServerConnectedSystem : ISystem
     {
+        private Steamworks.CallbackQuery<SteamServersConnected_t> _steamServerConnectedQuery;
+        
         [ BurstCompile ]
         public void OnCreate( ref SystemState state )
         {
             var dispatch = SystemAPI.GetSingleton<Dispatch>();
             dispatch.Install<SteamServersConnected_t>();
             state.RequireForUpdate<SteamGameServer>();
+
+            _steamServerConnectedQuery = new CallbackQuery<SteamServersConnected_t>( ref state );
         }
 
         [ BurstCompile ]
         public void OnUpdate( ref SystemState state )
         {
             var steamGameServer = SystemAPI.GetSingleton<SteamGameServer>();
-            var query = SystemAPI.QueryBuilder().WithAll<SteamCallback, SteamCallback<SteamServersConnected_t>>().Build();
-            foreach ( var _ in query.ToComponentDataArray<SteamCallback>( Allocator.Temp ) )
+            
+            foreach ( var _ in _steamServerConnectedQuery.ToCallbackArray( Allocator.Temp ) )
             {
                 steamGameServer.SetMaxPlayerCount( 100 );
                 steamGameServer.SetPasswordProtected( false );
@@ -38,7 +42,7 @@ namespace Steamworks.Sample
                 UnityEngine.Debug.Log( "steam server connected" );
             }
 
-            state.EntityManager.DestroyEntity( query );
+            state.EntityManager.DestroyEntity( _steamServerConnectedQuery );
         }
     }
 }

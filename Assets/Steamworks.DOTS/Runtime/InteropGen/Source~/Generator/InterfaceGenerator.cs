@@ -118,6 +118,8 @@ public class InterfaceGenerator : BaseGenerator
         if ( returnType.ReturnAttribute != null )
             WriteLine( returnType.ReturnAttribute );
         WriteLine( $"internal static extern {returnType.TypeNameFrom} _{method.FlatName}( IntPtr self, {delegateargstr} );".Replace( "( IntPtr self,  )", "( IntPtr self )" ) );
+        var nativeCallargs = string.Join( ", ", args.Select( x => x.AsNativeCallArgument() ) );
+        WriteLine( $"internal {returnType.TypeNameFrom} _{method.Name}( {delegateargstr} ) => _{method.FlatName}( Self, {nativeCallargs} );".Replace( "( Self,  )", "( Self )" ) );
         WriteLine( $"#endregion" );
         
         if ( !string.IsNullOrEmpty( method.Desc ) )

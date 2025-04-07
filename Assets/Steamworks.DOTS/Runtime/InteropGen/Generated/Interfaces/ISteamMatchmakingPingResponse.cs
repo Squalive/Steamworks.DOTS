@@ -22,6 +22,7 @@ namespace Steamworks
 		#region SteamAPI_ISteamMatchmakingPingResponse_ServerResponded
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamMatchmakingPingResponse_ServerResponded", CallingConvention = Platform.CC ) ]
 		internal static extern void _SteamAPI_ISteamMatchmakingPingResponse_ServerResponded( IntPtr self, ref gameserveritem_t server );
+		internal void _ServerResponded( ref gameserveritem_t server ) => _SteamAPI_ISteamMatchmakingPingResponse_ServerResponded( Self, ref server );
 		#endregion
 		internal void ServerResponded( ref gameserveritem_t server )
 		{
@@ -31,6 +32,7 @@ namespace Steamworks
 		#region SteamAPI_ISteamMatchmakingPingResponse_ServerFailedToRespond
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamMatchmakingPingResponse_ServerFailedToRespond", CallingConvention = Platform.CC ) ]
 		internal static extern void _SteamAPI_ISteamMatchmakingPingResponse_ServerFailedToRespond( IntPtr self );
+		internal void _ServerFailedToRespond(  ) => _SteamAPI_ISteamMatchmakingPingResponse_ServerFailedToRespond( Self );
 		#endregion
 		internal void ServerFailedToRespond()
 		{

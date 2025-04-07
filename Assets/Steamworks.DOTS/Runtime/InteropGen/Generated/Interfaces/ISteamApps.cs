@@ -31,6 +31,7 @@ namespace Steamworks
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamApps_BIsSubscribed", CallingConvention = Platform.CC ) ]
 		[ return: MarshalAs( UnmanagedType.I1 ) ]
 		internal static extern bool _SteamAPI_ISteamApps_BIsSubscribed( IntPtr self );
+		internal bool _BIsSubscribed(  ) => _SteamAPI_ISteamApps_BIsSubscribed( Self );
 		#endregion
 		internal bool BIsSubscribed()
 		{
@@ -42,6 +43,7 @@ namespace Steamworks
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamApps_BIsLowViolence", CallingConvention = Platform.CC ) ]
 		[ return: MarshalAs( UnmanagedType.I1 ) ]
 		internal static extern bool _SteamAPI_ISteamApps_BIsLowViolence( IntPtr self );
+		internal bool _BIsLowViolence(  ) => _SteamAPI_ISteamApps_BIsLowViolence( Self );
 		#endregion
 		internal bool BIsLowViolence()
 		{
@@ -53,6 +55,7 @@ namespace Steamworks
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamApps_BIsCybercafe", CallingConvention = Platform.CC ) ]
 		[ return: MarshalAs( UnmanagedType.I1 ) ]
 		internal static extern bool _SteamAPI_ISteamApps_BIsCybercafe( IntPtr self );
+		internal bool _BIsCybercafe(  ) => _SteamAPI_ISteamApps_BIsCybercafe( Self );
 		#endregion
 		internal bool BIsCybercafe()
 		{
@@ -64,6 +67,7 @@ namespace Steamworks
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamApps_BIsVACBanned", CallingConvention = Platform.CC ) ]
 		[ return: MarshalAs( UnmanagedType.I1 ) ]
 		internal static extern bool _SteamAPI_ISteamApps_BIsVACBanned( IntPtr self );
+		internal bool _BIsVACBanned(  ) => _SteamAPI_ISteamApps_BIsVACBanned( Self );
 		#endregion
 		internal bool BIsVACBanned()
 		{
@@ -74,6 +78,7 @@ namespace Steamworks
 		#region SteamAPI_ISteamApps_GetCurrentGameLanguage
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamApps_GetCurrentGameLanguage", CallingConvention = Platform.CC ) ]
 		internal static extern Utf8StringPtr _SteamAPI_ISteamApps_GetCurrentGameLanguage( IntPtr self );
+		internal Utf8StringPtr _GetCurrentGameLanguage(  ) => _SteamAPI_ISteamApps_GetCurrentGameLanguage( Self );
 		#endregion
 		internal string GetCurrentGameLanguage()
 		{
@@ -84,6 +89,7 @@ namespace Steamworks
 		#region SteamAPI_ISteamApps_GetAvailableGameLanguages
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamApps_GetAvailableGameLanguages", CallingConvention = Platform.CC ) ]
 		internal static extern Utf8StringPtr _SteamAPI_ISteamApps_GetAvailableGameLanguages( IntPtr self );
+		internal Utf8StringPtr _GetAvailableGameLanguages(  ) => _SteamAPI_ISteamApps_GetAvailableGameLanguages( Self );
 		#endregion
 		internal string GetAvailableGameLanguages()
 		{
@@ -95,6 +101,7 @@ namespace Steamworks
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamApps_BIsSubscribedApp", CallingConvention = Platform.CC ) ]
 		[ return: MarshalAs( UnmanagedType.I1 ) ]
 		internal static extern bool _SteamAPI_ISteamApps_BIsSubscribedApp( IntPtr self, AppId_t appID );
+		internal bool _BIsSubscribedApp( AppId_t appID ) => _SteamAPI_ISteamApps_BIsSubscribedApp( Self, appID );
 		#endregion
 		internal bool BIsSubscribedApp( AppId_t appID )
 		{
@@ -106,6 +113,7 @@ namespace Steamworks
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamApps_BIsDlcInstalled", CallingConvention = Platform.CC ) ]
 		[ return: MarshalAs( UnmanagedType.I1 ) ]
 		internal static extern bool _SteamAPI_ISteamApps_BIsDlcInstalled( IntPtr self, AppId_t appID );
+		internal bool _BIsDlcInstalled( AppId_t appID ) => _SteamAPI_ISteamApps_BIsDlcInstalled( Self, appID );
 		#endregion
 		internal bool BIsDlcInstalled( AppId_t appID )
 		{
@@ -116,6 +124,7 @@ namespace Steamworks
 		#region SteamAPI_ISteamApps_GetEarliestPurchaseUnixTime
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamApps_GetEarliestPurchaseUnixTime", CallingConvention = Platform.CC ) ]
 		internal static extern uint _SteamAPI_ISteamApps_GetEarliestPurchaseUnixTime( IntPtr self, AppId_t nAppID );
+		internal uint _GetEarliestPurchaseUnixTime( AppId_t nAppID ) => _SteamAPI_ISteamApps_GetEarliestPurchaseUnixTime( Self, nAppID );
 		#endregion
 		internal uint GetEarliestPurchaseUnixTime( AppId_t nAppID )
 		{
@@ -127,6 +136,7 @@ namespace Steamworks
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamApps_BIsSubscribedFromFreeWeekend", CallingConvention = Platform.CC ) ]
 		[ return: MarshalAs( UnmanagedType.I1 ) ]
 		internal static extern bool _SteamAPI_ISteamApps_BIsSubscribedFromFreeWeekend( IntPtr self );
+		internal bool _BIsSubscribedFromFreeWeekend(  ) => _SteamAPI_ISteamApps_BIsSubscribedFromFreeWeekend( Self );
 		#endregion
 		internal bool BIsSubscribedFromFreeWeekend()
 		{
@@ -137,6 +147,7 @@ namespace Steamworks
 		#region SteamAPI_ISteamApps_GetDLCCount
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamApps_GetDLCCount", CallingConvention = Platform.CC ) ]
 		internal static extern int _SteamAPI_ISteamApps_GetDLCCount( IntPtr self );
+		internal int _GetDLCCount(  ) => _SteamAPI_ISteamApps_GetDLCCount( Self );
 		#endregion
 		internal int GetDLCCount()
 		{
@@ -148,6 +159,7 @@ namespace Steamworks
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamApps_BGetDLCDataByIndex", CallingConvention = Platform.CC ) ]
 		[ return: MarshalAs( UnmanagedType.I1 ) ]
 		internal static extern bool _SteamAPI_ISteamApps_BGetDLCDataByIndex( IntPtr self, int iDLC, ref AppId_t pAppID, [ MarshalAs( UnmanagedType.U1 ) ] ref bool pbAvailable, IntPtr pchName, int cchNameBufferSize );
+		internal bool _BGetDLCDataByIndex( int iDLC, ref AppId_t pAppID, [ MarshalAs( UnmanagedType.U1 ) ] ref bool pbAvailable, IntPtr pchName, int cchNameBufferSize ) => _SteamAPI_ISteamApps_BGetDLCDataByIndex( Self, iDLC, ref pAppID, ref pbAvailable, pchName, cchNameBufferSize );
 		#endregion
 		internal bool BGetDLCDataByIndex( int iDLC, ref AppId_t pAppID, [ MarshalAs( UnmanagedType.U1 ) ] ref bool pbAvailable, out string pchName, int cchNameBufferSize )
 		{
@@ -160,6 +172,7 @@ namespace Steamworks
 		#region SteamAPI_ISteamApps_InstallDLC
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamApps_InstallDLC", CallingConvention = Platform.CC ) ]
 		internal static extern void _SteamAPI_ISteamApps_InstallDLC( IntPtr self, AppId_t nAppID );
+		internal void _InstallDLC( AppId_t nAppID ) => _SteamAPI_ISteamApps_InstallDLC( Self, nAppID );
 		#endregion
 		internal void InstallDLC( AppId_t nAppID )
 		{
@@ -169,6 +182,7 @@ namespace Steamworks
 		#region SteamAPI_ISteamApps_UninstallDLC
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamApps_UninstallDLC", CallingConvention = Platform.CC ) ]
 		internal static extern void _SteamAPI_ISteamApps_UninstallDLC( IntPtr self, AppId_t nAppID );
+		internal void _UninstallDLC( AppId_t nAppID ) => _SteamAPI_ISteamApps_UninstallDLC( Self, nAppID );
 		#endregion
 		internal void UninstallDLC( AppId_t nAppID )
 		{
@@ -178,6 +192,7 @@ namespace Steamworks
 		#region SteamAPI_ISteamApps_RequestAppProofOfPurchaseKey
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamApps_RequestAppProofOfPurchaseKey", CallingConvention = Platform.CC ) ]
 		internal static extern void _SteamAPI_ISteamApps_RequestAppProofOfPurchaseKey( IntPtr self, AppId_t nAppID );
+		internal void _RequestAppProofOfPurchaseKey( AppId_t nAppID ) => _SteamAPI_ISteamApps_RequestAppProofOfPurchaseKey( Self, nAppID );
 		#endregion
 		internal void RequestAppProofOfPurchaseKey( AppId_t nAppID )
 		{
@@ -188,6 +203,7 @@ namespace Steamworks
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamApps_GetCurrentBetaName", CallingConvention = Platform.CC ) ]
 		[ return: MarshalAs( UnmanagedType.I1 ) ]
 		internal static extern bool _SteamAPI_ISteamApps_GetCurrentBetaName( IntPtr self, IntPtr pchName, int cchNameBufferSize );
+		internal bool _GetCurrentBetaName( IntPtr pchName, int cchNameBufferSize ) => _SteamAPI_ISteamApps_GetCurrentBetaName( Self, pchName, cchNameBufferSize );
 		#endregion
 		internal bool GetCurrentBetaName( out string pchName, int cchNameBufferSize )
 		{
@@ -201,6 +217,7 @@ namespace Steamworks
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamApps_MarkContentCorrupt", CallingConvention = Platform.CC ) ]
 		[ return: MarshalAs( UnmanagedType.I1 ) ]
 		internal static extern bool _SteamAPI_ISteamApps_MarkContentCorrupt( IntPtr self, [ MarshalAs( UnmanagedType.U1 ) ] bool bMissingFilesOnly );
+		internal bool _MarkContentCorrupt( [ MarshalAs( UnmanagedType.U1 ) ] bool bMissingFilesOnly ) => _SteamAPI_ISteamApps_MarkContentCorrupt( Self, bMissingFilesOnly );
 		#endregion
 		internal bool MarkContentCorrupt( [ MarshalAs( UnmanagedType.U1 ) ] bool bMissingFilesOnly )
 		{
@@ -211,6 +228,7 @@ namespace Steamworks
 		#region SteamAPI_ISteamApps_GetInstalledDepots
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamApps_GetInstalledDepots", CallingConvention = Platform.CC ) ]
 		internal static extern uint _SteamAPI_ISteamApps_GetInstalledDepots( IntPtr self, AppId_t appID, DepotId_t* pvecDepots, uint cMaxDepots );
+		internal uint _GetInstalledDepots( AppId_t appID, DepotId_t* pvecDepots, uint cMaxDepots ) => _SteamAPI_ISteamApps_GetInstalledDepots( Self, appID, pvecDepots, cMaxDepots );
 		#endregion
 		internal uint GetInstalledDepots( AppId_t appID, DepotId_t* pvecDepots, uint cMaxDepots )
 		{
@@ -221,6 +239,7 @@ namespace Steamworks
 		#region SteamAPI_ISteamApps_GetAppInstallDir
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamApps_GetAppInstallDir", CallingConvention = Platform.CC ) ]
 		internal static extern uint _SteamAPI_ISteamApps_GetAppInstallDir( IntPtr self, AppId_t appID, IntPtr pchFolder, uint cchFolderBufferSize );
+		internal uint _GetAppInstallDir( AppId_t appID, IntPtr pchFolder, uint cchFolderBufferSize ) => _SteamAPI_ISteamApps_GetAppInstallDir( Self, appID, pchFolder, cchFolderBufferSize );
 		#endregion
 		internal uint GetAppInstallDir( AppId_t appID, out string pchFolder, uint cchFolderBufferSize )
 		{
@@ -234,6 +253,7 @@ namespace Steamworks
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamApps_BIsAppInstalled", CallingConvention = Platform.CC ) ]
 		[ return: MarshalAs( UnmanagedType.I1 ) ]
 		internal static extern bool _SteamAPI_ISteamApps_BIsAppInstalled( IntPtr self, AppId_t appID );
+		internal bool _BIsAppInstalled( AppId_t appID ) => _SteamAPI_ISteamApps_BIsAppInstalled( Self, appID );
 		#endregion
 		internal bool BIsAppInstalled( AppId_t appID )
 		{
@@ -244,6 +264,7 @@ namespace Steamworks
 		#region SteamAPI_ISteamApps_GetAppOwner
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamApps_GetAppOwner", CallingConvention = Platform.CC ) ]
 		internal static extern SteamId _SteamAPI_ISteamApps_GetAppOwner( IntPtr self );
+		internal SteamId _GetAppOwner(  ) => _SteamAPI_ISteamApps_GetAppOwner( Self );
 		#endregion
 		internal SteamId GetAppOwner()
 		{
@@ -254,6 +275,7 @@ namespace Steamworks
 		#region SteamAPI_ISteamApps_GetLaunchQueryParam
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamApps_GetLaunchQueryParam", CallingConvention = Platform.CC ) ]
 		internal static extern Utf8StringPtr _SteamAPI_ISteamApps_GetLaunchQueryParam( IntPtr self, IntPtr pchKey );
+		internal Utf8StringPtr _GetLaunchQueryParam( IntPtr pchKey ) => _SteamAPI_ISteamApps_GetLaunchQueryParam( Self, pchKey );
 		#endregion
 		internal string GetLaunchQueryParam( string pchKey )
 		{
@@ -266,6 +288,7 @@ namespace Steamworks
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamApps_GetDlcDownloadProgress", CallingConvention = Platform.CC ) ]
 		[ return: MarshalAs( UnmanagedType.I1 ) ]
 		internal static extern bool _SteamAPI_ISteamApps_GetDlcDownloadProgress( IntPtr self, AppId_t nAppID, ref ulong punBytesDownloaded, ref ulong punBytesTotal );
+		internal bool _GetDlcDownloadProgress( AppId_t nAppID, ref ulong punBytesDownloaded, ref ulong punBytesTotal ) => _SteamAPI_ISteamApps_GetDlcDownloadProgress( Self, nAppID, ref punBytesDownloaded, ref punBytesTotal );
 		#endregion
 		internal bool GetDlcDownloadProgress( AppId_t nAppID, ref ulong punBytesDownloaded, ref ulong punBytesTotal )
 		{
@@ -276,6 +299,7 @@ namespace Steamworks
 		#region SteamAPI_ISteamApps_GetAppBuildId
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamApps_GetAppBuildId", CallingConvention = Platform.CC ) ]
 		internal static extern int _SteamAPI_ISteamApps_GetAppBuildId( IntPtr self );
+		internal int _GetAppBuildId(  ) => _SteamAPI_ISteamApps_GetAppBuildId( Self );
 		#endregion
 		internal int GetAppBuildId()
 		{
@@ -286,6 +310,7 @@ namespace Steamworks
 		#region SteamAPI_ISteamApps_RequestAllProofOfPurchaseKeys
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamApps_RequestAllProofOfPurchaseKeys", CallingConvention = Platform.CC ) ]
 		internal static extern void _SteamAPI_ISteamApps_RequestAllProofOfPurchaseKeys( IntPtr self );
+		internal void _RequestAllProofOfPurchaseKeys(  ) => _SteamAPI_ISteamApps_RequestAllProofOfPurchaseKeys( Self );
 		#endregion
 		internal void RequestAllProofOfPurchaseKeys()
 		{
@@ -295,6 +320,7 @@ namespace Steamworks
 		#region SteamAPI_ISteamApps_GetFileDetails
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamApps_GetFileDetails", CallingConvention = Platform.CC ) ]
 		internal static extern SteamAPICall_t _SteamAPI_ISteamApps_GetFileDetails( IntPtr self, IntPtr pszFileName );
+		internal SteamAPICall_t _GetFileDetails( IntPtr pszFileName ) => _SteamAPI_ISteamApps_GetFileDetails( Self, pszFileName );
 		#endregion
 		internal CallResult<FileDetailsResult_t> GetFileDetails( string pszFileName )
 		{
@@ -306,6 +332,7 @@ namespace Steamworks
 		#region SteamAPI_ISteamApps_GetLaunchCommandLine
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamApps_GetLaunchCommandLine", CallingConvention = Platform.CC ) ]
 		internal static extern int _SteamAPI_ISteamApps_GetLaunchCommandLine( IntPtr self, IntPtr pszCommandLine, int cubCommandLine );
+		internal int _GetLaunchCommandLine( IntPtr pszCommandLine, int cubCommandLine ) => _SteamAPI_ISteamApps_GetLaunchCommandLine( Self, pszCommandLine, cubCommandLine );
 		#endregion
 		internal int GetLaunchCommandLine( out string pszCommandLine, int cubCommandLine )
 		{
@@ -319,6 +346,7 @@ namespace Steamworks
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamApps_BIsSubscribedFromFamilySharing", CallingConvention = Platform.CC ) ]
 		[ return: MarshalAs( UnmanagedType.I1 ) ]
 		internal static extern bool _SteamAPI_ISteamApps_BIsSubscribedFromFamilySharing( IntPtr self );
+		internal bool _BIsSubscribedFromFamilySharing(  ) => _SteamAPI_ISteamApps_BIsSubscribedFromFamilySharing( Self );
 		#endregion
 		internal bool BIsSubscribedFromFamilySharing()
 		{
@@ -330,6 +358,7 @@ namespace Steamworks
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamApps_BIsTimedTrial", CallingConvention = Platform.CC ) ]
 		[ return: MarshalAs( UnmanagedType.I1 ) ]
 		internal static extern bool _SteamAPI_ISteamApps_BIsTimedTrial( IntPtr self, ref uint punSecondsAllowed, ref uint punSecondsPlayed );
+		internal bool _BIsTimedTrial( ref uint punSecondsAllowed, ref uint punSecondsPlayed ) => _SteamAPI_ISteamApps_BIsTimedTrial( Self, ref punSecondsAllowed, ref punSecondsPlayed );
 		#endregion
 		internal bool BIsTimedTrial( ref uint punSecondsAllowed, ref uint punSecondsPlayed )
 		{
@@ -341,6 +370,7 @@ namespace Steamworks
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamApps_SetDlcContext", CallingConvention = Platform.CC ) ]
 		[ return: MarshalAs( UnmanagedType.I1 ) ]
 		internal static extern bool _SteamAPI_ISteamApps_SetDlcContext( IntPtr self, AppId_t nAppID );
+		internal bool _SetDlcContext( AppId_t nAppID ) => _SteamAPI_ISteamApps_SetDlcContext( Self, nAppID );
 		#endregion
 		internal bool SetDlcContext( AppId_t nAppID )
 		{
@@ -351,6 +381,7 @@ namespace Steamworks
 		#region SteamAPI_ISteamApps_GetNumBetas
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamApps_GetNumBetas", CallingConvention = Platform.CC ) ]
 		internal static extern int _SteamAPI_ISteamApps_GetNumBetas( IntPtr self, ref int pnAvailable, ref int pnPrivate );
+		internal int _GetNumBetas( ref int pnAvailable, ref int pnPrivate ) => _SteamAPI_ISteamApps_GetNumBetas( Self, ref pnAvailable, ref pnPrivate );
 		#endregion
 		internal int GetNumBetas( ref int pnAvailable, ref int pnPrivate )
 		{
@@ -362,6 +393,7 @@ namespace Steamworks
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamApps_GetBetaInfo", CallingConvention = Platform.CC ) ]
 		[ return: MarshalAs( UnmanagedType.I1 ) ]
 		internal static extern bool _SteamAPI_ISteamApps_GetBetaInfo( IntPtr self, int iBetaIndex, ref uint punFlags, ref uint punBuildID, IntPtr pchBetaName, int cchBetaName, IntPtr pchDescription, int cchDescription );
+		internal bool _GetBetaInfo( int iBetaIndex, ref uint punFlags, ref uint punBuildID, IntPtr pchBetaName, int cchBetaName, IntPtr pchDescription, int cchDescription ) => _SteamAPI_ISteamApps_GetBetaInfo( Self, iBetaIndex, ref punFlags, ref punBuildID, pchBetaName, cchBetaName, pchDescription, cchDescription );
 		#endregion
 		internal bool GetBetaInfo( int iBetaIndex, ref uint punFlags, ref uint punBuildID, out string pchBetaName, int cchBetaName, out string pchDescription, int cchDescription )
 		{
@@ -377,6 +409,7 @@ namespace Steamworks
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamApps_SetActiveBeta", CallingConvention = Platform.CC ) ]
 		[ return: MarshalAs( UnmanagedType.I1 ) ]
 		internal static extern bool _SteamAPI_ISteamApps_SetActiveBeta( IntPtr self, IntPtr pchBetaName );
+		internal bool _SetActiveBeta( IntPtr pchBetaName ) => _SteamAPI_ISteamApps_SetActiveBeta( Self, pchBetaName );
 		#endregion
 		internal bool SetActiveBeta( string pchBetaName )
 		{

@@ -22,6 +22,7 @@ namespace Steamworks
 		#region SteamAPI_ISteamMatchmakingRulesResponse_RulesResponded
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamMatchmakingRulesResponse_RulesResponded", CallingConvention = Platform.CC ) ]
 		internal static extern void _SteamAPI_ISteamMatchmakingRulesResponse_RulesResponded( IntPtr self, IntPtr pchRule, IntPtr pchValue );
+		internal void _RulesResponded( IntPtr pchRule, IntPtr pchValue ) => _SteamAPI_ISteamMatchmakingRulesResponse_RulesResponded( Self, pchRule, pchValue );
 		#endregion
 		internal void RulesResponded( string pchRule, string pchValue )
 		{
@@ -33,6 +34,7 @@ namespace Steamworks
 		#region SteamAPI_ISteamMatchmakingRulesResponse_RulesFailedToRespond
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamMatchmakingRulesResponse_RulesFailedToRespond", CallingConvention = Platform.CC ) ]
 		internal static extern void _SteamAPI_ISteamMatchmakingRulesResponse_RulesFailedToRespond( IntPtr self );
+		internal void _RulesFailedToRespond(  ) => _SteamAPI_ISteamMatchmakingRulesResponse_RulesFailedToRespond( Self );
 		#endregion
 		internal void RulesFailedToRespond()
 		{
@@ -42,6 +44,7 @@ namespace Steamworks
 		#region SteamAPI_ISteamMatchmakingRulesResponse_RulesRefreshComplete
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamMatchmakingRulesResponse_RulesRefreshComplete", CallingConvention = Platform.CC ) ]
 		internal static extern void _SteamAPI_ISteamMatchmakingRulesResponse_RulesRefreshComplete( IntPtr self );
+		internal void _RulesRefreshComplete(  ) => _SteamAPI_ISteamMatchmakingRulesResponse_RulesRefreshComplete( Self );
 		#endregion
 		internal void RulesRefreshComplete()
 		{

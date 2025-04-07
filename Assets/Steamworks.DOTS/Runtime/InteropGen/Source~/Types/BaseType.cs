@@ -33,6 +33,8 @@ public class BaseType
             : $"{Ref}{TypeName.Trim( '*', ' ', '&' )} {VarName}";
     }
     
+    public virtual string AsNativeCallArgument() => $"{Ref}{VarName}";
+    
     public virtual string AsCallArgument() => $"{Ref}{VarName}";
 
     public virtual string Return( string varname ) => $"return {varname};";

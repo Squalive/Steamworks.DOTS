@@ -1,6 +1,7 @@
 ﻿using System;
 using Unity.Collections;
 using Unity.Collections.LowLevel.Unsafe;
+using Unity.Mathematics;
 
 namespace Steamworks
 {
@@ -66,6 +67,25 @@ namespace Steamworks
     public unsafe struct Utf8StringPtr
     {
         internal IntPtr Ptr;
+
+        public T ToUnsafeString<T>() where T : unmanaged, INativeList<byte>, IUTF8Bytes
+        {
+            if ( Ptr == IntPtr.Zero ) return default;
+            
+            var bytes = ( byte* ) Ptr;
+            var dataLen = 0;
+            while ( dataLen < 1024 * 1024 * 64 )
+            {
+                if ( bytes[ dataLen ] == 0 ) break;
+                dataLen++;
+            }
+
+            var t = default( T );
+            t.TryResize( dataLen, NativeArrayOptions.UninitializedMemory );
+            dataLen = math.min( dataLen, t.Length );
+            UnsafeUtility.MemCpy( t.GetUnsafePtr(), bytes, dataLen );
+            return t;
+        }
 
         public static implicit operator string( Utf8StringPtr p )
         {

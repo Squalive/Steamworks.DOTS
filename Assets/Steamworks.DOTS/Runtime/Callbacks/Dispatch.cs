@@ -199,7 +199,7 @@ namespace Steamworks
                     };
                     world.EntityManager.AddComponent<SteamCallResult>( targetEntity );
                     world.EntityManager.AddComponent( targetEntity, componentType );
-                    world.EntityManager.AddComponentData( targetEntity, new SteamCallbackAge { Type = msg.Type, Age = 0 } );
+                    world.EntityManager.AddComponentData( targetEntity, new SteamCallbackAge { Type = ( CallbackType ) callCompleted.Callback, Age = 0 } );
                     world.EntityManager.AddComponentData( targetEntity, new SteamCallback { Data = cleanup.Data } );
                     world.EntityManager.AddComponentData( targetEntity, cleanup );
                     break;

@@ -31,6 +31,7 @@ namespace Steamworks
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamParentalSettings_BIsParentalLockEnabled", CallingConvention = Platform.CC ) ]
 		[ return: MarshalAs( UnmanagedType.I1 ) ]
 		internal static extern bool _SteamAPI_ISteamParentalSettings_BIsParentalLockEnabled( IntPtr self );
+		internal bool _BIsParentalLockEnabled(  ) => _SteamAPI_ISteamParentalSettings_BIsParentalLockEnabled( Self );
 		#endregion
 		internal bool BIsParentalLockEnabled()
 		{
@@ -42,6 +43,7 @@ namespace Steamworks
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamParentalSettings_BIsParentalLockLocked", CallingConvention = Platform.CC ) ]
 		[ return: MarshalAs( UnmanagedType.I1 ) ]
 		internal static extern bool _SteamAPI_ISteamParentalSettings_BIsParentalLockLocked( IntPtr self );
+		internal bool _BIsParentalLockLocked(  ) => _SteamAPI_ISteamParentalSettings_BIsParentalLockLocked( Self );
 		#endregion
 		internal bool BIsParentalLockLocked()
 		{
@@ -53,6 +55,7 @@ namespace Steamworks
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamParentalSettings_BIsAppBlocked", CallingConvention = Platform.CC ) ]
 		[ return: MarshalAs( UnmanagedType.I1 ) ]
 		internal static extern bool _SteamAPI_ISteamParentalSettings_BIsAppBlocked( IntPtr self, AppId_t nAppID );
+		internal bool _BIsAppBlocked( AppId_t nAppID ) => _SteamAPI_ISteamParentalSettings_BIsAppBlocked( Self, nAppID );
 		#endregion
 		internal bool BIsAppBlocked( AppId_t nAppID )
 		{
@@ -64,6 +67,7 @@ namespace Steamworks
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamParentalSettings_BIsAppInBlockList", CallingConvention = Platform.CC ) ]
 		[ return: MarshalAs( UnmanagedType.I1 ) ]
 		internal static extern bool _SteamAPI_ISteamParentalSettings_BIsAppInBlockList( IntPtr self, AppId_t nAppID );
+		internal bool _BIsAppInBlockList( AppId_t nAppID ) => _SteamAPI_ISteamParentalSettings_BIsAppInBlockList( Self, nAppID );
 		#endregion
 		internal bool BIsAppInBlockList( AppId_t nAppID )
 		{
@@ -75,6 +79,7 @@ namespace Steamworks
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamParentalSettings_BIsFeatureBlocked", CallingConvention = Platform.CC ) ]
 		[ return: MarshalAs( UnmanagedType.I1 ) ]
 		internal static extern bool _SteamAPI_ISteamParentalSettings_BIsFeatureBlocked( IntPtr self, EParentalFeature eFeature );
+		internal bool _BIsFeatureBlocked( EParentalFeature eFeature ) => _SteamAPI_ISteamParentalSettings_BIsFeatureBlocked( Self, eFeature );
 		#endregion
 		internal bool BIsFeatureBlocked( EParentalFeature eFeature )
 		{
@@ -86,6 +91,7 @@ namespace Steamworks
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamParentalSettings_BIsFeatureInBlockList", CallingConvention = Platform.CC ) ]
 		[ return: MarshalAs( UnmanagedType.I1 ) ]
 		internal static extern bool _SteamAPI_ISteamParentalSettings_BIsFeatureInBlockList( IntPtr self, EParentalFeature eFeature );
+		internal bool _BIsFeatureInBlockList( EParentalFeature eFeature ) => _SteamAPI_ISteamParentalSettings_BIsFeatureInBlockList( Self, eFeature );
 		#endregion
 		internal bool BIsFeatureInBlockList( EParentalFeature eFeature )
 		{

@@ -1,4 +1,6 @@
-﻿using Unity.Entities;
+﻿using Steamworks.Data;
+using Unity.Collections;
+using Unity.Entities;
 
 namespace Steamworks.Sample
 {
@@ -7,11 +9,24 @@ namespace Steamworks.Sample
     [ WorldSystemFilter( WorldSystemFilterFlags.ClientSimulation | WorldSystemFilterFlags.ThinClientSimulation ) ]
     [ UpdateInGroup( typeof( InitializationSystemGroup ) ) ]
     [ UpdateBefore( typeof( SteamClientSystem ) ) ]
+    [ CreateAfter( typeof( SteamCallbacksSystem ) ) ]
     public partial struct SteamClientRequestInitSystem : ISystem
     {
+        public void OnCreate( ref SystemState state )
+        {
+            var dispatch = SystemAPI.GetSingleton<Dispatch>();
+        }
+
         public void OnUpdate( ref SystemState state )
         {
-            if ( SystemAPI.HasSingleton<ClientLogged>() ) return;
+            if ( SystemAPI.HasSingleton<ClientLogged>() )
+            {
+                var commandBuffer = new EntityCommandBuffer( Allocator.Temp );
+                
+
+                commandBuffer.Playback( state.EntityManager );
+                return;
+            }
             
             if ( SystemAPI.TryGetSingletonEntity<SteamAPIInitResult>( out var steamEntity ) )
             {
@@ -24,6 +39,11 @@ namespace Steamworks.Sample
                     var callResult = steamFriends.IsFollowing( localId );
                     var targetEntity = state.EntityManager.CreateEntity();
                     callResult.Set( SystemAPI.GetSingleton<SteamCallResultSingleton>(), targetEntity );
+
+                    // foreach ( var friend in steamFriends.GetFriends() )
+                    // {
+                    //     UnityEngine.Debug.Log( $"{friend.Id} {friend.Name<FixedString128Bytes>( steamFriends )}" );
+                    // }
                 }
                 else
                 {

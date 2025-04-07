@@ -2,6 +2,7 @@
 #define STEAMWORKS_DEBUG
 #endif
 using System;
+using System.Runtime.InteropServices;
 using Steamworks.Data;
 using Unity.Burst;
 using Unity.Collections;
@@ -46,6 +47,7 @@ namespace Steamworks
         public int Age;
     }
 
+    [ StructLayout( LayoutKind.Sequential ) ]
     public struct SteamCallback : IComponentData
     {
         [ NativeDisableUnsafePtrRestriction ] internal IntPtr Data;

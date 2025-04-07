@@ -30,6 +30,7 @@ namespace Steamworks
 		#region SteamAPI_ISteamGameServerStats_RequestUserStats
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamGameServerStats_RequestUserStats", CallingConvention = Platform.CC ) ]
 		internal static extern SteamAPICall_t _SteamAPI_ISteamGameServerStats_RequestUserStats( IntPtr self, SteamId steamIDUser );
+		internal SteamAPICall_t _RequestUserStats( SteamId steamIDUser ) => _SteamAPI_ISteamGameServerStats_RequestUserStats( Self, steamIDUser );
 		#endregion
 		internal CallResult<GSStatsReceived_t> RequestUserStats( SteamId steamIDUser )
 		{
@@ -41,6 +42,7 @@ namespace Steamworks
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamGameServerStats_GetUserStatInt32", CallingConvention = Platform.CC ) ]
 		[ return: MarshalAs( UnmanagedType.I1 ) ]
 		internal static extern bool _SteamAPI_ISteamGameServerStats_GetUserStatInt32( IntPtr self, SteamId steamIDUser, IntPtr pchName, ref int pData );
+		internal bool _GetUserStat( SteamId steamIDUser, IntPtr pchName, ref int pData ) => _SteamAPI_ISteamGameServerStats_GetUserStatInt32( Self, steamIDUser, pchName, ref pData );
 		#endregion
 		internal bool GetUserStat( SteamId steamIDUser, string pchName, ref int pData )
 		{
@@ -53,6 +55,7 @@ namespace Steamworks
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamGameServerStats_GetUserStatFloat", CallingConvention = Platform.CC ) ]
 		[ return: MarshalAs( UnmanagedType.I1 ) ]
 		internal static extern bool _SteamAPI_ISteamGameServerStats_GetUserStatFloat( IntPtr self, SteamId steamIDUser, IntPtr pchName, ref float pData );
+		internal bool _GetUserStat( SteamId steamIDUser, IntPtr pchName, ref float pData ) => _SteamAPI_ISteamGameServerStats_GetUserStatFloat( Self, steamIDUser, pchName, ref pData );
 		#endregion
 		internal bool GetUserStat( SteamId steamIDUser, string pchName, ref float pData )
 		{
@@ -65,6 +68,7 @@ namespace Steamworks
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamGameServerStats_GetUserAchievement", CallingConvention = Platform.CC ) ]
 		[ return: MarshalAs( UnmanagedType.I1 ) ]
 		internal static extern bool _SteamAPI_ISteamGameServerStats_GetUserAchievement( IntPtr self, SteamId steamIDUser, IntPtr pchName, [ MarshalAs( UnmanagedType.U1 ) ] ref bool pbAchieved );
+		internal bool _GetUserAchievement( SteamId steamIDUser, IntPtr pchName, [ MarshalAs( UnmanagedType.U1 ) ] ref bool pbAchieved ) => _SteamAPI_ISteamGameServerStats_GetUserAchievement( Self, steamIDUser, pchName, ref pbAchieved );
 		#endregion
 		internal bool GetUserAchievement( SteamId steamIDUser, string pchName, [ MarshalAs( UnmanagedType.U1 ) ] ref bool pbAchieved )
 		{
@@ -77,6 +81,7 @@ namespace Steamworks
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamGameServerStats_SetUserStatInt32", CallingConvention = Platform.CC ) ]
 		[ return: MarshalAs( UnmanagedType.I1 ) ]
 		internal static extern bool _SteamAPI_ISteamGameServerStats_SetUserStatInt32( IntPtr self, SteamId steamIDUser, IntPtr pchName, int nData );
+		internal bool _SetUserStat( SteamId steamIDUser, IntPtr pchName, int nData ) => _SteamAPI_ISteamGameServerStats_SetUserStatInt32( Self, steamIDUser, pchName, nData );
 		#endregion
 		internal bool SetUserStat( SteamId steamIDUser, string pchName, int nData )
 		{
@@ -89,6 +94,7 @@ namespace Steamworks
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamGameServerStats_SetUserStatFloat", CallingConvention = Platform.CC ) ]
 		[ return: MarshalAs( UnmanagedType.I1 ) ]
 		internal static extern bool _SteamAPI_ISteamGameServerStats_SetUserStatFloat( IntPtr self, SteamId steamIDUser, IntPtr pchName, float fData );
+		internal bool _SetUserStat( SteamId steamIDUser, IntPtr pchName, float fData ) => _SteamAPI_ISteamGameServerStats_SetUserStatFloat( Self, steamIDUser, pchName, fData );
 		#endregion
 		internal bool SetUserStat( SteamId steamIDUser, string pchName, float fData )
 		{
@@ -101,6 +107,7 @@ namespace Steamworks
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamGameServerStats_UpdateUserAvgRateStat", CallingConvention = Platform.CC ) ]
 		[ return: MarshalAs( UnmanagedType.I1 ) ]
 		internal static extern bool _SteamAPI_ISteamGameServerStats_UpdateUserAvgRateStat( IntPtr self, SteamId steamIDUser, IntPtr pchName, float flCountThisSession, double dSessionLength );
+		internal bool _UpdateUserAvgRateStat( SteamId steamIDUser, IntPtr pchName, float flCountThisSession, double dSessionLength ) => _SteamAPI_ISteamGameServerStats_UpdateUserAvgRateStat( Self, steamIDUser, pchName, flCountThisSession, dSessionLength );
 		#endregion
 		internal bool UpdateUserAvgRateStat( SteamId steamIDUser, string pchName, float flCountThisSession, double dSessionLength )
 		{
@@ -113,6 +120,7 @@ namespace Steamworks
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamGameServerStats_SetUserAchievement", CallingConvention = Platform.CC ) ]
 		[ return: MarshalAs( UnmanagedType.I1 ) ]
 		internal static extern bool _SteamAPI_ISteamGameServerStats_SetUserAchievement( IntPtr self, SteamId steamIDUser, IntPtr pchName );
+		internal bool _SetUserAchievement( SteamId steamIDUser, IntPtr pchName ) => _SteamAPI_ISteamGameServerStats_SetUserAchievement( Self, steamIDUser, pchName );
 		#endregion
 		internal bool SetUserAchievement( SteamId steamIDUser, string pchName )
 		{
@@ -125,6 +133,7 @@ namespace Steamworks
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamGameServerStats_ClearUserAchievement", CallingConvention = Platform.CC ) ]
 		[ return: MarshalAs( UnmanagedType.I1 ) ]
 		internal static extern bool _SteamAPI_ISteamGameServerStats_ClearUserAchievement( IntPtr self, SteamId steamIDUser, IntPtr pchName );
+		internal bool _ClearUserAchievement( SteamId steamIDUser, IntPtr pchName ) => _SteamAPI_ISteamGameServerStats_ClearUserAchievement( Self, steamIDUser, pchName );
 		#endregion
 		internal bool ClearUserAchievement( SteamId steamIDUser, string pchName )
 		{
@@ -136,6 +145,7 @@ namespace Steamworks
 		#region SteamAPI_ISteamGameServerStats_StoreUserStats
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamGameServerStats_StoreUserStats", CallingConvention = Platform.CC ) ]
 		internal static extern SteamAPICall_t _SteamAPI_ISteamGameServerStats_StoreUserStats( IntPtr self, SteamId steamIDUser );
+		internal SteamAPICall_t _StoreUserStats( SteamId steamIDUser ) => _SteamAPI_ISteamGameServerStats_StoreUserStats( Self, steamIDUser );
 		#endregion
 		internal CallResult<GSStatsStored_t> StoreUserStats( SteamId steamIDUser )
 		{

@@ -37,6 +37,7 @@ namespace Steamworks
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamNetworking_SendP2PPacket", CallingConvention = Platform.CC ) ]
 		[ return: MarshalAs( UnmanagedType.I1 ) ]
 		internal static extern bool _SteamAPI_ISteamNetworking_SendP2PPacket( IntPtr self, SteamId steamIDRemote, IntPtr pubData, uint cubData, EP2PSend eP2PSendType, int nChannel );
+		internal bool _SendP2PPacket( SteamId steamIDRemote, IntPtr pubData, uint cubData, EP2PSend eP2PSendType, int nChannel ) => _SteamAPI_ISteamNetworking_SendP2PPacket( Self, steamIDRemote, pubData, cubData, eP2PSendType, nChannel );
 		#endregion
 		internal bool SendP2PPacket( SteamId steamIDRemote, IntPtr pubData, uint cubData, EP2PSend eP2PSendType, int nChannel )
 		{
@@ -48,6 +49,7 @@ namespace Steamworks
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamNetworking_IsP2PPacketAvailable", CallingConvention = Platform.CC ) ]
 		[ return: MarshalAs( UnmanagedType.I1 ) ]
 		internal static extern bool _SteamAPI_ISteamNetworking_IsP2PPacketAvailable( IntPtr self, ref uint pcubMsgSize, int nChannel );
+		internal bool _IsP2PPacketAvailable( ref uint pcubMsgSize, int nChannel ) => _SteamAPI_ISteamNetworking_IsP2PPacketAvailable( Self, ref pcubMsgSize, nChannel );
 		#endregion
 		internal bool IsP2PPacketAvailable( ref uint pcubMsgSize, int nChannel )
 		{
@@ -59,6 +61,7 @@ namespace Steamworks
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamNetworking_ReadP2PPacket", CallingConvention = Platform.CC ) ]
 		[ return: MarshalAs( UnmanagedType.I1 ) ]
 		internal static extern bool _SteamAPI_ISteamNetworking_ReadP2PPacket( IntPtr self, IntPtr pubDest, uint cubDest, ref uint pcubMsgSize, ref SteamId psteamIDRemote, int nChannel );
+		internal bool _ReadP2PPacket( IntPtr pubDest, uint cubDest, ref uint pcubMsgSize, ref SteamId psteamIDRemote, int nChannel ) => _SteamAPI_ISteamNetworking_ReadP2PPacket( Self, pubDest, cubDest, ref pcubMsgSize, ref psteamIDRemote, nChannel );
 		#endregion
 		internal bool ReadP2PPacket( IntPtr pubDest, uint cubDest, ref uint pcubMsgSize, ref SteamId psteamIDRemote, int nChannel )
 		{
@@ -70,6 +73,7 @@ namespace Steamworks
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamNetworking_AcceptP2PSessionWithUser", CallingConvention = Platform.CC ) ]
 		[ return: MarshalAs( UnmanagedType.I1 ) ]
 		internal static extern bool _SteamAPI_ISteamNetworking_AcceptP2PSessionWithUser( IntPtr self, SteamId steamIDRemote );
+		internal bool _AcceptP2PSessionWithUser( SteamId steamIDRemote ) => _SteamAPI_ISteamNetworking_AcceptP2PSessionWithUser( Self, steamIDRemote );
 		#endregion
 		internal bool AcceptP2PSessionWithUser( SteamId steamIDRemote )
 		{
@@ -81,6 +85,7 @@ namespace Steamworks
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamNetworking_CloseP2PSessionWithUser", CallingConvention = Platform.CC ) ]
 		[ return: MarshalAs( UnmanagedType.I1 ) ]
 		internal static extern bool _SteamAPI_ISteamNetworking_CloseP2PSessionWithUser( IntPtr self, SteamId steamIDRemote );
+		internal bool _CloseP2PSessionWithUser( SteamId steamIDRemote ) => _SteamAPI_ISteamNetworking_CloseP2PSessionWithUser( Self, steamIDRemote );
 		#endregion
 		internal bool CloseP2PSessionWithUser( SteamId steamIDRemote )
 		{
@@ -92,6 +97,7 @@ namespace Steamworks
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamNetworking_CloseP2PChannelWithUser", CallingConvention = Platform.CC ) ]
 		[ return: MarshalAs( UnmanagedType.I1 ) ]
 		internal static extern bool _SteamAPI_ISteamNetworking_CloseP2PChannelWithUser( IntPtr self, SteamId steamIDRemote, int nChannel );
+		internal bool _CloseP2PChannelWithUser( SteamId steamIDRemote, int nChannel ) => _SteamAPI_ISteamNetworking_CloseP2PChannelWithUser( Self, steamIDRemote, nChannel );
 		#endregion
 		internal bool CloseP2PChannelWithUser( SteamId steamIDRemote, int nChannel )
 		{
@@ -103,6 +109,7 @@ namespace Steamworks
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamNetworking_GetP2PSessionState", CallingConvention = Platform.CC ) ]
 		[ return: MarshalAs( UnmanagedType.I1 ) ]
 		internal static extern bool _SteamAPI_ISteamNetworking_GetP2PSessionState( IntPtr self, SteamId steamIDRemote, ref P2PSessionState_t pConnectionState );
+		internal bool _GetP2PSessionState( SteamId steamIDRemote, ref P2PSessionState_t pConnectionState ) => _SteamAPI_ISteamNetworking_GetP2PSessionState( Self, steamIDRemote, ref pConnectionState );
 		#endregion
 		internal bool GetP2PSessionState( SteamId steamIDRemote, ref P2PSessionState_t pConnectionState )
 		{
@@ -114,6 +121,7 @@ namespace Steamworks
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamNetworking_AllowP2PPacketRelay", CallingConvention = Platform.CC ) ]
 		[ return: MarshalAs( UnmanagedType.I1 ) ]
 		internal static extern bool _SteamAPI_ISteamNetworking_AllowP2PPacketRelay( IntPtr self, [ MarshalAs( UnmanagedType.U1 ) ] bool bAllow );
+		internal bool _AllowP2PPacketRelay( [ MarshalAs( UnmanagedType.U1 ) ] bool bAllow ) => _SteamAPI_ISteamNetworking_AllowP2PPacketRelay( Self, bAllow );
 		#endregion
 		internal bool AllowP2PPacketRelay( [ MarshalAs( UnmanagedType.U1 ) ] bool bAllow )
 		{
@@ -124,6 +132,7 @@ namespace Steamworks
 		#region SteamAPI_ISteamNetworking_CreateP2PConnectionSocket
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamNetworking_CreateP2PConnectionSocket", CallingConvention = Platform.CC ) ]
 		internal static extern SNetSocket_t _SteamAPI_ISteamNetworking_CreateP2PConnectionSocket( IntPtr self, SteamId steamIDTarget, int nVirtualPort, int nTimeoutSec, [ MarshalAs( UnmanagedType.U1 ) ] bool bAllowUseOfPacketRelay );
+		internal SNetSocket_t _CreateP2PConnectionSocket( SteamId steamIDTarget, int nVirtualPort, int nTimeoutSec, [ MarshalAs( UnmanagedType.U1 ) ] bool bAllowUseOfPacketRelay ) => _SteamAPI_ISteamNetworking_CreateP2PConnectionSocket( Self, steamIDTarget, nVirtualPort, nTimeoutSec, bAllowUseOfPacketRelay );
 		#endregion
 		internal SNetSocket_t CreateP2PConnectionSocket( SteamId steamIDTarget, int nVirtualPort, int nTimeoutSec, [ MarshalAs( UnmanagedType.U1 ) ] bool bAllowUseOfPacketRelay )
 		{
