@@ -97,7 +97,7 @@ public class BaseType
         var typeNoSpaces = type.Replace( " ", "" );
         if ( varname == "ppOutMessages" ) return new IntPtrType { NativeType = "void *", VarName = varname };
         if ( type == "SteamAPIWarningMessageHook_t" ) return new IntPtrType { NativeType = type, VarName = varname };
-        if ( typeNoSpaces == "MatchMakingKeyValuePair**") return new IntPtrType { NativeType = "MatchMakingKeyValuePair_t", VarName = varname };
+        if ( typeNoSpaces == "MatchMakingKeyValuePair_t**" ) return new IntPtrType { NativeType = "MatchMakingKeyValuePair_t", VarName = varname };
         
         if ( type == "SteamAPICall_t" ) return new SteamAPICallType { NativeType = type, VarName = varname, CallResult = callresult };
         

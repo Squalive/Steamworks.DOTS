@@ -9,6 +9,12 @@ public class StructGenerator : BaseGenerator
         public string ManagedType;
     }
     
+    public class TypeSize
+    {
+        public int PrimitiveSize;
+        public int NestedTypeSize;
+    }
+    
     protected override string Namespace => "Steamworks.Data";
     protected override string Name => "SteamStructs.cs";
 
@@ -47,7 +53,6 @@ public class StructGenerator : BaseGenerator
             EndBracket();
             WriteLine();
         }
-        
         
         foreach ( var callback in def.CallbackStructs )
         {

@@ -1,5 +1,7 @@
-﻿using Steamworks.Data;
+﻿using System.Runtime.InteropServices;
+using Steamworks.Data;
 using Unity.Collections;
+using Unity.Collections.LowLevel.Unsafe;
 using Unity.Entities;
 
 namespace Steamworks.Sample
@@ -21,10 +23,6 @@ namespace Steamworks.Sample
         {
             if ( SystemAPI.HasSingleton<ClientLogged>() )
             {
-                var commandBuffer = new EntityCommandBuffer( Allocator.Temp );
-                
-
-                commandBuffer.Playback( state.EntityManager );
                 return;
             }
             
@@ -40,6 +38,12 @@ namespace Steamworks.Sample
                     var targetEntity = state.EntityManager.CreateEntity();
                     callResult.Set( SystemAPI.GetSingleton<SteamCallResultSingleton>(), targetEntity );
 
+                    var serverListRequest = state.EntityManager.CreateEntity();
+                    state.EntityManager.AddComponentData( serverListRequest, new ServerList.Request( 252490 ) );
+                    state.EntityManager.AddComponent<ServerList.Internet>( serverListRequest );
+
+                    // state.EntityManager.AddBuffer<ServerList.IP>( serverListRequest ).Add( new ServerList.IP( "3640287629" ) );
+
                     // foreach ( var friend in steamFriends.GetFriends() )
                     // {
                     //     UnityEngine.Debug.Log( $"{friend.Id} {friend.Name<FixedString128Bytes>( steamFriends )}" );
@@ -54,7 +58,7 @@ namespace Steamworks.Sample
             else if ( !SystemAPI.HasSingleton<SteamInternal>() )
             {
                 var initEntity = state.EntityManager.CreateEntity();
-                state.EntityManager.AddComponentData( initEntity, new SteamAPIRequestInit( 480 ) );
+                state.EntityManager.AddComponentData( initEntity, new SteamAPIRequestInit( 252490 ) );
             }
         }
     }

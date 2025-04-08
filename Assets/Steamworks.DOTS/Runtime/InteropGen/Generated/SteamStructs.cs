@@ -87,43 +87,6 @@ namespace Steamworks.Data
 		
 	}
 	
-	[ StructLayout( LayoutKind.Sequential, Pack = Platform.StructPackSize ) ] 
-	public unsafe partial struct gameserveritem_t
-	{
-		public servernetadr_t NetAdr; // m_NetAdr servernetadr_t
-		public int Ping; // m_nPing int
-		[ MarshalAs( UnmanagedType.I1 ) ]
-		public bool HadSuccessfulResponse; // m_bHadSuccessfulResponse bool
-		[ MarshalAs( UnmanagedType.I1 ) ]
-		public bool DoNotRefresh; // m_bDoNotRefresh bool
-		public fixed byte GameDir[ 32 ]; // m_szGameDir char [32]
-		public fixed byte Map[ 32 ]; // m_szMap char [32]
-		public fixed byte GameDescription[ 64 ]; // m_szGameDescription char [64]
-		public uint AppID; // m_nAppID uint32
-		public int Players; // m_nPlayers int
-		public int MaxPlayers; // m_nMaxPlayers int
-		public int BotPlayers; // m_nBotPlayers int
-		[ MarshalAs( UnmanagedType.I1 ) ]
-		public bool Password; // m_bPassword bool
-		[ MarshalAs( UnmanagedType.I1 ) ]
-		public bool Secure; // m_bSecure bool
-		public uint TimeLastPlayed; // m_ulTimeLastPlayed uint32
-		public int ServerVersion; // m_nServerVersion int
-		public fixed byte ServerName[ 64 ]; // m_szServerName char [64]
-		public fixed byte GameTags[ 128 ]; // m_szGameTags char [128]
-		public ulong SteamID; // m_steamID CSteamID
-		
-		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_gameserveritem_t_Construct", CallingConvention = Platform.CC ) ]
-		public static unsafe extern void SteamAPI_Construct( gameserveritem_t* self );
-		
-		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_gameserveritem_t_GetName", CallingConvention = Platform.CC ) ]
-		public static unsafe extern Utf8StringPtr SteamAPI_GetName( gameserveritem_t* self );
-		
-		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_gameserveritem_t_SetName", CallingConvention = Platform.CC ) ]
-		public static unsafe extern void SteamAPI_SetName( gameserveritem_t* self, IntPtr pName );
-		
-	}
-	
 	[ StructLayout( LayoutKind.Sequential, Pack = Platform.StructPlatformPackSize ) ] 
 	public unsafe struct SteamPartyBeaconLocation_t
 	{

@@ -68,6 +68,16 @@ namespace Steamworks
     {
         internal IntPtr Ptr;
 
+        public Utf8StringPtr( IntPtr ptr )
+        {
+            Ptr = ptr;
+        }
+
+        public Utf8StringPtr( byte* ptr )
+        {
+            Ptr = ( IntPtr ) ptr;
+        }
+
         public T ToUnsafeString<T>() where T : unmanaged, INativeList<byte>, IUTF8Bytes
         {
             if ( Ptr == IntPtr.Zero ) return default;

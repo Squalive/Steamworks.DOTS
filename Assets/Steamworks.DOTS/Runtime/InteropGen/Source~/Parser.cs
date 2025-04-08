@@ -35,6 +35,7 @@ public static class Parser
         if ( type == "NetDebugFunc" ) return false;
         if ( type == "SteamInputActionEventCallbackPointer" ) return false;
         if ( type == "SteamNetworkingErrMsg" ) return false;
+        if ( type == "gameserveritem_t" ) return false;
 
         return true;
     }

@@ -29,12 +29,12 @@ namespace Steamworks
 		}
 		#region SteamAPI_ISteamMatchmakingServers_RequestInternetServerList
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamMatchmakingServers_RequestInternetServerList", CallingConvention = Platform.CC ) ]
-		internal static extern HServerListRequest _SteamAPI_ISteamMatchmakingServers_RequestInternetServerList( IntPtr self, AppId_t iApp, ref MatchMakingKeyValuePair_t* ppchFilters, uint nFilters, IntPtr pRequestServersResponse );
-		internal HServerListRequest _RequestInternetServerList( AppId_t iApp, ref MatchMakingKeyValuePair_t* ppchFilters, uint nFilters, IntPtr pRequestServersResponse ) => _SteamAPI_ISteamMatchmakingServers_RequestInternetServerList( Self, iApp, ref ppchFilters, nFilters, pRequestServersResponse );
+		internal static extern HServerListRequest _SteamAPI_ISteamMatchmakingServers_RequestInternetServerList( IntPtr self, AppId_t iApp, IntPtr ppchFilters, uint nFilters, IntPtr pRequestServersResponse );
+		internal HServerListRequest _RequestInternetServerList( AppId_t iApp, IntPtr ppchFilters, uint nFilters, IntPtr pRequestServersResponse ) => _SteamAPI_ISteamMatchmakingServers_RequestInternetServerList( Self, iApp, ppchFilters, nFilters, pRequestServersResponse );
 		#endregion
-		internal HServerListRequest RequestInternetServerList( AppId_t iApp, ref MatchMakingKeyValuePair_t* ppchFilters, uint nFilters, IntPtr pRequestServersResponse )
+		internal HServerListRequest RequestInternetServerList( AppId_t iApp, IntPtr ppchFilters, uint nFilters, IntPtr pRequestServersResponse )
 		{
-			var returnValue = _SteamAPI_ISteamMatchmakingServers_RequestInternetServerList( Self, iApp, ref ppchFilters, nFilters, pRequestServersResponse );
+			var returnValue = _SteamAPI_ISteamMatchmakingServers_RequestInternetServerList( Self, iApp, ppchFilters, nFilters, pRequestServersResponse );
 			return returnValue;
 		}
 		
@@ -51,45 +51,45 @@ namespace Steamworks
 		
 		#region SteamAPI_ISteamMatchmakingServers_RequestFriendsServerList
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamMatchmakingServers_RequestFriendsServerList", CallingConvention = Platform.CC ) ]
-		internal static extern HServerListRequest _SteamAPI_ISteamMatchmakingServers_RequestFriendsServerList( IntPtr self, AppId_t iApp, ref MatchMakingKeyValuePair_t* ppchFilters, uint nFilters, IntPtr pRequestServersResponse );
-		internal HServerListRequest _RequestFriendsServerList( AppId_t iApp, ref MatchMakingKeyValuePair_t* ppchFilters, uint nFilters, IntPtr pRequestServersResponse ) => _SteamAPI_ISteamMatchmakingServers_RequestFriendsServerList( Self, iApp, ref ppchFilters, nFilters, pRequestServersResponse );
+		internal static extern HServerListRequest _SteamAPI_ISteamMatchmakingServers_RequestFriendsServerList( IntPtr self, AppId_t iApp, IntPtr ppchFilters, uint nFilters, IntPtr pRequestServersResponse );
+		internal HServerListRequest _RequestFriendsServerList( AppId_t iApp, IntPtr ppchFilters, uint nFilters, IntPtr pRequestServersResponse ) => _SteamAPI_ISteamMatchmakingServers_RequestFriendsServerList( Self, iApp, ppchFilters, nFilters, pRequestServersResponse );
 		#endregion
-		internal HServerListRequest RequestFriendsServerList( AppId_t iApp, ref MatchMakingKeyValuePair_t* ppchFilters, uint nFilters, IntPtr pRequestServersResponse )
+		internal HServerListRequest RequestFriendsServerList( AppId_t iApp, IntPtr ppchFilters, uint nFilters, IntPtr pRequestServersResponse )
 		{
-			var returnValue = _SteamAPI_ISteamMatchmakingServers_RequestFriendsServerList( Self, iApp, ref ppchFilters, nFilters, pRequestServersResponse );
+			var returnValue = _SteamAPI_ISteamMatchmakingServers_RequestFriendsServerList( Self, iApp, ppchFilters, nFilters, pRequestServersResponse );
 			return returnValue;
 		}
 		
 		#region SteamAPI_ISteamMatchmakingServers_RequestFavoritesServerList
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamMatchmakingServers_RequestFavoritesServerList", CallingConvention = Platform.CC ) ]
-		internal static extern HServerListRequest _SteamAPI_ISteamMatchmakingServers_RequestFavoritesServerList( IntPtr self, AppId_t iApp, ref MatchMakingKeyValuePair_t* ppchFilters, uint nFilters, IntPtr pRequestServersResponse );
-		internal HServerListRequest _RequestFavoritesServerList( AppId_t iApp, ref MatchMakingKeyValuePair_t* ppchFilters, uint nFilters, IntPtr pRequestServersResponse ) => _SteamAPI_ISteamMatchmakingServers_RequestFavoritesServerList( Self, iApp, ref ppchFilters, nFilters, pRequestServersResponse );
+		internal static extern HServerListRequest _SteamAPI_ISteamMatchmakingServers_RequestFavoritesServerList( IntPtr self, AppId_t iApp, IntPtr ppchFilters, uint nFilters, IntPtr pRequestServersResponse );
+		internal HServerListRequest _RequestFavoritesServerList( AppId_t iApp, IntPtr ppchFilters, uint nFilters, IntPtr pRequestServersResponse ) => _SteamAPI_ISteamMatchmakingServers_RequestFavoritesServerList( Self, iApp, ppchFilters, nFilters, pRequestServersResponse );
 		#endregion
-		internal HServerListRequest RequestFavoritesServerList( AppId_t iApp, ref MatchMakingKeyValuePair_t* ppchFilters, uint nFilters, IntPtr pRequestServersResponse )
+		internal HServerListRequest RequestFavoritesServerList( AppId_t iApp, IntPtr ppchFilters, uint nFilters, IntPtr pRequestServersResponse )
 		{
-			var returnValue = _SteamAPI_ISteamMatchmakingServers_RequestFavoritesServerList( Self, iApp, ref ppchFilters, nFilters, pRequestServersResponse );
+			var returnValue = _SteamAPI_ISteamMatchmakingServers_RequestFavoritesServerList( Self, iApp, ppchFilters, nFilters, pRequestServersResponse );
 			return returnValue;
 		}
 		
 		#region SteamAPI_ISteamMatchmakingServers_RequestHistoryServerList
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamMatchmakingServers_RequestHistoryServerList", CallingConvention = Platform.CC ) ]
-		internal static extern HServerListRequest _SteamAPI_ISteamMatchmakingServers_RequestHistoryServerList( IntPtr self, AppId_t iApp, ref MatchMakingKeyValuePair_t* ppchFilters, uint nFilters, IntPtr pRequestServersResponse );
-		internal HServerListRequest _RequestHistoryServerList( AppId_t iApp, ref MatchMakingKeyValuePair_t* ppchFilters, uint nFilters, IntPtr pRequestServersResponse ) => _SteamAPI_ISteamMatchmakingServers_RequestHistoryServerList( Self, iApp, ref ppchFilters, nFilters, pRequestServersResponse );
+		internal static extern HServerListRequest _SteamAPI_ISteamMatchmakingServers_RequestHistoryServerList( IntPtr self, AppId_t iApp, IntPtr ppchFilters, uint nFilters, IntPtr pRequestServersResponse );
+		internal HServerListRequest _RequestHistoryServerList( AppId_t iApp, IntPtr ppchFilters, uint nFilters, IntPtr pRequestServersResponse ) => _SteamAPI_ISteamMatchmakingServers_RequestHistoryServerList( Self, iApp, ppchFilters, nFilters, pRequestServersResponse );
 		#endregion
-		internal HServerListRequest RequestHistoryServerList( AppId_t iApp, ref MatchMakingKeyValuePair_t* ppchFilters, uint nFilters, IntPtr pRequestServersResponse )
+		internal HServerListRequest RequestHistoryServerList( AppId_t iApp, IntPtr ppchFilters, uint nFilters, IntPtr pRequestServersResponse )
 		{
-			var returnValue = _SteamAPI_ISteamMatchmakingServers_RequestHistoryServerList( Self, iApp, ref ppchFilters, nFilters, pRequestServersResponse );
+			var returnValue = _SteamAPI_ISteamMatchmakingServers_RequestHistoryServerList( Self, iApp, ppchFilters, nFilters, pRequestServersResponse );
 			return returnValue;
 		}
 		
 		#region SteamAPI_ISteamMatchmakingServers_RequestSpectatorServerList
 		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_ISteamMatchmakingServers_RequestSpectatorServerList", CallingConvention = Platform.CC ) ]
-		internal static extern HServerListRequest _SteamAPI_ISteamMatchmakingServers_RequestSpectatorServerList( IntPtr self, AppId_t iApp, ref MatchMakingKeyValuePair_t* ppchFilters, uint nFilters, IntPtr pRequestServersResponse );
-		internal HServerListRequest _RequestSpectatorServerList( AppId_t iApp, ref MatchMakingKeyValuePair_t* ppchFilters, uint nFilters, IntPtr pRequestServersResponse ) => _SteamAPI_ISteamMatchmakingServers_RequestSpectatorServerList( Self, iApp, ref ppchFilters, nFilters, pRequestServersResponse );
+		internal static extern HServerListRequest _SteamAPI_ISteamMatchmakingServers_RequestSpectatorServerList( IntPtr self, AppId_t iApp, IntPtr ppchFilters, uint nFilters, IntPtr pRequestServersResponse );
+		internal HServerListRequest _RequestSpectatorServerList( AppId_t iApp, IntPtr ppchFilters, uint nFilters, IntPtr pRequestServersResponse ) => _SteamAPI_ISteamMatchmakingServers_RequestSpectatorServerList( Self, iApp, ppchFilters, nFilters, pRequestServersResponse );
 		#endregion
-		internal HServerListRequest RequestSpectatorServerList( AppId_t iApp, ref MatchMakingKeyValuePair_t* ppchFilters, uint nFilters, IntPtr pRequestServersResponse )
+		internal HServerListRequest RequestSpectatorServerList( AppId_t iApp, IntPtr ppchFilters, uint nFilters, IntPtr pRequestServersResponse )
 		{
-			var returnValue = _SteamAPI_ISteamMatchmakingServers_RequestSpectatorServerList( Self, iApp, ref ppchFilters, nFilters, pRequestServersResponse );
+			var returnValue = _SteamAPI_ISteamMatchmakingServers_RequestSpectatorServerList( Self, iApp, ppchFilters, nFilters, pRequestServersResponse );
 			return returnValue;
 		}
 		
