@@ -39,8 +39,8 @@ namespace Steamworks.Sample
                     callResult.Set( SystemAPI.GetSingleton<SteamCallResultSingleton>(), targetEntity );
 
                     var serverListRequest = state.EntityManager.CreateEntity();
-                    state.EntityManager.AddComponentData( serverListRequest, new ServerList.Request( 252490 ) );
-                    state.EntityManager.AddComponent<ServerList.Internet>( serverListRequest );
+                    state.EntityManager.AddComponentData( serverListRequest, new ServerList.Request( 730 ) );
+                    state.EntityManager.AddComponent<ServerList.Lan>( serverListRequest );
 
                     // state.EntityManager.AddBuffer<ServerList.IP>( serverListRequest ).Add( new ServerList.IP( "3640287629" ) );
 

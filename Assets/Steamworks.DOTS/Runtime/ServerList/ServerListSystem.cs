@@ -1,6 +1,4 @@
-﻿using System;
-using System.Runtime.InteropServices;
-using Steamworks.Data;
+﻿using Steamworks.Data;
 using Unity.Burst;
 using Unity.Collections;
 using Unity.Collections.LowLevel.Unsafe;
@@ -50,7 +48,13 @@ namespace Steamworks.ServerList
 
     internal struct Timeout : IComponentData
     {
+        public float InitialRemaining;
         public float RemainingSeconds;
+    }
+
+    public struct RefreshRequest : IComponentData
+    {
+        
     }
     
     public struct Refreshed : IComponentData, IEnableableComponent
@@ -85,6 +89,8 @@ namespace Steamworks.ServerList
     [ RequireMatchingQueriesForUpdate ]
     public partial struct UpdateSystem : ISystem
     {
+        private const float DefaultTimeout = 120;
+        
         private ComponentLookup<SteamMatchmakingServers> _steamMatchmakingServersLookup;
 
         private EntityQuery _fillRequestQuery;
@@ -92,6 +98,7 @@ namespace Steamworks.ServerList
         private EntityQuery _cancelQuery;
         private EntityQuery _refreshingQuery;
         private EntityQuery _unfinallizedQuery;
+        private EntityQuery _requestRefreshQuery;
 
         private ComponentTypeSet _requestTypeSet;
         
@@ -105,15 +112,15 @@ namespace Steamworks.ServerList
             
             builder.Reset()
                 .WithAll<ResolvedRequest>()
-                .WithNone<Request, MatchMakingKeyValuePair, CancelRequest>();
+                .WithNone<Request, MatchMakingKeyValuePair>();
             _needToReleaseQuery = state.GetEntityQuery( builder );
 
             builder.Reset()
-                .WithAll<ResolvedRequest, CancelRequest>();
+                .WithPresent<ResolvedRequest, CancelRequest>();
             _cancelQuery = state.GetEntityQuery( builder );
 
             builder.Reset()
-                .WithPresent<ResolvedRequest, Timeout, ResponsiveServerInfo, UnresponsiveServerInfo, PendingServer>()
+                .WithPresent<Request, ResolvedRequest, Timeout, ResponsiveServerInfo, UnresponsiveServerInfo, PendingServer>()
                 .WithDisabled<Refreshed>();
             _refreshingQuery = state.GetEntityQuery( builder );
 
@@ -121,6 +128,12 @@ namespace Steamworks.ServerList
                 .WithPresent<ResolvedRequest>()
                 .WithAbsent<Timeout>();
             _unfinallizedQuery = state.GetEntityQuery( builder );
+
+            builder.Reset()
+                .WithPresent<Request, ResolvedRequest, Timeout, Refreshed, ResponsiveServerInfo, UnresponsiveServerInfo, PendingServer>()
+                .WithAll<RefreshRequest>()
+                .WithAbsent<CancelRequest>();
+            _requestRefreshQuery = state.GetEntityQuery( builder );
 
             _requestTypeSet = new ComponentTypeSet(
                 ComponentType.ReadWrite<MatchMakingKeyValuePair>(),
@@ -157,7 +170,7 @@ namespace Steamworks.ServerList
 
             if ( !_unfinallizedQuery.IsEmptyIgnoreFilter )
             {
-                commandBuffer.AddComponent( _unfinallizedQuery, new Timeout { RemainingSeconds = 30 } );
+                commandBuffer.AddComponent( _unfinallizedQuery, new Timeout { RemainingSeconds = DefaultTimeout } );
             }
             
             if ( !_cancelQuery.IsEmptyIgnoreFilter )
@@ -187,6 +200,46 @@ namespace Steamworks.ServerList
                     SteamMatchmakingServersLookup = _steamMatchmakingServersLookup,
                     DeltaTime = SystemAPI.Time.DeltaTime,
                 }.ScheduleParallel( _refreshingQuery, state.Dependency );
+            }
+
+            if ( !_requestRefreshQuery.IsEmptyIgnoreFilter )
+            {
+                state.Dependency = new RequestRefreshJob
+                {
+                    SteamEntity = steamEntity,
+                    SteamMatchmakingServersLookup = _steamMatchmakingServersLookup,
+                    CommandBuffer = parallelCommandBuffer,
+                }.ScheduleParallel( _requestRefreshQuery, state.Dependency );
+            }
+        }
+        
+        [ BurstCompile ]
+        private partial struct RequestRefreshJob : IJobEntity
+        {
+            public Entity SteamEntity;
+            [ ReadOnly ] public ComponentLookup<SteamMatchmakingServers> SteamMatchmakingServersLookup;
+            public EntityCommandBuffer.ParallelWriter CommandBuffer;
+
+            private void Execute( in Entity entity, [ ChunkIndexInQuery ] int chunkIndex, 
+                ref ResolvedRequest resolvedRequest,
+                ref Timeout timeout,
+                ref DynamicBuffer<ResponsiveServerInfo> responsiveServerInfos,
+                ref DynamicBuffer<UnresponsiveServerInfo> unresponsiveServerInfos,
+                ref DynamicBuffer<PendingServer> pendingServers,
+                EnabledRefRW<Refreshed> refreshed )
+            {
+                var steamMatchmakingServers = SteamMatchmakingServersLookup[ SteamEntity ];
+                steamMatchmakingServers.Internal.ReleaseRequest( resolvedRequest.Value );
+                
+                responsiveServerInfos.Clear();
+                pendingServers.Clear();
+                resolvedRequest.Value = default;
+                resolvedRequest.LastCount = 0;
+                refreshed.ValueRW = false;
+                timeout.RemainingSeconds = timeout.InitialRemaining != 0f ? timeout.InitialRemaining : DefaultTimeout;
+                
+                CommandBuffer.RemoveComponent<ResolvedRequest>( chunkIndex, entity );
+                CommandBuffer.RemoveComponent<RefreshRequest>( chunkIndex, entity );
             }
         }
         
@@ -226,6 +279,7 @@ namespace Steamworks.ServerList
             public float DeltaTime;
             
             private void Execute( in Entity entity, 
+                Request request,
                 ref ResolvedRequest resolvedRequest, 
                 ref Timeout timeout,
                 EnabledRefRW<Refreshed> refreshed, 
@@ -247,10 +301,11 @@ namespace Steamworks.ServerList
                     }
                     pendingServers.Clear();
                     refreshed.ValueRW = true;
+                    return;
                 }
                 
                 UpdatePending( steamMatchmakingServers, ref resolvedRequest, pendingServers );
-                UpdateResponsiveness( steamMatchmakingServers, ref resolvedRequest, pendingServers, resolvedServerInfos );
+                UpdateResponsiveness( steamMatchmakingServers, request, ref resolvedRequest, pendingServers, resolvedServerInfos );
             }
 
             private void UpdatePending( 
@@ -259,7 +314,7 @@ namespace Steamworks.ServerList
                 DynamicBuffer<PendingServer> pendingServers )
             {
                 var respondedCount = steamMatchmakingServers.Internal.GetServerCount( resolvedRequest.Value );
-                if ( respondedCount == resolvedRequest.LastCount ) return;
+                if ( respondedCount <= resolvedRequest.LastCount ) return;
                 for ( var i = resolvedRequest.LastCount; i < respondedCount; ++i )
                 {
                     pendingServers.Add( new PendingServer { ServerIndex = i } );
@@ -269,6 +324,7 @@ namespace Steamworks.ServerList
 
             private unsafe void UpdateResponsiveness( 
                 SteamMatchmakingServers steamMatchmakingServers,
+                Request request,
                 ref ResolvedRequest resolvedRequest,
                 DynamicBuffer<PendingServer> pendingServers,
                 DynamicBuffer<ResponsiveServerInfo> resolvedServerInfos )
@@ -280,6 +336,9 @@ namespace Steamworks.ServerList
                     if ( steamMatchmakingServers.HasServerResponded( resolvedRequest.Value, pending ) )
                     {
                         var info = ( gameserveritem_t* ) steamMatchmakingServers.Internal._GetServerDetails( resolvedRequest.Value, pending );
+                        // if ( info->AppID == request.AppId )
+                        // {
+                        // }
                         resolvedServerInfos.Add( new ResponsiveServerInfo( info ) );
                         pendingServers.RemoveAt( i );
                         --i;

@@ -1,8 +1,10 @@
-﻿using Unity.Collections;
+﻿using System;
+using System.Net;
+using Unity.Collections;
 
 namespace Steamworks.Data
 {
-    public struct ServerInfo
+    public struct ServerInfo : IEquatable<ServerInfo>
     {
         internal servernetadr_t Address;
         public SteamId SteamId;
@@ -19,10 +21,10 @@ namespace Steamworks.Data
         public FixedString128Bytes GameTags;
         public FixedString32Bytes GameDir, Map;
         public FixedString64Bytes GameDescription;
-
         public uint IP => Address.IP;
+        public IPAddress IPAddress => Utility.Int32ToIp( Address.IP );
         public ushort QueryPort => Address.QueryPort;
-        public ushort GamePort => Address.ConnectionPort;
+        public ushort ConnectionPort => Address.ConnectionPort;
         
         public unsafe ServerInfo( gameserveritem_t* rawValue )
         {
@@ -44,6 +46,41 @@ namespace Steamworks.Data
             GameDir = new Utf8StringPtr( rawValue->GameDir ).ToUnsafeString<FixedString32Bytes>();
             Map = new Utf8StringPtr( rawValue->Map ).ToUnsafeString<FixedString32Bytes>();
             GameDescription = new Utf8StringPtr( rawValue->GameDescription ).ToUnsafeString<FixedString64Bytes>();
+        }
+
+        public void AddToHistory( SteamMatchmaking steamMatchmaking )
+        {
+            steamMatchmaking.Internal.AddFavoriteGame( AppId, IP, ConnectionPort, QueryPort, Defines.k_unFavoriteFlagHistory, ( uint ) Epoch.Current );
+        }
+
+        public void RemoveFromHistory( SteamMatchmaking steamMatchmaking )
+        {
+            steamMatchmaking.Internal.RemoveFavoriteGame( AppId, IP, ConnectionPort, QueryPort, Defines.k_unFavoriteFlagHistory );
+        }
+
+        public void AddToFavourites( SteamMatchmaking steamMatchmaking )
+        {
+            steamMatchmaking.Internal.AddFavoriteGame( AppId, IP, ConnectionPort, QueryPort, Defines.k_unFavoriteFlagFavorite, ( uint ) Epoch.Current );
+        }
+
+        public void RemoveFromFavourites( SteamMatchmaking steamMatchmaking )
+        {
+            steamMatchmaking.Internal.RemoveFavoriteGame( AppId, IP, ConnectionPort, QueryPort, Defines.k_unFavoriteFlagFavorite );
+        }
+
+        public bool Equals( ServerInfo other )
+        {
+            return IP == other.IP && QueryPort == other.QueryPort && ConnectionPort == other.ConnectionPort && SteamId == other.SteamId;
+        }
+
+        public override bool Equals( object obj )
+        {
+            return obj is ServerInfo other && Equals( other );
+        }
+
+        public override int GetHashCode()
+        {
+            return IP.GetHashCode() ^ QueryPort.GetHashCode() ^ ConnectionPort.GetHashCode() ^ SteamId.GetHashCode();
         }
     }
 }

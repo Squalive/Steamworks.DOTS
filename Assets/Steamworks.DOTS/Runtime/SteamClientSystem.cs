@@ -114,6 +114,7 @@ namespace Steamworks
                         Id = ISteamUser._SteamAPI_ISteamUser_GetSteamID( CSteamAPIContext.SteamUser )
                     } );
                     commandBuffer.AddComponent( entity, new SteamFriends( CSteamAPIContext.SteamFriends ) );
+                    commandBuffer.AddComponent( entity, new SteamMatchmaking( CSteamAPIContext.SteamMatchmaking ) );
                     commandBuffer.AddComponent( entity, new SteamMatchmakingServers( CSteamAPIContext.SteamMatchmakingServers ) );
                     commandBuffer.AddComponent( entity, new SteamUser( CSteamAPIContext.SteamUser ) );
                     commandBuffer.AddComponent( entity, new SteamUserStats( CSteamAPIContext.SteamUserStats ) );
