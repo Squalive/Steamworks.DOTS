@@ -40,7 +40,7 @@ namespace Steamworks.Sample
 
                     var serverListRequest = state.EntityManager.CreateEntity();
                     state.EntityManager.AddComponentData( serverListRequest, new ServerList.Request( 730 ) );
-                    state.EntityManager.AddComponent<ServerList.Lan>( serverListRequest );
+                    state.EntityManager.AddComponent<ServerList.Internet>( serverListRequest );
 
                     // state.EntityManager.AddBuffer<ServerList.IP>( serverListRequest ).Add( new ServerList.IP( "3640287629" ) );
 

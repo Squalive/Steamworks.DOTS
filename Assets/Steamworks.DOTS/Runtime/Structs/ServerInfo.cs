@@ -23,6 +23,25 @@ namespace Steamworks.Data
         public FixedString64Bytes GameDescription;
         public uint IP => Address.IP;
         public IPAddress IPAddress => Utility.Int32ToIp( Address.IP );
+
+        public FixedString32Bytes IPString
+        {
+            get
+            {
+                var ipCopy = Utility.Swap( IP );
+                var str = new FixedString32Bytes();
+                unsafe
+                {
+                    var ipBytes = ( byte* ) &ipCopy;
+                    for ( var i = 0; i < 4; ++i )
+                    {
+                        str.Append( ipBytes[ i ] );
+                        if ( i != 3 ) str.Append( '.' );
+                    }
+                }
+                return str;
+            }
+        }
         public ushort QueryPort => Address.QueryPort;
         public ushort ConnectionPort => Address.ConnectionPort;
         

@@ -38,6 +38,10 @@ namespace Steamworks.Sample
                 steamGameServer.SetServerName( serverName );
                 FixedString32Bytes mapName = "MapName";
                 steamGameServer.SetMapName( mapName );
+
+                FixedString32Bytes key = "gamemod";
+                FixedString32Bytes value = "vanilla";
+                steamGameServer.SetKeyValue( key, value );
                 
                 UnityEngine.Debug.Log( "steam server connected" );
             }

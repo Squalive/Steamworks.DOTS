@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Net;
 using System.Net.Sockets;
 using Steamworks.Data;
@@ -17,30 +18,56 @@ namespace Steamworks.SourceServerQuery
             IP = serverInfo.IP;
             QueryPort = serverInfo.QueryPort;
         }
+
+        public Request( uint ip, ushort queryPort )
+        {
+            IP = ip;
+            QueryPort = queryPort;
+        }
+
+        public Request( IPAddress ip, ushort queryPort )
+        {
+            IP = ip.IpToInt32();
+            QueryPort = queryPort;
+        }
     }
 
-    internal class Connection : IComponentData, IDisposable
+    internal class SourceConnection : IComponentData, IDisposable
     {
+        private const int SimpleResponse = -1;
+        private const int MultiPacketResponse = -2;
+        
         public readonly UdpClient Udp;
         public readonly NativeList<byte> ReceiveBuffer;
+        public NativeArray<NativeList<byte>> SplitPackets;
         public double LastAckTime;
 
-        public Connection( in Request request, double currentTime )
+        public DataStreamReader ReceiveReader => new( ReceiveBuffer.AsArray() );
+
+        public SourceConnection( in Request request, double currentTime )
         {
             Udp = new UdpClient();
             Udp.Client.SendTimeout = 3000;
             Udp.Client.ReceiveTimeout = 3000;
-            Udp.Connect( new IPEndPoint( Utility.Int32ToIp( request.IP ), request.QueryPort + 1 ) );
+            Udp.Connect( new IPEndPoint( Utility.Int32ToIp( request.IP ), request.QueryPort ) );
             ReceiveBuffer = new NativeList<byte>( 1024, Allocator.Persistent );
             LastAckTime = currentTime;
         }
         
-        public Connection() { }
+        public SourceConnection() { }
         
         public void Dispose()
         {
             Udp?.Dispose();
             if ( ReceiveBuffer.IsCreated ) ReceiveBuffer.Dispose();
+            if ( SplitPackets.IsCreated )
+            {
+                for ( var i = 0; i < SplitPackets.Length; ++i )
+                {
+                    SplitPackets[ i ].Dispose();
+                }
+                SplitPackets.Dispose();
+            }
         }
 
         public void Send( DataStreamWriter writer )
@@ -49,7 +76,7 @@ namespace Steamworks.SourceServerQuery
             ReceiveBuffer.Clear();
         }
 
-        public bool Receive( NativeArray<byte> tempBuffer )
+        public unsafe bool Receive( NativeArray<byte> tempBuffer )
         {
             var tryReceiveMore = true;
             var completePacket = false;
@@ -59,13 +86,10 @@ namespace Steamworks.SourceServerQuery
                 var byteCount = 0;
                 try
                 {
-                    unsafe
-                    {
-                        if ( socket.Available > 0 && socket.Poll( 500000, SelectMode.SelectRead ) )
-                            byteCount = socket.Receive( new Span<byte>( ( byte* ) tempBuffer.GetUnsafeReadOnlyPtr(), tempBuffer.Length ) );
-                        else
-                            tryReceiveMore = false;
-                    }
+                    if ( socket.Available > 0 && socket.Poll( 500000, SelectMode.SelectRead ) )
+                        byteCount = socket.Receive( new Span<byte>( ( byte* ) tempBuffer.GetUnsafeReadOnlyPtr(), tempBuffer.Length ) );
+                    else
+                        tryReceiveMore = false;
                 }
                 catch ( Exception )
                 {
@@ -74,8 +98,85 @@ namespace Steamworks.SourceServerQuery
                                 
                 if ( byteCount > 0 )
                 {
-                    UnityEngine.Debug.Log( byteCount );
+                    var aliasBuffer = NativeArrayUnsafeUtility.ConvertExistingDataToNativeArray<byte>( tempBuffer.GetUnsafeReadOnlyPtr(), byteCount, Allocator.Invalid );
+#if ENABLE_UNITY_COLLECTIONS_CHECKS
+                    NativeArrayUnsafeUtility.SetAtomicSafetyHandle( ref aliasBuffer, NativeArrayUnsafeUtility.GetAtomicSafetyHandle( tempBuffer ) );
+#endif
+                    var reader = new DataStreamReader( aliasBuffer );
+                    var header = reader.ReadInt();
+                    if ( header == SimpleResponse )
+                    {
+                        var payloadPtr = ( byte* ) reader.GetUnsafeReadOnlyPtr() + reader.GetBytesRead();
+                        var payloadSize = reader.Length - reader.GetBytesRead();
+                        ReceiveBuffer.ResizeUninitialized( payloadSize );
+                        UnsafeUtility.MemCpy( ReceiveBuffer.GetUnsafePtr(), payloadPtr, payloadSize );
+                        return true;
+                    }
+                    if ( header == MultiPacketResponse )
+                    {
+                        var copyReader = reader;
+                        copyReader.ReadInt();
+                        copyReader.ReadInt();
+                        copyReader.ReadByte();
+                        int packetCount, packetNumber;
+                        reader.ReadInt();
+                        if ( copyReader.ReadInt() == -1 )
+                        {
+                            var packetInformation = reader.ReadByte();
+                            packetCount = packetInformation & 0b1111; // Reading lower 4 bits;
+                            packetNumber = packetInformation >> 4;
+                        }
+                        else
+                        {
+                            packetNumber = reader.ReadByte();
+                            packetCount = reader.ReadByte();
+                            reader.ReadShort();
+                        }
+                        
+                        if ( SplitPackets.IsCreated && SplitPackets.Length != packetCount )
+                        {
+                            for ( var i = 0; i < SplitPackets.Length; ++i )
+                            {
+                                if ( SplitPackets[ i ].IsCreated ) SplitPackets[ i ].Dispose();
+                            }
+
+                            SplitPackets.Dispose();
+                        }
                     
+                        SplitPackets = new NativeArray<NativeList<byte>>( packetCount, Allocator.Persistent );
+                        var payloadPtr = ( byte* ) reader.GetUnsafeReadOnlyPtr() + reader.GetBytesRead();
+                        var payloadSize = reader.Length - reader.GetBytesRead();
+                        if ( !SplitPackets[ packetNumber ].IsCreated )
+                        {
+                            SplitPackets[ packetNumber ] = new NativeList<byte>( payloadSize, Allocator.Persistent );
+                        }
+                        SplitPackets[ packetNumber ].ResizeUninitialized( payloadSize );
+                        UnsafeUtility.MemCpy( SplitPackets[ packetNumber ].GetUnsafePtr(), payloadPtr, payloadSize );
+
+                        completePacket = true;
+                        var sumLength = 0;
+                        for ( var i = 0; i < SplitPackets.Length; ++i )
+                        {
+                            if ( !SplitPackets[ i ].IsCreated )
+                            {
+                                completePacket = false;
+                            }
+                            else
+                            {
+                                sumLength += SplitPackets[ i ].Length;
+                            }
+                        }
+                        if ( completePacket )
+                        {
+                            ReceiveBuffer.ResizeUninitialized( sumLength );
+                            var offset = 0;
+                            for ( var i = 0; i < SplitPackets.Length; ++i )
+                            {
+                                UnsafeUtility.MemCpy( ReceiveBuffer.GetUnsafePtr() + offset, SplitPackets[ i ].GetUnsafeReadOnlyPtr(), SplitPackets[ i ].Length );
+                                offset += SplitPackets[ i ].Length;
+                            }
+                        }
+                    }
                 }
             }
 
@@ -99,7 +200,7 @@ namespace Steamworks.SourceServerQuery
         {
             var builder = new EntityQueryBuilder( Allocator.Temp )
                 .WithPresent<Request>()
-                .WithAbsent<Connection>();
+                .WithAbsent<SourceConnection>();
             _query = GetEntityQuery( builder );
             RequireForUpdate( _query );
         }
@@ -115,8 +216,16 @@ namespace Steamworks.SourceServerQuery
                     EntityManager.DestroyEntity( entities[ i ] );
                     continue;
                 }
-                
-                EntityManager.AddComponentData( entities[ i ], new Connection( requests[ i ], SystemAPI.Time.ElapsedTime ) );
+
+                try
+                {
+                    var sourceConnection = new SourceConnection( requests[ i ], SystemAPI.Time.ElapsedTime );
+                    EntityManager.AddComponentData( entities[ i ], sourceConnection );
+                }
+                catch ( SocketException )
+                {
+                    EntityManager.DestroyEntity( entities[ i ] );
+                }
             }
         }
     }
@@ -126,6 +235,35 @@ namespace Steamworks.SourceServerQuery
         public static void WriteHeader( ref DataStreamWriter writer )
         {
             writer.WriteInt( -1 );
+        }
+
+        public static unsafe void ReadNullTerminatedUnsafeString<T>( ref DataStreamReader reader, ref T pOut ) where T : unmanaged, INativeList<byte>, IUTF8Bytes
+        {
+            reader.Flush();
+            var ptr = ( byte* ) reader.GetUnsafeReadOnlyPtr() + reader.GetBytesRead();
+            var dataLen = 0;
+            while ( dataLen < reader.Length )
+            {
+                if ( ptr[ dataLen ] == 0 ) break;
+                dataLen++;
+            }
+            reader.SeekSet( reader.GetBytesRead() + dataLen + 1 );
+            pOut.TryResize( dataLen, NativeArrayOptions.UninitializedMemory );
+            UnsafeUtility.MemCpy( pOut.GetUnsafePtr(), ptr, dataLen );
+        }
+
+        public static unsafe string ReadNullTerminatedString( ref DataStreamReader reader )
+        {
+            reader.Flush();
+            var ptr = ( byte* ) reader.GetUnsafeReadOnlyPtr() + reader.GetBytesRead();
+            var dataLen = 0;
+            while ( dataLen < reader.Length )
+            {
+                if ( ptr[ dataLen ] == 0 ) break;
+                dataLen++;
+            }
+            reader.SeekSet( reader.GetBytesRead() + dataLen + 1 );
+            return Utility.Utf8NoBom.GetString( ptr, dataLen );
         }
     }
 }
