@@ -20,6 +20,24 @@ namespace Steamworks
             AppId = appId;
             Params = new SteamGameServerInit( modDir, gameDesc );
         }
+
+        public SteamGameServerRequestInit( 
+            AppId_t appId, uint ip, ushort connectionPort, ushort queryPort, bool secure, bool dedicatedServer, 
+            in FixedString32Bytes versionStr, in FixedString128Bytes modDir, in FixedString512Bytes gameDesc )
+        {
+            AppId = appId;
+            Params = new SteamGameServerInit
+            {
+                IpUint = ip,
+                GamePort = connectionPort,
+                QueryPort = queryPort,
+                Secure = secure,
+                DedicatedServer = dedicatedServer,
+                VersionString = versionStr,
+                ModDir = modDir,
+                GameDescription = gameDesc
+            };
+        }
     }
     
     [ WorldSystemFilter( WorldSystemFilterFlags.ServerSimulation ) ]
