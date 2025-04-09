@@ -149,10 +149,12 @@ namespace Steamworks.ServerList
         [ BurstCompile ]
         public void OnDestroy( ref SystemState state )
         {
-            var steamMatchmakingServers = SystemAPI.GetSingleton<SteamMatchmakingServers>();
-            foreach ( var resolvedRequest in SystemAPI.Query<RefRO<ResolvedRequest>>() )
+            if ( SystemAPI.TryGetSingleton( out SteamMatchmakingServers steamMatchmakingServers ) )
             {
-                steamMatchmakingServers.Internal.ReleaseRequest( resolvedRequest.ValueRO.Value );
+                foreach ( var resolvedRequest in SystemAPI.Query<RefRO<ResolvedRequest>>() )
+                {
+                    steamMatchmakingServers.Internal.ReleaseRequest( resolvedRequest.ValueRO.Value );
+                }
             }
         }
 
