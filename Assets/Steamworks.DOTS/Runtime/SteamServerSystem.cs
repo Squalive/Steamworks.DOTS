@@ -91,11 +91,7 @@ namespace Steamworks
                 .WithAll<SteamGameServerRequestInit>()
                 .WithNone<SteamGameServerInitResult>();
             _requestInitQuery = GetEntityQuery( builder );
-
-            builder.Reset()
-                .WithNone<SteamInternal>();
-            var excludeDuplicateInitQuery = GetEntityQuery( builder );
-            RequireForUpdate( excludeDuplicateInitQuery );
+            
             RequireForUpdate( _requestInitQuery );
         }
 
