@@ -39,8 +39,6 @@ public class StructGenerator : BaseGenerator
             {
                 GenerateFields( s.Fields );
                 WriteLine();
-                if ( hasMethods )
-                    GenerateFunctions( def, name, s.Methods );
 
                 if ( s.Enums != null )
                 {
@@ -62,10 +60,7 @@ public class StructGenerator : BaseGenerator
 
             var partial = string.Empty;
             if ( callback.Methods != null ) partial = " partial";
-            var isCallback = true;
-            var iface = string.Empty;
-            if ( isCallback )
-                iface = " : ISteamCallback";
+            var iface = " : ISteamCallback";
 
             if ( callback.Fields == null || callback.Fields.Length == 0 )
             {
@@ -80,16 +75,13 @@ public class StructGenerator : BaseGenerator
                 GenerateFields( callback.Fields );
                 WriteLine();
 
-                if ( isCallback )
+                WriteLine( "#region SteamCallback" );
                 {
-                    WriteLine( "#region SteamCallback" );
-                    {
-                        WriteLine( $"public static readonly int _datasize = UnsafeUtility.SizeOf<{name}>();" );
-                        WriteLine( "public int DataSize => _datasize;" );
-                        WriteLine( $"public CallbackType CallbackType => CallbackType.{name};" );
-                    }
-                    WriteLine( "#endregion" );
+                    WriteLine( $"public static readonly int _datasize = UnsafeUtility.SizeOf<{name}>();" );
+                    WriteLine( "public int DataSize => _datasize;" );
+                    WriteLine( $"public CallbackType CallbackType => CallbackType.{name};" );
                 }
+                WriteLine( "#endregion" );
 
                 if ( callback.Enums != null )
                 {
@@ -218,37 +210,6 @@ public class StructGenerator : BaseGenerator
             }
             
             WriteLine( $"public {type} {Parser.CleanMemberName( f.Name )}{postfix}; // {f.Name} {f.Type}" );
-        }
-    }
-
-    private void GenerateFunctions( SteamAPIDefinition def, string name, SteamAPIDefinition.Method[] methods )
-    {
-        foreach ( var method in methods )
-        {
-            if ( method.Name.Contains( "operator" ) )
-                method.Name = method.FlatName[ ( method.FlatName.LastIndexOf( '_' ) + 1 ).. ];
-            
-            var returnType = BaseType.Parse( def, method.ReturnType, null, method.CallResult );
-            returnType.Func = method.Name;
-
-            var args = Parser.ProcessArgs( def, method );
-            var delegateargstr = string.Join( ", ", args.Select( x => x.AsNativeArgument() ) );
-            
-            if ( !string.IsNullOrEmpty( method.Desc ) )
-            {
-                WriteLine( "/// <summary>" );
-                WriteLine( $"/// {method.Desc}" );
-                WriteLine( "/// </summary>" );
-            }
-
-            if ( returnType.ReturnAttribute != null )
-                WriteLine( returnType.ReturnAttribute );
-            
-            var firstArg = $"{name}* self";
-
-            WriteLine( $"[ DllImport( Platform.LibraryName, EntryPoint = \"{method.FlatName}\", CallingConvention = Platform.CC ) ]" );
-            WriteLine( $"public static unsafe extern {returnType.TypeNameFrom} SteamAPI_{method.Name}( {firstArg}, {delegateargstr} );".Replace( $"( {firstArg},  )", $"( {firstArg} )" ) );
-            WriteLine();
         }
     }
 }

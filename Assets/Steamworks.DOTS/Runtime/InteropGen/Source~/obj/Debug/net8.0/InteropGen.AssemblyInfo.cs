@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("InteropGen")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9852c30bbad6da27a40ffb964c31ff2efa406e19")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+00b3dbca678653df17bbb9377bc7de989c25e3ba")]
 [assembly: System.Reflection.AssemblyProductAttribute("InteropGen")]
 [assembly: System.Reflection.AssemblyTitleAttribute("InteropGen")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -36,6 +36,8 @@ public static class Parser
         if ( type == "SteamInputActionEventCallbackPointer" ) return false;
         if ( type == "SteamNetworkingErrMsg" ) return false;
         if ( type == "gameserveritem_t" ) return false;
+        if ( type == "SteamNetworkingIdentity" ) return false;
+        if ( type == "SteamNetworkingIPAddr" ) return false;
 
         return true;
     }

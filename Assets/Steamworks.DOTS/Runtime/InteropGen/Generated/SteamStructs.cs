@@ -13,10 +13,6 @@ namespace Steamworks.Data
 		public fixed byte GubIPv6[ 16 ]; // m_rgubIPv6 uint8 [16]
 		public ESteamIPType Type; // m_eType ESteamIPType
 		
-		[ return: MarshalAs( UnmanagedType.I1 ) ]
-		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_SteamIPAddress_t_IsSet", CallingConvention = Platform.CC ) ]
-		public static unsafe extern bool SteamAPI_IsSet( SteamIPAddress_t* self );
-		
 	}
 	
 	[ StructLayout( LayoutKind.Sequential, Pack = Platform.StructPackSize ) ] 
@@ -36,9 +32,6 @@ namespace Steamworks.Data
 		public fixed byte Key[ 256 ]; // m_szKey char [256]
 		public fixed byte Value[ 256 ]; // m_szValue char [256]
 		
-		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_MatchMakingKeyValuePair_t_Construct", CallingConvention = Platform.CC ) ]
-		public static unsafe extern void SteamAPI_Construct( MatchMakingKeyValuePair_t* self );
-		
 	}
 	
 	[ StructLayout( LayoutKind.Sequential, Pack = Platform.StructPlatformPackSize ) ] 
@@ -47,43 +40,6 @@ namespace Steamworks.Data
 		public ushort ConnectionPort; // m_usConnectionPort uint16
 		public ushort QueryPort; // m_usQueryPort uint16
 		public uint IP; // m_unIP uint32
-		
-		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_servernetadr_t_Construct", CallingConvention = Platform.CC ) ]
-		public static unsafe extern void SteamAPI_Construct( servernetadr_t* self );
-		
-		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_servernetadr_t_Init", CallingConvention = Platform.CC ) ]
-		public static unsafe extern void SteamAPI_Init( servernetadr_t* self, uint ip, ushort usQueryPort, ushort usConnectionPort );
-		
-		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_servernetadr_t_GetQueryPort", CallingConvention = Platform.CC ) ]
-		public static unsafe extern ushort SteamAPI_GetQueryPort( servernetadr_t* self );
-		
-		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_servernetadr_t_SetQueryPort", CallingConvention = Platform.CC ) ]
-		public static unsafe extern void SteamAPI_SetQueryPort( servernetadr_t* self, ushort usPort );
-		
-		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_servernetadr_t_GetConnectionPort", CallingConvention = Platform.CC ) ]
-		public static unsafe extern ushort SteamAPI_GetConnectionPort( servernetadr_t* self );
-		
-		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_servernetadr_t_SetConnectionPort", CallingConvention = Platform.CC ) ]
-		public static unsafe extern void SteamAPI_SetConnectionPort( servernetadr_t* self, ushort usPort );
-		
-		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_servernetadr_t_GetIP", CallingConvention = Platform.CC ) ]
-		public static unsafe extern uint SteamAPI_GetIP( servernetadr_t* self );
-		
-		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_servernetadr_t_SetIP", CallingConvention = Platform.CC ) ]
-		public static unsafe extern void SteamAPI_SetIP( servernetadr_t* self, uint unIP );
-		
-		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_servernetadr_t_GetConnectionAddressString", CallingConvention = Platform.CC ) ]
-		public static unsafe extern Utf8StringPtr SteamAPI_GetConnectionAddressString( servernetadr_t* self );
-		
-		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_servernetadr_t_GetQueryAddressString", CallingConvention = Platform.CC ) ]
-		public static unsafe extern Utf8StringPtr SteamAPI_GetQueryAddressString( servernetadr_t* self );
-		
-		[ return: MarshalAs( UnmanagedType.I1 ) ]
-		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_servernetadr_t_IsLessThan", CallingConvention = Platform.CC ) ]
-		public static unsafe extern bool SteamAPI_IsLessThan( servernetadr_t* self, ref servernetadr_t netadr );
-		
-		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_servernetadr_t_Assign", CallingConvention = Platform.CC ) ]
-		public static unsafe extern void SteamAPI_Assign( servernetadr_t* self, ref servernetadr_t that );
 		
 	}
 	
@@ -259,151 +215,6 @@ namespace Steamworks.Data
 	}
 	
 	[ StructLayout( LayoutKind.Sequential, Pack = Platform.StructPlatformPackSize ) ] 
-	public unsafe partial struct SteamNetworkingIPAddr
-	{
-		public fixed byte Pv6[ 16 ]; // m_ipv6 uint8 [16]
-		public ushort Port; // m_port uint16
-		
-		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_SteamNetworkingIPAddr_Clear", CallingConvention = Platform.CC ) ]
-		public static unsafe extern void SteamAPI_Clear( SteamNetworkingIPAddr* self );
-		
-		[ return: MarshalAs( UnmanagedType.I1 ) ]
-		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_SteamNetworkingIPAddr_IsIPv6AllZeros", CallingConvention = Platform.CC ) ]
-		public static unsafe extern bool SteamAPI_IsIPv6AllZeros( SteamNetworkingIPAddr* self );
-		
-		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_SteamNetworkingIPAddr_SetIPv6", CallingConvention = Platform.CC ) ]
-		public static unsafe extern void SteamAPI_SetIPv6( SteamNetworkingIPAddr* self, ref byte ipv6, ushort nPort );
-		
-		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_SteamNetworkingIPAddr_SetIPv4", CallingConvention = Platform.CC ) ]
-		public static unsafe extern void SteamAPI_SetIPv4( SteamNetworkingIPAddr* self, uint nIP, ushort nPort );
-		
-		[ return: MarshalAs( UnmanagedType.I1 ) ]
-		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_SteamNetworkingIPAddr_IsIPv4", CallingConvention = Platform.CC ) ]
-		public static unsafe extern bool SteamAPI_IsIPv4( SteamNetworkingIPAddr* self );
-		
-		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_SteamNetworkingIPAddr_GetIPv4", CallingConvention = Platform.CC ) ]
-		public static unsafe extern uint SteamAPI_GetIPv4( SteamNetworkingIPAddr* self );
-		
-		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_SteamNetworkingIPAddr_SetIPv6LocalHost", CallingConvention = Platform.CC ) ]
-		public static unsafe extern void SteamAPI_SetIPv6LocalHost( SteamNetworkingIPAddr* self, ushort nPort );
-		
-		[ return: MarshalAs( UnmanagedType.I1 ) ]
-		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_SteamNetworkingIPAddr_IsLocalHost", CallingConvention = Platform.CC ) ]
-		public static unsafe extern bool SteamAPI_IsLocalHost( SteamNetworkingIPAddr* self );
-		
-		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_SteamNetworkingIPAddr_ToString", CallingConvention = Platform.CC ) ]
-		public static unsafe extern void SteamAPI_ToString( SteamNetworkingIPAddr* self, IntPtr buf, uint cbBuf, [ MarshalAs( UnmanagedType.U1 ) ] bool bWithPort );
-		
-		[ return: MarshalAs( UnmanagedType.I1 ) ]
-		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_SteamNetworkingIPAddr_ParseString", CallingConvention = Platform.CC ) ]
-		public static unsafe extern bool SteamAPI_ParseString( SteamNetworkingIPAddr* self, IntPtr pszStr );
-		
-		[ return: MarshalAs( UnmanagedType.I1 ) ]
-		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_SteamNetworkingIPAddr_IsEqualTo", CallingConvention = Platform.CC ) ]
-		public static unsafe extern bool SteamAPI_IsEqualTo( SteamNetworkingIPAddr* self, ref SteamNetworkingIPAddr x );
-		
-		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_SteamNetworkingIPAddr_GetFakeIPType", CallingConvention = Platform.CC ) ]
-		public static unsafe extern ESteamNetworkingFakeIPType SteamAPI_GetFakeIPType( SteamNetworkingIPAddr* self );
-		
-		[ return: MarshalAs( UnmanagedType.I1 ) ]
-		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_SteamNetworkingIPAddr_IsFakeIP", CallingConvention = Platform.CC ) ]
-		public static unsafe extern bool SteamAPI_IsFakeIP( SteamNetworkingIPAddr* self );
-		
-	}
-	
-	[ StructLayout( LayoutKind.Sequential, Pack = Platform.StructPlatformPackSize ) ] 
-	public unsafe partial struct SteamNetworkingIdentity
-	{
-		public ESteamNetworkingIdentityType Type; // m_eType ESteamNetworkingIdentityType
-		public int CbSize; // m_cbSize int
-		public fixed byte UnknownRawString[ 128 ]; // m_szUnknownRawString char [128]
-		
-		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_SteamNetworkingIdentity_Clear", CallingConvention = Platform.CC ) ]
-		public static unsafe extern void SteamAPI_Clear( SteamNetworkingIdentity* self );
-		
-		[ return: MarshalAs( UnmanagedType.I1 ) ]
-		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_SteamNetworkingIdentity_IsInvalid", CallingConvention = Platform.CC ) ]
-		public static unsafe extern bool SteamAPI_IsInvalid( SteamNetworkingIdentity* self );
-		
-		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_SteamNetworkingIdentity_SetSteamID", CallingConvention = Platform.CC ) ]
-		public static unsafe extern void SteamAPI_SetSteamID( SteamNetworkingIdentity* self, SteamId steamID );
-		
-		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_SteamNetworkingIdentity_GetSteamID", CallingConvention = Platform.CC ) ]
-		public static unsafe extern SteamId SteamAPI_GetSteamID( SteamNetworkingIdentity* self );
-		
-		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_SteamNetworkingIdentity_SetSteamID64", CallingConvention = Platform.CC ) ]
-		public static unsafe extern void SteamAPI_SetSteamID64( SteamNetworkingIdentity* self, ulong steamID );
-		
-		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_SteamNetworkingIdentity_GetSteamID64", CallingConvention = Platform.CC ) ]
-		public static unsafe extern ulong SteamAPI_GetSteamID64( SteamNetworkingIdentity* self );
-		
-		[ return: MarshalAs( UnmanagedType.I1 ) ]
-		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_SteamNetworkingIdentity_SetXboxPairwiseID", CallingConvention = Platform.CC ) ]
-		public static unsafe extern bool SteamAPI_SetXboxPairwiseID( SteamNetworkingIdentity* self, IntPtr pszString );
-		
-		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_SteamNetworkingIdentity_GetXboxPairwiseID", CallingConvention = Platform.CC ) ]
-		public static unsafe extern Utf8StringPtr SteamAPI_GetXboxPairwiseID( SteamNetworkingIdentity* self );
-		
-		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_SteamNetworkingIdentity_SetPSNID", CallingConvention = Platform.CC ) ]
-		public static unsafe extern void SteamAPI_SetPSNID( SteamNetworkingIdentity* self, ulong id );
-		
-		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_SteamNetworkingIdentity_GetPSNID", CallingConvention = Platform.CC ) ]
-		public static unsafe extern ulong SteamAPI_GetPSNID( SteamNetworkingIdentity* self );
-		
-		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_SteamNetworkingIdentity_SetIPAddr", CallingConvention = Platform.CC ) ]
-		public static unsafe extern void SteamAPI_SetIPAddr( SteamNetworkingIdentity* self, ref SteamNetworkingIPAddr addr );
-		
-		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_SteamNetworkingIdentity_GetIPAddr", CallingConvention = Platform.CC ) ]
-		public static unsafe extern IntPtr SteamAPI_GetIPAddr( SteamNetworkingIdentity* self );
-		
-		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_SteamNetworkingIdentity_SetIPv4Addr", CallingConvention = Platform.CC ) ]
-		public static unsafe extern void SteamAPI_SetIPv4Addr( SteamNetworkingIdentity* self, uint nIPv4, ushort nPort );
-		
-		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_SteamNetworkingIdentity_GetIPv4", CallingConvention = Platform.CC ) ]
-		public static unsafe extern uint SteamAPI_GetIPv4( SteamNetworkingIdentity* self );
-		
-		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_SteamNetworkingIdentity_GetFakeIPType", CallingConvention = Platform.CC ) ]
-		public static unsafe extern ESteamNetworkingFakeIPType SteamAPI_GetFakeIPType( SteamNetworkingIdentity* self );
-		
-		[ return: MarshalAs( UnmanagedType.I1 ) ]
-		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_SteamNetworkingIdentity_IsFakeIP", CallingConvention = Platform.CC ) ]
-		public static unsafe extern bool SteamAPI_IsFakeIP( SteamNetworkingIdentity* self );
-		
-		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_SteamNetworkingIdentity_SetLocalHost", CallingConvention = Platform.CC ) ]
-		public static unsafe extern void SteamAPI_SetLocalHost( SteamNetworkingIdentity* self );
-		
-		[ return: MarshalAs( UnmanagedType.I1 ) ]
-		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_SteamNetworkingIdentity_IsLocalHost", CallingConvention = Platform.CC ) ]
-		public static unsafe extern bool SteamAPI_IsLocalHost( SteamNetworkingIdentity* self );
-		
-		[ return: MarshalAs( UnmanagedType.I1 ) ]
-		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_SteamNetworkingIdentity_SetGenericString", CallingConvention = Platform.CC ) ]
-		public static unsafe extern bool SteamAPI_SetGenericString( SteamNetworkingIdentity* self, IntPtr pszString );
-		
-		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_SteamNetworkingIdentity_GetGenericString", CallingConvention = Platform.CC ) ]
-		public static unsafe extern Utf8StringPtr SteamAPI_GetGenericString( SteamNetworkingIdentity* self );
-		
-		[ return: MarshalAs( UnmanagedType.I1 ) ]
-		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_SteamNetworkingIdentity_SetGenericBytes", CallingConvention = Platform.CC ) ]
-		public static unsafe extern bool SteamAPI_SetGenericBytes( SteamNetworkingIdentity* self, IntPtr data, uint cbLen );
-		
-		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_SteamNetworkingIdentity_GetGenericBytes", CallingConvention = Platform.CC ) ]
-		public static unsafe extern byte SteamAPI_GetGenericBytes( SteamNetworkingIdentity* self, ref int cbLen );
-		
-		[ return: MarshalAs( UnmanagedType.I1 ) ]
-		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_SteamNetworkingIdentity_IsEqualTo", CallingConvention = Platform.CC ) ]
-		public static unsafe extern bool SteamAPI_IsEqualTo( SteamNetworkingIdentity* self, ref SteamNetworkingIdentity x );
-		
-		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_SteamNetworkingIdentity_ToString", CallingConvention = Platform.CC ) ]
-		public static unsafe extern void SteamAPI_ToString( SteamNetworkingIdentity* self, IntPtr buf, uint cbBuf );
-		
-		[ return: MarshalAs( UnmanagedType.I1 ) ]
-		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_SteamNetworkingIdentity_ParseString", CallingConvention = Platform.CC ) ]
-		public static unsafe extern bool SteamAPI_ParseString( SteamNetworkingIdentity* self, IntPtr pszStr );
-		
-	}
-	
-	[ StructLayout( LayoutKind.Sequential, Pack = Platform.StructPlatformPackSize ) ] 
 	public unsafe struct SteamNetConnectionInfo_t
 	{
 		public SteamNetworkingIdentity DentityRemote; // m_identityRemote SteamNetworkingIdentity
@@ -468,21 +279,6 @@ namespace Steamworks.Data
 		public ESteamNetworkingConfigDataType DataType; // m_eDataType ESteamNetworkingConfigDataType
 		public long Nt64; // m_int64 int64_t
 		
-		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_SteamNetworkingConfigValue_t_SetInt32", CallingConvention = Platform.CC ) ]
-		public static unsafe extern void SteamAPI_SetInt32( SteamNetworkingConfigValue_t* self, ESteamNetworkingConfigValue eVal, int data );
-		
-		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_SteamNetworkingConfigValue_t_SetInt64", CallingConvention = Platform.CC ) ]
-		public static unsafe extern void SteamAPI_SetInt64( SteamNetworkingConfigValue_t* self, ESteamNetworkingConfigValue eVal, long data );
-		
-		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_SteamNetworkingConfigValue_t_SetFloat", CallingConvention = Platform.CC ) ]
-		public static unsafe extern void SteamAPI_SetFloat( SteamNetworkingConfigValue_t* self, ESteamNetworkingConfigValue eVal, float data );
-		
-		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_SteamNetworkingConfigValue_t_SetPtr", CallingConvention = Platform.CC ) ]
-		public static unsafe extern void SteamAPI_SetPtr( SteamNetworkingConfigValue_t* self, ESteamNetworkingConfigValue eVal, IntPtr data );
-		
-		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_SteamNetworkingConfigValue_t_SetString", CallingConvention = Platform.CC ) ]
-		public static unsafe extern void SteamAPI_SetString( SteamNetworkingConfigValue_t* self, ESteamNetworkingConfigValue eVal, IntPtr data );
-		
 	}
 	
 	[ StructLayout( LayoutKind.Sequential, Pack = Platform.StructPlatformPackSize ) ] 
@@ -490,15 +286,6 @@ namespace Steamworks.Data
 	{
 		public int CbSize; // m_cbSize int
 		public fixed byte Data[ 128 ]; // m_data char [128]
-		
-		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_SteamDatagramHostedAddress_Clear", CallingConvention = Platform.CC ) ]
-		public static unsafe extern void SteamAPI_Clear( SteamDatagramHostedAddress* self );
-		
-		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_SteamDatagramHostedAddress_GetPopID", CallingConvention = Platform.CC ) ]
-		public static unsafe extern SteamNetworkingPOPID SteamAPI_GetPopID( SteamDatagramHostedAddress* self );
-		
-		[ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_SteamDatagramHostedAddress_SetDevAddress", CallingConvention = Platform.CC ) ]
-		public static unsafe extern void SteamAPI_SetDevAddress( SteamDatagramHostedAddress* self, uint nIP, ushort nPort, SteamNetworkingPOPID popid );
 		
 	}
 	

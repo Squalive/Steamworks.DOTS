@@ -32,6 +32,7 @@ public static class Program
         composites.Add<ConstantGenerator>();
         composites.Add<TypeGenerator>();
         composites.Add<StructGenerator>();
+        composites.Add<StructFunctionGenerator>();
         composites.Add<EnumGenerator>();
         composites.Add<CustomEnumGenerator>();
         composites.Add<InterfaceGenerator>();

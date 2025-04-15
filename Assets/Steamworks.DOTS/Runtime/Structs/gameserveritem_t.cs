@@ -1,10 +1,9 @@
-﻿using System;
-using System.Runtime.InteropServices;
+﻿using System.Runtime.InteropServices;
 
 namespace Steamworks.Data
 {
     [ StructLayout( LayoutKind.Explicit, Pack = Platform.StructPackSize, Size = 372 ) ]
-    public unsafe struct gameserveritem_t
+    public unsafe partial struct gameserveritem_t
     {
         [ FieldOffset( 0 ) ]
         public servernetadr_t NetAdr; // m_NetAdr servernetadr_t
@@ -42,14 +41,5 @@ namespace Steamworks.Data
         public fixed byte GameTags[ 128 ]; // m_szGameTags char [128]
         [ FieldOffset( 364 ) ]
         public SteamId SteamID; // m_steamID CSteamID
-		
-        [ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_gameserveritem_t_Construct", CallingConvention = Platform.CC ) ]
-        public static unsafe extern void SteamAPI_Construct( gameserveritem_t* self );
-		
-        [ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_gameserveritem_t_GetName", CallingConvention = Platform.CC ) ]
-        public static unsafe extern Utf8StringPtr SteamAPI_GetName( gameserveritem_t* self );
-		
-        [ DllImport( Platform.LibraryName, EntryPoint = "SteamAPI_gameserveritem_t_SetName", CallingConvention = Platform.CC ) ]
-        public static unsafe extern void SteamAPI_SetName( gameserveritem_t* self, IntPtr pName );
     }
 }
