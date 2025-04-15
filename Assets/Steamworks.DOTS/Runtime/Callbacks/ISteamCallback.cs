@@ -64,7 +64,7 @@ namespace Steamworks
     
     [ BurstCompile ]
     [ WorldSystemFilter( WorldSystemFilterFlags.Default | WorldSystemFilterFlags.ThinClientSimulation ) ]
-    [ UpdateInGroup( typeof( SimulationSystemGroup ) ) ]
+    [ UpdateInGroup( typeof( SimulationSystemGroup ), OrderLast = true ) ]
     [ RequireMatchingQueriesForUpdate ]
     public partial struct SteamCallbacksSystem : ISystem
     {

@@ -9,6 +9,7 @@ namespace Steamworks
     [ WorldSystemFilter( WorldSystemFilterFlags.ServerSimulation ) ]
     [ UpdateInGroup( typeof( SimulationSystemGroup ), OrderLast = true ) ]
     [ CreateAfter( typeof( SteamCallbacksSystem ) ) ]
+    [ UpdateBefore( typeof( SteamCallbacksSystem ) ) ]
     public partial struct SteamServerLocalSystem : ISystem
     {
         private CallbackQuery<SteamServersConnected_t> _steamServerConnectedQuery;
