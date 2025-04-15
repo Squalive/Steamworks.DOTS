@@ -96,7 +96,9 @@ namespace Steamworks
                 var eResult = Internal.SafeInit( init.AppId, out var errorMsg );
                 var entity = entities[ i ];
                 commandBuffer.RemoveComponent<SteamAPIRequestInit>( entity );
-                commandBuffer.AddComponent( entity, new SteamAPIInitResult { Result = eResult, ErrorMsg = errorMsg } );
+                var errorMsgFixed = new FixedString512Bytes();
+                errorMsgFixed.CopyFromTruncated( errorMsg );
+                commandBuffer.AddComponent( entity, new SteamAPIInitResult { Result = eResult, ErrorMsg = errorMsgFixed } );
                 if ( eResult == SteamInitResult.Ok )
                 {
 #if !DOTS_DISABLE_DEBUG_NAMES
