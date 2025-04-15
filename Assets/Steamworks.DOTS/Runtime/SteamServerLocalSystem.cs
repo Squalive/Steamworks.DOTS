@@ -21,12 +21,13 @@ namespace Steamworks
 
             _steamServerConnectedQuery = new CallbackQuery<SteamServersConnected_t>( ref state );
             state.RequireForUpdate( _steamServerConnectedQuery );
-            state.RequireForUpdate( SystemAPI.QueryBuilder().WithAll<SteamGameServer>().WithNone<SteamLocal>().Build() );
         }
         
         [ BurstCompile ]
         public void OnUpdate( ref SystemState state )
         {
+            if ( SystemAPI.HasSingleton<SteamLocal>() ) return;
+            
             var steamEntity = SystemAPI.GetSingletonEntity<SteamGameServer>();
             var steamGameServer = SystemAPI.GetComponent<SteamGameServer>( steamEntity );
             foreach ( var _ in _steamServerConnectedQuery.ToCallbackArray( Allocator.Temp ) )
