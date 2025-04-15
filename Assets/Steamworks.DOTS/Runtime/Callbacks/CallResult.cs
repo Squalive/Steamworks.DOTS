@@ -14,7 +14,7 @@ namespace Steamworks
 
     [ BurstCompile ]
     [ WorldSystemFilter( WorldSystemFilterFlags.Default | WorldSystemFilterFlags.ThinClientSimulation ) ]
-    [ UpdateInGroup( typeof( InitializationSystemGroup ) ) ]
+    [ UpdateInGroup( typeof( SimulationSystemGroup ) ) ]
     public partial struct SteamCallResultSystem : ISystem
     {
         private NativeParallelHashMap<SteamAPICall_t, Entity> _resultCallbacks;
@@ -40,7 +40,7 @@ namespace Steamworks
         [ BurstCompile ]
         public void OnUpdate( ref SystemState state )
         {
-            
+            state.Enabled = false;
         }
     }
     

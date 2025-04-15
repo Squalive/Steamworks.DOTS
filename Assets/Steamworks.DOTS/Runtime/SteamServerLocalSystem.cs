@@ -36,7 +36,6 @@ namespace Steamworks
                 break;
             }
 
-            UnityEngine.Debug.Log(steamGameServer.SteamId.Value  );
             state.EntityManager.DestroyEntity( _steamServerConnectedQuery );
         }
     }

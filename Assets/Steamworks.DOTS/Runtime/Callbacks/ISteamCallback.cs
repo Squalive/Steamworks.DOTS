@@ -64,7 +64,7 @@ namespace Steamworks
     
     [ BurstCompile ]
     [ WorldSystemFilter( WorldSystemFilterFlags.Default | WorldSystemFilterFlags.ThinClientSimulation ) ]
-    [ UpdateInGroup( typeof( InitializationSystemGroup ) ) ]
+    [ UpdateInGroup( typeof( SimulationSystemGroup ) ) ]
     [ RequireMatchingQueriesForUpdate ]
     public partial struct SteamCallbacksSystem : ISystem
     {
@@ -112,7 +112,7 @@ namespace Steamworks
         [ BurstCompile ]
         public void OnUpdate( ref SystemState state )
         {
-            var commandBuffer = SystemAPI.GetSingleton<BeginInitializationEntityCommandBufferSystem.Singleton>().CreateCommandBuffer( state.WorldUnmanaged );
+            var commandBuffer = SystemAPI.GetSingleton<BeginSimulationEntityCommandBufferSystem.Singleton>().CreateCommandBuffer( state.WorldUnmanaged );
             var parallelWriter = commandBuffer.AsParallelWriter();
             if ( !_requireCleanupQuery.IsEmptyIgnoreFilter )
             {

@@ -41,7 +41,7 @@ namespace Steamworks
     }
     
     [ WorldSystemFilter( WorldSystemFilterFlags.ServerSimulation ) ]
-    [ UpdateInGroup( typeof( InitializationSystemGroup ) ) ]
+    [ UpdateInGroup( typeof( SimulationSystemGroup ) ) ]
     public partial class SteamServerSystem : SystemBase
     {
         private static class Internal

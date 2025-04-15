@@ -21,7 +21,7 @@ namespace Steamworks
     }
     
     [ WorldSystemFilter( WorldSystemFilterFlags.ClientSimulation | WorldSystemFilterFlags.ThinClientSimulation ) ]
-    [ UpdateInGroup( typeof( InitializationSystemGroup ) ) ]
+    [ UpdateInGroup( typeof( SimulationSystemGroup ) ) ]
     public partial class SteamClientSystem : SystemBase
     {
         private static class Internal
