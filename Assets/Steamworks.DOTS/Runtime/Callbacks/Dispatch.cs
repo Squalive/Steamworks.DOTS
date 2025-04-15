@@ -14,7 +14,7 @@ namespace Steamworks
 
         public void Install<T>() where T : unmanaged, ISteamCallback
         {
-            InstalledEvents.Add( ( int ) default( T ).CallbackType, ComponentType.ReadWrite<SteamCallback<T>>() );
+            InstalledEvents.TryAdd( ( int ) default( T ).CallbackType, ComponentType.ReadWrite<SteamCallback<T>>() );
         }
 
         public void Uninstall<T>() where T : unmanaged, ISteamCallback

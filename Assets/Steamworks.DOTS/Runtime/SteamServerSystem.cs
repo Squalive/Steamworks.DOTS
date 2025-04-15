@@ -126,10 +126,6 @@ namespace Steamworks
                     var steamInternal = new SteamInternal( SteamInternal.SteamGameServer_GetHSteamPipe(), SteamInternal.SteamGameServer_GetHSteamUser(), SteamGameServerDispatch.DispatchImpl );
                     steamInternal.GetDispatchImpl().InstallWorld( World.Unmanaged );
                     commandBuffer.AddComponent( entity, steamInternal );
-                    commandBuffer.AddComponent( entity, new SteamLocal
-                    {
-                        Id = ISteamGameServer._SteamAPI_ISteamGameServer_GetSteamID( CSteamGameServerAPIContext.SteamGameServer )
-                    } );
                     commandBuffer.AddComponent( entity, new SteamGameServer( CSteamGameServerAPIContext.SteamGameServer ) );
                 }
                 else

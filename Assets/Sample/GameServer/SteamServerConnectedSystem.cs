@@ -43,10 +43,9 @@ namespace Steamworks.Sample
                 FixedString32Bytes value = "vanilla";
                 steamGameServer.SetKeyValue( key, value );
                 
-                UnityEngine.Debug.Log( "steam server connected" );
+                UnityEngine.Debug.Log( $"steam server connected {steamGameServer.SteamId}" );
             }
 
-            state.EntityManager.DestroyEntity( _steamServerConnectedQuery );
         }
     }
 }
