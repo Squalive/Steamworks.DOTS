@@ -72,8 +72,13 @@ namespace Steamworks
             if ( !data.IsCreated ) return EBeginAuthSessionResult.InvalidTicket;
             unsafe
             {
-                return Internal.BeginAuthSession( ( IntPtr ) data.GetUnsafeReadOnlyPtr(), data.Length, steamId );
+                return BeginAuthSession( ( IntPtr ) data.GetUnsafeReadOnlyPtr(), data.Length, steamId );
             }
+        }
+
+        public EBeginAuthSessionResult BeginAuthSession( IntPtr pAuthTicket, int cbAuthTicket, SteamId steamID )
+        {
+            return Internal.BeginAuthSession( pAuthTicket, cbAuthTicket, steamID );
         }
 
         public void EndAuthSession( SteamId steamId )
