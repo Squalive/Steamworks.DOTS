@@ -31,6 +31,9 @@ namespace Steamworks
             _query.Dispose();
         }
 
+        public bool IsEmptyIgnoreFilter => _query.IsEmptyIgnoreFilter;
+        public bool IsEmpty => _query.IsEmpty;
+
         public NativeArray<Entity> ToEntityArray( Allocator allocator ) => _query.ToEntityArray( allocator );
 
         public NativeList<Entity> ToEntityListAsync( Allocator allocator, JobHandle additionalInputDep, out JobHandle outJobHandle ) =>
