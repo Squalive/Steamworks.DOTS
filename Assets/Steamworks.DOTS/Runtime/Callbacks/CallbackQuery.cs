@@ -20,10 +20,13 @@ namespace Steamworks
 
         public CallbackQuery( ref SystemState state, bool isCallResult = false, bool includeFake = true )
         {
-            using var builder = new EntityQueryBuilder( Allocator.Temp ).WithAll<SteamCallback, SteamCallback<T>>();
+            var builder = new EntityQueryBuilder( Allocator.Temp ).WithAll<SteamCallback, SteamCallback<T>>();
             if ( !includeFake ) builder.WithNone<Fake>();
             if ( !isCallResult ) builder.WithNone<SteamCallResult>();
             _query = state.GetEntityQuery( builder );
+
+            using var dispatchQuery = builder.Reset().WithAll<Dispatch>().Build( state.EntityManager );
+            dispatchQuery.GetSingleton<Dispatch>().Install<T>();
         }
         
         public void Dispose()
